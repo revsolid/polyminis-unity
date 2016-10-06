@@ -1,5 +1,6 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
 Project("{F2A8E972-16A2-0A97-2686-88B493443A42}") = "polyminis-unity", "Assembly-CSharp.csproj", "{FC357BA7-BB01-FD88-9601-E6CE4FAD09DB}"
 EndProject
 Project("{F2A8E972-16A2-0A97-2686-88B493443A42}") = "polyminis-unity", "Assembly-CSharp-Editor-firstpass.csproj", "{68DBB554-3A1E-297A-5625-AFC0882F4AE3}"
@@ -18,6 +19,9 @@ Global
 		{68DBB554-3A1E-297A-5625-AFC0882F4AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68DBB554-3A1E-297A-5625-AFC0882F4AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68DBB554-3A1E-297A-5625-AFC0882F4AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
