@@ -9,7 +9,8 @@ public class SpaceMovementTracker : MonoBehaviour
     public GameObject HUD;
     
     public Vector2 CurrentPosition { get; private set; }
-    float Heading;
+    public float Heading {get; private set; }
+    public Vector2 Forward {get; private set; }
     
 
 
@@ -34,13 +35,13 @@ public class SpaceMovementTracker : MonoBehaviour
 		Heading += (4.0f*horImpulse);
 		Heading %= 360;
         
-        Vector2 forward = new Vector2(Mathf.Cos(Mathf.PI * Heading / 180),
-									  Mathf.Sin(Mathf.PI * Heading / 180));
+        Forward = new Vector2(Mathf.Cos(Mathf.PI * Heading / 180),
+							  Mathf.Sin(Mathf.PI * Heading / 180));
 
-		CurrentPosition += (forward * verImpulse);
+		CurrentPosition += (Forward * verImpulse * 0.2f);
 
 		Debug.Log("********************");
-    	Debug.Log(forward);						
+    	Debug.Log(Forward);						
 		Debug.Log(Heading);
 		Debug.Log(CurrentPosition);
 		Debug.Log("********************");

@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-            transform.position = new Vector3(0.0f, 0.0f, RotationRadius);
+            transform.position = new Vector3(RotationRadius, 0.0f, 0.0f);
 	}
 	
 	// Update is called once per frame
@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         Vector3 newPos = transform.position;
-        newPos.y += VerImpulse;
+        newPos.y = Mathf.Min(125, Mathf.Max(newPos.y + VerImpulse, 5.0f));
         if (HorImpulse != 0)
         {
             Angle = (Angle + ( HorImpulse / 60 ) ) % 360;
