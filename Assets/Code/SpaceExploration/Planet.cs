@@ -32,9 +32,16 @@ public class Planet
         Debug.Log("Planet Position: "+SpacePosition);
         
         RelativeAngle = Vector2.Angle(Azimuth, newForward);
+        Vector3 cross = Vector3.Cross(Azimuth, newForward);
+        Debug.Log("CROSS: "+cross);
+        if (cross.z > 0)
+        {
+            RelativeAngle *= -1; 
+        }
         Debug.Log("Azimuth: "+ Azimuth);
         Debug.Log("Relative Angle: "+RelativeAngle);
         Debug.Log("Right: "+Vector2.right);
+        Debug.Log("Forward: "+newForward);
         
         foreach (IPlanetRenderer renderer in Renderers)
         {

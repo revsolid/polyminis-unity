@@ -22,9 +22,9 @@ GameObject:
   - 33: {fileID: 33000010619338382}
   - 135: {fileID: 135000012730168584}
   - 23: {fileID: 23000010285335404}
-  - 114: {fileID: 114000013681988436}
+  - 114: {fileID: 114000013338247966}
   m_Layer: 0
-  m_Name: Planet
+  m_Name: SpaceExPlanetRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013330390866}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114000013681988436
+--- !u!114 &114000013338247966
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -87,12 +87,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013330390866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f74ae0fd2b7e400bb45623b8329d9fe, type: 3}
+  m_Script: {fileID: 11500000, guid: bb1b115c512bb44699bf82dc2a49665d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ViewType: 0
-  SpacePosition: {x: 0, y: 0}
-  DistanceToSpaceship: 1
+  DistanceToSpaceship: 0
 --- !u!135 &135000012730168584
 SphereCollider:
   m_ObjectHideFlags: 1

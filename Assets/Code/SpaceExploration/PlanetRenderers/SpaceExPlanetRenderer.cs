@@ -15,7 +15,7 @@ public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
     {
         DistanceToSpaceship = model.DistanceToSpaceship;
         Vector2 delta = model.LastDelta;
-        transform.localPosition += new Vector3(delta.y, 0.0f, -1*delta.x);
+        transform.localPosition -= new Vector3(-1*delta.y, 0.0f, -1*delta.x);
      
         if (DistanceToSpaceship > 200 || DistanceToSpaceship < 30)
         {
