@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class SpliceButton : MonoBehaviour {
+public class SpliceButton : MonoBehaviour 
+{
 
     public int size, catagory, id;
     private SpliceUIManager uiManager;
