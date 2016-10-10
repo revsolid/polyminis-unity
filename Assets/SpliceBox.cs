@@ -2,12 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SpliceBox : MonoBehaviour {
+public class SpliceBox : MonoBehaviour
+{
 
     Image img;
     SpliceButton b;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
         img = gameObject.GetComponent<Image>();
 	}
 
