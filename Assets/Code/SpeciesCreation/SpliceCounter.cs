@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SpliceCounter : MonoBehaviour {
+public class SpliceCounter : MonoBehaviour
+{
 
     public SpliceBox[] boxes;
     public int[] spliceID; 
@@ -10,13 +11,13 @@ public class SpliceCounter : MonoBehaviour {
     int currentBox;
     bool full = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start ()
+    {
         numBoxes = boxes.Length;
         currentBox = 0;
-	}
-	
-	// Update is called once per frame
+    }
+    
     public void setSelected(SpliceButton pressed)
     {
         if (full) throw new SpliceButton.splicesFullException();
@@ -27,8 +28,6 @@ public class SpliceCounter : MonoBehaviour {
     }
     public void deselect(SpliceButton pressed)
     {
-        
-        
         for (int i = 0; i < numBoxes; i++)
         {
             if (pressed.Equals(boxes[i].getButton()))
@@ -43,6 +42,5 @@ public class SpliceCounter : MonoBehaviour {
 
         currentBox--;
         full = false;
-        
     }
 }

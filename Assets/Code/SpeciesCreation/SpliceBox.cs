@@ -24,7 +24,6 @@ public class SpliceBox : MonoBehaviour
         {
             free();
         }
-        
     }
 
     public void free()

@@ -32,7 +32,6 @@ public class SpliceUIManager : MonoBehaviour {
 
 	}
 
-
     void Update()
     {
 	

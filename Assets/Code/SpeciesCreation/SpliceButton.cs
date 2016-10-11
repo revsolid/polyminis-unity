@@ -6,7 +6,7 @@ using System;
 public class SpliceButton : MonoBehaviour 
 {
 
-    public int size, catagory, id;
+    public int size, category, id;
     private SpliceUIManager uiManager;
     private Image image;
     private bool enabled = false;
@@ -16,24 +16,24 @@ public class SpliceButton : MonoBehaviour
     {
         uiManager = GameObject.FindGameObjectWithTag("SpliceUIManager").GetComponent<SpliceUIManager>();
         image = GetComponent<Image>();
-        image.color = uiManager.tabColors[catagory];
-        color = uiManager.tabColors[catagory];
+        image.color = uiManager.tabColors[category];
+        color = uiManager.tabColors[category];
     }
-     public void clicked()
-	{
-		
-	try
-	{
-    		if (!enabled)
-    		{
-			uiManager.counters[size].setSelected(this);
-			uiManager.updateBars(this, true);
-    		}
-            	else
-            	{
-                	uiManager.counters[size].deselect(this);
-               		uiManager.updateBars(this, false);
-            	}
+    public void clicked()
+    {
+        
+        try
+        {
+            if (!enabled)
+            {
+                uiManager.counters[size].setSelected(this);
+                uiManager.updateBars(this, true);
+            }
+            else
+            {
+                uiManager.counters[size].deselect(this);
+                uiManager.updateBars(this, false);
+            }
         }
         catch (splicesFullException e)
         {
