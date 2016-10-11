@@ -50,11 +50,11 @@ public class SpliceUIManager : MonoBehaviour {
     {
         if (turnedOn)
         {
-            pointAllocation[button.catagory] += (button.size + 1);
+            pointAllocation[button.category] += (button.size + 1);
         }
         else
         {
-            pointAllocation[button.catagory] -= (button.size + 1);
+            pointAllocation[button.category] -= (button.size + 1);
         }
 
         for (int i = 0; i < 4; i++)
