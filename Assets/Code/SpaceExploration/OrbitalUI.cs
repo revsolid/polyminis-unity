@@ -20,8 +20,8 @@ public class OrbitalUI : MonoBehaviour
 	
 	public void OnClick()
 	{
-		OrbitalCamera.enabled = false;
-		SpaceflightCamera.enabled = true;
-		Debug.Log("CLECK");
+        OrbitalCamera.gameObject.SetActive(false);
+        SpaceflightCamera.gameObject.SetActive(true);
+        SpaceflightCamera.enabled = true;
 	}
 }

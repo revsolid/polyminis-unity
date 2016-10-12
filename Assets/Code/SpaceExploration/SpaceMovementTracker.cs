@@ -35,7 +35,7 @@ public class SpaceMovementTracker : MonoBehaviour
         // Rotate the Hud a bit.
         HUD.transform.eulerAngles = new Vector3(0.0f, 0.0f, -1*horImpulse);
         
-        Heading += (4.0f*damp*horImpulse);
+        Heading += (16.0f*damp*horImpulse);
         Heading %= 360;
         
         Forward = new Vector2(Mathf.Cos(Mathf.PI * Heading / 180),
