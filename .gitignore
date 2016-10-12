@@ -3,3 +3,4 @@ Temp/
 Library/
 Assets/Wwise/Project/polyminis/.cache
 ProfilingSession?.prof*
+*.csproj
