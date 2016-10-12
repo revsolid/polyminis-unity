@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{393CEB3E-BA45-47DB-AA53-5F4E45310B09}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
 	<Events>
-		<WorkUnit Name="species_design_work_unit" ID="{393CEB3E-BA45-47DB-AA53-5F4E45310B09}" OwnerID="{979D1165-F0C6-445F-BC3C-41C235597E48}" PersistMode="Nested">
+		<WorkUnit Name="species_design_work_unit" ID="{393CEB3E-BA45-47DB-AA53-5F4E45310B09}" OwnerID="{B969FB9F-0718-4974-819F-3FECC617A358}" PersistMode="Nested">
 			<ChildrenList>
 				<Event Name="Play_species_design" ID="{CBE185C1-9275-4909-8F5E-8FEAD08FC789}">
 					<ChildrenList>
