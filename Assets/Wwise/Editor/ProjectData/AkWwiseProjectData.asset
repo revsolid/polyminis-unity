@@ -16,19 +16,21 @@ MonoBehaviour:
   - PhysicalPath: Events/Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{979D1165-F0C6-445F-BC3C-41C235597E48}'
-    m_lastTimePsrt1: 94682368
-    m_lastTimePart2: -1999375781
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
     List: []
   - PhysicalPath: Events/exploration_work_unit.wwu
-    ParentPhysicalPath: Events/Default Work Unit.wwu
+    ParentPhysicalPath: Events/Music_work_unit.wwu
     Guid: '{0DBB71AE-6E58-41DE-809E-EAE0D5DF8E4C}'
-    m_lastTimePsrt1: 94682368
-    m_lastTimePart2: -1999375781
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
     List:
     - Name: Play_exploration
-      Path: Default Work Unit/exploration_work_unit/Play_exploration
+      Path: Default Work Unit/Music_work_unit/exploration_work_unit/Play_exploration
       PathAndIcons:
       - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music_work_unit
         ObjectType: 12
       - ElementName: exploration_work_unit
         ObjectType: 12
@@ -37,16 +39,42 @@ MonoBehaviour:
       ID: -2007894867
       Guid: a37e9ee0f07e1c408f2c7678025c5f72
       maxAttenuation: 0
-  - PhysicalPath: Events/species_design_work_unit.wwu
+  - PhysicalPath: Events/Music_work_unit.wwu
     ParentPhysicalPath: Events/Default Work Unit.wwu
-    Guid: '{393CEB3E-BA45-47DB-AA53-5F4E45310B09}'
-    m_lastTimePsrt1: 94682368
-    m_lastTimePart2: -1999375781
+    Guid: '{B969FB9F-0718-4974-819F-3FECC617A358}'
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
+    List: []
+  - PhysicalPath: Events/SFX_work_unit.wwu
+    ParentPhysicalPath: Events/Default Work Unit.wwu
+    Guid: '{2DE101C9-A49A-4463-BD3C-DB0395A7F117}'
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
     List:
-    - Name: Play_species_design
-      Path: Default Work Unit/species_design_work_unit/Play_species_design
+    - Name: Play_whoosh_1
+      Path: Default Work Unit/SFX_work_unit/Play_whoosh_1
       PathAndIcons:
       - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_work_unit
+        ObjectType: 12
+      - ElementName: Play_whoosh_1
+        ObjectType: 3
+      ID: -26417136
+      Guid: 0ab14617ac6aca4ba931ade086478cbc
+      maxAttenuation: 0
+  - PhysicalPath: Events/species_design_work_unit.wwu
+    ParentPhysicalPath: Events/Music_work_unit.wwu
+    Guid: '{393CEB3E-BA45-47DB-AA53-5F4E45310B09}'
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
+    List:
+    - Name: Play_species_design
+      Path: Default Work Unit/Music_work_unit/species_design_work_unit/Play_species_design
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music_work_unit
         ObjectType: 12
       - ElementName: species_design_work_unit
         ObjectType: 12
