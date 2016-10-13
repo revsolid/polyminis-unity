@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{393CEB3E-BA45-47DB-AA53-5F4E45310B09}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="species_design_work_unit" ID="{393CEB3E-BA45-47DB-AA53-5F4E45310B09}" OwnerID="{B969FB9F-0718-4974-819F-3FECC617A358}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_species_design" ID="{CBE185C1-9275-4909-8F5E-8FEAD08FC789}">
+					<ChildrenList>
+						<Action Name="Stop All" ID="{CE64C411-7AA0-4F5E-8893-785E9BA1565D}" ShortID="1010531077" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
+						<Action Name="Play" ID="{FE21E2DB-6E74-46E2-ACEB-7CB022ADB70F}" ShortID="23868728" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{564B3BB3-13FA-44E0-8503-8167BCD963CF}" Global="false">
+									<ObjectRef Name="species_design_container" ID="{69FDDD15-6FB6-4AA4-9EBE-129A3DD42773}" WorkUnitID="{EBA6FB54-6120-441D-BDAB-8E83F2606751}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

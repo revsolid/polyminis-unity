@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	585562449	Play_species_design			\Default Work Unit\species_design_work_unit\Play_species_design	
+	2287072429	Play_exploration			\Default Work Unit\exploration_work_unit\Play_exploration	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	29796930	Exploration First	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\Exploration First_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\exploration_container\Exploration First\Exploration First		19067652
+	401293344	Species Design First	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\Species Design First_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\species_design_container\Species Design First\Species Design First		30720064
+	584759446	Species Design Loop	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\Species Design Loop_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\species_design_container\Species Design Loop\Species Design Loop		30720064
+	796678487	Exploration Loop	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\Exploration Loop_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\exploration_container\Exploration Loop\Exploration Loop		15889724
+
