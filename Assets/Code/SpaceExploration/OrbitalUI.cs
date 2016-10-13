@@ -5,6 +5,7 @@ public class OrbitalUI : MonoBehaviour
 {
 	public Camera SpaceflightCamera;
 	public Camera OrbitalCamera;
+	public GameObject SpeciesEditor;
 
 	// Use this for initialization
 	void Start ()
@@ -18,10 +19,15 @@ public class OrbitalUI : MonoBehaviour
 	
 	}
 	
-	public void OnClick()
+	public void OnBackClicked()
 	{
         OrbitalCamera.gameObject.SetActive(false);
         SpaceflightCamera.gameObject.SetActive(true);
         SpaceflightCamera.enabled = true;
+	}
+	
+	public void OnEditCreatureClicked()
+	{
+		SpeciesEditor.SetActive(true);
 	}
 }

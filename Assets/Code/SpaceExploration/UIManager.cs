@@ -4,6 +4,7 @@ using System.Collections;
 public class UIManager : MonoBehaviour {
 
 	public GameObject StarMap;
+	public GameObject SpeciesEditor;
 	bool StarMapToggle = false;
 
 	// Use this for initialization
@@ -15,11 +16,17 @@ public class UIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		StarMap.SetActive(StarMapToggle);
 	}
 
-	public void OnButtonClick()
+	public void OnStarmapClick()
 	{
 		StarMapToggle = !StarMapToggle;
+		StarMap.SetActive(StarMapToggle);
 	}
+	
+	public void OnSpeciesEditorClick()
+	{
+		SpeciesEditor.SetActive(true);
+	}
+	
 }

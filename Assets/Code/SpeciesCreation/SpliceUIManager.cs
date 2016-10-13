@@ -13,9 +13,11 @@ public class SpliceUIManager : MonoBehaviour {
     public GridLayoutGroup[] spliceTabs = new GridLayoutGroup[4];
     public Slider[] displayBars = new Slider[4];
     private int[] pointAllocation = { 0, 0, 0, 0 };
+    public int currentCategory {get; private set; }
 
     
-	void Start () {
+	void Start ()
+    {
 
         tabLayout = tabPanel.GetComponent<HorizontalLayoutGroup>();
         tabButtons = new Button[4];
@@ -25,11 +27,8 @@ public class SpliceUIManager : MonoBehaviour {
             tabButtons[i] = b;
             i++;
         }
-        for (int j = 0; j < 4; j++)
-        {
-            //tabs[i] = GameObject.Instantiate<Button>();
-        }
 
+        currentCategory = 0;
 	}
 
     void Update()
@@ -43,6 +42,8 @@ public class SpliceUIManager : MonoBehaviour {
         {
             spliceTabs[i].gameObject.SetActive(i == id);
         }
+        
+        currentCategory = id;
     }
 
     public void updateBars(SpliceButton button, bool turnedOn)
@@ -60,5 +61,11 @@ public class SpliceUIManager : MonoBehaviour {
         {
             displayBars[i].value = pointAllocation[i];
         }
+    }
+    
+    public void OnCloseClicked()
+    {
+        gameObject.SetActive(false);
+        // SAVE et al.
     }
 }
