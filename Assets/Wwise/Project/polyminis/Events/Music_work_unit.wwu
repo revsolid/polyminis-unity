@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B969FB9F-0718-4974-819F-3FECC617A358}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="Music_work_unit" ID="{B969FB9F-0718-4974-819F-3FECC617A358}" OwnerID="{979D1165-F0C6-445F-BC3C-41C235597E48}" PersistMode="Nested">
+			<ChildrenList>
+				<WorkUnit Name="exploration_work_unit" ID="{0DBB71AE-6E58-41DE-809E-EAE0D5DF8E4C}" PersistMode="Reference"/>
+				<WorkUnit Name="species_design_work_unit" ID="{393CEB3E-BA45-47DB-AA53-5F4E45310B09}" PersistMode="Reference"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

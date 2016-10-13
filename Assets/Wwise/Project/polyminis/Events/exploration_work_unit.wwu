@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0DBB71AE-6E58-41DE-809E-EAE0D5DF8E4C}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="exploration_work_unit" ID="{0DBB71AE-6E58-41DE-809E-EAE0D5DF8E4C}" OwnerID="{B969FB9F-0718-4974-819F-3FECC617A358}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_exploration" ID="{E09E7EA3-7EF0-401C-8F2C-7678025C5F72}">
+					<ChildrenList>
+						<Action Name="Stop All" ID="{FA88FBF4-E0F3-4D90-9BF4-1B81F40FAA6D}" ShortID="315282955" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
+						<Action Name="Play" ID="{1B99EE9F-5C96-422F-AF97-5D36FEED4C67}" ShortID="766340124" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{D8FB60B8-2780-428D-9C2D-32D571D24D5D}" Global="false">
+									<ObjectRef Name="exploration_container" ID="{3E54A686-2422-4481-A508-80FAA0BE3B08}" WorkUnitID="{EBA6FB54-6120-441D-BDAB-8E83F2606751}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
