@@ -16,6 +16,7 @@ public class SpliceButton : MonoBehaviour
     {
         uiManager = GameObject.FindGameObjectWithTag("SpliceUIManager").GetComponent<SpliceUIManager>();
         image = GetComponent<Image>();
+        category = uiManager.currentCategory;
         image.color = uiManager.tabColors[category];
         color = uiManager.tabColors[category];
     }

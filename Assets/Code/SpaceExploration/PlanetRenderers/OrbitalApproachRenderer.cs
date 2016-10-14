@@ -47,8 +47,8 @@ public class OrbitalApproachRenderer : MonoBehaviour, IPlanetRenderer
     
 	public void OnButtonClick()
 	{
-        Debug.Log("Clickety Click");
-        Camera.main.enabled = false;
+        Camera.main.gameObject.SetActive(false);
+        TargetCamera.gameObject.SetActive(true);
         TargetCamera.enabled = true;
 	}
 }
