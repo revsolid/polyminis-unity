@@ -54,10 +54,19 @@ public class ExplorationConnection : MonoBehaviour
 
     void InitClient()
     {
-        ws = new WebSocket("ws://ec2-54-70-6-182.us-west-2.compute.amazonaws.com:8080");
+        //ws = new WebSocket("ws://ec2-54-70-6-182.us-west-2.compute.amazonaws.com:8080");
+        ws = new WebSocket("ws://localhost:8080");
         ws.OnMessage += (sender, e) => OnMessage(e.Data);
         Debug.Log("Attempting Connect...");
         ws.Connect();
+
+        string message = "<init>[";
+        message += ship.transform.position.x.ToString();
+        message += ",";
+        message += ship.transform.position.z.ToString();
+        message += "]";
+
+        ws.Send(message);
     }
 
     void OnMessage(string message)
@@ -82,14 +91,9 @@ public class ExplorationConnection : MonoBehaviour
 
     }
 
-    void Ping()
-    {
-        ws.Send("Hi server!");
-    }
-
     void SendLocation()
     {
-        string message = "<loc>[";
+        string message = "<mov>[";
         message += ship.transform.position.x.ToString();
         message += ",";
         message += ship.transform.position.z.ToString();
