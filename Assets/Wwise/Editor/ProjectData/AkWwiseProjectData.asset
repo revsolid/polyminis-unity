@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140453c572b354d2094ebce1b88f2fa8, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  CurrentPluginConfig: 
+  EventWwu:
+  - PhysicalPath: Events/Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{979D1165-F0C6-445F-BC3C-41C235597E48}'
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
+    List: []
+  - PhysicalPath: Events/exploration_work_unit.wwu
+    ParentPhysicalPath: Events/Music_work_unit.wwu
+    Guid: '{0DBB71AE-6E58-41DE-809E-EAE0D5DF8E4C}'
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
+    List:
+    - Name: Play_exploration
+      Path: Default Work Unit/Music_work_unit/exploration_work_unit/Play_exploration
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music_work_unit
+        ObjectType: 12
+      - ElementName: exploration_work_unit
+        ObjectType: 12
+      - ElementName: Play_exploration
+        ObjectType: 3
+      ID: -2007894867
+      Guid: a37e9ee0f07e1c408f2c7678025c5f72
+      maxAttenuation: 0
+  - PhysicalPath: Events/Music_work_unit.wwu
+    ParentPhysicalPath: Events/Default Work Unit.wwu
+    Guid: '{B969FB9F-0718-4974-819F-3FECC617A358}'
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
+    List: []
+  - PhysicalPath: Events/SFX_work_unit.wwu
+    ParentPhysicalPath: Events/Default Work Unit.wwu
+    Guid: '{2DE101C9-A49A-4463-BD3C-DB0395A7F117}'
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
+    List:
+    - Name: Play_whoosh_1
+      Path: Default Work Unit/SFX_work_unit/Play_whoosh_1
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_work_unit
+        ObjectType: 12
+      - ElementName: Play_whoosh_1
+        ObjectType: 3
+      ID: -26417136
+      Guid: 0ab14617ac6aca4ba931ade086478cbc
+      maxAttenuation: 0
+  - PhysicalPath: Events/species_design_work_unit.wwu
+    ParentPhysicalPath: Events/Music_work_unit.wwu
+    Guid: '{393CEB3E-BA45-47DB-AA53-5F4E45310B09}'
+    m_lastTimePsrt1: 1945205632
+    m_lastTimePart2: -1999375765
+    List:
+    - Name: Play_species_design
+      Path: Default Work Unit/Music_work_unit/species_design_work_unit/Play_species_design
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music_work_unit
+        ObjectType: 12
+      - ElementName: species_design_work_unit
+        ObjectType: 12
+      - ElementName: Play_species_design
+        ObjectType: 3
+      ID: 585562449
+      Guid: c185e1cb759209498f5e8fead08fc789
+      maxAttenuation: 0
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy/Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{2EB4B522-7363-484B-A9D7-261CCBE3931C}'
+    m_lastTimePsrt1: 94682368
+    m_lastTimePart2: -1999375781
+    List: []
+  StateWwu:
+  - PhysicalPath: States/Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{24AB2D6D-4210-4072-9965-ED02A0983DEF}'
+    m_lastTimePsrt1: 114682368
+    m_lastTimePart2: -1999375781
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches/Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{10D3934A-F8C3-4E94-B90B-6AC22DB87490}'
+    m_lastTimePsrt1: 114682368
+    m_lastTimePart2: -1999375781
+    List: []
+  BankWwu:
+  - PhysicalPath: SoundBanks/Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{C92780B3-6ADC-4800-8A0D-98E6FDBF84B8}'
+    m_lastTimePsrt1: 245074816
+    m_lastTimePart2: -1999375769
+    List:
+    - Name: Music
+      Path: Default Work Unit/Music
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 7
+      ID: -303024426
+      Guid: f613437d1a12054b8ecf76887f879427
+  ExpandedItems:
+  - /polyminis
+  m_lastPopulateTimePsrt1: 0
+  m_lastPopulateTimePart2: 0
+  autoPopulateEnabled: 1
+  basePath: Audio/GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  preparePoolSize: 0
+  memoryCutoffThreshold: 0.95

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="11" SoundbankVersion="118">
+	<RootPaths>
+		<ProjectRoot>/Users/dianacha/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Desktop/Polyminis/polyminis-unity/Assets/Wwise/Project/polyminis/</ProjectRoot>
+		<SourceFilesRoot>/Users/dianacha/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Desktop/Polyminis/polyminis-unity/Assets/Wwise/Project/polyminis/.cache/Mac/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/dianacha/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Desktop/Polyminis/polyminis-unity/Assets/Wwise/Project/polyminis/GeneratedSoundBanks/Mac/</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>/Users/dianacha/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Desktop/Polyminis/polyminis-unity/Assets/Wwise/Project/polyminis/GeneratedSoundBanks/Mac/</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3991942870" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Music</ObjectPath>
+			<ShortName>Music</ShortName>
+			<Path>Music.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2287072429" Name="Play_exploration" ObjectPath="\Events\Default Work Unit\exploration_work_unit\Play_exploration"/>
+				<Event Id="585562449" Name="Play_species_design" ObjectPath="\Events\Default Work Unit\species_design_work_unit\Play_species_design"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="29796930" Language="SFX">
+					<ShortName>Exploration First.wav</ShortName>
+					<Path>SFX/Exploration First_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="401293344" Language="SFX">
+					<ShortName>Species Design First.wav</ShortName>
+					<Path>SFX/Species Design First_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="584759446" Language="SFX">
+					<ShortName>Species Design Loop.wav</ShortName>
+					<Path>SFX/Species Design Loop_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="796678487" Language="SFX">
+					<ShortName>Exploration Loop.wav</ShortName>
+					<Path>SFX/Exploration Loop_4B8CC0C5.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
