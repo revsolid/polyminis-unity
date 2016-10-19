@@ -31,17 +31,18 @@
 */
 
 
-
-
-
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 //
-public class Range<T> 
+public class Range<T> where T: IComparable
 {
     public T Min { get; private set; }
     public T Max { get; private set; }
 
-    public Range<T>(T min, T max)
+    public Range(T min, T max)
     {
         Min = min;
         Max = max;
@@ -49,7 +50,7 @@ public class Range<T>
 
     public bool Within(T value)
     {
-        return Min <= value && value  Max;
+        return (Min.CompareTo(value) != 1 && Max.CompareTo(value) != -1);
     }
 }
 
@@ -57,8 +58,8 @@ public class Range<T>
 public class PlanetModel
 {
     Vector2 SpaceCoords;
-    Range Temperature;
-    Range Ph;
+    Range<float> Temperature;
+    Range<float> Ph;
     IList<SpeciesModel> Species;
 }
 
@@ -144,8 +145,8 @@ public class IndividualModel
   Vector2 SimCoords; 
   CreatureMorphologyModel Morphology;
   int HP;
-  Range Temperature;
-  Range Ph;
+  Range<float> Temperature;
+  Range<float> Ph;
   // TODO: Neural Network Representation (?)
 }
 
