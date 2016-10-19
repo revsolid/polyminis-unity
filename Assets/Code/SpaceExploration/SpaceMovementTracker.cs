@@ -43,4 +43,18 @@ public class SpaceMovementTracker : MonoBehaviour
 
         CurrentPosition += (Forward * verImpulse * damp);
     }
+
+
+	// send current location to server (attempt move)
+	void SendLocation()
+	{	
+		string message = "<mov>[";
+		message += CurrentPosition.x.ToString();
+		message += ",";
+		message += CurrentPosition.y.ToString();
+		message += "]";
+
+		Connection.Socket.Send (message);
+	}
+
 }

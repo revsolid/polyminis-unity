@@ -51,4 +51,10 @@ public class PlanetManager : MonoBehaviour
 		}
 		LastKnownPos = MovementTracker.CurrentPosition;
 	}
+
+	// send current location to server (attempt move)
+	void SendLocation()
+	{
+		Connection.Socket.Send ();
+	}
 }
