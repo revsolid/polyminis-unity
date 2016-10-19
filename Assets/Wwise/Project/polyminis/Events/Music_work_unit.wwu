@@ -5,6 +5,8 @@
 			<ChildrenList>
 				<WorkUnit Name="exploration_work_unit" ID="{0DBB71AE-6E58-41DE-809E-EAE0D5DF8E4C}" PersistMode="Reference"/>
 				<WorkUnit Name="species_design_work_unit" ID="{393CEB3E-BA45-47DB-AA53-5F4E45310B09}" PersistMode="Reference"/>
+				<WorkUnit Name="intro_theme_work_unit" ID="{82F81E48-238C-4568-BD79-4EA84F855D5C}" PersistMode="Reference"/>
+				<WorkUnit Name="creature_observation_work_unit" ID="{F7A46F5D-556C-4B02-876E-6D804E4B155E}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
