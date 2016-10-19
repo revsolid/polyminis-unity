@@ -13,8 +13,14 @@
             "id":0,
             "morphology":
             {
-                // TODO: Change this for the map, or add it, maybe the crhomosome might be useful
-                "chromosome":[[0,9,106,173],[0,11,190,218],[0,0,190,239],[0,0,219,173]]
+                "chromosome":[[0,9,106,173],[0,11,190,218],[0,0,190,239],[0,0,219,173]],
+                "body":
+                { 
+                    "(0, 0)":{"organelle_id":106},
+                    "(1, 0)":{"organelle_id":190},
+                    "(1, 1)":{"organelle_id":190},
+                    "(2, 0)":{"organelle_id":219}
+                } 
             },
             //TODO: Physics doesn't really work, needs to be abstracted away into events (SEE DESIGN NOTE)
             "physics":
