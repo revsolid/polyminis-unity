@@ -7,16 +7,18 @@ public class OrbitalApproachRenderer : MonoBehaviour, IPlanetRenderer
     bool Visible = true;
     public float DistanceToSpaceship = 0.0f;
     Camera TargetCamera;
-
+    Planet Model = null;
     // Use this for initialization
     void Start ()
-    { 
-        Canvas canvas = gameObject.GetComponent(typeof(Canvas)) as Canvas;
+    {
+        //Canvas canvas = gameObject.GetComponent(typeof(Canvas)) as Canvas;
+        Canvas canvas = GetComponent<Canvas>();
         canvas.worldCamera = Camera.main;
     }
     
     public void RenderUpdate(Planet model)
     {
+        if(Model == null) Model = model;
         DistanceToSpaceship = model.DistanceToSpaceship;
         if (DistanceToSpaceship < 30)
         {
@@ -50,5 +52,6 @@ public class OrbitalApproachRenderer : MonoBehaviour, IPlanetRenderer
         Camera.main.gameObject.SetActive(false);
         TargetCamera.gameObject.SetActive(true);
         TargetCamera.enabled = true;
+        TargetCamera.GetComponentInChildren<OrbitalUI>().OnUIOpened(Model);
 	}
 }
