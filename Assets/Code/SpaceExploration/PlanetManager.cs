@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,21 +13,27 @@ public class PlanetManager : MonoBehaviour
 	public Camera OrbitalCamera;
 	Vector2 LastKnownPos;
 	IList<Planet> Planets;
+    List<PlanetModel> toSpawn;
 
-	// Use this for initialization
-	void Start ()
+    void Awake()
+    {
+        Connection.PlanetManagerMsg += (message) => OnServerMessage(message);
+    }
+
+    // Use this for initialization
+    void Start ()
 	{	
 		//TODO: Normalize the Vector3 vs Vector2 situation before it is catastrophic
-		Planets = new List<Planet>();	
+		Planets = new List<Planet>();
+        toSpawn = new List<PlanetModel>();
 		LastKnownPos = MovementTracker.CurrentPosition;
-		
-		Planets.Add(CreatePlanetAt(new Vector2( 100, 0)));
-	//	Planets.Add(CreatePlanetAt(new Vector2(-100, 0)));
+
 	}
 	
-	Planet CreatePlanetAt(Vector2 position)
+    // This shouldn't be called directly
+	Planet CreatePlanetAt(Vector2 position, int inID)
 	{
-		Planet p1 = new Planet(position);
+		Planet p1 = new Planet(position, inID);
 		SpaceExPlanetRenderer spaceExRenderer = GameObject.Instantiate(SpaceExRendererPrototype);
 		OrbitalApproachRenderer orbAppRenderer = GameObject.Instantiate(OrbitalApproachRendererPrototype);
 		RadarRenderer radarRenderer = GameObject.Instantiate(RadarRendererPrototype);
@@ -50,11 +57,46 @@ public class PlanetManager : MonoBehaviour
 			planet.UpdateSpaceshipPosition(MovementTracker.CurrentPosition, MovementTracker.Forward);
 		}
 		LastKnownPos = MovementTracker.CurrentPosition;
-	}
 
-	// send current location to server (attempt move)
-	void SendLocation()
+        // Check if any planet needs to be spawned
+        while (toSpawn.Count > 0)
+        {
+            SpawnNewPlanet(toSpawn[0]);
+            // allPlanets[toSpawn[0].id] = p;
+            toSpawn.RemoveAt(0);
+        }
+    }
+
+	// Create a new planet and add it to planet
+	void SpawnNewPlanet(PlanetModel p)
 	{
-		Connection.Socket.Send ();
-	}
+        Planets.Add(CreatePlanetAt(p.SpaceCoords, p.ID));
+    }
+
+    void OnServerMessage(string message)
+    {
+        if(Connection.MsgTag(message).Equals("spawn"))
+        {
+            string[] splitString = Connection.MsgLoad(message).Split(new string[] { "," }, StringSplitOptions.None);
+            if (!hasSpawnedPlanet(int.Parse(splitString[2])))
+            {
+                PlanetModel newPlanet = new PlanetModel();
+                newPlanet.SpaceCoords = new Vector2(float.Parse(splitString[0]), float.Parse(splitString[1]));
+                newPlanet.ID = int.Parse(splitString[2]);
+                toSpawn.Add(newPlanet);
+            }
+        }
+    }
+
+    bool hasSpawnedPlanet(int inID)
+    {
+        foreach(Planet p in Planets)
+        {
+            if(p.ID == inID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

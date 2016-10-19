@@ -14,15 +14,21 @@ public class SpaceMovementTracker : MonoBehaviour
     
     public float HackVel = 0.0f;
     
-
+    void Awake()
+    {
+        Connection.PlanetManagerMsg += (message) => OnServerMessage(message);
+    }
 
     // Use this for initialization
     void Start ()
     {
         CurrentPosition = Vector2.zero; 
         Heading = 0;
+
+        Connection.Instance.Send("init", CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
+        InvokeRepeating("SendLocation", 0.5f, 0.2f);
     }
-    
+
     // Update is called once per frame
     void Update ()
     {
@@ -42,19 +48,23 @@ public class SpaceMovementTracker : MonoBehaviour
                               Mathf.Sin(Mathf.PI * Heading / 180));
 
         CurrentPosition += (Forward * verImpulse * damp);
+
     }
 
 
 	// send current location to server (attempt move)
 	void SendLocation()
 	{	
-		string message = "<mov>[";
-		message += CurrentPosition.x.ToString();
-		message += ",";
-		message += CurrentPosition.y.ToString();
-		message += "]";
-
-		Connection.Socket.Send (message);
+        Connection.Instance.Send("mov", 
+            CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
 	}
+
+    void OnServerMessage(string message)
+    {
+        if (Connection.MsgTag(message).Equals("kickback"))
+        {
+            CurrentPosition = Connection.MsgLoc(message);
+        }
+    }
 
 }

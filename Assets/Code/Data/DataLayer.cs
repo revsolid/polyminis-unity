@@ -63,10 +63,11 @@ public class Range<T> where T: IComparable
 //
 public class PlanetModel
 {
-    Vector2 SpaceCoords;
+    public Vector2 SpaceCoords;
     Range<float> Temperature;
     Range<float> Ph;
     IList<SpeciesModel> Species;
+    public int ID;
 }
 
 //
