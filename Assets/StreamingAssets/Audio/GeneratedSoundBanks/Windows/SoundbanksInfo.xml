@@ -11,6 +11,20 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
+		<SoundBank Id="393239870" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\SFX</ObjectPath>
+			<ShortName>SFX</ShortName>
+			<Path>SFX.bnk</Path>
+			<IncludedEvents>
+				<Event Id="4268550160" Name="Play_whoosh_1" ObjectPath="\Events\Default Work Unit\SFX_work_unit\Spaceship_work_unit\Play_whoosh_1"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="269566149" Language="SFX">
+					<ShortName>whoosh01.wav</ShortName>
+					<Path>SFX/whoosh01_9E69E797.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
