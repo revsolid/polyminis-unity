@@ -63,7 +63,8 @@ public class SpliceUIManager : MonoBehaviour {
         {
             pointAllocation[button.category] -= (button.size + 1);
             button.GetComponentInChildren<Text>().color = Color.black;
-            while (displayBars[button.category].value - (button.size + 1) < instinctBars[button.category].value)
+
+            while ( Mathf.Max(displayBars[button.category].value - (button.size + 1), 0) < instinctBars[button.category].value)
             {
                 decrementInstinct(button.category);
             }

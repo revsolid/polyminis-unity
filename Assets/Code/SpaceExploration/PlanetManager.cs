@@ -26,7 +26,8 @@ public class PlanetManager : MonoBehaviour
 	
 	Planet CreatePlanetAt(Vector2 position)
 	{
-		Planet p1 = new Planet(position);
+        PlanetModel pm = new PlanetModel();
+		Planet p1 = new Planet(pm);
 		SpaceExPlanetRenderer spaceExRenderer = GameObject.Instantiate(SpaceExRendererPrototype);
 		OrbitalApproachRenderer orbAppRenderer = GameObject.Instantiate(OrbitalApproachRendererPrototype);
 		RadarRenderer radarRenderer = GameObject.Instantiate(RadarRendererPrototype);
