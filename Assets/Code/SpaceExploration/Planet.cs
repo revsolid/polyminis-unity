@@ -1,61 +1,63 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 using SpaceExploration.Types;
 
-public enum PlanetViewType
+public class Planet
 {
-    SpaceExView,
-    RadarView
-}
-public class Planet : MonoBehaviour
-{
-
-    public PlanetViewType ViewType;
+    public IList<IPlanetRenderer> Renderers;
+    public float DistanceToSpaceship { get; private set; }
+    public Vector2 LastDelta { get; private set; }
+    public Vector2 Azimuth { get; private set; }
+    public float RelativeAngle { get; private set; }
 
     //TODO: This should come from the server
-    public Vector2 SpacePosition;
-	
-    public float DistanceToSpaceship = 1.0f;
-	Vector2 PreviousSpaceshipPosition;
+    Vector2 SpacePosition;
+    Vector2 PreviousSpaceshipPosition;
+    public Range<float> Temperature { get; private set; }
+    public Range<float> PH {get; private set;}
+    public string PlanetName {get; private set;}
+    private PlanetModel Model;
+    
+    
+    public Planet(PlanetModel pm)
+    {
+        Model = pm;
+        SpacePosition = Model.SpaceCoords;
+        Renderers = new List<IPlanetRenderer>();
 
-    public void UpdateSpaceshipPosition(Vector2 newPosition)
-    {
-		DistanceToSpaceship = (SpacePosition - newPosition).magnitude;
-		Vector2 delta = PreviousSpaceshipPosition - newPosition;
-		RenderUpdate(delta);
-		PreviousSpaceshipPosition = newPosition;
-    }
-    // Use this for initialization
-    void Start ()
-    {
+        //TODO: This should come from the server
+        Temperature = Model.Temperature;
+        PH = Model.Ph;
+        PlanetName = "Test Planet";
     }
     
-    // Update is called once per frame
-    void Update ()
+    public void UpdateSpaceshipPosition(Vector2 newPosition, Vector2 newForward)
     {
-    }
-    
-    void RenderUpdate(Vector2 delta)
-    {
-// TODO: If this function gets too unwieldly then we should change this System
-//       to an Interface based system instead of a simple swtich / case
-//       this mixes view and model and is supposed to be bad :(
-        switch (ViewType)
+        Azimuth  = (SpacePosition - newPosition);
+        DistanceToSpaceship = Azimuth.magnitude;
+        LastDelta = PreviousSpaceshipPosition - newPosition;
+        Debug.Log("XXXXXXX");
+        Debug.Log("SHip Position: " +  newPosition);
+        Debug.Log("Planet Position: "+SpacePosition);
+        
+        RelativeAngle = Vector2.Angle(Azimuth, newForward);
+        Vector3 cross = Vector3.Cross(Azimuth, newForward);
+        Debug.Log("CROSS: "+cross);
+        if (cross.z > 0)
         {
-//
-        case PlanetViewType.SpaceExView:
-            //TODO: If distance is less than or greater than something do something
-			
-			//TODO: THIS IS TERRIBLE
-			transform.localPosition += new Vector3(delta.y, 0.0f, delta.x);
-            transform.localScale = (Vector3.one * (200 / (2*DistanceToSpaceship)));
-            break;
-
-//
-        case PlanetViewType.RadarView:
-            transform.localScale = Vector3.one * 5.0f;
-            break;
+            RelativeAngle *= -1; 
         }
+        Debug.Log("Azimuth: "+ Azimuth);
+        Debug.Log("Relative Angle: "+RelativeAngle);
+        Debug.Log("Right: "+Vector2.right);
+        Debug.Log("Forward: "+newForward);
+        
+        foreach (IPlanetRenderer renderer in Renderers)
+        {
+            renderer.RenderUpdate(this);
+        }
+        PreviousSpaceshipPosition = newPosition;
     }
 }

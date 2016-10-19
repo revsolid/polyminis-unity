@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="SFX_work_unit" ID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" OwnerID="{979D1165-F0C6-445F-BC3C-41C235597E48}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_whoosh_1" ID="{1746B10A-6AAC-4BCA-A931-ADE086478CBC}">
+					<ChildrenList>
+						<Action Name="Play" ID="{2FC5D6D8-E83C-44A2-9B97-7741E3E61485}" ShortID="789095647" Type="Play" Scope="One" Global="false"/>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

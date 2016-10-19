@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 public class PlanetManager : MonoBehaviour
 {
+    public SpaceExPlanetRenderer SpaceExRendererPrototype;
+	public OrbitalApproachRenderer OrbitalApproachRendererPrototype;
+	public RadarRenderer RadarRendererPrototype;
 	
-	public Planet PlanetPrototype;
 	public SpaceMovementTracker MovementTracker;
+	public Camera OrbitalCamera;
 	Vector2 LastKnownPos;
 	IList<Planet> Planets;
 
@@ -17,17 +20,25 @@ public class PlanetManager : MonoBehaviour
 		Planets = new List<Planet>();	
 		LastKnownPos = MovementTracker.CurrentPosition;
 		
-		Planet p1 = GameObject.Instantiate(PlanetPrototype);
-		Planets.Add(p1);
-		p1.gameObject.transform.parent = gameObject.transform;
-		p1.gameObject.transform.localPosition = new Vector3(-0,0,100);
-		p1.SpacePosition = new Vector2(100, 0);
+		Planets.Add(CreatePlanetAt(new Vector2( 100, 0)));
+	//	Planets.Add(CreatePlanetAt(new Vector2(-100, 0)));
+	}
+	
+	Planet CreatePlanetAt(Vector2 position)
+	{
+        PlanetModel pm = new PlanetModel();
+		Planet p1 = new Planet(pm);
+		SpaceExPlanetRenderer spaceExRenderer = GameObject.Instantiate(SpaceExRendererPrototype);
+		OrbitalApproachRenderer orbAppRenderer = GameObject.Instantiate(OrbitalApproachRendererPrototype);
+		RadarRenderer radarRenderer = GameObject.Instantiate(RadarRendererPrototype);
 		
-		p1 = GameObject.Instantiate(PlanetPrototype);
-		Planets.Add(p1);
-		p1.gameObject.transform.parent = gameObject.transform;
-		p1.gameObject.transform.localPosition = new Vector3(0,0, -100);
-		p1.SpacePosition = new Vector2(-100, 0);
+		orbAppRenderer.SetTargetCamera(OrbitalCamera);
+		spaceExRenderer.gameObject.transform.parent = gameObject.transform;
+		spaceExRenderer.gameObject.transform.localPosition = new Vector3(-1*position.y,0,position.x);
+		p1.Renderers.Add(spaceExRenderer);
+		p1.Renderers.Add(orbAppRenderer);
+		p1.Renderers.Add(radarRenderer);
+		return p1;
 	}
 	
 	// Update is called once per frame
@@ -37,7 +48,7 @@ public class PlanetManager : MonoBehaviour
 		transform.localEulerAngles = new Vector3(0.0f, -1*MovementTracker.Heading, 0.0f);
 		foreach (Planet planet in Planets)
 		{
-			planet.UpdateSpaceshipPosition(MovementTracker.CurrentPosition);
+			planet.UpdateSpaceshipPosition(MovementTracker.CurrentPosition, MovementTracker.Forward);
 		}
 		LastKnownPos = MovementTracker.CurrentPosition;
 	}
