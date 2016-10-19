@@ -5,7 +5,7 @@ public class PlanetCloseupRenderer : MonoBehaviour, IPlanetRenderer
 {
     bool Visible = true;
     public float DistanceToSpaceship = 0.0f;
-
+    public float rotationSpeed; //Degrees per frame
     // Use this for initialization
     void Start ()
     { 
@@ -18,5 +18,6 @@ public class PlanetCloseupRenderer : MonoBehaviour, IPlanetRenderer
     
     void Update()
     {
+        transform.Rotate(0, rotationSpeed, 0);
     }
 }

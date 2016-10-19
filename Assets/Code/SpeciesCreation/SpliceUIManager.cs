@@ -12,8 +12,12 @@ public class SpliceUIManager : MonoBehaviour {
     public SpliceCounter[] counters = new SpliceCounter[3];
     public GridLayoutGroup[] spliceTabs = new GridLayoutGroup[4];
     public Slider[] displayBars = new Slider[4];
+    public Slider[] instinctBars = new Slider[4];
     private int[] pointAllocation = { 0, 0, 0, 0 };
     public int currentCategory {get; private set; }
+    public Button[] UpButtons = new Button[4];
+    public Button[] DownButtons = new Button[4];
+    public  InputField SpeciesName;
 
     
 	void Start ()
@@ -29,6 +33,8 @@ public class SpliceUIManager : MonoBehaviour {
         }
 
         currentCategory = 0;
+        //TODO: This should come from server / loaded species data
+        SpeciesName.text = "Test Species";
 	}
 
     void Update()
@@ -51,10 +57,16 @@ public class SpliceUIManager : MonoBehaviour {
         if (turnedOn)
         {
             pointAllocation[button.category] += (button.size + 1);
+            button.GetComponentInChildren<Text>().color = Color.white;
         }
         else
         {
             pointAllocation[button.category] -= (button.size + 1);
+            button.GetComponentInChildren<Text>().color = Color.black;
+            while (displayBars[button.category].value - (button.size + 1) < instinctBars[button.category].value)
+            {
+                decrementInstinct(button.category);
+            }
         }
 
         for (int i = 0; i < 4; i++)
@@ -67,5 +79,26 @@ public class SpliceUIManager : MonoBehaviour {
     {
         gameObject.SetActive(false);
         // SAVE et al.
+    }
+
+    public void incrementInstinct(int id)
+    {
+        int[] opposites = {3,2,1,0};
+        if (instinctBars[id].value < displayBars[id].value && displayBars[opposites[id]].value > instinctBars[opposites[id]].value )
+        {
+            Debug.Log("Incrementing");
+            instinctBars[id].value++;
+            displayBars[opposites[id]].value--;
+        }
+    }
+
+    public void decrementInstinct(int id)
+    {
+        int[] opposites = { 3, 2, 1, 0 };
+        if (instinctBars[id].value > 0)
+        {
+            instinctBars[id].value--;
+            displayBars[opposites[id]].value++;
+        }
     }
 }
