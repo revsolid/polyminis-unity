@@ -33,7 +33,10 @@ public class PlanetManager : MonoBehaviour
     // This shouldn't be called directly
 	Planet CreatePlanetAt(Vector2 position, int inID)
 	{
-		Planet p1 = new Planet(position, inID);
+        PlanetModel pm = new PlanetModel();
+        pm.SpaceCoords = position;
+        pm.ID = inID;
+		Planet p1 = new Planet(pm);
 		SpaceExPlanetRenderer spaceExRenderer = GameObject.Instantiate(SpaceExRendererPrototype);
 		OrbitalApproachRenderer orbAppRenderer = GameObject.Instantiate(OrbitalApproachRendererPrototype);
 		RadarRenderer radarRenderer = GameObject.Instantiate(RadarRendererPrototype);

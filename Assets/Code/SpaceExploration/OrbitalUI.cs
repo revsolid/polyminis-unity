@@ -11,6 +11,7 @@ public class OrbitalUI : MonoBehaviour
     public Slider TempSlider;
     public Text PlanetName;
     public VerticalLayoutGroup SpeciesLayoutGroup;
+    public GameObject SpeciesCatalouge;
 
 	// Use this for initialization
 	void Start ()
@@ -38,11 +39,16 @@ public class OrbitalUI : MonoBehaviour
 
     public void OnUIOpened(Planet p)
     {
-        PhSlider.value = p.PH;
-        TempSlider.value = TempSlider.value;
+        PhSlider.value = p.PH.Max;
+        TempSlider.value = p.Temperature.Max;
         PlanetName.text = p.PlanetName;
 
         //TODO: Add instantiation of Species "Cards" to SpeciesLayout
 
+    }
+
+    public void OnSpeciesCatalougeClicked()
+    {
+        SpeciesCatalouge.SetActive(!SpeciesCatalouge.activeInHierarchy);
     }
 }

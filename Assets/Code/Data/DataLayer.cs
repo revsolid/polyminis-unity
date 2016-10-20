@@ -64,10 +64,19 @@ public class Range<T> where T: IComparable
 public class PlanetModel
 {
     public Vector2 SpaceCoords;
-    Range<float> Temperature;
-    Range<float> Ph;
-    IList<SpeciesModel> Species;
+    public Range<float> Temperature;
+    public Range<float> Ph;
+    public IList<SpeciesModel> Species;
+    public string Name;
     public int ID;
+
+    public PlanetModel() //TODO: Default constructor... assigns arbitratry values
+    {
+        Name = "Some Planet";
+        SpaceCoords = new Vector2(100,0);
+        Temperature = new Range<float>(300, 400);
+        Ph = new Range<float>(1.3f, 4.2f);
+    }
 }
 
 //
