@@ -141,7 +141,12 @@ public class SpeciesModel
 //
 public class OrganelleModel
 {
-
+	public int OrganelleId;	
+	
+	public OrganelleModel(int id)
+	{
+		OrganelleId = id;
+	}
 }
 
 //
