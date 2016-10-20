@@ -31,8 +31,8 @@ public class Connection
     public Connection()
     {
         // the url to sisnett's Amazon EC2 linux box
-//        ws = new WebSocket("ws://ec2-54-70-6-182.us-west-2.compute.amazonaws.com:8080");
-        ws = new WebSocket("ws://localhost:8080");
+        ws = new WebSocket("ws://ec2-54-70-6-182.us-west-2.compute.amazonaws.com:8080");
+        //ws = new WebSocket("ws://localhost:8080");
         Debug.Log("Initilizing");
         ws.OnMessage += (sender, e) => OnMessage(e.Data);
         ws.Connect();
