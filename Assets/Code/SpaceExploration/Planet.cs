@@ -15,11 +15,22 @@ public class Planet
     //TODO: This should come from the server
     Vector2 SpacePosition;
     Vector2 PreviousSpaceshipPosition;
+    public Range<float> Temperature { get; private set; }
+    public Range<float> PH {get; private set;}
+    public string PlanetName {get; private set;}
+    private PlanetModel Model;
     
-    public Planet(Vector2 spacePosition)
+    
+    public Planet(PlanetModel pm)
     {
-        SpacePosition = spacePosition;
+        Model = pm;
+        SpacePosition = Model.SpaceCoords;
         Renderers = new List<IPlanetRenderer>();
+
+        //TODO: This should come from the server
+        Temperature = Model.Temperature;
+        PH = Model.Ph;
+        PlanetName = "Test Planet";
     }
     
     public void UpdateSpaceshipPosition(Vector2 newPosition, Vector2 newForward)

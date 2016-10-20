@@ -56,7 +56,7 @@ GameObject:
   - 65: {fileID: 65000011143545206}
   - 23: {fileID: 23000011209769386}
   m_Layer: 0
-  m_Name: SpaceSphere2
+  m_Name: SpaceSphere2_OBSOLETE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   - 65: {fileID: 65000013506078224}
   - 23: {fileID: 23000010051058784}
   m_Layer: 0
-  m_Name: SpaceSphere1
+  m_Name: SpaceSphere1_OBSOLETE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 877167561, guid: 6169cc9ef2aa34048950aa3e193089c9, type: 3}
+  - {fileID: 650368486, guid: 1655b5fde70344b16806f7d2e8dd50cb, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -279,6 +279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpaceSphere1: {fileID: 1000012904895786}
-  SpaceSphere2: {fileID: 0}
+  SpaceSphere2: {fileID: 1000013680947634}
   HUD: {fileID: 0}
   HackVel: 0
