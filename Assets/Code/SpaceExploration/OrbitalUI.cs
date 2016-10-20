@@ -51,4 +51,9 @@ public class OrbitalUI : MonoBehaviour
     {
         SpeciesCatalouge.SetActive(!SpeciesCatalouge.activeInHierarchy);
     }
+    
+    public void OnObservePlanetClicked()
+    {
+        Application.LoadLevel("creature_observation");
+    }
 }
