@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -54,6 +55,6 @@ public class OrbitalUI : MonoBehaviour
     
     public void OnObservePlanetClicked()
     {
-        Application.LoadLevel("creature_observation");
+        SceneManager.LoadScene("creature_observation");
     }
 }

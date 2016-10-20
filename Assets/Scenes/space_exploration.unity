@@ -363,6 +363,82 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 155398831}
+--- !u!1 &176086209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 176086210}
+  - 222: {fileID: 176086212}
+  - 114: {fileID: 176086211}
+  m_Layer: 0
+  m_Name: Text (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &176086210
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176086209}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.96019477, y: 0.96019477, z: 0.96019477}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1961487844}
+  m_RootOrder: 8
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -411, y: -85}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &176086211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176086209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Observe Creatures
+
+'
+--- !u!222 &176086212
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176086209}
 --- !u!1 &192847872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1331,80 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 538920703}
+--- !u!1 &541825854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 541825855}
+  - 222: {fileID: 541825857}
+  - 114: {fileID: 541825856}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &541825855
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 541825854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.96019477, y: 0.96019477, z: 0.96019477}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1961487844}
+  m_RootOrder: 6
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 437, y: 275}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &541825856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 541825854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Species Catalogue
+--- !u!222 &541825857
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 541825854}
 --- !u!1 &549536924 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013680947634, guid: b20b4e2ab793a4e2ca361287c5f8b76c,
@@ -1351,7 +1501,6 @@ GameObject:
   - 114: {fileID: 608382909}
   - 114: {fileID: 608382908}
   - 114: {fileID: 608382907}
-  - 114: {fileID: 608382906}
   - 114: {fileID: 608382911}
   m_Layer: 0
   m_Name: SpeciesCard (5)
@@ -1381,18 +1530,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &608382906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000014029154206, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 608382904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &608382907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1433,7 +1570,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 608382906}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -1604,8 +1741,6 @@ GameObject:
   - 114: {fileID: 638852434}
   - 114: {fileID: 638852433}
   - 114: {fileID: 638852432}
-  - 114: {fileID: 638852431}
-  - 114: {fileID: 638852430}
   - 114: {fileID: 638852436}
   m_Layer: 0
   m_Name: SpeciesCard
@@ -1635,30 +1770,6 @@ RectTransform:
   m_AnchoredPosition: {x: 91.5, y: -22}
   m_SizeDelta: {x: 183, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &638852430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000011655024170, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 638852428}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &638852431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000014068116234, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 638852428}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &638852432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1699,7 +1810,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 638852430}
+      - m_Target: {fileID: 638852436}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -2504,7 +2615,6 @@ GameObject:
   - 114: {fileID: 883723238}
   - 114: {fileID: 883723237}
   - 114: {fileID: 883723236}
-  - 114: {fileID: 883723235}
   - 114: {fileID: 883723240}
   m_Layer: 0
   m_Name: SpeciesCard (2)
@@ -2534,18 +2644,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &883723235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000013648829052, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 883723233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &883723236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2586,7 +2684,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 883723235}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -2884,7 +2982,6 @@ GameObject:
   - 114: {fileID: 963602639}
   - 114: {fileID: 963602638}
   - 114: {fileID: 963602637}
-  - 114: {fileID: 963602636}
   - 114: {fileID: 963602641}
   m_Layer: 0
   m_Name: SpeciesCard (2)
@@ -2914,18 +3011,6 @@ RectTransform:
   m_AnchoredPosition: {x: 91.5, y: -110}
   m_SizeDelta: {x: 183, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &963602636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000013805226252, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 963602634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &963602637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2966,7 +3051,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 963602636}
+      - m_Target: {fileID: 963602641}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -4561,7 +4646,6 @@ GameObject:
   - 114: {fileID: 1119290626}
   - 114: {fileID: 1119290625}
   - 114: {fileID: 1119290624}
-  - 114: {fileID: 1119290623}
   - 114: {fileID: 1119290628}
   m_Layer: 0
   m_Name: SpeciesCard (3)
@@ -4591,18 +4675,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1119290623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000011404678166, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1119290621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1119290624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4643,7 +4715,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1119290623}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -4736,7 +4808,6 @@ GameObject:
   - 114: {fileID: 1157203233}
   - 114: {fileID: 1157203232}
   - 114: {fileID: 1157203231}
-  - 114: {fileID: 1157203230}
   - 114: {fileID: 1157203235}
   m_Layer: 0
   m_Name: SpeciesCard (1)
@@ -4766,18 +4837,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1157203230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000011256954134, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1157203228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1157203231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4818,7 +4877,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1157203230}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -4911,7 +4970,6 @@ GameObject:
   - 114: {fileID: 1159221540}
   - 114: {fileID: 1159221539}
   - 114: {fileID: 1159221538}
-  - 114: {fileID: 1159221537}
   - 114: {fileID: 1159221542}
   m_Layer: 0
   m_Name: SpeciesCard (1)
@@ -4941,18 +4999,6 @@ RectTransform:
   m_AnchoredPosition: {x: 91.5, y: -66}
   m_SizeDelta: {x: 183, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1159221537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000012314492764, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1159221535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1159221538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4993,7 +5039,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1159221537}
+      - m_Target: {fileID: 1159221542}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -5073,6 +5119,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2919d00a0ebeb4c1188d403393e9895d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1177635911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1177635912}
+  - 222: {fileID: 1177635914}
+  - 114: {fileID: 1177635913}
+  m_Layer: 0
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1177635912
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1177635911}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.96019477, y: 0.96019477, z: 0.96019477}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1961487844}
+  m_RootOrder: 7
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 450, y: 19}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1177635913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1177635911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Back to Spaceship
+
+'
+--- !u!222 &1177635914
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1177635911}
 --- !u!1 &1187864091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5423,6 +5545,11 @@ Prefab:
       propertyPath: m_Name
       value: SpaceMovementTracker
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013781860940, guid: b20b4e2ab793a4e2ca361287c5f8b76c,
+        type: 2}
+      propertyPath: TranslationSpeedMult
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b20b4e2ab793a4e2ca361287c5f8b76c, type: 2}
   m_IsPrefabParent: 0
@@ -5439,7 +5566,6 @@ GameObject:
   - 114: {fileID: 1308618311}
   - 114: {fileID: 1308618310}
   - 114: {fileID: 1308618309}
-  - 114: {fileID: 1308618308}
   - 114: {fileID: 1308618313}
   m_Layer: 0
   m_Name: SpeciesCard (3)
@@ -5469,18 +5595,6 @@ RectTransform:
   m_AnchoredPosition: {x: 91.5, y: -154}
   m_SizeDelta: {x: 183, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1308618308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000012068850906, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1308618306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1308618309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5521,7 +5635,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1308618308}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -7361,7 +7475,6 @@ GameObject:
   - 114: {fileID: 1920411914}
   - 114: {fileID: 1920411913}
   - 114: {fileID: 1920411912}
-  - 114: {fileID: 1920411911}
   - 114: {fileID: 1920411916}
   m_Layer: 0
   m_Name: SpeciesCard (4)
@@ -7391,18 +7504,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1920411911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000012842600930, guid: e7af2b60516e042c3bf3998b62d73c4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1920411909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1920411912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7443,7 +7544,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1920411911}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClicked
         m_Mode: 1
         m_Arguments:
@@ -7541,6 +7642,9 @@ RectTransform:
   - {fileID: 1703997836}
   - {fileID: 2067699170}
   - {fileID: 944259821}
+  - {fileID: 541825855}
+  - {fileID: 1177635912}
+  - {fileID: 176086210}
   m_Father: {fileID: 313829313}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -7588,7 +7692,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -428, y: -3}
+  m_AnchoredPosition: {x: -430, y: -98}
   m_SizeDelta: {x: 138, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067699171

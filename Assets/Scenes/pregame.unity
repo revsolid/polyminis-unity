@@ -515,7 +515,7 @@ Prefab:
     - target: {fileID: 114000013009917590, guid: 79f717dfe8e0b45e0ab23d57e87b2541,
         type: 2}
       propertyPath: unloadTriggerList.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012129580130, guid: 79f717dfe8e0b45e0ab23d57e87b2541, type: 2}
       propertyPath: m_LocalPosition.x
