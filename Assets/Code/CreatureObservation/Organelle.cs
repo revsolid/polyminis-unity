@@ -1,17 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//TMP
-public class OrganelleModel
-{
-	public int OrganelleId;	
-	
-	public OrganelleModel(int id)
-	{
-		OrganelleId = id;
-	}
-}
-
 public class Organelle : MonoBehaviour
 {
 	

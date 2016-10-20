@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Creature : MonoBehaviour
 {
 	public Organelle OrganellePrototype;
+	public Nucleus NucleusPrototype;
 	
 	Dictionary<Vector2, int> OrganelleMap;
 	
@@ -17,20 +18,25 @@ public class Creature : MonoBehaviour
 			{ new Vector2(1,1), 85 },
 			{ new Vector2(2,0), 182 },
 		};
-	}
-	
-	void Start ()
-	{
 		foreach(KeyValuePair<Vector2, int> entry in OrganelleMap)
 		{
 			Vector2 delta = entry.Key;	
 			int colorOfset = entry.Value;
 			
-			Organelle o = GameObject.Instantiate(OrganellePrototype);
-			o.transform.parent = transform;
-			delta *= 2.5f;
-			o.transform.localPosition += new Vector3(delta.x, 0.0f, delta.y);
-			o.OrganelleModel = new OrganelleModel(colorOfset);
+			if (delta == new Vector2(0, 0))
+			{
+				Nucleus n = GameObject.Instantiate(NucleusPrototype);
+				n.transform.SetParent(transform);
+				n.NucleusModel = new NucleusModel(colorOfset);
+			}
+			else
+			{
+				Organelle o = GameObject.Instantiate(OrganellePrototype);
+				o.transform.SetParent(transform);
+				delta *= 2.5f;
+				o.transform.localPosition += new Vector3(delta.x, 0.0f, delta.y);
+				o.OrganelleModel = new OrganelleModel(colorOfset);
+			}
 		}
 	}
 	

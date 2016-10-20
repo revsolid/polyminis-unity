@@ -1,48 +1,128 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 
 //TMP
+class Heading
+{
+	public static Quaternion UP_HEADING = Quaternion.Euler(0, 0, 0);
+	public static Quaternion DOWN_HEADING = Quaternion.Euler(0, 180, 0);
+	public static Quaternion LEFT_HEADING = Quaternion.Euler(0, 270, 0);
+	public static Quaternion RIGHT_HEADING = Quaternion.Euler(0, 90, 0);
+}
+
 enum MovementType
 {
     ROTATE,
     TRANSLATE
 }
 
+enum MovementDirection
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+}
+
 class CreatureMovementAction
 {
     public MovementType MovType;
-    public Transform Target;
-    public Quaternion TargetRotation;
-	public float TimeStarted;
+	public MovementDirection MovDir;
+	float TimeStarted;
+    Vector3 TargetPosition;
+    Quaternion TargetRotation;
 	
-	public CreatureMovementAction(MovementType mType, Transform target, Quaternion targetRotation)
+	public CreatureMovementAction(MovementType mType, MovementDirection mDir)
 	{
 		MovType = mType;
-		Target = target;
-		TargetRotation = targetRotation;
-		if (!Validate())	
-		{
-			// ERROR
-		}
+		MovDir = mDir;	
 	}
 	
-	public bool Validate()
+	public void StartOn(CreatureMover mover)
 	{
+		float SQUARE_SIZE = 5.0f;
+		TimeStarted = Time.time;
+		
 		switch (MovType)
 		{
-            case MovementType.TRANSLATE:
-				return Target != null;
-            case MovementType.ROTATE:
-				return TargetRotation != Quaternion.identity;
+		case MovementType.ROTATE:
+			switch (MovDir)
+			{
+			case MovementDirection.UP:
+				TargetRotation = Heading.UP_HEADING;
+				break;
+			case MovementDirection.DOWN:
+				TargetRotation = Heading.DOWN_HEADING;
+				break;
+			case MovementDirection.RIGHT:
+				TargetRotation = Heading.RIGHT_HEADING;
+				break;
+			case MovementDirection.LEFT:
+				TargetRotation = Heading.LEFT_HEADING;
+				break;
+			}
+			break;
+		case MovementType.TRANSLATE:
+			// Calculate the Target based on the first time we see the mover
+			switch (MovDir)
+			{
+			case MovementDirection.UP:
+				TargetPosition = mover.transform.position + new Vector3(-SQUARE_SIZE, 0, 0);
+				break;
+			case MovementDirection.DOWN:
+				TargetPosition = mover.transform.position + new Vector3(SQUARE_SIZE, 0, 0);
+				break;
+			case MovementDirection.RIGHT:
+				TargetPosition = mover.transform.position + new Vector3(0, 0, SQUARE_SIZE);
+				break;
+			case MovementDirection.LEFT:
+				TargetPosition = mover.transform.position + new Vector3(0, 0, -SQUARE_SIZE);
+				break;
+				
+			}
+			break;
 		}
-		return false;
 	}
 	
-	public void Start()
+	public bool ApplyTo(CreatureMover mover)
 	{
-		TimeStarted = Time.time;
+		//TODO: Either by animation or some interesting math make it look like "impulse and decay" instead
+		//      of just linear advancing	
+		
+		switch (MovType)
+        {
+            case MovementType.TRANSLATE:
+                Vector3 azimuth = mover.gameObject.transform.position - TargetPosition; 
+				Debug.Log(azimuth.sqrMagnitude);
+				if (azimuth.sqrMagnitude < 0.001)
+				{
+					mover.gameObject.transform.position = TargetPosition;
+					return true;
+				}
+				else
+				{
+                	azimuth.Normalize();
+                	mover.gameObject.transform.Translate(-1 * azimuth * Time.deltaTime * mover.Speed, Space.World);
+				}
+                break;
+                
+            case MovementType.ROTATE:
+				if (Quaternion.Angle(mover.gameObject.transform.localRotation, TargetRotation) < 0.01)
+				{
+					mover.gameObject.transform.localRotation = TargetRotation;
+					return true;
+				}
+				else
+				{
+					float t = Time.time - TimeStarted;
+    	            mover.gameObject.transform.localRotation = Quaternion.Slerp(mover.gameObject.transform.localRotation, TargetRotation, t * mover.Speed / 8);
+				}
+                break;
+        }
+		return false;
 	}
 }
 
@@ -51,8 +131,7 @@ public class CreatureMover : MonoBehaviour
 {
 
     public float Speed;
-    public Transform CurrentTarget;
-    Quaternion TargetRotation = RIGHT_HEADING;
+	public Vector2 InitialPosition;
     
     CreatureMovementAction CurrentAction;
     Queue<CreatureMovementAction> ActionStream;
@@ -65,17 +144,17 @@ public class CreatureMover : MonoBehaviour
         Right,
     }
     
-    static Quaternion UP_HEADING = Quaternion.Euler(0, 0, 0);
-    static Quaternion DOWN_HEADING = Quaternion.Euler(0, 180, 0);
-    static Quaternion LEFT_HEADING = Quaternion.Euler(0, -90, 0);
-    static Quaternion RIGHT_HEADING = Quaternion.Euler(0, 90, 0);
-
     void Start ()
     { 
         ActionStream = new Queue<CreatureMovementAction>();
-		ActionStream.Enqueue(new CreatureMovementAction(MovementType.ROTATE, null, RIGHT_HEADING));
-		ActionStream.Enqueue(new CreatureMovementAction(MovementType.ROTATE, null, UP_HEADING));
-		ActionStream.Enqueue(new CreatureMovementAction(MovementType.ROTATE, null, RIGHT_HEADING));
+		ActionStream.Enqueue(new CreatureMovementAction(MovementType.ROTATE, MovementDirection.RIGHT));
+		ActionStream.Enqueue(new CreatureMovementAction(MovementType.ROTATE, MovementDirection.UP));
+		ActionStream.Enqueue(new CreatureMovementAction(MovementType.TRANSLATE, MovementDirection.UP));
+		ActionStream.Enqueue(new CreatureMovementAction(MovementType.TRANSLATE, MovementDirection.UP));
+		ActionStream.Enqueue(new CreatureMovementAction(MovementType.TRANSLATE, MovementDirection.DOWN));
+		ActionStream.Enqueue(new CreatureMovementAction(MovementType.TRANSLATE, MovementDirection.RIGHT));
+		ActionStream.Enqueue(new CreatureMovementAction(MovementType.ROTATE, MovementDirection.RIGHT));
+		gameObject.transform.Translate(InitialPosition.y, 0, -InitialPosition.x);
     }
     
     // Update is called once per frame
@@ -87,14 +166,28 @@ public class CreatureMover : MonoBehaviour
 			if (ActionStream.Count > 0)
 			{
 				CurrentAction = ActionStream.Dequeue();
-				CurrentAction.Start();
+				CurrentAction.StartOn(this);
 			}
 			else
 			{
-            	return;
+				var values = Enum.GetValues(typeof(MovementType));
+				System.Random random = new System.Random();
+				MovementType t = (MovementType)values.GetValue(random.Next(values.Length));
+				
+				values = Enum.GetValues(typeof(MovementDirection));
+				MovementDirection d = (MovementDirection) values.GetValue(random.Next(values.Length));
+				
+				CurrentAction = new CreatureMovementAction(t, d);
+				CurrentAction.StartOn(this);
 			}
         }
-        
+		
+		if (CurrentAction.ApplyTo(this))
+		{
+			CurrentAction = null;	
+		}
+		
+		/*
         switch (CurrentAction.MovType)
         {
             case MovementType.TRANSLATE:
@@ -126,5 +219,6 @@ public class CreatureMover : MonoBehaviour
 				}
                 break;
         }
+		*/
     }
 }
