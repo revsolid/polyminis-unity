@@ -68,6 +68,7 @@ public class PlanetModel
     public Range<float> Ph;
     public IList<SpeciesModel> Species;
     public string Name;
+    public int ID;
 
     public PlanetModel() //TODO: Default constructor... assigns arbitratry values
     {

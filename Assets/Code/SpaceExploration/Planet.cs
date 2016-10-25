@@ -11,6 +11,7 @@ public class Planet
     public Vector2 LastDelta { get; private set; }
     public Vector2 Azimuth { get; private set; }
     public float RelativeAngle { get; private set; }
+    public int ID { get; set; }
 
     //TODO: This should come from the server
     Vector2 SpacePosition;
@@ -21,11 +22,13 @@ public class Planet
     private PlanetModel Model;
     
     
+
     public Planet(PlanetModel pm)
     {
         Model = pm;
         SpacePosition = Model.SpaceCoords;
         Renderers = new List<IPlanetRenderer>();
+        ID = Model.ID;
 
         //TODO: This should come from the server
         Temperature = Model.Temperature;
