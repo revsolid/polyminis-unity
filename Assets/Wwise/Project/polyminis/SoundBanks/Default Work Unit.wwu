@@ -6,7 +6,16 @@
 				<SoundBank Name="Music" ID="{7D4313F6-121A-4B05-8ECF-76887F879427}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_exploration" ID="{E09E7EA3-7EF0-401C-8F2C-7678025C5F72}" WorkUnitID="{0DBB71AE-6E58-41DE-809E-EAE0D5DF8E4C}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_intro_theme" ID="{AB2FDFD2-2773-421E-8A5E-99964213D5BE}" WorkUnitID="{82F81E48-238C-4568-BD79-4EA84F855D5C}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_creature_observation" ID="{B19382FD-1AE9-44AE-B9AD-B52CEC9C1F6B}" WorkUnitID="{F7A46F5D-556C-4B02-876E-6D804E4B155E}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Play_species_design" ID="{CBE185C1-9275-4909-8F5E-8FEAD08FC789}" WorkUnitID="{393CEB3E-BA45-47DB-AA53-5F4E45310B09}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="SFX" ID="{9C3924CB-DBC7-419C-BD03-E350FA4370AA}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_whoosh_1" ID="{1746B10A-6AAC-4BCA-A931-ADE086478CBC}" WorkUnitID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

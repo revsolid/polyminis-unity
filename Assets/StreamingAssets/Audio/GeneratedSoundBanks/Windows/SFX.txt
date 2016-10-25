@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	4268550160	Play_whoosh_1			\Default Work Unit\SFX_work_unit\Spaceship_work_unit\Play_whoosh_1	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	269566149	whoosh01	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\whoosh01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Spaceship Work Unit\Whoosh\whoosh01		421068
+

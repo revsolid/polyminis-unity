@@ -29,8 +29,6 @@ public class RadarRenderer : MonoBehaviour, IPlanetRenderer
             return;
         }
         
-        //Debug.Log(model.RelativeAngle);
-        //Debug.Log(model.Azimuth);
         gameObject.transform.position = new Vector3(model.RelativeAngle / 5.0f, gameObject.transform.position.y, gameObject.transform.position.z);
     }
 }

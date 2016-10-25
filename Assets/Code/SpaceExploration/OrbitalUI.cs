@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -50,5 +51,10 @@ public class OrbitalUI : MonoBehaviour
     public void OnSpeciesCatalougeClicked()
     {
         SpeciesCatalouge.SetActive(!SpeciesCatalouge.activeInHierarchy);
+    }
+    
+    public void OnObservePlanetClicked()
+    {
+        SceneManager.LoadScene("creature_observation");
     }
 }

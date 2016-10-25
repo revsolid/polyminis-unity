@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LoginUI : MonoBehaviour
@@ -16,12 +17,7 @@ public class LoginUI : MonoBehaviour
 
 	public void GoToSpaceScene()
 	{
-		Application.LoadLevel("space_exploration");
+		SceneManager.LoadScene("space_exploration");
 	}
 
-	public void GoToObservationScene()
-	{
-		Application.LoadLevel("creature_observation");
-	}
-	
 }
