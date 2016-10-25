@@ -5,7 +5,11 @@
 			<ChildrenList>
 				<Event Name="Play_creature_observation" ID="{B19382FD-1AE9-44AE-B9AD-B52CEC9C1F6B}">
 					<ChildrenList>
-						<Action Name="Stop All" ID="{EBFF0D0D-0359-4921-B861-E816CF631FDE}" ShortID="994694255" Type="Stop" Scope="All" Global="false"/>
+						<Action Name="Stop All" ID="{EBFF0D0D-0359-4921-B861-E816CF631FDE}" ShortID="994694255" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
 						<Action Name="Play" ID="{ED10CEFD-1129-4F9F-9475-906E3F37F1C2}" ShortID="616017421" Type="Play" Scope="One" Global="false">
 							<PropertyList>
 								<Property Name="FadeTime" Type="Real64" Value="1"/>

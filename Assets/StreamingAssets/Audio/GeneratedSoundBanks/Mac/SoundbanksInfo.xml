@@ -45,29 +45,29 @@
 					<ShortName>Exploration First.wav</ShortName>
 					<Path>SFX/Exploration First_4B8CC0C5.wem</Path>
 				</File>
+				<File Id="71673649" Language="SFX">
+					<ShortName>Intro Theme First.wav</ShortName>
+					<Path>SFX/Intro Theme First_4B8CC0C5.wem</Path>
+				</File>
 				<File Id="401293344" Language="SFX">
 					<ShortName>Species Design First.wav</ShortName>
 					<Path>SFX/Species Design First_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="430025661" Language="SFX">
-					<ShortName>Intro Theme Loop.wav</ShortName>
-					<Path>SFX/Intro Theme Loop_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="584759446" Language="SFX">
 					<ShortName>Species Design Loop.wav</ShortName>
 					<Path>SFX/Species Design Loop_4B8CC0C5.wem</Path>
 				</File>
+				<File Id="585421635" Language="SFX">
+					<ShortName>Creature Observation.wav</ShortName>
+					<Path>SFX/Creature Observation_4B8CC0C5.wem</Path>
+				</File>
 				<File Id="796678487" Language="SFX">
 					<ShortName>Exploration Loop.wav</ShortName>
 					<Path>SFX/Exploration Loop_4B8CC0C5.wem</Path>
 				</File>
-				<File Id="832903193" Language="SFX">
-					<ShortName>Creature Observation.wav</ShortName>
-					<Path>SFX/Creature Observation_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="1053063124" Language="SFX">
-					<ShortName>Intro Theme First.wav</ShortName>
-					<Path>SFX/Intro Theme First_4B8CC0C5.wem</Path>
+				<File Id="1066362763" Language="SFX">
+					<ShortName>Intro Theme Loop.wav</ShortName>
+					<Path>SFX/Intro Theme Loop_4B8CC0C5.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
