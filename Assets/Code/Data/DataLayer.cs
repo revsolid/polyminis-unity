@@ -42,6 +42,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+
 //
 public class Range<T> where T: IComparable
 {
@@ -61,6 +62,7 @@ public class Range<T> where T: IComparable
 }
 
 //
+[Serializable]
 public class PlanetModel
 {
     public Vector2 SpaceCoords;
@@ -80,6 +82,7 @@ public class PlanetModel
 }
 
 //
+[Serializable]
 public class StarModel
 {
     Vector2 SpaceCoords;
@@ -87,11 +90,37 @@ public class StarModel
 }
 
 //
+[Serializable]
 public class SystemModel
 {
     StarModel Star;
     IList<PlanetModel> Planets;
 }
+
+[Serializable]
+public enum SpaceExplorationCommandType
+{
+    INIT,
+    ATTEMPT_MOVE,
+    SPAWN_PLANET,
+    WARP
+}
+
+[Serializable]
+public class SpaceExplorationCommand
+{
+    private SpaceExplorationCommandType CommandType;
+    public string Command;
+    public Vector2 Position;
+    
+    public SpaceExplorationCommand(SpaceExplorationCommandType commandType, Vector2 position)
+    {
+        CommandType = commandType; 
+        Position = position;
+        Command = CommandType.ToString();
+    }
+}
+
 
 // 
 public class UserModel

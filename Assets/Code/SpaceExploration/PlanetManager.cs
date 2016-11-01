@@ -13,7 +13,7 @@ public class PlanetManager : MonoBehaviour
 	public Camera OrbitalCamera;
 	Vector2 LastKnownPos;
 	IList<Planet> Planets;
-    List<PlanetModel> toSpawn;
+    List<PlanetModel> ToSpawn;
 
     void Awake()
     {
@@ -25,9 +25,8 @@ public class PlanetManager : MonoBehaviour
 	{	
 		//TODO: Normalize the Vector3 vs Vector2 situation before it is catastrophic
 		Planets = new List<Planet>();
-        toSpawn = new List<PlanetModel>();
+        ToSpawn = new List<PlanetModel>();
 		LastKnownPos = MovementTracker.CurrentPosition;
-
 	}
 	
     // This shouldn't be called directly
@@ -43,7 +42,7 @@ public class PlanetManager : MonoBehaviour
 		
 		orbAppRenderer.SetTargetCamera(OrbitalCamera);
 		spaceExRenderer.gameObject.transform.parent = gameObject.transform;
-		spaceExRenderer.gameObject.transform.localPosition = new Vector3(-1*position.y,0,position.x);
+		spaceExRenderer.gameObject.transform.localPosition = new Vector3(position.y,0,position.x);
 		p1.Renderers.Add(spaceExRenderer);
 		p1.Renderers.Add(orbAppRenderer);
 		p1.Renderers.Add(radarRenderer);
@@ -62,11 +61,11 @@ public class PlanetManager : MonoBehaviour
 		LastKnownPos = MovementTracker.CurrentPosition;
 
         // Check if any planet needs to be spawned
-        while (toSpawn.Count > 0)
+        while (ToSpawn.Count > 0)
         {
-            SpawnNewPlanet(toSpawn[0]);
-            // allPlanets[toSpawn[0].id] = p;
-            toSpawn.RemoveAt(0);
+            SpawnNewPlanet(ToSpawn[0]);
+            // allPlanets[ToSpawn[0].id] = p;
+            ToSpawn.RemoveAt(0);
         }
     }
 
@@ -81,17 +80,17 @@ public class PlanetManager : MonoBehaviour
         if(Connection.MsgTag(message).Equals("spawn"))
         {
             string[] splitString = Connection.MsgLoad(message).Split(new string[] { "," }, StringSplitOptions.None);
-            if (!hasSpawnedPlanet(int.Parse(splitString[2])))
+            if (!HasSpawnedPlanet(int.Parse(splitString[2])))
             {
                 PlanetModel newPlanet = new PlanetModel();
                 newPlanet.SpaceCoords = new Vector2(float.Parse(splitString[0]), float.Parse(splitString[1]));
                 newPlanet.ID = int.Parse(splitString[2]);
-                toSpawn.Add(newPlanet);
+                ToSpawn.Add(newPlanet);
             }
         }
     }
 
-    bool hasSpawnedPlanet(int inID)
+    bool HasSpawnedPlanet(int inID)
     {
         foreach(Planet p in Planets)
         {
