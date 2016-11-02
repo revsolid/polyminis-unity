@@ -1,10 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//
+static class SpaceCoordsExtension
+{
+    public static Vector3 FromSpaceCoordsToVec3(this Vector2 v)
+    {
+        return new Vector3(v.y, 0, v.x);
+    }
+}
+
 public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
 {
     bool Visible = true;
     public float DistanceToSpaceship = 0.0f;
+
+    Planet Model;
 
     // Use this for initialization
     void Start ()
@@ -13,9 +25,16 @@ public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
     
     public void RenderUpdate(Planet model)
     {
+        if (Model != model)
+        {
+          // We got a new model, either we're being initialized or we implemented pooling
+          Model = model;
+          transform.localPosition = model.SpacePosition.FromSpaceCoordsToVec3();
+        }
+
         DistanceToSpaceship = model.DistanceToSpaceship;
         Vector2 delta = model.LastDelta;
-        transform.localPosition -= new Vector3(-1*delta.y, 0.0f, -1*delta.x);
+        transform.localPosition += delta.FromSpaceCoordsToVec3();
      
         if (DistanceToSpaceship > 200 || DistanceToSpaceship < 30)
         {
@@ -28,7 +47,7 @@ public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
           gameObject.SetActive(true);
           Visible = true;
         }
-        
+
         DistanceToSpaceship = Mathf.Max(0.0000001f, DistanceToSpaceship);
         transform.localScale = (Vector3.one * (600 / (0.05f*DistanceToSpaceship*DistanceToSpaceship)));
     }

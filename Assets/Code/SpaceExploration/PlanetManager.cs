@@ -23,7 +23,6 @@ public class PlanetManager : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{	
-		//TODO: Normalize the Vector3 vs Vector2 situation before it is catastrophic
 		Planets = new List<Planet>();
         ToSpawn = new List<PlanetModel>();
 		LastKnownPos = MovementTracker.CurrentPosition;
@@ -42,7 +41,6 @@ public class PlanetManager : MonoBehaviour
 		
 		orbAppRenderer.SetTargetCamera(OrbitalCamera);
 		spaceExRenderer.gameObject.transform.parent = gameObject.transform;
-		spaceExRenderer.gameObject.transform.localPosition = new Vector3(position.y,0,position.x);
 		p1.Renderers.Add(spaceExRenderer);
 		p1.Renderers.Add(orbAppRenderer);
 		p1.Renderers.Add(radarRenderer);

@@ -13,9 +13,8 @@ public class Planet
     public float RelativeAngle { get; private set; }
     public int ID { get; set; }
 
-    //TODO: This should come from the server
-    Vector2 SpacePosition;
-    Vector2 PreviousSpaceshipPosition;
+    public Vector2 SpacePosition { get; private set; }
+    public Vector2 PreviousSpaceshipPosition { get; private set; }
     public Range<float> Temperature { get; private set; }
     public Range<float> PH {get; private set;}
     public string PlanetName {get; private set;}
