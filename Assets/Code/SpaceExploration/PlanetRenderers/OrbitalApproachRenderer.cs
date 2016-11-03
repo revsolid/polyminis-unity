@@ -4,7 +4,7 @@ using System.Collections;
 
 public class OrbitalApproachRenderer : MonoBehaviour, IPlanetRenderer
 {
-    bool Visible = true;
+    bool Visible = false;
     public float DistanceToSpaceship = 0.0f;
     Camera TargetCamera;
     Planet Model = null;
@@ -14,6 +14,7 @@ public class OrbitalApproachRenderer : MonoBehaviour, IPlanetRenderer
         //Canvas canvas = gameObject.GetComponent(typeof(Canvas)) as Canvas;
         Canvas canvas = GetComponent<Canvas>();
         canvas.worldCamera = Camera.main;
+        gameObject.SetActive(Visible);
     }
     
     public void RenderUpdate(Planet model)

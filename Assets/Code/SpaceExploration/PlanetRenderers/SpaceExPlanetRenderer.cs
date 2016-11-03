@@ -13,7 +13,7 @@ static class SpaceCoordsExtension
 
 public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
 {
-    bool Visible = true;
+    bool Visible = false;
     public float DistanceToSpaceship = 0.0f;
 
     Planet Model;
@@ -21,6 +21,7 @@ public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
     // Use this for initialization
     void Start ()
     { 
+        gameObject.SetActive(Visible);
     }
     
     public void RenderUpdate(Planet model)
@@ -38,14 +39,14 @@ public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
      
         if (DistanceToSpaceship > 200 || DistanceToSpaceship < 30)
         {
-          gameObject.SetActive(false);  
           Visible = false;
+          gameObject.SetActive(Visible);  
           return;
         }
         else if (!Visible)
         {          
-          gameObject.SetActive(true);
           Visible = true;
+          gameObject.SetActive(Visible);
         }
 
         DistanceToSpaceship = Mathf.Max(0.0000001f, DistanceToSpaceship);
