@@ -16,7 +16,7 @@ public class SpaceMovementTracker : MonoBehaviour
     
     void Awake()
     {
-        Connection.PlanetManagerMsg += (message) => OnServerMessage(message);
+        Connection.OnMessageEvent += (message) => OnServerMessage(message);
     }
 
     // Use this for initialization
@@ -27,7 +27,7 @@ public class SpaceMovementTracker : MonoBehaviour
 
         var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.INIT, CurrentPosition);
         Debug.Log(JsonUtility.ToJson(spaceExCommand));
-        Connection.Instance.Send("init", CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
+        Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));//"init", CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
         InvokeRepeating("SendLocation", 0.5f, 0.2f);
     }
 
@@ -54,20 +54,26 @@ public class SpaceMovementTracker : MonoBehaviour
     }
 
 
-	// send current location to server (attempt move)
-	void SendLocation()
-	{	
+    // send current location to server (attempt move)
+    void SendLocation()
+    {    
         var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.ATTEMPT_MOVE, CurrentPosition);
-        Debug.Log(JsonUtility.ToJson(spaceExCommand));
-        Connection.Instance.Send("mov", 
-            CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
-	}
+        //Debug.Log(JsonUtility.ToJson(spaceExCommand));
+        Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));//("mov", CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
+    }
 
     void OnServerMessage(string message)
     {
-        if (Connection.MsgTag(message).Equals("kickback"))
+        SpaceExplorationEvent spaceExEvent = JsonUtility.FromJson<SpaceExplorationEvent>(message);
+        if (spaceExEvent != null)
         {
-            CurrentPosition = Connection.MsgLoc(message);
+            switch (spaceExEvent.EventType)
+            {
+            case SpaceExplorationEventType.KICK_BACK:
+                //TODO: Make this do actual stuff
+                Debug.Log("KICK_BACK");
+                break;
+            }
         }
     }
 

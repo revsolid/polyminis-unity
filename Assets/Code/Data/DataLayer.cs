@@ -98,19 +98,24 @@ public class SystemModel
 }
 
 [Serializable]
+public class BaseCommand
+{
+    public string Service;
+    public string Command;
+}
+
+
+[Serializable]
 public enum SpaceExplorationCommandType
 {
     INIT,
     ATTEMPT_MOVE,
-    SPAWN_PLANET,
     WARP
 }
-
 [Serializable]
-public class SpaceExplorationCommand
+public class SpaceExplorationCommand : BaseCommand
 {
     private SpaceExplorationCommandType CommandType;
-    public string Command;
     public Vector2 Position;
     
     public SpaceExplorationCommand(SpaceExplorationCommandType commandType, Vector2 position)
@@ -118,7 +123,33 @@ public class SpaceExplorationCommand
         CommandType = commandType; 
         Position = position;
         Command = CommandType.ToString();
+        Service = "space_exploration";
     }
+}
+
+[Serializable]
+public class BaseEvent
+{
+    public string Service;   
+    public string EventString;
+}
+[Serializable]
+public enum SpaceExplorationEventType
+{
+    SPAWN_PLANETS,
+    KICK_BACK
+}
+[Serializable]
+public class SpaceExplorationEvent : BaseEvent
+{
+   public SpaceExplorationEventType EventType
+   {
+       get
+       {
+           return (SpaceExplorationEventType) Enum.Parse(typeof(SpaceExplorationEventType), EventString); 
+       }
+   }
+   public PlanetModel[] Planets;
 }
 
 
