@@ -42,6 +42,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+
 //
 public class Range<T> where T: IComparable
 {
@@ -61,6 +62,7 @@ public class Range<T> where T: IComparable
 }
 
 //
+[Serializable]
 public class PlanetModel
 {
     public Vector2 SpaceCoords;
@@ -80,6 +82,7 @@ public class PlanetModel
 }
 
 //
+[Serializable]
 public class StarModel
 {
     Vector2 SpaceCoords;
@@ -87,11 +90,68 @@ public class StarModel
 }
 
 //
+[Serializable]
 public class SystemModel
 {
     StarModel Star;
     IList<PlanetModel> Planets;
 }
+
+[Serializable]
+public class BaseCommand
+{
+    public string Service;
+    public string Command;
+}
+
+
+[Serializable]
+public enum SpaceExplorationCommandType
+{
+    INIT,
+    ATTEMPT_MOVE,
+    WARP
+}
+[Serializable]
+public class SpaceExplorationCommand : BaseCommand
+{
+    private SpaceExplorationCommandType CommandType;
+    public Vector2 Position;
+    
+    public SpaceExplorationCommand(SpaceExplorationCommandType commandType, Vector2 position)
+    {
+        CommandType = commandType; 
+        Position = position;
+        Command = CommandType.ToString();
+        Service = "space_exploration";
+    }
+}
+
+[Serializable]
+public class BaseEvent
+{
+    public string Service;   
+    public string EventString;
+}
+[Serializable]
+public enum SpaceExplorationEventType
+{
+    SPAWN_PLANETS,
+    KICK_BACK
+}
+[Serializable]
+public class SpaceExplorationEvent : BaseEvent
+{
+   public SpaceExplorationEventType EventType
+   {
+       get
+       {
+           return (SpaceExplorationEventType) Enum.Parse(typeof(SpaceExplorationEventType), EventString); 
+       }
+   }
+   public PlanetModel[] Planets;
+}
+
 
 // 
 public class UserModel

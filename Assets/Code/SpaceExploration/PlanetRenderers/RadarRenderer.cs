@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class RadarRenderer : MonoBehaviour, IPlanetRenderer
 {
-    bool Visible = true;
+    bool Visible = false;
     public float DistanceToSpaceship = 0.0f;
+    public Text DistanceText;
 
     // Use this for initialization
     void Start ()
-    { 
+    {
+        gameObject.SetActive(false);
     }
     
     public void RenderUpdate(Planet model)
@@ -30,5 +33,6 @@ public class RadarRenderer : MonoBehaviour, IPlanetRenderer
         }
         
         gameObject.transform.position = new Vector3(model.RelativeAngle / 5.0f, gameObject.transform.position.y, gameObject.transform.position.z);
+        DistanceText.text = DistanceToSpaceship.ToString();
     }
 }
