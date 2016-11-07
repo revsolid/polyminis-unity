@@ -8,11 +8,13 @@ public class PlanetManager : MonoBehaviour
     public SpaceExPlanetRenderer SpaceExRendererPrototype;
     public OrbitalApproachRenderer OrbitalApproachRendererPrototype;
     public RadarRenderer RadarRendererPrototype;
+    public StarmapRenderer StarmapRendererPrototype;
     
     public SpaceMovementTracker MovementTracker;
     public Camera OrbitalCamera;
+    public GameObject Starmap;
     Vector2 LastKnownPos;
-    IList<Planet> Planets;
+    public IList<Planet> Planets { get; private set;}
     List<PlanetModel> ToSpawn;
 
     void Awake()
@@ -38,12 +40,15 @@ public class PlanetManager : MonoBehaviour
         SpaceExPlanetRenderer spaceExRenderer = GameObject.Instantiate(SpaceExRendererPrototype);
         OrbitalApproachRenderer orbAppRenderer = GameObject.Instantiate(OrbitalApproachRendererPrototype);
         RadarRenderer radarRenderer = GameObject.Instantiate(RadarRendererPrototype);
-        
+        StarmapRenderer starmapRenderer = GameObject.Instantiate(StarmapRendererPrototype);
+        starmapRenderer.Starmap = this.Starmap;
+
         orbAppRenderer.SetTargetCamera(OrbitalCamera);
         spaceExRenderer.gameObject.transform.parent = gameObject.transform;
         p1.Renderers.Add(spaceExRenderer);
         p1.Renderers.Add(orbAppRenderer);
         p1.Renderers.Add(radarRenderer);
+        p1.Renderers.Add (starmapRenderer);
         return p1;
     }
     
