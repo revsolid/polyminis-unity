@@ -115,7 +115,7 @@ public enum SpaceExplorationCommandType
 [Serializable]
 public class SpaceExplorationCommand : BaseCommand
 {
-    private SpaceExplorationCommandType CommandType;
+    SpaceExplorationCommandType CommandType;
     public Vector2 Position;
     
     public SpaceExplorationCommand(SpaceExplorationCommandType commandType, Vector2 position)
@@ -163,6 +163,7 @@ public class UserModel
 }
 
 //
+[Serializable]
 public enum TraitSize
 {
     SMALL,
@@ -180,13 +181,23 @@ public enum Instinct
 }
 
 //
+[Serializable]
 public class SpliceModel
 {
     // Q: Instincts?
-    Instinct Instinct;
-    TraitSize Size;
-    string Name;
-    string Description;
+    public Instinct Instinct;
+    public string Size;
+    public TraitSize TraitSize
+    {
+       get
+       {
+           return (TraitSize) Enum.Parse(typeof(TraitSize), Size); 
+       }
+    }
+
+    public string Name;
+    public string InternalName;
+    public string Description;
 }
 
 //
@@ -198,10 +209,21 @@ public class SpeciesModel
     // Instincts microtuning
 }
 
+public enum TraitTier
+{
+    BasicTier,   
+    TierI,
+    TierII,
+    TierIII
+}
+
 //
+[Serializable]
 public class OrganelleModel
 {
 	public int OrganelleId;	
+    public string TraitTier;
+    TraitTier Tier;
 	
 	public OrganelleModel(int id)
 	{

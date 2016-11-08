@@ -18,7 +18,7 @@ public class SpliceBox : MonoBehaviour
         if (button != null)
         {
             b = button;
-            img.color = button.getColor();
+          //  img.color = button.getColor();
         }
         else
         {

@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SpliceUIManager : MonoBehaviour {
+public class SpliceUIManager : MonoBehaviour
+{
 
     public GameObject tabPanel, splicePanel; //Set these in editor
     private HorizontalLayoutGroup tabLayout;
@@ -19,7 +20,7 @@ public class SpliceUIManager : MonoBehaviour {
     public Button[] DownButtons = new Button[4];
     public  InputField SpeciesName;
 
-    
+/*    
 	void Start ()
     {
 
@@ -35,6 +36,8 @@ public class SpliceUIManager : MonoBehaviour {
         currentCategory = 0;
         //TODO: This should come from server / loaded species data
         SpeciesName.text = "Test Species";
+
+        Debug.Log(Almanac.Instance);
 	}
 
     void Update()
@@ -102,4 +105,5 @@ public class SpliceUIManager : MonoBehaviour {
             displayBars[opposites[id]].value++;
         }
     }
+    */
 }
