@@ -9,9 +9,9 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
     // Use this for initialization
     void Start () 
     {
-	
-	}
-	
+    
+    }
+    
     public void RenderUpdate(Planet model)
     {
         SpacePos = model.SpacePosition;
