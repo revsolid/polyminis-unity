@@ -12,7 +12,7 @@ public class OrbitalUI : MonoBehaviour
     public Slider TempSlider;
     public Text PlanetName;
     public VerticalLayoutGroup SpeciesLayoutGroup;
-    public GameObject SpeciesCatalouge;
+    public SpeciesCatalog SpeciesCatalog;
 
 	// Use this for initialization
 	void Start ()
@@ -48,9 +48,16 @@ public class OrbitalUI : MonoBehaviour
 
     }
 
-    public void OnSpeciesCatalougeClicked()
+    public void OnSpeciesCatalogClicked()
     {
-        SpeciesCatalouge.SetActive(!SpeciesCatalouge.activeInHierarchy);
+        Debug.Log("clicked");
+        bool toggleOn = !SpeciesCatalog.gameObject.activeInHierarchy;
+        SpeciesCatalog.gameObject.SetActive(toggleOn);
+        
+        if (toggleOn)
+        {
+            SpeciesCatalog.Populate(Session.Instance.Species);
+        }
     }
     
     public void OnObservePlanetClicked()
