@@ -8,8 +8,6 @@ using System.Collections.Generic;
 public class Connection
 {
     public delegate void MessageReceived(string message);
-    public static event MessageReceived PlanetManagerMsg;
-    public static event MessageReceived MovementTrackMsg;
     public static event MessageReceived OnMessageEvent;
 
     private static WebSocket ws;

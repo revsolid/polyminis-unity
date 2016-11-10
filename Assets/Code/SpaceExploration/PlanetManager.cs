@@ -86,7 +86,7 @@ public class PlanetManager : MonoBehaviour
         }
     }
 
-    // Create a new planet and add it to planet
+    // Create a new planet and add it to manager 
     void SpawnNewPlanet(PlanetModel p)
     {
         Planets.Add(CreatePlanetAt(p.SpaceCoords, p.ID));

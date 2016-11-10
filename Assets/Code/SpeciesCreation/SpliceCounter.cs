@@ -20,7 +20,7 @@ public class SpliceCounter : MonoBehaviour
     
     public void setSelected(SpliceButton pressed)
     {
-        if (full) throw new SpliceButton.splicesFullException();
+      //  if (full) throw new SpliceButton.splicesFullException();
 
         boxes[currentBox].assign(pressed);
         currentBox++;
