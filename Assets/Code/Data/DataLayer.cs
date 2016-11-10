@@ -68,7 +68,7 @@ public class PlanetModel
     public Vector2 SpaceCoords;
     public Range<float> Temperature;
     public Range<float> Ph;
-    public IList<SpeciesModel> Species;
+    public List<SpeciesModel> Species;
     public string Name;
     public int ID;
 
@@ -94,7 +94,7 @@ public class StarModel
 public class SystemModel
 {
     StarModel Star;
-    IList<PlanetModel> Planets;
+    List<PlanetModel> Planets;
 }
 
 [Serializable]
@@ -172,6 +172,7 @@ public enum TraitSize
 }
 
 // 
+[Serializable]
 public enum Instinct
 {
     HOARDING,
@@ -185,7 +186,14 @@ public enum Instinct
 public class SpliceModel
 {
     // Q: Instincts?
-    public Instinct Instinct;
+    public string Instinct;
+    public Instinct EInstinct
+    {
+        get
+        {
+            return (Instinct) Enum.Parse(typeof(Instinct), Instinct.ToUpper());
+        }
+    }
     public string Size;
     public TraitSize TraitSize
     {
@@ -201,12 +209,12 @@ public class SpliceModel
 }
 
 //
+[Serializable]
 public class SpeciesModel
 {
-    IList<SpeciesModel> Splices;
-    string Name;
-    //TODO:
-    // Instincts microtuning
+    public string Name;
+    public List<SpliceModel> Splices = new List<SpliceModel>();
+    public object InstinctTuning = new object();
 }
 
 public enum TraitTier

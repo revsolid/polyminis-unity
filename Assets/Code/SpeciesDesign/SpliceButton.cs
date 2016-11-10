@@ -5,28 +5,27 @@ using System;
 
 public class SpliceButton : MonoBehaviour 
 {
-    public Text NameField;
     public delegate void ButtonClicked(SpliceButton button);
     public static event ButtonClicked OnClickEvent;
 
-    SpliceUIManager uiManager;
-    Image image;
-    
-    bool lEnabled = false;
-    bool ready = false;
-    Color color;
+    public Text NameField;
+    public Image Background;
 
     public SpliceModel Model;
+
+
+    bool ready = false;
     
     public void Update()
     {
-        if (!ready)
+        if (!ready && Model != null)
         {
             NameField.text = Model.Name;
             ready = true;
+            Background.color = SpeciesDesignUI.SColorConfig.GetColorFor(Model.EInstinct);
         }
     }
-
+    
     public void OnClick()
     {
         OnClickEvent(this);
