@@ -4,17 +4,20 @@ using System.Collections;
 public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
 {
     [HideInInspector] public GameObject Starmap;
-	// Use this for initialization
-	void Start () 
+    private Vector2 SpacePos;
+    Camera TargetCamera;
+    // Use this for initialization
+    void Start () 
     {
 	
 	}
 	
     public void RenderUpdate(Planet model)
     {
+        SpacePos = model.SpacePosition;
         if (Starmap != null)
         {
-            gameObject.transform.position = Starmap.transform.position + ToStarmapPos (model.SpacePosition);
+            gameObject.transform.position = Starmap.transform.position + UIManager.ToStarmapPos (model.SpacePosition);
             if (Starmap.activeSelf)
             {
                 this.gameObject.SetActive (true);
@@ -27,11 +30,18 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
 
     }
 
-    Vector3 ToStarmapPos(Vector2 spacePos)
+    public void SetTargetCamera(Camera camera)
     {
-        float shrinkFactor = 200.0f;
+        TargetCamera = camera;
+    }
 
-        return (new Vector3(spacePos.x / shrinkFactor, spacePos.y / shrinkFactor, 0.0f));
+
+
+    void OnMouseDown()
+    {
+        var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.WARP, SpacePos);
+        Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));
+        Debug.Log("Clicked!");
     }
 
 }

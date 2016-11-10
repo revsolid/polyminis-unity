@@ -137,7 +137,8 @@ public class BaseEvent
 public enum SpaceExplorationEventType
 {
     SPAWN_PLANETS,
-    KICK_BACK
+    KICK_BACK,
+    WARP
 }
 [Serializable]
 public class SpaceExplorationEvent : BaseEvent
@@ -150,6 +151,7 @@ public class SpaceExplorationEvent : BaseEvent
        }
    }
    public PlanetModel[] Planets;
+   public Vector2 Position;
 }
 
 

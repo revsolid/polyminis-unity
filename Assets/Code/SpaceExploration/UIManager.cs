@@ -21,12 +21,20 @@ public class UIManager : MonoBehaviour {
 	public void OnStarmapClick()
 	{
 		StarMapToggle = !StarMapToggle;
+
 		StarMap.SetActive(StarMapToggle);
 	}
-	
-	public void OnSpeciesEditorClick()
+
+    public void OnSpeciesEditorClick()
 	{
 		SpeciesEditor.SetActive(true);
 	}
-	
+
+    public static Vector3 ToStarmapPos(Vector2 spacePos)
+    {
+        float shrinkFactor = 200.0f;
+
+        return (new Vector3(-spacePos.x / shrinkFactor, spacePos.y / shrinkFactor, 0.0f));
+    }
+
 }

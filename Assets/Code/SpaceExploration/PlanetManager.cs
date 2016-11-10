@@ -16,6 +16,9 @@ public class PlanetManager : MonoBehaviour
     Vector2 LastKnownPos;
     public IList<Planet> Planets { get; private set;}
     List<PlanetModel> ToSpawn;
+    Camera MainCamera;
+    bool DoWarp = false;
+    Vector2 WarpDest = Vector2.zero;
 
     void Awake()
     {
@@ -41,9 +44,10 @@ public class PlanetManager : MonoBehaviour
         OrbitalApproachRenderer orbAppRenderer = GameObject.Instantiate(OrbitalApproachRendererPrototype);
         RadarRenderer radarRenderer = GameObject.Instantiate(RadarRendererPrototype);
         StarmapRenderer starmapRenderer = GameObject.Instantiate(StarmapRendererPrototype);
-        starmapRenderer.Starmap = this.Starmap;
 
         orbAppRenderer.SetTargetCamera(OrbitalCamera);
+        starmapRenderer.Starmap = this.Starmap;
+        starmapRenderer.SetTargetCamera(OrbitalCamera);
         spaceExRenderer.gameObject.transform.parent = gameObject.transform;
         p1.Renderers.Add(spaceExRenderer);
         p1.Renderers.Add(orbAppRenderer);
@@ -70,6 +74,16 @@ public class PlanetManager : MonoBehaviour
             // allPlanets[ToSpawn[0].id] = p;
             ToSpawn.RemoveAt(0);
         }
+
+        // Switch to orbital view
+        if(DoWarp)
+        {
+            DoWarp = false;
+            Camera.main.gameObject.SetActive(false);
+            OrbitalCamera.gameObject.SetActive(true);
+            OrbitalCamera.enabled = true;
+            OrbitalCamera.GetComponentInChildren<OrbitalUI>().OnUIOpened(GetPlanetAt(WarpDest));
+        }
     }
 
     // Create a new planet and add it to planet
@@ -95,8 +109,25 @@ public class PlanetManager : MonoBehaviour
                     }
                 }
                 break;
+            case SpaceExplorationEventType.WARP:
+                WarpDest = spaceExEvent.Position;
+                DoWarp = true;
+                break;
             }
         }
+    }
+
+    Planet GetPlanetAt(Vector2 inPos)
+    {
+        foreach (Planet p in Planets)
+        {
+            if(p.SpacePosition == inPos)
+            {
+                return p;
+            }
+        }
+        Debug.Log("Planet Not Found");
+        return Planets[0];
     }
 
     bool HasSpawnedPlanet(int inID)
