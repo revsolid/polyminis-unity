@@ -7,7 +7,7 @@ public class StarmapShip : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        this.transform.position = this.transform.parent.position + UIManager.ToStarmapPos(spaceMovementTracker.CurrentPosition) -Vector3.forward * (+1.0f);
-        this.transform.forward = new Vector3(-spaceMovementTracker.Forward.x, spaceMovementTracker.Forward.y, 0);
+        this.transform.position = this.transform.parent.position + UIManager.ToStarmapPos(SpaceMovementTracker.CurrentPosition) -Vector3.forward * (+1.0f);
+        this.transform.forward = new Vector3(-SpaceMovementTracker.Forward.x, SpaceMovementTracker.Forward.y, 0);
     }
 }

@@ -7809,7 +7809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07961787bcb32ee4fa823c6ad32c0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceMovementTracker: {fileID: 1878669862}
+  SpaceMovementTracker: {fileID: 1878669862}
 --- !u!23 &1951504281
 MeshRenderer:
   m_ObjectHideFlags: 0
