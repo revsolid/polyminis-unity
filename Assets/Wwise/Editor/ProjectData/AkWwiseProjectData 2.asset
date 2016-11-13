@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 140453c572b354d2094ebce1b88f2fa8, type: 3}
-  m_Name: AkWwiseProjectData
+  m_Name: AkWwiseProjectData 2
   m_EditorClassIdentifier: 
   CurrentPluginConfig: 
   EventWwu:
@@ -177,12 +177,11 @@ MonoBehaviour:
         ObjectType: 7
       ID: 393239870
       Guid: cb24399cc7db9c41bd03e350fa4370aa
-  ExpandedItems:
-  - /polyminis
+  ExpandedItems: []
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1
-  basePath: Audio/GeneratedSoundBanks
+  basePath: Audio\GeneratedSoundBanks
   language: English(US)
   defaultPoolSize: 4096
   lowerPoolSize: 2048
