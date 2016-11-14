@@ -208,6 +208,7 @@ public class SpliceModel
     public string Name;
     public string InternalName;
     public string Description;
+    public int[] Traits;
 }
 
 //
@@ -231,14 +232,19 @@ public enum TraitTier
 [Serializable]
 public class OrganelleModel
 {
-	public int OrganelleId;	
+	public int OrganelleId
+    {
+        get { return TID; }
+        private set { TID = value; }
+    }
+    public int TID;
     public string TraitTier;
     TraitTier Tier;
-	
-	public OrganelleModel(int id)
-	{
-		OrganelleId = id;
-	}
+
+    public OrganelleModel(int id)
+    {
+        OrganelleId = id;
+    }
 }
 
 //

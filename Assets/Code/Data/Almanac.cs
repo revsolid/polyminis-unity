@@ -32,7 +32,7 @@ public class Almanac : Singleton<Almanac>
 	// internalname => SpliceModel
 	public IDictionary<string, SpliceModel> AvailableSplices;
 	// organelleId => OrganelleModel
-	IDictionary<int, OrganelleModel> OrganelleData;
+	public IDictionary<int, OrganelleModel> OrganelleData;
 
     // Protected Constructor for Singleton
 	protected Almanac() {}
@@ -42,7 +42,7 @@ public class Almanac : Singleton<Almanac>
 		// TODO: Get it from the server instead of STATIC
 		Traits tts = JsonUtility.FromJson<Traits>(STATIC_JSON.TRAITS);
 		Debug.Log(tts.version);
-		Debug.Log(tts.available_traits);
+		Debug.Log(tts.available_traits.Length);
 		Splices spcs = JsonUtility.FromJson<Splices>(STATIC_JSON.SPLICES);
 		Debug.Log(spcs.available_splices);
 
@@ -50,6 +50,7 @@ public class Almanac : Singleton<Almanac>
 		for (var i = 0; i < tts.available_traits.Length; i++)
 		{
 			OrganelleModel model = tts.available_traits[i];
+			Debug.Log(model.OrganelleId);
 			OrganelleData[model.OrganelleId] = model;
 		}
 		
