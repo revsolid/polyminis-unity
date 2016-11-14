@@ -127,6 +127,7 @@ GameObject:
   - 224: {fileID: 224000013174680786}
   - 222: {fileID: 222000012769658432}
   - 114: {fileID: 114000012683855846}
+  - 114: {fileID: 114000013756457076}
   m_Layer: 0
   m_Name: widget_br
   m_TagString: Untagged
@@ -215,6 +216,8 @@ GameObject:
   - 222: {fileID: 222000011825283986}
   - 114: {fileID: 114000011332926570}
   - 114: {fileID: 114000011101075964}
+  - 114: {fileID: 114000012555770560}
+  - 114: {fileID: 114000012899429820}
   m_Layer: 0
   m_Name: widget_bl
   m_TagString: Untagged
@@ -457,6 +460,7 @@ GameObject:
   - 224: {fileID: 224000010844036490}
   - 222: {fileID: 222000010671078708}
   - 114: {fileID: 114000013232567342}
+  - 114: {fileID: 114000011915564656}
   m_Layer: 0
   m_Name: widget_tr
   m_TagString: Untagged
@@ -889,6 +893,7 @@ GameObject:
   - 222: {fileID: 222000013233059566}
   - 114: {fileID: 114000011269335808}
   - 114: {fileID: 114000011133885562}
+  - 114: {fileID: 114000012891685672}
   m_Layer: 0
   m_Name: widget_tl
   m_TagString: Untagged
@@ -2183,6 +2188,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114000011915564656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011768777100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f014f003106e04fb164055e3fde86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!114 &114000011928867598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2561,6 +2578,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114000012555770560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010860509410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f014f003106e04fb164055e3fde86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!114 &114000012611424178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2784,6 +2813,48 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+--- !u!114 &114000012891685672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014156852626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f014f003106e04fb164055e3fde86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+--- !u!114 &114000012899429820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010860509410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11500000, guid: c8f014f003106e04fb164055e3fde86f, type: 3}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114000012917197312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3353,6 +3424,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff94056163f56894a8a70ee849e31a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000013756457076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010437587928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f014f003106e04fb164055e3fde86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!114 &114000013785685470
 MonoBehaviour:
   m_ObjectHideFlags: 1
