@@ -48,6 +48,7 @@ public class PlanetManager : MonoBehaviour
         orbAppRenderer.SetTargetCamera(OrbitalCamera);
         starmapRenderer.Starmap = this.Starmap;
         starmapRenderer.SetTargetCamera(OrbitalCamera);
+        starmapRenderer.transform.parent = this.Starmap.transform;
         spaceExRenderer.gameObject.transform.parent = gameObject.transform;
         p1.Renderers.Add(spaceExRenderer);
         p1.Renderers.Add(orbAppRenderer);

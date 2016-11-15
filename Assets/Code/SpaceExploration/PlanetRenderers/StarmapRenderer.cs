@@ -7,17 +7,16 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
     private Vector2 SpacePos;
     Camera TargetCamera;
     // Use this for initialization
-    void Start () 
-    {
-    
-    }
-    
+
     public void RenderUpdate(Planet model)
     {
         SpacePos = model.SpacePosition;
+        UpdatePosition(SpacePos);
+
         if (Starmap != null)
         {
-            gameObject.transform.position = Starmap.transform.position + UIManager.ToStarmapPos (model.SpacePosition);
+            UpdatePosition(model.SpacePosition);
+
             if (Starmap.activeSelf)
             {
                 this.gameObject.SetActive (true);
@@ -44,4 +43,9 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
         Debug.Log("Clicked!");
     }
 
+    // update relative to starmap object
+    void UpdatePosition(Vector2 newSpacePos)
+    {
+        this.transform.localPosition = UIManager.ToStarmapPos(newSpacePos);
+    }
 }

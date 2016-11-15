@@ -30,11 +30,13 @@ public class UIManager : MonoBehaviour {
         SpeciesEditor.SetActive(true);
     }
 
+    // takes space position and convert it to 3D position on starmap
     public static Vector3 ToStarmapPos(Vector2 spacePos)
     {
-        float shrinkFactor = 200.0f;
+        float shrinkFactor = 5.0f;
 
         return (new Vector3(-spacePos.x / shrinkFactor, spacePos.y / shrinkFactor, 0.0f));
     }
+
 
 }
