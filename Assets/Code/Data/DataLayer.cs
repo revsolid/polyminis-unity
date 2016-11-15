@@ -68,7 +68,7 @@ public class PlanetModel
     public Vector2 SpaceCoords;
     public Range<float> Temperature;
     public Range<float> Ph;
-    public IList<SpeciesModel> Species;
+    public List<SpeciesModel> Species;
     public string Name;
     public int ID;
 
@@ -94,7 +94,7 @@ public class StarModel
 public class SystemModel
 {
     StarModel Star;
-    IList<PlanetModel> Planets;
+    List<PlanetModel> Planets;
 }
 
 [Serializable]
@@ -115,7 +115,7 @@ public enum SpaceExplorationCommandType
 [Serializable]
 public class SpaceExplorationCommand : BaseCommand
 {
-    private SpaceExplorationCommandType CommandType;
+    SpaceExplorationCommandType CommandType;
     public Vector2 Position;
     
     public SpaceExplorationCommand(SpaceExplorationCommandType commandType, Vector2 position)
@@ -137,7 +137,8 @@ public class BaseEvent
 public enum SpaceExplorationEventType
 {
     SPAWN_PLANETS,
-    KICK_BACK
+    KICK_BACK,
+    WARP
 }
 [Serializable]
 public class SpaceExplorationEvent : BaseEvent
@@ -150,6 +151,7 @@ public class SpaceExplorationEvent : BaseEvent
        }
    }
    public PlanetModel[] Planets;
+   public Vector2 Position;
 }
 
 
@@ -163,6 +165,7 @@ public class UserModel
 }
 
 //
+[Serializable]
 public enum TraitSize
 {
     SMALL,
@@ -171,6 +174,7 @@ public enum TraitSize
 }
 
 // 
+[Serializable]
 public enum Instinct
 {
     HOARDING,
@@ -180,33 +184,67 @@ public enum Instinct
 }
 
 //
+[Serializable]
 public class SpliceModel
 {
     // Q: Instincts?
-    Instinct Instinct;
-    TraitSize Size;
-    string Name;
-    string Description;
+    public string Instinct;
+    public Instinct EInstinct
+    {
+        get
+        {
+            return (Instinct) Enum.Parse(typeof(Instinct), Instinct.ToUpper());
+        }
+    }
+    public string Size;
+    public TraitSize TraitSize
+    {
+       get
+       {
+           return (TraitSize) Enum.Parse(typeof(TraitSize), Size); 
+       }
+    }
+
+    public string Name;
+    public string InternalName;
+    public string Description;
+    public int[] Traits;
 }
 
 //
+[Serializable]
 public class SpeciesModel
 {
-    IList<SpeciesModel> Splices;
-    string Name;
-    //TODO:
-    // Instincts microtuning
+    public string Name;
+    public List<SpliceModel> Splices = new List<SpliceModel>();
+    public object InstinctTuning = new object();
+}
+
+public enum TraitTier
+{
+    BasicTier,   
+    TierI,
+    TierII,
+    TierIII
 }
 
 //
+[Serializable]
 public class OrganelleModel
 {
-	public int OrganelleId;	
-	
-	public OrganelleModel(int id)
-	{
-		OrganelleId = id;
-	}
+	public int OrganelleId
+    {
+        get { return TID; }
+        private set { TID = value; }
+    }
+    public int TID;
+    public string TraitTier;
+    TraitTier Tier;
+
+    public OrganelleModel(int id)
+    {
+        OrganelleId = id;
+    }
 }
 
 //

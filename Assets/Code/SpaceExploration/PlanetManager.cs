@@ -8,12 +8,17 @@ public class PlanetManager : MonoBehaviour
     public SpaceExPlanetRenderer SpaceExRendererPrototype;
     public OrbitalApproachRenderer OrbitalApproachRendererPrototype;
     public RadarRenderer RadarRendererPrototype;
+    public StarmapRenderer StarmapRendererPrototype;
     
     public SpaceMovementTracker MovementTracker;
     public Camera OrbitalCamera;
+    public GameObject Starmap;
     Vector2 LastKnownPos;
-    IList<Planet> Planets;
+    public IList<Planet> Planets { get; private set;}
     List<PlanetModel> ToSpawn;
+    Camera MainCamera;
+    bool DoWarp = false;
+    Vector2 WarpDest = Vector2.zero;
 
     void Awake()
     {
@@ -38,12 +43,17 @@ public class PlanetManager : MonoBehaviour
         SpaceExPlanetRenderer spaceExRenderer = GameObject.Instantiate(SpaceExRendererPrototype);
         OrbitalApproachRenderer orbAppRenderer = GameObject.Instantiate(OrbitalApproachRendererPrototype);
         RadarRenderer radarRenderer = GameObject.Instantiate(RadarRendererPrototype);
-        
+        StarmapRenderer starmapRenderer = GameObject.Instantiate(StarmapRendererPrototype);
+
         orbAppRenderer.SetTargetCamera(OrbitalCamera);
+        starmapRenderer.Starmap = this.Starmap;
+        starmapRenderer.SetTargetCamera(OrbitalCamera);
+        starmapRenderer.transform.parent = this.Starmap.transform;
         spaceExRenderer.gameObject.transform.parent = gameObject.transform;
         p1.Renderers.Add(spaceExRenderer);
         p1.Renderers.Add(orbAppRenderer);
         p1.Renderers.Add(radarRenderer);
+        p1.Renderers.Add (starmapRenderer);
         return p1;
     }
     
@@ -65,9 +75,19 @@ public class PlanetManager : MonoBehaviour
             // allPlanets[ToSpawn[0].id] = p;
             ToSpawn.RemoveAt(0);
         }
+
+        // Switch to orbital view
+        if(DoWarp)
+        {
+            DoWarp = false;
+            Camera.main.gameObject.SetActive(false);
+            OrbitalCamera.gameObject.SetActive(true);
+            OrbitalCamera.enabled = true;
+            OrbitalCamera.GetComponentInChildren<OrbitalUI>().OnUIOpened(GetPlanetAt(WarpDest));
+        }
     }
 
-    // Create a new planet and add it to planet
+    // Create a new planet and add it to manager 
     void SpawnNewPlanet(PlanetModel p)
     {
         Planets.Add(CreatePlanetAt(p.SpaceCoords, p.ID));
@@ -90,8 +110,25 @@ public class PlanetManager : MonoBehaviour
                     }
                 }
                 break;
+            case SpaceExplorationEventType.WARP:
+                WarpDest = spaceExEvent.Position;
+                DoWarp = true;
+                break;
             }
         }
+    }
+
+    Planet GetPlanetAt(Vector2 inPos)
+    {
+        foreach (Planet p in Planets)
+        {
+            if(p.SpacePosition == inPos)
+            {
+                return p;
+            }
+        }
+        Debug.Log("Planet Not Found");
+        return Planets[0];
     }
 
     bool HasSpawnedPlanet(int inID)

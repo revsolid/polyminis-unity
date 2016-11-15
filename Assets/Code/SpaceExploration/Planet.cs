@@ -18,7 +18,7 @@ public class Planet
     public Range<float> Temperature { get; private set; }
     public Range<float> PH {get; private set;}
     public string PlanetName {get; private set;}
-    private PlanetModel Model;
+    public PlanetModel Model { get; private set;}
     
     
 

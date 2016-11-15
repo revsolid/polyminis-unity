@@ -62,6 +62,11 @@ public class SpaceMovementTracker : MonoBehaviour
         Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));//("mov", CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
     }
 
+    void Warp (Vector2 dest)
+    {
+        CurrentPosition = dest;
+    }
+
     void OnServerMessage(string message)
     {
         SpaceExplorationEvent spaceExEvent = JsonUtility.FromJson<SpaceExplorationEvent>(message);
@@ -73,8 +78,20 @@ public class SpaceMovementTracker : MonoBehaviour
                 //TODO: Make this do actual stuff
                 Debug.Log("KICK_BACK");
                 break;
+            case SpaceExplorationEventType.WARP:
+                Debug.Log("Warp to <" + spaceExEvent.Position.x.ToString() + ", " + spaceExEvent.Position.y.ToString() + ">");
+                Warp(spaceExEvent.Position);
+                break;
+
+              
             }
         }
+    }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 200, 20), "Fowrward: " + Forward.ToString());
+        GUI.Label(new Rect(10, 30, 200, 20), "Coord:    " + CurrentPosition.ToString());
     }
 
 }
