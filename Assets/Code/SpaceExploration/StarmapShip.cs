@@ -8,6 +8,6 @@ public class StarmapShip : MonoBehaviour
     void Update ()
     {
         this.transform.localPosition = UIManager.ToStarmapPos(SpaceMovementTracker.CurrentPosition) - Vector3.forward * (+1.0f);
-        this.transform.forward = new Vector3(-SpaceMovementTracker.Forward.x, SpaceMovementTracker.Forward.y, 0);
+        this.transform.localRotation = Quaternion.LookRotation(new Vector3(-SpaceMovementTracker.Forward.x, SpaceMovementTracker.Forward.y, 0), Vector3.forward);
     }
 }
