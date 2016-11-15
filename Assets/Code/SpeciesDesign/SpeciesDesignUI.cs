@@ -11,6 +11,7 @@ public class SpeciesDesignUI : MonoBehaviour
 	public VerticalLayoutGroup LargeSplices;
 	public SpliceButton SpliceButtonRendererPrototype;
 	public DnaHelix Helix;
+	public DnaSeq DnaSequencer;
 	public ColorConfig ColorConfig;
 	public static ColorConfig SColorConfig;
 
@@ -84,6 +85,8 @@ public class SpeciesDesignUI : MonoBehaviour
 			CurrentSelection.Splices.Add(button.Model);
 			Helix.AddSelectedSplice(button.Model);
 			Destroy(button.gameObject);
+
+			DnaSequencer.ActivateSelection(CurrentSelection);
 		}
 	}
 	
@@ -91,6 +94,8 @@ public class SpeciesDesignUI : MonoBehaviour
 	{
 		CurrentSelection.Splices.Remove(model);
 		AddSplice(model);
+
+		DnaSequencer.ActivateSelection(CurrentSelection);
 	}
 	
 	public void OnExitButtonClicked()
