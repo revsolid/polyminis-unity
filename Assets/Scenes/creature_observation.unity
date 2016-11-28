@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a9fa8bd81818a41758eb7719dd61df49, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.49284154, g: 0.46513575, b: 0.55615985, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -91,6 +91,48 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &20331284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 20331286}
+  - 114: {fileID: 20331285}
+  m_Layer: 0
+  m_Name: SpeciesController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &20331285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 20331284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ca2452ddcc146af9a66f6ed637f54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CreaturePrototype: {fileID: 114000010034767314, guid: 59fe424cf706f49a9975a0e71c290c0f,
+    type: 2}
+--- !u!4 &20331286
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 20331284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
 --- !u!1 &30624697
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +319,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000014043203452, guid: 59fe424cf706f49a9975a0e71c290c0f, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000010427070398, guid: 59fe424cf706f49a9975a0e71c290c0f,
         type: 2}
@@ -1278,14 +1320,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010427070398, guid: 59fe424cf706f49a9975a0e71c290c0f,
-        type: 2}
-      propertyPath: InitialPosition.x
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010427070398, guid: 59fe424cf706f49a9975a0e71c290c0f,
-        type: 2}
-      propertyPath: InitialPosition.y
+    - target: {fileID: 1000014043203452, guid: 59fe424cf706f49a9975a0e71c290c0f, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2191,6 +2227,14 @@ Prefab:
     - target: {fileID: 1000011922400598, guid: e71ad6b5637d7466cb934b0cdd35c063, type: 2}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010248385932, guid: e71ad6b5637d7466cb934b0cdd35c063, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010248385932, guid: e71ad6b5637d7466cb934b0cdd35c063, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e71ad6b5637d7466cb934b0cdd35c063, type: 2}

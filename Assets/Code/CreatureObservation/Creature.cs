@@ -6,6 +6,7 @@ public class Creature : MonoBehaviour
 {
 	public Organelle OrganellePrototype;
 	public Nucleus NucleusPrototype;
+	public CreatureMover Mover;
 	
 	Dictionary<Vector2, int> OrganelleMap;
 	
@@ -39,6 +40,17 @@ public class Creature : MonoBehaviour
 			}
 		}
 	}
+	
+	public void AddStep(IndividualStep step)
+	{
+		if (Mover != null)
+		{
+			Mover.AddStep(step.Physics);
+		}
+	}
+	
+	public void SetDataFromModel(IndividualModel model)
+	{}
 	
 	// Update is called once per frame
 	void Update ()
