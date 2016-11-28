@@ -261,25 +261,65 @@ public class IndividualModel
 {
   // A creature in a simulation
 
-  Vector2 SimCoords; 
-  CreatureMorphologyModel Morphology;
-  int HP;
-  Range<float> Temperature;
-  Range<float> Ph;
+  public int  ID;
+  public Vector2 SimCoords; 
+  public CreatureMorphologyModel Morphology;
+  public int HP;
+  public Range<float> Temperature;
+  public Range<float> Ph;
   // TODO: Neural Network Representation (?)
 }
 
 //
+[Serializable]
+public enum ActionDirection
+{
+    HORIZONTAL,
+    VERTIAL,
+    ROTATION
+}
+[Serializable]
+public class CollisionModel
+{
+    public int ID_1;
+    public int ID_2;
+}
+[Serializable]
+public class PhysicsAction
+{
+    public ActionDirection Direction;
+    public float Impulse;
+}
+[Serializable]
+public class PhysicsStep
+{
+    public int Orientation;
+    public Vector2 Position;
+    public List<CollisionModel> Collisions;
+    public PhysicsAction LastAction;
+}
+[Serializable]
+public class ControlStep
+{
+    public List<float> Inputs;
+    public List<float> Outputs;
+    public List<float> Hidden;
+}
+[Serializable]
+public class IndividualStep
+{
+    public int ID;
+    public PhysicsStep Physics;
+    public ControlStep Control;
+}
+[Serializable]
+public class SpeciesStep
+{
+    public String Name; 
+    public List<IndividualStep> Individuals;
+}
+[Serializable]
 public class SimulationStep
 {
-
-}
-
-
-//
-// DESIGN NOTE: The server sends down actions (i.e. MOVE HORIZONTALLY, ROTATE CCW, EAT), client side
-// we should transform those actions into some sort of event stream so actuators can animate / react
-public class SimulationAction
-{
-
+    public List<SpeciesStep> Species;
 }
