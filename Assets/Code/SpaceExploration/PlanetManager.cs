@@ -6,9 +6,13 @@ using System.Collections.Generic;
 public class PlanetManager : MonoBehaviour
 {
     public SpaceExPlanetRenderer SpaceExRendererPrototype;
-    public OrbitalApproachRenderer OrbitalApproachRendererPrototype;
     public RadarRenderer RadarRendererPrototype;
     public StarmapRenderer StarmapRendererPrototype;
+    public OrbitalApproachRenderer OrbitalApproachRendererPrototype;
+
+    // Non-prototype
+    public InOrbitRenderer InOrbitRenderer; 
+		
     
     public SpaceMovementTracker MovementTracker;
     public Camera OrbitalCamera;
@@ -20,6 +24,9 @@ public class PlanetManager : MonoBehaviour
     bool DoWarp = false;
     Vector2 WarpDest = Vector2.zero;
 
+//TODO: Planets should have a few Events in them (GotInRadarDistance, GotInOrbitDistance, ...) and 
+// other systems should subscribe (or event the PlanetManager itself) that makes some renderers way
+// easier to write and avoid having several of them in the scene
     void Awake()
     {
         Connection.OnMessageEvent += (message) => OnServerMessage(message);
@@ -62,9 +69,20 @@ public class PlanetManager : MonoBehaviour
     {
         //    TODO: This should be using Time.deltaTime instead of raw values as frame rate fucks up the pacing entirely
         transform.localEulerAngles = new Vector3(0.0f, -1*MovementTracker.Heading, 0.0f);
+        bool inOrbit = false;
         foreach (Planet planet in Planets)
         {
             planet.UpdateSpaceshipPosition(MovementTracker.CurrentPosition, MovementTracker.Forward);
+            if (planet.InOrbitRange())
+            {
+                InOrbitRenderer.RenderUpdate(planet);
+                inOrbit = true;
+            }
+        }
+        if (!inOrbit)
+        {
+            InOrbitRenderer.gameObject.SetActive(false);
+            InOrbitRenderer.Visible = false;
         }
         LastKnownPos = MovementTracker.CurrentPosition;
 
@@ -124,6 +142,7 @@ public class PlanetManager : MonoBehaviour
         {
             if(p.SpacePosition == inPos)
             {
+                Debug.Log("Planet found");
                 return p;
             }
         }

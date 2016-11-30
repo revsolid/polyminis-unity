@@ -1,19 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlanetCloseupRenderer : MonoBehaviour, IPlanetRenderer
+public class PlanetCloseupRenderer : SpaceExPlanetRenderer, IPlanetRenderer
 {
-    bool Visible = true;
-    public float DistanceToSpaceship = 0.0f;
     public float rotationSpeed; //Degrees per frame
     // Use this for initialization
     void Start ()
     { 
     }
     
-    public void RenderUpdate(Planet model)
+    public override void RenderUpdate(Planet model)
     {
-        DistanceToSpaceship = model.DistanceToSpaceship;
+        if (Model != model)
+        {
+            // We got a new model, either we're being initialized or we implemented pooling
+            Model = model;
+            Texture2D EnvTexture = PrepareTexture(model);
+            GetComponent<Renderer>().material.SetTexture("_EnvTexture", EnvTexture);
+        }
     }
     
     void Update()

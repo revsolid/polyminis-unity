@@ -54,8 +54,8 @@ public class SpeciesDesignUI : MonoBehaviour
 			sbutton.transform.SetParent(LargeSplices.transform);
 				break;
 		}
-    	sbutton.transform.localPosition = Vector3.zero;
-    	sbutton.transform.localScale = Vector3.one;
+    //	sbutton.transform.localPosition = Vector3.zero;
+    //	sbutton.transform.localScale = Vector3.one;
     	sbutton.transform.SetAsFirstSibling();
 	}
 	

@@ -41,6 +41,12 @@ public class SpaceMovementTracker : MonoBehaviour
         float rDamp = Mathf.Max(RotationSpeedMult, 0.07f);
 
         // Rotate the Hud a bit.
+        
+        if (horImpulse != 0.0f && verImpulse == 0.0f) 
+        {
+            verImpulse = 0.3f;
+        }
+
         HUD.transform.eulerAngles = new Vector3(0.0f, 0.0f, -1*horImpulse);
         
         Heading += (16.0f*rDamp*horImpulse);

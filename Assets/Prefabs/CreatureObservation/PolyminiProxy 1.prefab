@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OrganellePrototype: {fileID: 114000014235637136, guid: 953e6fb29d1bd4597a9b17bf7df05d76,
     type: 2}
-  NucleusPrototype: {fileID: 114000011755627644, guid: a5bc26f56f8654db3922328929230cd2,
+  NucleusPrototype: {fileID: 114000011452973338, guid: c21c3345e809fcc40817faafed7ff89a,
     type: 2}
   Mover: {fileID: 114000010427070398}
 --- !u!114 &114000010427070398
