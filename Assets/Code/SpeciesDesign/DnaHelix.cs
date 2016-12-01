@@ -47,7 +47,7 @@ public class DnaHelix : MonoBehaviour
         }    
         renderer.Model = splice;
         renderer.transform.localPosition = Vector3.zero;
-        renderer.transform.localScale = new Vector3(1.0f, 0.5f, 1.0f);
+        renderer.transform.localScale = Vector3.one;
         renderer.transform.SetAsLastSibling();
     }
     

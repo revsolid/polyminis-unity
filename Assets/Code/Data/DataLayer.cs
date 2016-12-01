@@ -6,7 +6,7 @@
 // Current Step JSON blob with minimal serialization from server
 {
     "species":
-    [{
+   [{
         "name":"Species 1",
         "population":
         [{
@@ -57,7 +57,27 @@ public class Range<T> where T: IComparable
 
     public bool Within(T value)
     {
-        return (Min.CompareTo(value) != 1 && Max.CompareTo(value) != -1);
+        return (Min.CompareTo(value) != -1 && Max.CompareTo(value) != 1);
+    }
+    
+    public float Average()
+    {
+        float result = 0.0f;
+        float? min = Min as float?;
+        if(min != null) 
+        {
+            result += min.Value;
+        }
+        float? max = Max as float?;
+        if(max != null) 
+        {
+            result += max.Value;
+        }
+        if (max != null && min != null)
+        {
+            result /= 2.0f;
+        }
+        return result; 
     }
 }
 
@@ -76,7 +96,7 @@ public class PlanetModel
     {
         Name = "Some Planet";
         SpaceCoords = new Vector2(100,0);
-        Temperature = new Range<float>(300, 400);
+        Temperature = new Range<float>(0.0f, 1.0f);
         Ph = new Range<float>(1.3f, 4.2f);
     }
 }
@@ -177,10 +197,10 @@ public enum TraitSize
 [Serializable]
 public enum Instinct
 {
+    NOMADIC = 0,
     HOARDING,
-    NOMADIC,
-    HERDING,
-    PREDATORY
+    PREDATORY,
+    HERDING
 }
 
 //
@@ -256,15 +276,25 @@ public class CreatureMorphologyModel
   IDictionary<Vector2, OrganelleModel> CreatureMap; 
 }
 
+
 //
+[Serializable]
+public class IndividualPhysics
+{
+  public Vector2 StartingPos; 
+  public Vector2 Dimensions; 
+}
+
+//
+[Serializable]
 public class IndividualModel
 {
   // A creature in a simulation
 
   public int  ID;
-  public Vector2 SimCoords; 
   public CreatureMorphologyModel Morphology;
   public int HP;
+  public IndividualPhysics Physics;
   public Range<float> Temperature;
   public Range<float> Ph;
   // TODO: Neural Network Representation (?)

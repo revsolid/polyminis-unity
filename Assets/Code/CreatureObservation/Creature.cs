@@ -50,7 +50,9 @@ public class Creature : MonoBehaviour
 	}
 	
 	public void SetDataFromModel(IndividualModel model)
-	{}
+	{
+		Mover.SetDataFromModel(model);
+	}
 	
 	// Update is called once per frame
 	void Update ()

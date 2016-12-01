@@ -5,12 +5,14 @@ using System.Collections;
 public class RadarRenderer : MonoBehaviour, IPlanetRenderer
 {
     bool Visible = false;
+    float StartingY;
     public float DistanceToSpaceship = 0.0f;
     public Text DistanceText;
 
     // Use this for initialization
     void Start ()
     {
+        StartingY = gameObject.transform.position.y;
         gameObject.SetActive(false);
     }
     
@@ -31,8 +33,8 @@ public class RadarRenderer : MonoBehaviour, IPlanetRenderer
             gameObject.SetActive(false);
             return;
         }
-        
-        gameObject.transform.position = new Vector3(model.RelativeAngle / 5.0f, gameObject.transform.position.y, gameObject.transform.position.z);
+        //+ Mathf.Abs(model.RelativeAngle) / 100.0f 
+        gameObject.transform.position = new Vector3(model.RelativeAngle / 5.0f, StartingY, gameObject.transform.position.z);
         DistanceText.text = DistanceToSpaceship.ToString();
     }
 }

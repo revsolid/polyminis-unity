@@ -193,7 +193,7 @@ public class CreatureMover : MonoBehaviour
     
 	public static Vector3 SimulationPositionToScenePosition(Vector2 simPos)
 	{
-		return new Vector3(simPos.x * SQUARE_SIZE - TOTAL_SIZE, 0, simPos.y + SQUARE_SIZE - TOTAL_SIZE );
+		return new Vector3(simPos.x * SQUARE_SIZE - TOTAL_SIZE, 0, simPos.y * SQUARE_SIZE - TOTAL_SIZE );
 	}
 	
 	public static Quaternion SimulationRotationToSceneRotation(int orientation)
@@ -216,6 +216,12 @@ public class CreatureMover : MonoBehaviour
 			break;
 		}	
 		return ReturnRotation;
+	}
+	
+	public void SetDataFromModel(IndividualModel model)
+	{
+		InitialPosition = model.Physics.StartingPos;
+        gameObject.transform.localPosition = SimulationPositionToScenePosition(InitialPosition);
 	}
 	
 	public void AddStep(PhysicsStep step)
@@ -242,7 +248,7 @@ public class CreatureMover : MonoBehaviour
 		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 15.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
 		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 16.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
 		*/
-        gameObject.transform.Translate(SimulationPositionToScenePosition(InitialPosition));
+        gameObject.transform.localPosition = SimulationPositionToScenePosition(InitialPosition);
     }
     
     // Update is called once per frame
@@ -258,8 +264,6 @@ public class CreatureMover : MonoBehaviour
             }
             else
             {
-				// TODO: TEMP Implementation
-				ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 17.0, \"y\": 10.0},\"Collisions\":[{\"ID_1\":20,\"ID_2\":6}],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
 				return;
             }
         }

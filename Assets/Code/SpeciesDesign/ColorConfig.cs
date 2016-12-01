@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ColorConfig : MonoBehaviour
 {
@@ -7,6 +9,8 @@ public class ColorConfig : MonoBehaviour
 	public Color HoardingColor;
 	public Color PredatoryColor;
 	public Color HerdingColor;
+	
+	public List<Sprite> Emblems;
 
 	// Use this for initialization
 	void Start ()
@@ -39,5 +43,10 @@ public class ColorConfig : MonoBehaviour
 				return NomadicColor;
 		}
 		return Color.black;
+	}
+	
+	public Sprite GetSpriteFor(Instinct i)
+	{
+		return Emblems[(int)i];
 	}
 }
