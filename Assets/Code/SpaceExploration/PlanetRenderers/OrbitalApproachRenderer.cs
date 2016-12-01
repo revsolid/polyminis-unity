@@ -2,10 +2,8 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class OrbitalApproachRenderer : MonoBehaviour, IPlanetRenderer
+public class OrbitalApproachRenderer :  SpaceExPlanetRenderer
 {
-    bool Visible = false;
-    public float DistanceToSpaceship = 0.0f;
     Camera TargetCamera;
     Planet Model = null;
     // Use this for initialization
@@ -17,9 +15,14 @@ public class OrbitalApproachRenderer : MonoBehaviour, IPlanetRenderer
         gameObject.SetActive(Visible);
     }
     
-    public void RenderUpdate(Planet model)
+    public override void RenderUpdate(Planet model)
     {
-        if(Model == null) Model = model;
+        if(Model == null)
+        {
+            Model = model;
+            Texture2D EnvTexture = PrepareTexture(model);
+            GetComponentInChildren<Renderer>().material.SetTexture("_EnvTexture", EnvTexture);
+        }
         DistanceToSpaceship = model.DistanceToSpaceship;
         if (DistanceToSpaceship < 30)
         {

@@ -88,16 +88,7 @@ public class SpaceMovementTracker : MonoBehaviour
                 Debug.Log("Warp to <" + spaceExEvent.Position.x.ToString() + ", " + spaceExEvent.Position.y.ToString() + ">");
                 Warp(spaceExEvent.Position);
                 break;
-
-              
             }
         }
     }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 200, 20), "Fowrward: " + Forward.ToString());
-        GUI.Label(new Rect(10, 30, 200, 20), "Coord:    " + CurrentPosition.ToString());
-    }
-
 }

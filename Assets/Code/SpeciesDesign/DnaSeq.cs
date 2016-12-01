@@ -12,9 +12,9 @@ public class DnaSeq : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		foreach(KeyValuePair<int, OrganelleModel> entry in Almanac.Instance.OrganelleData)
+		foreach(KeyValuePair<int, TraitModel> entry in Almanac.Instance.TraitData)
 		{
-			AddOrganelleData(entry.Value);
+			AddTraitData(entry.Value);
 		}
 	}
 	
@@ -24,7 +24,7 @@ public class DnaSeq : MonoBehaviour
 	}
 
 
-	void AddOrganelleData(OrganelleModel model)
+	void AddTraitData(TraitModel model)
 	{
 		DnaSeqRenderer dnaSeqRenderer = GameObject.Instantiate<DnaSeqRenderer>(DnaSeqRendererPrototype);
 		dnaSeqRenderer.Model = model;
@@ -32,7 +32,7 @@ public class DnaSeq : MonoBehaviour
 		dnaSeqRenderer.transform.SetParent(Layout.transform);
 		dnaSeqRenderer.transform.SetAsLastSibling();
 
-		Renderers[model.OrganelleId] = dnaSeqRenderer;
+		Renderers[model.TID] = dnaSeqRenderer;
 	}
 
 	public void ActivateSelection(SpeciesModel model)
@@ -46,7 +46,13 @@ public class DnaSeq : MonoBehaviour
 		{
 			for(int i =0; i < sm.Traits.Length; ++i)
 			{
-				Renderers[sm.Traits[i]].Active = true;
+				int j = sm.Traits[i];
+				DnaSeqRenderer r = null;
+				Renderers.TryGetValue(j, out r);
+				if (r != null)
+				{
+					r.Active = true;
+				}
 			}
 		}
 	}

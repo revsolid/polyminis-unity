@@ -249,31 +249,29 @@ public enum TraitTier
 }
 
 //
+
 [Serializable]
-public class OrganelleModel
+public class TraitModel
 {
-	public int OrganelleId
-    {
-        get { return TID; }
-        private set { TID = value; }
-    }
     public int TID;
     public string TraitTier;
     TraitTier Tier;
+}
 
-    public OrganelleModel(int id)
-    {
-        OrganelleId = id;
-    }
+
+[Serializable]
+public class OrganelleModel
+{
+    public TraitModel Trait;
+    public Vector2 Coord;
 }
 
 //
+[Serializable]
 public class CreatureMorphologyModel
 {
   // Morphology of the creature, how to build the 3D representation of this species 
-
-  Vector2 Dimensions;
-  IDictionary<Vector2, OrganelleModel> CreatureMap; 
+    public List<OrganelleModel> Body; 
 }
 
 
@@ -340,16 +338,32 @@ public class IndividualStep
 {
     public int ID;
     public PhysicsStep Physics;
-    public ControlStep Control;
+//    public ControlStep Control;
+}
+[Serializable]
+public class SimulationStartup
+{
+    public List<SpeciesStartup> Species;
+}
+[Serializable]
+public class SpeciesStartup
+{
+    public string Name;
+    public List<IndividualModel> Individuals;
 }
 [Serializable]
 public class SpeciesStep
 {
-    public String Name; 
+    public string Name; 
     public List<IndividualStep> Individuals;
 }
 [Serializable]
 public class SimulationStep
 {
     public List<SpeciesStep> Species;
+}
+[Serializable]
+public class Simulation
+{
+    public List<SimulationStep> Steps;
 }

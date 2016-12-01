@@ -7,7 +7,7 @@ public class OrbitalUI : MonoBehaviour
 {
 	public Camera SpaceflightCamera;
 	public Camera OrbitalCamera;
-	public GameObject SpeciesEditor;
+	public SpeciesDesignUI SpeciesEditor;
     public GameObject PlanetRenderer;
     public Slider PhSlider;
     public Slider TempSlider;
@@ -37,17 +37,15 @@ public class OrbitalUI : MonoBehaviour
         SpaceflightCamera.enabled = true;
 	}
 	
-	public void OnEditCreatureClicked()
+	public void OnEditCreatureClicked(string speciesname)
 	{
-		SpeciesEditor.SetActive(true);
+		SpeciesEditor.OpenWithSpecies(speciesname);
 	}
 
     public void OnUIOpened(Planet p)
     {
-        Debug.Log("XXXXX");
-        Debug.Log(p);
-        PhSlider.value = p.PH.Max;
-        TempSlider.value = p.Temperature.Max;
+        PhSlider.value = p.PH.Average() * 100;
+        TempSlider.value = p.Temperature.Average() * 100;
         PlanetName.text = p.PlanetName;
         PlanetRenderer.GetComponent<PlanetCloseupRenderer>().RenderUpdate(p);
 
@@ -57,7 +55,6 @@ public class OrbitalUI : MonoBehaviour
 
     public void OnSpeciesCatalogClicked()
     {
-        Debug.Log("clicked");
         bool toggleOn = !SpeciesCatalog.gameObject.activeInHierarchy;
         SpeciesCatalog.gameObject.SetActive(toggleOn);
         
