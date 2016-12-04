@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DnaHelix : MonoBehaviour
 {
@@ -26,6 +27,19 @@ public class DnaHelix : MonoBehaviour
     
     }
     
+    public void Reset()
+    {
+        ResetLayoutGroup(SmallSplices);
+        ResetLayoutGroup(MedSplices);
+        ResetLayoutGroup(LargeSplices);
+    }
+    void ResetLayoutGroup(LayoutGroup lg)
+    {
+        var children = new List<GameObject>();
+        foreach (Transform child in lg.transform) children.Add(child.gameObject);
+        children.ForEach(child => Destroy(child));
+    }
+    
     public void AddSelectedSplice(SpliceModel splice)
     {
 		SpliceDnaHelixRenderer renderer;
@@ -47,7 +61,7 @@ public class DnaHelix : MonoBehaviour
         }    
         renderer.Model = splice;
         renderer.transform.localPosition = Vector3.zero;
-        renderer.transform.localScale = new Vector3(1.0f, 0.5f, 1.0f);
+        renderer.transform.localScale = Vector3.one;
         renderer.transform.SetAsLastSibling();
     }
     

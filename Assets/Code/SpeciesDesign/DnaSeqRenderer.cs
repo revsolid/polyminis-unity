@@ -5,7 +5,7 @@ using System.Collections;
 
 public class DnaSeqRenderer : MonoBehaviour
 {
-	public OrganelleModel Model;
+	public TraitModel Model;
     public bool Active = false;
     bool WasActive = false;
     public Image ColorImg;
@@ -20,10 +20,7 @@ public class DnaSeqRenderer : MonoBehaviour
     {
         if (Model != null)
         {
-            MyColor = new Color(0.0f, Model.OrganelleId / 15.0f + 0.1f, 0.0f);
-            Debug.Log("********");
-            Debug.Log(MyColor);
-            Debug.Log(Model.OrganelleId);
+            MyColor = new Color(0.0f, Model.TID / 15.0f + 0.1f, 0.0f);
         }
         else
         {

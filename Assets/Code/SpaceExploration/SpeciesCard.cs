@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpeciesCard : MonoBehaviour {
+public class SpeciesCard : MonoBehaviour
+{
 
     GameObject OrbitalUI;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         OrbitalUI = GameObject.FindGameObjectWithTag("OrbitalUI");
 	}
 
     public void OnClicked()
     {
-        OrbitalUI.GetComponent<OrbitalUI>().OnEditCreatureClicked();
+        OrbitalUI.GetComponent<OrbitalUI>().OnEditCreatureClicked("Cool dudes");
     }
 }

@@ -10,6 +10,7 @@ public class SpliceDnaHelixRenderer : MonoBehaviour
     
     public Text NameField;
     public Image Background;
+    public Image Emblem;
     
     public SpliceModel Model;
     
@@ -26,6 +27,7 @@ public class SpliceDnaHelixRenderer : MonoBehaviour
             NameField.text = Model.Name;
             ready = true;
             Background.color = SpeciesDesignUI.SColorConfig.GetColorFor(Model.EInstinct);
+            Emblem.sprite = SpeciesDesignUI.SColorConfig.GetSpriteFor(Model.EInstinct);
         }
     }
 

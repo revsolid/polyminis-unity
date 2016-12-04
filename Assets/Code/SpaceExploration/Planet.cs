@@ -54,4 +54,14 @@ public class Planet
         }
         PreviousSpaceshipPosition = newPosition;
     }
+    
+    public bool InOrbitRange()
+    {
+        return DistanceToSpaceship < 30;
+    }
+    
+    public bool Reached()
+    {
+        return DistanceToSpaceship < 0.005;
+    }
 }

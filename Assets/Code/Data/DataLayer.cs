@@ -6,7 +6,7 @@
 // Current Step JSON blob with minimal serialization from server
 {
     "species":
-    [{
+   [{
         "name":"Species 1",
         "population":
         [{
@@ -57,7 +57,27 @@ public class Range<T> where T: IComparable
 
     public bool Within(T value)
     {
-        return (Min.CompareTo(value) != 1 && Max.CompareTo(value) != -1);
+        return (Min.CompareTo(value) != -1 && Max.CompareTo(value) != 1);
+    }
+    
+    public float Average()
+    {
+        float result = 0.0f;
+        float? min = Min as float?;
+        if(min != null) 
+        {
+            result += min.Value;
+        }
+        float? max = Max as float?;
+        if(max != null) 
+        {
+            result += max.Value;
+        }
+        if (max != null && min != null)
+        {
+            result /= 2.0f;
+        }
+        return result; 
     }
 }
 
@@ -76,7 +96,7 @@ public class PlanetModel
     {
         Name = "Some Planet";
         SpaceCoords = new Vector2(100,0);
-        Temperature = new Range<float>(300, 400);
+        Temperature = new Range<float>(0.0f, 1.0f);
         Ph = new Range<float>(1.3f, 4.2f);
     }
 }
@@ -177,10 +197,10 @@ public enum TraitSize
 [Serializable]
 public enum Instinct
 {
+    NOMADIC = 0,
     HOARDING,
-    NOMADIC,
-    HERDING,
-    PREDATORY
+    PREDATORY,
+    HERDING
 }
 
 //
@@ -229,42 +249,50 @@ public enum TraitTier
 }
 
 //
+
 [Serializable]
-public class OrganelleModel
+public class TraitModel
 {
-	public int OrganelleId
-    {
-        get { return TID; }
-        private set { TID = value; }
-    }
     public int TID;
     public string TraitTier;
     TraitTier Tier;
+}
 
-    public OrganelleModel(int id)
-    {
-        OrganelleId = id;
-    }
+
+[Serializable]
+public class OrganelleModel
+{
+    public TraitModel Trait;
+    public Vector2 Coord;
 }
 
 //
+[Serializable]
 public class CreatureMorphologyModel
 {
   // Morphology of the creature, how to build the 3D representation of this species 
+    public List<OrganelleModel> Body; 
+}
 
-  Vector2 Dimensions;
-  IDictionary<Vector2, OrganelleModel> CreatureMap; 
+
+//
+[Serializable]
+public class IndividualPhysics
+{
+  public Vector2 StartingPos; 
+  public Vector2 Dimensions; 
 }
 
 //
+[Serializable]
 public class IndividualModel
 {
   // A creature in a simulation
 
   public int  ID;
-  public Vector2 SimCoords; 
   public CreatureMorphologyModel Morphology;
   public int HP;
+  public IndividualPhysics Physics;
   public Range<float> Temperature;
   public Range<float> Ph;
   // TODO: Neural Network Representation (?)
@@ -310,16 +338,34 @@ public class IndividualStep
 {
     public int ID;
     public PhysicsStep Physics;
-    public ControlStep Control;
+//    public ControlStep Control;
+}
+public class SimulationEnvironment{}
+[Serializable]
+public class SimulationStartup
+{
+    public List<SpeciesStartup> Species;
+    public SimulationEnvironment Environment;
+}
+[Serializable]
+public class SpeciesStartup
+{
+    public string Name;
+    public List<IndividualModel> Individuals;
 }
 [Serializable]
 public class SpeciesStep
 {
-    public String Name; 
+    public string Name; 
     public List<IndividualStep> Individuals;
 }
 [Serializable]
 public class SimulationStep
 {
     public List<SpeciesStep> Species;
+}
+[Serializable]
+public class Simulation
+{
+    public List<SimulationStep> Steps;
 }

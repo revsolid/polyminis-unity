@@ -8,7 +8,7 @@ public class StaticObject : MonoBehaviour
 	void Start ()
 	{
 		Vector3 newScale = transform.localScale;
-		newScale.y = Height;
+		newScale.y = Height + Random.value * 5;
 		transform.localScale = newScale;
 	}
 	

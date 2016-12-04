@@ -15,7 +15,7 @@ public static string TRAITS = "{ \"version\": \"tutorial_1\", \"available_traits
 class Traits
 {
 	public string version;
-	public OrganelleModel[] available_traits;
+	public TraitModel[] available_traits;
 }
 
 class Splices
@@ -32,7 +32,7 @@ public class Almanac : Singleton<Almanac>
 	// internalname => SpliceModel
 	public IDictionary<string, SpliceModel> AvailableSplices;
 	// organelleId => OrganelleModel
-	public IDictionary<int, OrganelleModel> OrganelleData;
+	public IDictionary<int, TraitModel> TraitData;
 
     // Protected Constructor for Singleton
 	protected Almanac() {}
@@ -46,12 +46,12 @@ public class Almanac : Singleton<Almanac>
 		Splices spcs = JsonUtility.FromJson<Splices>(STATIC_JSON.SPLICES);
 		Debug.Log(spcs.available_splices);
 
-		OrganelleData = new Dictionary<int, OrganelleModel>();
+		TraitData = new Dictionary<int, TraitModel>();
 		for (var i = 0; i < tts.available_traits.Length; i++)
 		{
-			OrganelleModel model = tts.available_traits[i];
-			Debug.Log(model.OrganelleId);
-			OrganelleData[model.OrganelleId] = model;
+			TraitModel model = tts.available_traits[i];
+			Debug.Log(model.TID);
+			TraitData[model.TID] = model;
 		}
 		
 		AvailableSplices = new Dictionary<string, SpliceModel>();

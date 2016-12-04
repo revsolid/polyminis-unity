@@ -42,7 +42,6 @@ class MovementFactory
 		if (type == MovementType.TRANSLATE)
 		{
 			tPos = CreatureMover.SimulationPositionToScenePosition(step.Position);
-			Debug.Log(tPos);
 		}
 		
 		if (type == MovementType.ROTATE)
@@ -67,7 +66,7 @@ class CreatureMovementAction
     public MovementDirection MovDir;
     protected float TimeStarted;
 	protected float Speed;
-	protected Vector3 InitialPosition;
+	public Vector3 InitialPosition;
     protected Vector3 TargetPosition;
     protected Quaternion TargetRotation;
     
@@ -103,9 +102,8 @@ class CreatureMovementAction
             case MovementType.TRANSLATE:
                 Vector3 azimuth = mover.gameObject.transform.position - TargetPosition; 
                 
-                if (azimuth.sqrMagnitude < 0.001)
+                if (azimuth.sqrMagnitude < 0.05)
                 {
-                    mover.gameObject.transform.position = TargetPosition;
                     return true;
                 }
                 else
@@ -134,45 +132,25 @@ class CreatureMovementAction
 
 class CollisionAction: CreatureMovementAction
 {
-    int ShakeTimes;
-    Vector3 ShakeTargetPosition;
-    Quaternion ShakeTargetRotation;
 	
+    float WaitTime = 1.5f;
     public CollisionAction(MovementType mType, MovementDirection mDir) : base(mType, mDir)
     {
-		Debug.Log("WOOOPA!");
     }
 	public CollisionAction(MovementType mType, Vector3 tPos, Quaternion tRot ) : base(mType, tPos, tRot)
 	{
-		Debug.Log("WEEPA!");
 	}
 
     public override void StartOn(CreatureMover mover)
     {
         base.StartOn(mover);
-		ShakeTimes = 4;
-        ShakeTargetPosition =  InitialPosition + ( (InitialPosition - TargetPosition) / 10.0f);
-		TargetPosition = ShakeTargetPosition;
-		Speed /= 2;
     }
     
     public override bool ApplyTo(CreatureMover mover)
     {
-		if (base.ApplyTo(mover))
-		{
-			if (ShakeTimes == 0)
-				return true;
-				
-			ShakeTimes -= 1;
-			TargetPosition = ShakeTimes % 2 == 0  ? InitialPosition : ShakeTargetPosition;
-			Debug.Log("XXXXXXXXXXXX");
-			Debug.Log(TargetPosition);
-			Debug.Log(ShakeTargetPosition);
-			Debug.Log(InitialPosition);
-			Debug.Log("XXXXXXXXXXXX");
-            TimeStarted = Time.time;
-		}
-		return false;
+        return true;
+     /*   WaitTime -= Time.deltaTime;
+		return WaitTime < 0.0f; */
     }
 
 }
@@ -193,7 +171,7 @@ public class CreatureMover : MonoBehaviour
     
 	public static Vector3 SimulationPositionToScenePosition(Vector2 simPos)
 	{
-		return new Vector3(simPos.x * SQUARE_SIZE - TOTAL_SIZE, 0, simPos.y + SQUARE_SIZE - TOTAL_SIZE );
+		return new Vector3(simPos.x * SQUARE_SIZE - TOTAL_SIZE, 0, simPos.y * SQUARE_SIZE - TOTAL_SIZE );
 	}
 	
 	public static Quaternion SimulationRotationToSceneRotation(int orientation)
@@ -217,6 +195,17 @@ public class CreatureMover : MonoBehaviour
 		}	
 		return ReturnRotation;
 	}
+	
+	public void SetDataFromModel(IndividualModel model)
+	{
+        SetInitialPosition(model.Physics.StartingPos);
+	}
+    
+    public void SetInitialPosition(Vector2 v)
+    {
+        InitialPosition = v;
+        gameObject.transform.localPosition = SimulationPositionToScenePosition(InitialPosition);
+    }
 	
 	public void AddStep(PhysicsStep step)
 	{
@@ -242,7 +231,7 @@ public class CreatureMover : MonoBehaviour
 		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 15.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
 		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 16.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
 		*/
-        gameObject.transform.Translate(SimulationPositionToScenePosition(InitialPosition));
+//        gameObject.transform.localPosition = SimulationPositionToScenePosition(InitialPosition);
     }
     
     // Update is called once per frame
@@ -258,15 +247,24 @@ public class CreatureMover : MonoBehaviour
             }
             else
             {
-				// TODO: TEMP Implementation
-				ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 17.0, \"y\": 10.0},\"Collisions\":[{\"ID_1\":20,\"ID_2\":6}],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
 				return;
             }
         }
-        
-        if (CurrentAction.ApplyTo(this))
+        else
         {
-            CurrentAction = null;    
+            if (CurrentAction.ApplyTo(this))
+            {
+                CurrentAction = null;    
+            }
         }
+    }
+    
+    public int GetRemainingSteps()
+    {
+        if (ActionStream == null)
+        {
+            return 0;
+        }
+        return ActionStream.Count;
     }
 }
