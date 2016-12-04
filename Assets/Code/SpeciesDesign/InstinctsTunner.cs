@@ -65,7 +65,7 @@ public class InstinctsTunner : MonoBehaviour
         while(LayoutMap[i].transform.childCount > Levels[i])
         {
             GameObject toDestroy = LayoutMap[i].transform.GetChild(0).gameObject;
-            toDestroy.transform.parent = null;
+            toDestroy.transform.SetParent(null);
             Destroy(toDestroy);
         }
 
@@ -76,7 +76,7 @@ public class InstinctsTunner : MonoBehaviour
 
             Image img = marker.GetComponentInChildren<Image>();
             img.color = 2 * color * Levels[i] / MaxLevel;
-            marker.transform.parent = LayoutMap[i].transform;
+            marker.transform.SetParent(LayoutMap[i].transform);
             marker.transform.localPosition = Vector3.zero;
             marker.transform.localScale = Vector3.one;
             marker.transform.SetAsLastSibling();
