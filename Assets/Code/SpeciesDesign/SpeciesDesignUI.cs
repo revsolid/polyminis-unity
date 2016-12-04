@@ -209,15 +209,15 @@ public class SpeciesDesignUI : MonoBehaviour
             }
             else
             {
-                CurrentSelection = m;
 
                 // wipe it clean!
                 ResetWindow();
 
-                // set name field
-                NameInput.text = name;
+                // set current selection
+                CurrentSelection = new SpeciesModel();
 
-                // and then "click" the responding splices new stuff
+
+                // and then "click" the responding splices
                 foreach (SpliceModel sm in m.Splices)
                 {
                     for (int i = 0; i < SmallSplices.transform.childCount; i++)
@@ -242,6 +242,10 @@ public class SpeciesDesignUI : MonoBehaviour
                         }
                     }
                 }
+                CurrentSelection = m;
+
+                // set name field
+                NameInput.text = CurrentSelection.Name;
             }
             gameObject.SetActive(true);
         }
