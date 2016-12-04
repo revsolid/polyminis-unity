@@ -220,7 +220,6 @@ public class SpeciesDesignUI : MonoBehaviour
     public void OpenWithSpecies(string name)
 	{
 		SpeciesModel m = Session.Instance.Species[name];
-        gameObject.SetActive(true);
 
         if (m != null)
         {
