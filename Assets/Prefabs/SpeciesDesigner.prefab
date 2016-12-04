@@ -686,6 +686,7 @@ MonoBehaviour:
   DnaSequencer: {fileID: 114000011950501308}
   InstinctsTunner: {fileID: 114000013910282362}
   ColorConfig: {fileID: 114000011321374872}
+  NameInput: {fileID: 114000011487503444}
 --- !u!114 &114000010785817056
 MonoBehaviour:
   m_ObjectHideFlags: 1

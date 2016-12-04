@@ -14,6 +14,7 @@ public class SpeciesDesignUI : MonoBehaviour
 	public DnaSeq DnaSequencer;
 	public InstinctsTunner InstinctsTunner;
 	public ColorConfig ColorConfig;
+    public InputField NameInput;
 	public static ColorConfig SColorConfig;
 
 	SpeciesModel CurrentSelection;
@@ -21,10 +22,11 @@ public class SpeciesDesignUI : MonoBehaviour
 	// Use this for initialization
 	void Start()	
 	{
-		Reset();
+        Initialize();
 	}
 
-	void Reset()
+    // Previously named Reset but I think Initialize fits the purpose better
+    void Initialize() 
 	{
 		gameObject.SetActive(false);
 		Helix.Reset();
@@ -43,8 +45,40 @@ public class SpeciesDesignUI : MonoBehaviour
 		InstinctsTunner.Ready();
 		CurrentSelection = new SpeciesModel();
 	}
-	
-	void ResetLayoutGroup(LayoutGroup lg)
+
+    //Clear contents and give you a window that looks new
+    void ResetWindow()
+    {
+
+
+        // "click" all splices inside the helix
+        while (Helix.SmallSplices.transform.childCount > 0)
+        {
+            Transform child = Helix.SmallSplices.transform.GetChild(0);
+            child.transform.parent = null;
+            Helix.ClickSpliceRenderer(child.gameObject.GetComponent<SpliceDnaHelixRenderer>());
+        }
+        while (Helix.MedSplices.transform.childCount > 0)
+        {
+            Transform child = Helix.MedSplices.transform.GetChild(0);
+            child.transform.parent = null;
+            Helix.ClickSpliceRenderer(child.gameObject.GetComponent<SpliceDnaHelixRenderer>());
+        }
+        while (Helix.LargeSplices.transform.childCount > 0)
+        {
+            Transform child = Helix.LargeSplices.transform.GetChild(0);
+            child.transform.parent = null;
+            Helix.ClickSpliceRenderer(child.gameObject.GetComponent<SpliceDnaHelixRenderer>());
+        }
+
+        // If CurrenSelection is null then it obviously is already new
+        CurrentSelection = new SpeciesModel();
+        DnaSequencer.ActivateSelection(CurrentSelection);
+
+
+    }
+
+    void ResetLayoutGroup(LayoutGroup lg)
     {
         var children = new List<GameObject>();
         foreach (Transform child in lg.transform) children.Add(child.gameObject);
@@ -54,10 +88,16 @@ public class SpeciesDesignUI : MonoBehaviour
 	// Update is called once per frame
 	void Update() {}
 
+    // so that buttons have different names
+    string SpliceButtonName(SpliceModel model)
+    {
+        return "SpliceButtonRenderer-" + model.InternalName;
+    }
 
 	void AddSplice(SpliceModel model)
 	{
   		SpliceButton sbutton = GameObject.Instantiate(SpliceButtonRendererPrototype);
+        sbutton.gameObject.name = SpliceButtonName(model);
 		sbutton.Model = model;
 		switch (model.TraitSize)
 		{
@@ -95,12 +135,17 @@ public class SpeciesDesignUI : MonoBehaviour
 
 	void OnSpliceButtonClicked(SpliceButton button)
 	{
-		Debug.Log(button.Model.Name);
-		if (SelectSplice(button.Model))
-			Destroy(button.gameObject);
-	}
-	
-	bool SelectSplice(SpliceModel model)
+        ClickSpliceButton(button);
+    }
+
+    void ClickSpliceButton(SpliceButton button)
+    {
+        Debug.Log(button.Model.Name);
+        if (SelectSplice(button.Model))
+            Destroy(button.gameObject);
+    }
+
+    bool SelectSplice(SpliceModel model)
 	{
 		if (ValidateSelection(model))
 		{
@@ -131,7 +176,8 @@ public class SpeciesDesignUI : MonoBehaviour
 		// Validate
 		
 		SpeciesModel newModel = new SpeciesModel();
-		newModel.Name = CurrentSelection.Name;
+        CurrentSelection.Name = NameInput.text;
+        newModel.Name = CurrentSelection.Name;
 		newModel.Splices = CurrentSelection.Splices; //TODO: Thourough clone
 		Session.Instance.Species[name] = newModel;
 		// Serialize Species
@@ -149,42 +195,61 @@ public class SpeciesDesignUI : MonoBehaviour
 		}
 		CurrentSelection.Name = input.text;
 	}
-	
-	public void OpenWithSpecies(string name)
+
+
+    public void OpenWithSpecies(string name)
 	{
 		SpeciesModel m = Session.Instance.Species[name];
-		if (m == CurrentSelection)
-		{
-			gameObject.SetActive(true);
-		}
-		Debug.Log(m);
-		Debug.Log("XXX");
-		
-		if (m != null)
-		{
-			// Reset
-			if (CurrentSelection != null)
-			{
-				foreach(SpliceModel sm in CurrentSelection.Splices)	
-				{
-					AddSplice(sm);
-					DnaSequencer.ActivateSelection(CurrentSelection);
-					InstinctsTunner.RemoveSplice(sm.EInstinct);
-				}
-			}
-			else
-			{
-				CurrentSelection = new SpeciesModel();
-			}
-			foreach(SpliceModel sm in m.Splices)	
-			{
-				Helix.AddSelectedSplice(sm);
-				DnaSequencer.ActivateSelection(CurrentSelection);
-				InstinctsTunner.AddSplice(sm.EInstinct);
-			}
-			CurrentSelection = m;
-			gameObject.SetActive(true);
-		}
-	}
+
+        if(m != null)
+        {
+            if (m == CurrentSelection)
+            {
+                //do nothing...it's loaded already
+            }
+            else
+            {
+                CurrentSelection = m;
+
+                // wipe it clean!
+                ResetWindow();
+
+                // set name field
+                NameInput.text = name;
+
+                // and then "click" the responding splices new stuff
+                foreach (SpliceModel sm in m.Splices)
+                {
+                    for (int i = 0; i < SmallSplices.transform.childCount; i++)
+                    {
+                        if (SmallSplices.transform.GetChild(i).gameObject.name.Equals(SpliceButtonName(sm)))
+                        {
+                            ClickSpliceButton(SmallSplices.transform.GetChild(i).GetComponent<SpliceButton>());
+                        }
+                    }
+                    for (int i = 0; i < MedSplices.transform.childCount; i++)
+                    {
+                        if (MedSplices.transform.GetChild(i).gameObject.name.Equals(SpliceButtonName(sm)))
+                        {
+                            ClickSpliceButton(MedSplices.transform.GetChild(i).GetComponent<SpliceButton>());
+                        }
+                    }
+                    for (int i = 0; i < LargeSplices.transform.childCount; i++)
+                    {
+                        if (LargeSplices.transform.GetChild(i).gameObject.name.Equals(SpliceButtonName(sm)))
+                        {
+                            ClickSpliceButton(LargeSplices.transform.GetChild(i).GetComponent<SpliceButton>());
+                        }
+                    }
+                }
+            }
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            //Error openning the species!
+        }
+    }
+
 
 }

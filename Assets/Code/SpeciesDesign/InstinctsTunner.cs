@@ -31,7 +31,7 @@ public class InstinctsTunner : MonoBehaviour
 		foreach(Instinct i in Enum.GetValues(typeof(Instinct)))
 		{
 			// Add 2 per instinct as default
-			Levels[i] = 2;
+			Levels[i] = 0;
 			AddSplice(i);
 			AddSplice(i);
 		}
@@ -40,29 +40,47 @@ public class InstinctsTunner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	}
-	
-	public void AddSplice(Instinct instinct)
+        UpdateLevel(Instinct.HOARDING);
+        UpdateLevel(Instinct.NOMADIC);
+        UpdateLevel(Instinct.PREDATORY);
+        UpdateLevel(Instinct.HERDING);
+    }
+
+    public void AddSplice(Instinct instinct)
 	{
-		GameObject marker = Instantiate<GameObject>(MarkerPrototype);
-		Color color = SpeciesDesignUI.SColorConfig.GetColorFor(instinct);
-		
-		Image img = marker.GetComponentInChildren<Image>();
-		img.color = 2 * color * Levels[instinct] / MaxLevel;
 		Levels[instinct] += 1;
-		marker.transform.parent = LayoutMap[instinct].transform;
-		marker.transform.localPosition = Vector3.zero;
-        marker.transform.localScale = Vector3.one;
-        marker.transform.SetAsLastSibling();
 	}
 	
 	public void RemoveSplice(Instinct instinct)
 	{
 		Levels[instinct] -= 1;
-		int childCount = LayoutMap[instinct].transform.childCount;
-		Destroy(LayoutMap[instinct].transform.GetChild(childCount - 1).gameObject);
 	}
 	
 	public void OnUp(Instinct i)
 	{}
+
+    // called every frame for each level
+    void UpdateLevel(Instinct i)
+    {
+        while(LayoutMap[i].transform.childCount > Levels[i])
+        {
+            GameObject toDestroy = LayoutMap[i].transform.GetChild(0).gameObject;
+            toDestroy.transform.parent = null;
+            Destroy(toDestroy);
+        }
+
+        while (LayoutMap[i].transform.childCount < Levels[i])
+        {
+            GameObject marker = Instantiate<GameObject>(MarkerPrototype);
+            Color color = SpeciesDesignUI.SColorConfig.GetColorFor(i);
+
+            Image img = marker.GetComponentInChildren<Image>();
+            img.color = 2 * color * Levels[i] / MaxLevel;
+            marker.transform.parent = LayoutMap[i].transform;
+            marker.transform.localPosition = Vector3.zero;
+            marker.transform.localScale = Vector3.one;
+            marker.transform.SetAsLastSibling();
+        }
+    }
+
 }
