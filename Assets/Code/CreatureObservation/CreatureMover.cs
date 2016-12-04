@@ -148,8 +148,9 @@ class CollisionAction: CreatureMovementAction
     
     public override bool ApplyTo(CreatureMover mover)
     {
-        WaitTime -= Time.deltaTime;
-		return WaitTime < 0.0f;
+        return true;
+     /*   WaitTime -= Time.deltaTime;
+		return WaitTime < 0.0f; */
     }
 
 }
@@ -256,5 +257,14 @@ public class CreatureMover : MonoBehaviour
                 CurrentAction = null;    
             }
         }
+    }
+    
+    public int GetRemainingSteps()
+    {
+        if (ActionStream == null)
+        {
+            return 0;
+        }
+        return ActionStream.Count;
     }
 }

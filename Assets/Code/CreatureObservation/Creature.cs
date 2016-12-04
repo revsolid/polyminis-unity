@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,6 +15,8 @@ public class Creature : MonoBehaviour
 	public CreatureMover Mover;
 	public int SpeciesIndex = 0;
 	public int ID;
+	
+	public Text DebugText;
 	
 	void Awake()
 	{
@@ -52,6 +55,8 @@ public class Creature : MonoBehaviour
 			}
 		}
 		Mover.SetDataFromModel(model);
+		DebugText.text = "ID: " + ID + "\n" + "Remaining Steps: "+Mover.GetRemainingSteps();
+		
 	}
 	
 	public void SetStartingPosition(Vector2 v)
@@ -59,7 +64,7 @@ public class Creature : MonoBehaviour
 		Mover.SetInitialPosition(v);
 	}
 	
-	public void OnClick()
+	public void OnMouseDown()
 	{
 		Debug.Log("Click");
 	}
@@ -67,5 +72,6 @@ public class Creature : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		DebugText.text = "ID: " + ID + "\n" + "Remaining Steps: "+Mover.GetRemainingSteps();
 	}
 }
