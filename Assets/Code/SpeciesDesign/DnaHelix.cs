@@ -67,8 +67,13 @@ public class DnaHelix : MonoBehaviour
     
     void OnSpliceRendererClicked(SpliceDnaHelixRenderer renderer)
     {
-		SpliceModel model = renderer.Model;
-		OnSpliceRemovedEvent(model);
+        ClickSpliceRenderer(renderer);
+    }
+
+    public void ClickSpliceRenderer(SpliceDnaHelixRenderer renderer)
+    {
+        SpliceModel model = renderer.Model;
+        OnSpliceRemovedEvent(model);
         Destroy(renderer.gameObject);
     }
 }
