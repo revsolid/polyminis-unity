@@ -6,40 +6,40 @@ using System.Collections.Generic;
 
 public class InstinctsTunner : MonoBehaviour
 {
-	public LayoutGroup Hoarding;
-	public LayoutGroup Herding;
-	public LayoutGroup Predatory;
-	public LayoutGroup Nomadic;
-	public GameObject MarkerPrototype;
-	
-	public int MinLevel = 2;
-	public int MaxLevel = 8;
-	
-	private Dictionary<Instinct, int> Levels;
-	private Dictionary<Instinct, LayoutGroup> LayoutMap;
-	
-	// Use this for initialization
-	public void Ready()
-	{
-		LayoutMap = new Dictionary<Instinct, LayoutGroup>();
-		LayoutMap[Instinct.HOARDING] = Hoarding;
-		LayoutMap[Instinct.HERDING] = Herding;
-		LayoutMap[Instinct.PREDATORY] = Predatory;
-		LayoutMap[Instinct.NOMADIC] = Nomadic;
+    public LayoutGroup Hoarding;
+    public LayoutGroup Herding;
+    public LayoutGroup Predatory;
+    public LayoutGroup Nomadic;
+    public GameObject MarkerPrototype;
+    
+    public int MinLevel = 2;
+    public int MaxLevel = 8;
+    
+    private Dictionary<Instinct, int> Levels;
+    private Dictionary<Instinct, LayoutGroup> LayoutMap;
+    
+    // Use this for initialization
+    public void Ready()
+    {
+        LayoutMap = new Dictionary<Instinct, LayoutGroup>();
+        LayoutMap[Instinct.HOARDING] = Hoarding;
+        LayoutMap[Instinct.HERDING] = Herding;
+        LayoutMap[Instinct.PREDATORY] = Predatory;
+        LayoutMap[Instinct.NOMADIC] = Nomadic;
 
-		Levels = new Dictionary<Instinct, int>();
-		foreach(Instinct i in Enum.GetValues(typeof(Instinct)))
-		{
-			// Add 2 per instinct as default
-			Levels[i] = 0;
-			AddSplice(i);
-			AddSplice(i);
-		}
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
+        Levels = new Dictionary<Instinct, int>();
+        foreach(Instinct i in Enum.GetValues(typeof(Instinct)))
+        {
+            // Add 2 per instinct as default
+            Levels[i] = 0;
+            AddSplice(i);
+            AddSplice(i);
+        }
+    }
+    
+    // Update is called once per frame
+    void Update ()
+    {
         UpdateLevel(Instinct.HOARDING);
         UpdateLevel(Instinct.NOMADIC);
         UpdateLevel(Instinct.PREDATORY);
@@ -47,17 +47,17 @@ public class InstinctsTunner : MonoBehaviour
     }
 
     public void AddSplice(Instinct instinct)
-	{
-		Levels[instinct] += 1;
-	}
-	
-	public void RemoveSplice(Instinct instinct)
-	{
-		Levels[instinct] -= 1;
-	}
-	
-	public void OnUp(Instinct i)
-	{}
+    {
+        Levels[instinct] += 1;
+    }
+    
+    public void RemoveSplice(Instinct instinct)
+    {
+        Levels[instinct] -= 1;
+    }
+    
+    public void OnUp(Instinct i)
+    {}
 
     // called every frame for each level
     void UpdateLevel(Instinct i)
