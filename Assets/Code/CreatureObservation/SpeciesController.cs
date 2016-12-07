@@ -12,7 +12,7 @@ public class SpeciesController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		TextAsset species_json = Resources.Load<TextAsset>("StaticData/species_final_2");
+		TextAsset species_json = Resources.Load<TextAsset>("StaticData/species_4am");
 		SimulationStartup sim_startup = JsonUtility.FromJson<SimulationStartup>(species_json.text);
 		
 		for(int i = 0; i < sim_startup.Species.Count; i++)
@@ -25,7 +25,7 @@ public class SpeciesController : MonoBehaviour
 			}
 		}
 		
-		TextAsset steps_json = Resources.Load<TextAsset>("StaticData/steps_final_2");
+		TextAsset steps_json = Resources.Load<TextAsset>("StaticData/steps_4am");
 		Simulation sim = JsonUtility.FromJson<Simulation>(steps_json.text);
 		
 		foreach(SpeciesStep ss in sim.Steps[0].Species)
@@ -48,6 +48,9 @@ public class SpeciesController : MonoBehaviour
 				AddStep(s);
 			}
 		}
+		
+		
+		
 	}
 	
 	IEnumerator PassStepToCreatures(SpeciesStep ss, Dictionary<int, Creature> inds)

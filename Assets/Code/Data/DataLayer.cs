@@ -340,10 +340,12 @@ public class IndividualStep
     public PhysicsStep Physics;
 //    public ControlStep Control;
 }
+public class SimulationEnvironment{}
 [Serializable]
 public class SimulationStartup
 {
     public List<SpeciesStartup> Species;
+    public SimulationEnvironment Environment;
 }
 [Serializable]
 public class SpeciesStartup
