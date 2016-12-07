@@ -7,12 +7,34 @@ public class SpeciesController : MonoBehaviour
 
 	Dictionary<int, Creature> Individuals = new Dictionary<int, Creature>();
 	List<SpeciesStep> Steps = new List<SpeciesStep>();
+	List<Creature> CreaturesSpawned = new List<Creature>();
 	public Creature CreaturePrototype;
+	public StaticObject ObjectPrototype;
 	bool IdleCoroutine = true;
+	bool QuitCoroutine = false;
+	bool Restart = false;
 	// Use this for initialization
-	void Start ()
+	
+	void Start()
 	{
-		TextAsset species_json = Resources.Load<TextAsset>("StaticData/species_4am");
+		LoadExperiment("demo_31_1");
+	}
+
+
+	public void LoadExperiment(string expname)
+	{
+		string species_file = expname + "_species";
+		string steps_file = expname + "_steps";
+		Individuals = new Dictionary<int, Creature>();
+		Steps = new List<SpeciesStep>();
+		
+		foreach(Creature c in CreaturesSpawned)	
+		{
+			Destroy(c.gameObject);
+		}
+		CreaturesSpawned.Clear();
+
+		TextAsset species_json = Resources.Load<TextAsset>("StaticData/" + species_file );
 		SimulationStartup sim_startup = JsonUtility.FromJson<SimulationStartup>(species_json.text);
 		
 		for(int i = 0; i < sim_startup.Species.Count; i++)
@@ -25,7 +47,7 @@ public class SpeciesController : MonoBehaviour
 			}
 		}
 		
-		TextAsset steps_json = Resources.Load<TextAsset>("StaticData/steps_4am");
+		TextAsset steps_json = Resources.Load<TextAsset>("StaticData/" + steps_file);
 		Simulation sim = JsonUtility.FromJson<Simulation>(steps_json.text);
 		
 		foreach(SpeciesStep ss in sim.Steps[0].Species)
@@ -41,6 +63,18 @@ public class SpeciesController : MonoBehaviour
 			}
 		}
 		
+		TextAsset env_json = Resources.Load<TextAsset>("StaticData/scenario_master");
+		Scenario env = JsonUtility.FromJson<Scenario>(env_json.text);
+		
+		Debug.Log(env.Environment.PhysicsWorld.StaticObjects);
+		
+		foreach(StaticObjectModel som in env.Environment.PhysicsWorld.StaticObjects)
+		{
+			//TODO: This def. doesn't go here
+			SpawnStatic(som);
+		}
+		
+		
 		foreach(SimulationStep ss in sim.Steps)
 		{
 			foreach(SpeciesStep s in ss.Species)
@@ -49,8 +83,7 @@ public class SpeciesController : MonoBehaviour
 			}
 		}
 		
-		
-		
+		IdleCoroutine = true;
 	}
 	
 	IEnumerator PassStepToCreatures(SpeciesStep ss, Dictionary<int, Creature> inds)
@@ -66,6 +99,10 @@ public class SpeciesController : MonoBehaviour
 			}
 			else
 			{
+			}
+			if (QuitCoroutine)
+			{
+				yield break;
 			}
 		}
 		IdleCoroutine = true;
@@ -90,6 +127,15 @@ public class SpeciesController : MonoBehaviour
 		creature.SpeciesIndex = index;
 		creature.SetDataFromModel(model);
 		Individuals[model.ID] = creature;
+		CreaturesSpawned.Add(creature);
+	}
+	
+	void SpawnStatic(StaticObjectModel model)
+	{
+		StaticObject obj = Instantiate<StaticObject>(ObjectPrototype);
+		obj.gameObject.transform.position = CreatureMover.SimulationPositionToScenePosition(model.Position);
+		obj.gameObject.transform.position += new Vector3(-1.25f, 0.0f, -1.25f);
+		obj.gameObject.transform.localScale = CreatureMover.SimulationScaleToSceneScale(model.Dimensions);
 	}
 	
 	void AddStep(SpeciesStep ss)

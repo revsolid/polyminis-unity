@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000013715960734
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d2ae09981bd45a08533dc7381c2ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OrganellePrototype: {fileID: 114000014235637136, guid: 953e6fb29d1bd4597a9b17bf7df05d76,
+  OrganellePrototype: {fileID: 114000010713923326, guid: ab0d7f2329c5c4442b5368b08f8e35a1,
     type: 2}
   OrganellePrototype2: {fileID: 114000014235637136, guid: 12086dd7a216442fe85d696300b5eef6,
     type: 2}
@@ -110,6 +110,7 @@ MonoBehaviour:
   Mover: {fileID: 114000010427070398}
   SpeciesIndex: 0
   ID: 0
+  Alive: 0
   DebugText: {fileID: 114000010624047416}
 --- !u!114 &114000010427070398
 MonoBehaviour:
@@ -122,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f76e0e89e4d341a09d34caa1b137be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 2.5
   InitialPosition: {x: 0, y: 10}
 --- !u!114 &114000010624047416
 MonoBehaviour:

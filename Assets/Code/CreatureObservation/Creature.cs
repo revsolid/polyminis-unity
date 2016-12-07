@@ -15,6 +15,7 @@ public class Creature : MonoBehaviour
 	public CreatureMover Mover;
 	public int SpeciesIndex = 0;
 	public int ID;
+	public bool Alive;
 	
 	public Text DebugText;
 	
@@ -28,6 +29,7 @@ public class Creature : MonoBehaviour
 		{
 			Mover.AddStep(step.Physics);
 		}
+		Alive = step.Alive;
 	}
 	
 	public void SetDataFromModel(IndividualModel model)
