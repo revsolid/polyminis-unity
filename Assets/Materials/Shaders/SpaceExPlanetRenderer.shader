@@ -37,6 +37,10 @@ Shader "Custom/SpaceExPlanetRenderer"
 			vertOutput vert(vertInput input)
 			{
 				vertOutput o;
+
+				UNITY_INITIALIZE_OUTPUT(vertOutput, o);
+
+				
 				o.pos = mul(UNITY_MATRIX_MVP, input.pos);
 				o.uv = input.textcoord;
 				o.normal = input.normal;
