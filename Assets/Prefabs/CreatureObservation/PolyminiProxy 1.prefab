@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OrganellePrototype: {fileID: 114000010713923326, guid: ab0d7f2329c5c4442b5368b08f8e35a1,
     type: 2}
-  OrganellePrototype2: {fileID: 114000014235637136, guid: 12086dd7a216442fe85d696300b5eef6,
+  OrganellePrototype2: {fileID: 114000014235637136, guid: 953e6fb29d1bd4597a9b17bf7df05d76,
     type: 2}
   NucleusPrototype: {fileID: 114000011452973338, guid: c21c3345e809fcc40817faafed7ff89a,
     type: 2}
