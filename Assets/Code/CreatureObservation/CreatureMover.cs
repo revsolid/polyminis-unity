@@ -20,44 +20,33 @@ enum MovementType
     COLLIDE
 }
 
-enum MovementDirection
-{
-    UP = 0,
-    LEFT = 1,
-    DOWN = 2,
-    RIGHT = 3,
-	
-	POSITIVE,
-	NEGATIVE,
-}
-
 class MovementFactory
 {
-	public static CreatureMovementAction CreateFromStep(CreatureMover mover, PhysicsStep step)
-	{
-		MovementType type = step.LastAction.Direction == ActionDirection.ROTATION ? MovementType.ROTATE : MovementType.TRANSLATE;
-		
-		Vector3 tPos = Vector3.zero;
-		Quaternion tRot = Quaternion.identity;
-		if (type == MovementType.TRANSLATE)
-		{
-			tPos = CreatureMover.SimulationPositionToScenePosition(step.Position);
-		}
-		
-		if (type == MovementType.ROTATE)
-		{
-			tRot = CreatureMover.SimulationRotationToSceneRotation(step.Orientation);
-		}
-		
-		if (step.Collisions.Count != 0)
-		{
-			return new CollisionAction(type, tPos, tRot);
-		}
-		else
-		{
-			return new CreatureMovementAction(type, tPos, tRot);
-		}
-	}
+    public static CreatureMovementAction CreateFromStep(CreatureMover mover, PhysicsStep step)
+    {
+        MovementType type = step.LastAction.EDirection == ActionDirection.ROTATION ? MovementType.ROTATE : MovementType.TRANSLATE;
+        
+        Vector3 tPos = Vector3.zero;
+        Quaternion tRot = Quaternion.identity;
+        if (type == MovementType.TRANSLATE)
+        {
+            tPos = CreatureMover.SimulationPositionToScenePosition(step.Position);
+        }
+        
+        if (type == MovementType.ROTATE)
+        {
+            tRot = CreatureMover.SimulationRotationToSceneRotation(step.EOrientation);
+        }
+        
+        if (step.Collisions.Count != 0)
+        {
+            return new CollisionAction(type, tPos, tRot);
+        }
+        else
+        {
+            return new CreatureMovementAction(type, tPos, tRot);
+        }
+    }
 }
 
 class CreatureMovementAction
@@ -65,8 +54,8 @@ class CreatureMovementAction
     public MovementType MovType;
     public MovementDirection MovDir;
     protected float TimeStarted;
-	protected float Speed;
-	public Vector3 InitialPosition;
+    protected float Speed;
+    public Vector3 InitialPosition;
     protected Vector3 TargetPosition;
     protected Quaternion TargetRotation;
     
@@ -75,21 +64,21 @@ class CreatureMovementAction
         MovType = mType;
         MovDir = mDir;
     }
-	
-	public CreatureMovementAction(MovementType mType, Vector3 tPos, Quaternion tRot )
-	{
+    
+    public CreatureMovementAction(MovementType mType, Vector3 tPos, Quaternion tRot )
+    {
         MovType = mType;
-		TargetPosition = tPos;
-		TargetRotation = tRot;
-	}
-	
-//	[{"Control":{"Hidden":[0.9177292585372925,0.8209009766578674,0.8652114272117615,0.8968551158905029,0.7769179940223694,0.8013090491294861],"Inputs":[0.7400000095367432,0.05000000074505806,0.0,1.0],"Outputs":[]},"ID":8,"Physics":{"ID":8,"Orientation":"UP","Position":[74.0,5.0],"collisions":[],"last_action":{}}}
-	
+        TargetPosition = tPos;
+        TargetRotation = tRot;
+    }
+    
+//    [{"Control":{"Hidden":[0.9177292585372925,0.8209009766578674,0.8652114272117615,0.8968551158905029,0.7769179940223694,0.8013090491294861],"Inputs":[0.7400000095367432,0.05000000074505806,0.0,1.0],"Outputs":[]},"ID":8,"Physics":{"ID":8,"Orientation":"UP","Position":[74.0,5.0],"collisions":[],"last_action":{}}}
+    
     public virtual void StartOn(CreatureMover mover)
     {
         TimeStarted = Time.time;
-		Speed = mover.Speed;
-		InitialPosition = mover.gameObject.transform.position;
+        Speed = mover.Speed;
+        InitialPosition = mover.gameObject.transform.position;
     }
     
     public virtual bool ApplyTo(CreatureMover mover)
@@ -132,14 +121,14 @@ class CreatureMovementAction
 
 class CollisionAction: CreatureMovementAction
 {
-	
-    float WaitTime = 1.5f;
+    
+    float WaitTime = 1.0f;
     public CollisionAction(MovementType mType, MovementDirection mDir) : base(mType, mDir)
     {
     }
-	public CollisionAction(MovementType mType, Vector3 tPos, Quaternion tRot ) : base(mType, tPos, tRot)
-	{
-	}
+    public CollisionAction(MovementType mType, Vector3 tPos, Quaternion tRot ) : base(mType, tPos, tRot)
+    {
+    }
 
     public override void StartOn(CreatureMover mover)
     {
@@ -148,9 +137,8 @@ class CollisionAction: CreatureMovementAction
     
     public override bool ApplyTo(CreatureMover mover)
     {
-        return true;
-     /*   WaitTime -= Time.deltaTime;
-		return WaitTime < 0.0f; */
+        WaitTime -= Time.deltaTime;
+        return WaitTime < 0.0f;
     }
 
 }
@@ -163,75 +151,63 @@ public class CreatureMover : MonoBehaviour
     public const float TOTAL_SIZE = 125f;
     public float Speed;
     public Vector2 InitialPosition;
-	
-	Vector2  SimulationPosition;
+    
+    Vector2  SimulationPosition;
     
     CreatureMovementAction CurrentAction;
     Queue<CreatureMovementAction> ActionStream;
     
-	public static Vector3 SimulationPositionToScenePosition(Vector2 simPos)
-	{
-		return new Vector3(simPos.x * SQUARE_SIZE - TOTAL_SIZE, 0, simPos.y * SQUARE_SIZE - TOTAL_SIZE );
-	}
-	
-	public static Quaternion SimulationRotationToSceneRotation(int orientation)
-	{
-		MovementDirection MovDir = (MovementDirection)orientation;
-		Quaternion ReturnRotation = Quaternion.identity;
-		switch (MovDir)
-		{
-		case MovementDirection.UP:
-			ReturnRotation = Heading.UP_HEADING;
-			break;
-		case MovementDirection.DOWN:
-			ReturnRotation = Heading.DOWN_HEADING;
-			break;
-		case MovementDirection.RIGHT:
-			ReturnRotation = Heading.RIGHT_HEADING;
-			break;
-		case MovementDirection.LEFT:
-			ReturnRotation = Heading.LEFT_HEADING;
-			break;
-		}	
-		return ReturnRotation;
-	}
-	
-	public void SetDataFromModel(IndividualModel model)
-	{
-        SetInitialPosition(model.Physics.StartingPos);
-	}
+    public static Vector3 SimulationPositionToScenePosition(Vector2 simPos)
+    {
+        return new Vector3(simPos.x * SQUARE_SIZE - TOTAL_SIZE, 0, simPos.y * SQUARE_SIZE - TOTAL_SIZE );
+    }
+
+    public static Vector3 SimulationScaleToSceneScale(Vector2 simPos)
+    {
+        return new Vector3(simPos.x * SQUARE_SIZE, 1.0f, simPos.y * SQUARE_SIZE);
+    }
+    
+    public static Quaternion SimulationRotationToSceneRotation(MovementDirection MovDir)
+    {
+        //MovementDirection MovDir = (MovementDirection)orientation;
+        Quaternion ReturnRotation = Quaternion.identity;
+        switch (MovDir)
+        {
+        case MovementDirection.UP:
+            ReturnRotation = Heading.UP_HEADING;
+            break;
+        case MovementDirection.DOWN:
+            ReturnRotation = Heading.DOWN_HEADING;
+            break;
+        case MovementDirection.RIGHT:
+            ReturnRotation = Heading.RIGHT_HEADING;
+            break;
+        case MovementDirection.LEFT:
+            ReturnRotation = Heading.LEFT_HEADING;
+            break;
+        }    
+        return ReturnRotation;
+    }
+    
+    public void SetDataFromModel(IndividualModel model)
+    {
+        SetInitialPosition(model.Physics.Position);
+    }
     
     public void SetInitialPosition(Vector2 v)
     {
         InitialPosition = v;
         gameObject.transform.localPosition = SimulationPositionToScenePosition(InitialPosition);
     }
-	
-	public void AddStep(PhysicsStep step)
-	{
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, step));
-	}
+    
+    public void AddStep(PhysicsStep step)
+    {
+        ActionStream.Enqueue( MovementFactory.CreateFromStep(this, step));
+    }
     
     void Start ()
     { 
         ActionStream = new Queue<CreatureMovementAction>();
-/*		
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 1.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 2.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 3.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 4.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 5.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 6.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 8.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 9.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 11.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 12.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 13.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 14.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 15.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		ActionStream.Enqueue( MovementFactory.CreateFromStep(this, JsonUtility.FromJson<PhysicsStep>("{\"ID\":70,\"Orientation\":\"UP\",\"Position\":{\"x\": 16.0, \"y\": 10.0},\"Collisions\":[],\"LastAction\":{\"Direction\":\"HORIZONTAL\",\"Impulse\":0.8759307861328125}}")));
-		*/
-//        gameObject.transform.localPosition = SimulationPositionToScenePosition(InitialPosition);
     }
     
     // Update is called once per frame
@@ -247,7 +223,7 @@ public class CreatureMover : MonoBehaviour
             }
             else
             {
-				return;
+                return;
             }
         }
         else

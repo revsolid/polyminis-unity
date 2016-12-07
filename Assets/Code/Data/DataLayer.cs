@@ -280,6 +280,7 @@ public class CreatureMorphologyModel
 public class IndividualPhysics
 {
   public Vector2 StartingPos; 
+  public Vector2 Position;
   public Vector2 Dimensions; 
 }
 
@@ -303,8 +304,16 @@ public class IndividualModel
 public enum ActionDirection
 {
     HORIZONTAL,
-    VERTIAL,
+    VERTICAL,
     ROTATION
+}
+[Serializable]
+public enum MovementDirection
+{
+    UP,
+    LEFT,
+    DOWN,
+    RIGHT,
 }
 [Serializable]
 public class CollisionModel
@@ -315,13 +324,29 @@ public class CollisionModel
 [Serializable]
 public class PhysicsAction
 {
-    public ActionDirection Direction;
-    public float Impulse;
+    public string direction = "";
+    public ActionDirection EDirection 
+    {
+        get
+        {
+            if (direction == "")
+                return ActionDirection.HORIZONTAL;
+            return (ActionDirection) Enum.Parse(typeof(ActionDirection), direction.ToUpper());
+        }
+    }
+    public float impulse;
 }
 [Serializable]
 public class PhysicsStep
 {
-    public int Orientation;
+    public string Orientation;
+    public MovementDirection  EOrientation
+    {
+        get
+        {
+            return (MovementDirection) Enum.Parse(typeof(MovementDirection), Orientation.ToUpper());
+        }
+    }
     public Vector2 Position;
     public List<CollisionModel> Collisions;
     public PhysicsAction LastAction;
@@ -337,10 +362,32 @@ public class ControlStep
 public class IndividualStep
 {
     public int ID;
+    public bool Alive;
     public PhysicsStep Physics;
-//    public ControlStep Control;
+    public ControlStep Control;
 }
-public class SimulationEnvironment{}
+
+[Serializable]
+public class StaticObjectModel
+{
+    public Vector2 Position;
+    public Vector2 Dimensions;
+}
+[Serializable]
+public class PhysicsWorldModel
+{
+    public List<StaticObjectModel> StaticObjects;
+}
+[Serializable]
+public class SimulationEnvironment
+{
+    public PhysicsWorldModel PhysicsWorld;
+}
+[Serializable]
+public class Scenario
+{
+    public SimulationEnvironment Environment;
+}
 [Serializable]
 public class SimulationStartup
 {
