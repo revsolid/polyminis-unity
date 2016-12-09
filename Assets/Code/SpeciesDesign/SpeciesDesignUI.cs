@@ -195,17 +195,12 @@ public class SpeciesDesignUI : MonoBehaviour
     {
         // Validate
         
-        /*
-        SpeciesModel newModel = new SpeciesModel();
-        CurrentSelection.Name = NameInput.text;
-        newModel.Name = CurrentSelection.Name;
-        newModel.Splices = CurrentSelection.Splices; //TODO: Thourough clone
+        SpeciesModel newModel = new SpeciesModel(DesignerModel.CurrentSpecies);
         Session.Instance.Species[name] = newModel;
         // Serialize Species
-        Debug.Log(JsonUtility.ToJson(CurrentSelection));
+        Debug.Log(JsonUtility.ToJson(DesignerModel.CurrentSpecies));
         
         // Send to Server
-        */
     }
 
     // note: this always loads the selected species, since the one  
@@ -220,6 +215,7 @@ public class SpeciesDesignUI : MonoBehaviour
         {
             DesignerModel.LoadSpecies(m);
             UpdateAllViews();
+            NameInput.text = DesignerModel.CurrentSpecies.Name;
             gameObject.SetActive(true);
         }
         else
