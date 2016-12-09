@@ -42,25 +42,67 @@ public class SpeciesDesignUI : MonoBehaviour
         SpliceButton.OnClickEvent += (button) => OnSpliceButtonClicked(button);
         DnaHelix.OnSpliceRemovedEvent += (model) => OnSpliceRemovedFromHelix(model);
 
-        UpdateView();
+        UpdateAllViews();
     }
     
     // read DesignerModel and update all children
-    void UpdateView()
+    void UpdateAllViews()
     {
         InstinctsTunner.UpdateView(DesignerModel);
         Helix.UpdateView(DesignerModel);
-        UpdateLayoutGroups();
+        this.UpdateView();
         DnaSequencer.ActivateSelection(DesignerModel.CurrentSpecies);
     }
 
-    void UpdateLayoutGroups()
+
+    void UpdateLayoutGroup(SpeciesDesignerModel model, LayoutGroup group, TraitSize size)
     {
-        ResetLayoutGroups();
-        foreach(SpliceModel sm in DesignerModel.UnselectedSplices)
+        for (int i = 0; i < group.transform.childCount; i++)
         {
-            AddSplice(sm);
+            GameObject button = group.transform.GetChild(i).gameObject;
+            SpliceModel alreadyIn = button.GetComponent<SpliceButton>().Model;
+            // check against unselected list. if it's not in there anymore then kick it.
+            bool isStillIn = false;
+            foreach (SpliceModel sm in model.UnselectedSplices)
+            {
+                if (sm.InternalName == alreadyIn.InternalName)
+                {
+                    isStillIn = true;
+                }
+            }
+            if (!isStillIn)
+            {
+                Destroy(button);
+            }
         }
+
+        // then check the unselected list to see if any new ones need to be instantiated
+        foreach (SpliceModel sm in model.UnselectedSplices)
+        {
+            bool found = false;
+            for (int i = 0; i < group.transform.childCount; i++)
+            {
+                GameObject button = group.transform.GetChild(i).gameObject;
+                SpliceModel alreadyIn = button.GetComponent<SpliceButton>().Model;
+
+                if (alreadyIn.InternalName == sm.InternalName)
+                {
+                    found = true;
+                }
+            }
+
+            if (!found && sm.TraitSize == size)
+            {
+                AddSplice(sm);
+            }
+        }
+    }
+
+    void UpdateView()
+    {
+        UpdateLayoutGroup(DesignerModel, SmallSplices, TraitSize.SMALL);
+        UpdateLayoutGroup(DesignerModel, MedSplices, TraitSize.MEDIUM);
+        UpdateLayoutGroup(DesignerModel, LargeSplices, TraitSize.LARGE);
     }
 
     void ResetLayoutGroup(LayoutGroup lg)
@@ -134,14 +176,14 @@ public class SpeciesDesignUI : MonoBehaviour
         if (ValidateSelection(model))
         {
             DesignerModel.SelectSplice(model);
-            UpdateView();
+            UpdateAllViews();
         }
     }
     
     void OnSpliceRemovedFromHelix(SpliceModel model)
     {
         DesignerModel.DeselectSplice(model);
-        UpdateView();
+        UpdateAllViews();
     }
     
     public void OnExitButtonClicked()
@@ -177,7 +219,7 @@ public class SpeciesDesignUI : MonoBehaviour
         if (m != null)
         {
             DesignerModel.LoadSpecies(m);
-            UpdateView();
+            UpdateAllViews();
             gameObject.SetActive(true);
         }
         else

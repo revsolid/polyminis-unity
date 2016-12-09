@@ -46,15 +46,57 @@ public class DnaHelix : MonoBehaviour
         children.ForEach(child => Destroy(child));
     }
 
-    public void UpdateView(SpeciesDesignerModel model)
+    void UpdateLayoutGroupView(SpeciesDesignerModel model, LayoutGroup group, TraitSize size)
     {
-        Reset();
-        foreach(SpliceModel sm in model.SelectedSplices)
+        for (int i = 0; i < group.transform.childCount; i++)
         {
-            AddSplice(sm);
+            GameObject button = group.transform.GetChild(i).gameObject;
+            SpliceModel alreadyIn = button.GetComponent<SpliceDnaHelixRenderer>().Model;
+            // check against selected list. if it's not in there anymore then kick it.
+            bool isStillIn = false;
+            foreach (SpliceModel sm in model.SelectedSplices)
+            {
+                if (sm.InternalName == alreadyIn.InternalName)
+                {
+                    isStillIn = true;
+                }
+            }
+            if (!isStillIn)
+            {
+                Destroy(button);
+            }
+        }
+
+        // then check the selected list to see if any new ones need to be instantiated
+        foreach (SpliceModel sm in model.SelectedSplices)
+        {
+            bool found = false;
+            for (int i = 0; i < group.transform.childCount; i++)
+            {
+                GameObject button = group.transform.GetChild(i).gameObject;
+                SpliceModel alreadyIn = button.GetComponent<SpliceDnaHelixRenderer>().Model;
+
+                if (alreadyIn.InternalName == sm.InternalName)
+                {
+                    found = true;
+                }
+            }
+
+            if (!found && sm.TraitSize == size)
+            {
+                AddSplice(sm);
+            }
         }
     }
-    
+
+
+    public void UpdateView(SpeciesDesignerModel model)
+    {
+        UpdateLayoutGroupView(model, SmallSplices, TraitSize.SMALL);
+        UpdateLayoutGroupView(model, MedSplices, TraitSize.MEDIUM);
+        UpdateLayoutGroupView(model, LargeSplices, TraitSize.LARGE);
+    }
+
     public void AddSplice(SpliceModel splice)
     {
 		SpliceDnaHelixRenderer renderer;
