@@ -26,6 +26,11 @@ public class DnaHelix : MonoBehaviour
     {
     
     }
+
+    public void Initialize()
+    {
+        Reset();
+    }
     
     public void Reset()
     {
@@ -33,14 +38,24 @@ public class DnaHelix : MonoBehaviour
         ResetLayoutGroup(MedSplices);
         ResetLayoutGroup(LargeSplices);
     }
+
     void ResetLayoutGroup(LayoutGroup lg)
     {
         var children = new List<GameObject>();
         foreach (Transform child in lg.transform) children.Add(child.gameObject);
         children.ForEach(child => Destroy(child));
     }
+
+    public void UpdateView(SpeciesDesignerModel model)
+    {
+        Reset();
+        foreach(SpliceModel sm in model.SelectedSplices)
+        {
+            AddSplice(sm);
+        }
+    }
     
-    public void AddSelectedSplice(SpliceModel splice)
+    public void AddSplice(SpliceModel splice)
     {
 		SpliceDnaHelixRenderer renderer;
         switch (splice.TraitSize)
@@ -64,13 +79,8 @@ public class DnaHelix : MonoBehaviour
         renderer.transform.localScale = Vector3.one;
         renderer.transform.SetAsLastSibling();
     }
-    
-    void OnSpliceRendererClicked(SpliceDnaHelixRenderer renderer)
-    {
-        ClickSpliceRenderer(renderer);
-    }
 
-    public void ClickSpliceRenderer(SpliceDnaHelixRenderer renderer)
+    void OnSpliceRendererClicked(SpliceDnaHelixRenderer renderer)
     {
         SpliceModel model = renderer.Model;
         OnSpliceRemovedEvent(model);

@@ -19,7 +19,7 @@ public class InstinctsTunner : MonoBehaviour
     private Dictionary<Instinct, LayoutGroup> LayoutMap;
     
     // Use this for initialization
-    public void Ready()
+    public void Initialize()
     {
         LayoutMap = new Dictionary<Instinct, LayoutGroup>();
         LayoutMap[Instinct.HOARDING] = Hoarding;
@@ -30,21 +30,34 @@ public class InstinctsTunner : MonoBehaviour
         Levels = new Dictionary<Instinct, int>();
         foreach(Instinct i in Enum.GetValues(typeof(Instinct)))
         {
-            // Add 2 per instinct as default
-            Levels[i] = 0;
-            AddSplice(i);
-            AddSplice(i);
+            Levels[i] = MinLevel;
         }
     }
-    
-    // Update is called once per frame
-    void Update ()
+
+    void Reset()
     {
+        foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
+        {
+            Levels[i] = MinLevel;
+        }
+    }
+
+    public void UpdateView(SpeciesDesignerModel model)
+    {
+        Reset();
+
+        foreach (SpliceModel sm in model.SelectedSplices)
+        {
+            Levels[sm.EInstinct] += 1;
+        }
+
         UpdateLevel(Instinct.HOARDING);
         UpdateLevel(Instinct.NOMADIC);
         UpdateLevel(Instinct.PREDATORY);
         UpdateLevel(Instinct.HERDING);
     }
+
+    
 
     public void AddSplice(Instinct instinct)
     {
