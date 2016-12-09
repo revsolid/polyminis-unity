@@ -11,8 +11,8 @@ public class DnaHelix : MonoBehaviour
     public SpliceDnaHelixRenderer SmallSpliceDnaHelixRendererPrototype;
     public SpliceDnaHelixRenderer MedSpliceDnaHelixRendererPrototype;
     public SpliceDnaHelixRenderer LargeSpliceDnaHelixRendererPrototype;
-	
-	public delegate void SpliceRemoved(SpliceModel model);
+    
+    public delegate void SpliceRemoved(SpliceModel model);
     public static event SpliceRemoved OnSpliceRemovedEvent;
 
     // Use this for initialization
@@ -99,7 +99,7 @@ public class DnaHelix : MonoBehaviour
 
     public void AddSplice(SpliceModel splice)
     {
-		SpliceDnaHelixRenderer renderer;
+        SpliceDnaHelixRenderer renderer;
         switch (splice.TraitSize)
         {
             case TraitSize.SMALL: 
@@ -111,7 +111,7 @@ public class DnaHelix : MonoBehaviour
                 renderer.transform.SetParent(MedSplices.transform);
                 break;
             case TraitSize.LARGE: 
-			default: // Just here so the compiler shuts up
+            default: // Just here so the compiler shuts up
                 renderer = GameObject.Instantiate(LargeSpliceDnaHelixRendererPrototype);
                 renderer.transform.SetParent(LargeSplices.transform);
                 break;
