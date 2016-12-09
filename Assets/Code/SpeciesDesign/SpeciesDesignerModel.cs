@@ -7,7 +7,6 @@ public class SpeciesDesignerModel
     public List<SpliceModel> UnselectedSplices { get; private set; }
     public List<SpliceModel> SelectedSplices { get; private set; }
 
-    // TODO: implement this as a "copy", instead of referencing the actual species
     public SpeciesModel CurrentSpecies { get; private set; }
     
     public void Initialize ()
@@ -45,8 +44,9 @@ public class SpeciesDesignerModel
             SelectSplice(sm);
         }
 
-        // TODO: clone
-        CurrentSpecies = species;
+        // make a copy everytime you open up a species. 
+        // This way the changes don't get applied until you click save.
+        CurrentSpecies = new SpeciesModel(species);
     }
 
     public void AddNewSplice(SpliceModel model)

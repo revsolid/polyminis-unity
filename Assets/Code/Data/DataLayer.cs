@@ -238,6 +238,21 @@ public class SpeciesModel
     public string Name;
     public List<SpliceModel> Splices = new List<SpliceModel>();
     public object InstinctTuning = new object();
+
+    public SpeciesModel()
+    {
+
+    }
+    public SpeciesModel(SpeciesModel toCopy)
+    {
+        Name = toCopy.Name;
+        Splices = new List<SpliceModel>();
+        foreach(SpliceModel sm in toCopy.Splices)
+        {
+            Splices.Add(sm);
+        }
+        InstinctTuning = new object();
+    }
 }
 
 public enum TraitTier
