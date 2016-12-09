@@ -59,6 +59,7 @@ public class SpeciesDesignerModel
     {
         SelectedSplices.Add(model);
         UnselectedSplices.Remove(model);
+        CurrentSpecies.Splices = SelectedSplices;
     }
 
 
@@ -66,6 +67,7 @@ public class SpeciesDesignerModel
     {
         UnselectedSplices.Add(model);
         SelectedSplices.Remove(model);
+        CurrentSpecies.Splices = SelectedSplices;
     }
 
     // nuke the entire model
