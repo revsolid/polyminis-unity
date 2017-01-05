@@ -48,7 +48,7 @@ public class Creature : MonoBehaviour
 			}
 			else
 			{
-				Organelle o = organelle.Trait.TID <= 3 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
+				Organelle o = organelle.Trait.TID <= 5 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
 				o.transform.SetParent(transform);
 				delta *= 2.5f;
 				o.transform.localPosition += new Vector3(delta.x, 0.0f, delta.y);

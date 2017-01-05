@@ -31,7 +31,6 @@ Shader "Custom/SpaceExPlanetRenderer"
 				float4 pos : POSITION;
 				float4 normal : NORMAL;
 				float2 uv: TEXCOORD0;
-				fixed4 diff : COLOR0;
 			};
  
 			vertOutput vert(vertInput input)

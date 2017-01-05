@@ -17,7 +17,7 @@ public class SpeciesController : MonoBehaviour
 	
 	void Start()
 	{
-		LoadExperiment("demo_31_1");
+		LoadExperiment("demo_0_1");
 	}
 
 
