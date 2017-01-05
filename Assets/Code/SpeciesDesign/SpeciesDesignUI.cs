@@ -17,11 +17,11 @@ public class SpeciesDesignUI : MonoBehaviour
     public InputField NameInput;
     public static ColorConfig SColorConfig;
 
-    SpeciesModel CurrentSelection;
+    SpeciesDesignerModel DesignerModel;
 
-    // Use this for initialization
-    void Start()    
+    void Start()
     {
+        DesignerModel = new SpeciesDesignerModel();
         Initialize();
     }
 
@@ -29,51 +29,80 @@ public class SpeciesDesignUI : MonoBehaviour
     void Initialize() 
     {
         gameObject.SetActive(false);
-        Helix.Reset();
+        DesignerModel.Initialize();
+        InstinctsTunner.Initialize();
+        Helix.Initialize();
+        DnaSequencer.ActivateSelection(DesignerModel.CurrentSpecies);
+
         if (SpeciesDesignUI.SColorConfig == null)
         {
             Debug.Log("Setting static");
             SpeciesDesignUI.SColorConfig = this.ColorConfig;
         }
-
         SpliceButton.OnClickEvent += (button) => OnSpliceButtonClicked(button);
         DnaHelix.OnSpliceRemovedEvent += (model) => OnSpliceRemovedFromHelix(model);
-        foreach(KeyValuePair<string, SpliceModel> entry in Almanac.Instance.AvailableSplices)
-        {
-            AddSplice(entry.Value);
-          }
-        InstinctsTunner.Ready();
-        CurrentSelection = new SpeciesModel();
+
+        UpdateAllViews();
+    }
+    
+    // read DesignerModel and update all children
+    void UpdateAllViews()
+    {
+        InstinctsTunner.UpdateView(DesignerModel);
+        Helix.UpdateView(DesignerModel);
+        this.UpdateView();
+        DnaSequencer.ActivateSelection(DesignerModel.CurrentSpecies);
     }
 
-    //Clear contents and give you a window that looks new
-    void ResetWindow()
+
+    void UpdateLayoutGroup(SpeciesDesignerModel model, LayoutGroup group, TraitSize size)
     {
-
-        // "click" all splices inside the helix
-        while (Helix.SmallSplices.transform.childCount > 0)
+        for (int i = 0; i < group.transform.childCount; i++)
         {
-            Transform child = Helix.SmallSplices.transform.GetChild(0);
-            child.parent = null;
-            Helix.ClickSpliceRenderer(child.gameObject.GetComponent<SpliceDnaHelixRenderer>());
-        }
-        while (Helix.MedSplices.transform.childCount > 0)
-        {
-            Transform child = Helix.MedSplices.transform.GetChild(0);
-            child.parent = null;
-            Helix.ClickSpliceRenderer(child.gameObject.GetComponent<SpliceDnaHelixRenderer>());
-        }
-        while (Helix.LargeSplices.transform.childCount > 0)
-        {
-            Transform child = Helix.LargeSplices.transform.GetChild(0);
-            child.parent = null;
-            Helix.ClickSpliceRenderer(child.gameObject.GetComponent<SpliceDnaHelixRenderer>());
+            GameObject button = group.transform.GetChild(i).gameObject;
+            SpliceModel alreadyIn = button.GetComponent<SpliceButton>().Model;
+            // check against unselected list. if it's not in there anymore then kick it.
+            bool isStillIn = false;
+            foreach (SpliceModel sm in model.UnselectedSplices)
+            {
+                if (sm.InternalName == alreadyIn.InternalName)
+                {
+                    isStillIn = true;
+                }
+            }
+            if (!isStillIn)
+            {
+                Destroy(button);
+            }
         }
 
-        //CurrentSelection = new SpeciesModel();
-        DnaSequencer.ActivateSelection(CurrentSelection);
+        // then check the unselected list to see if any new ones need to be instantiated
+        foreach (SpliceModel sm in model.UnselectedSplices)
+        {
+            bool found = false;
+            for (int i = 0; i < group.transform.childCount; i++)
+            {
+                GameObject button = group.transform.GetChild(i).gameObject;
+                SpliceModel alreadyIn = button.GetComponent<SpliceButton>().Model;
 
+                if (alreadyIn.InternalName == sm.InternalName)
+                {
+                    found = true;
+                }
+            }
 
+            if (!found && sm.TraitSize == size)
+            {
+                AddSplice(sm);
+            }
+        }
+    }
+
+    void UpdateView()
+    {
+        UpdateLayoutGroup(DesignerModel, SmallSplices, TraitSize.SMALL);
+        UpdateLayoutGroup(DesignerModel, MedSplices, TraitSize.MEDIUM);
+        UpdateLayoutGroup(DesignerModel, LargeSplices, TraitSize.LARGE);
     }
 
     void ResetLayoutGroup(LayoutGroup lg)
@@ -82,9 +111,35 @@ public class SpeciesDesignUI : MonoBehaviour
         foreach (Transform child in lg.transform) children.Add(child.gameObject);
         children.ForEach(child => Destroy(child));
     }
-    
-    // Update is called once per frame
-    void Update() {}
+
+    void ResetLayoutGroups()
+    {
+        ResetLayoutGroup(SmallSplices);
+        ResetLayoutGroup(MedSplices);
+        ResetLayoutGroup(LargeSplices);
+    }
+
+    void AddSplice(SpliceModel model)
+    {
+        SpliceButton sbutton = GameObject.Instantiate(SpliceButtonRendererPrototype);
+        sbutton.gameObject.name = SpliceButtonName(model);
+        sbutton.Model = model;
+        switch (model.TraitSize)
+        {
+            case TraitSize.SMALL:
+                sbutton.transform.SetParent(SmallSplices.transform);
+                break;
+            case TraitSize.MEDIUM:
+                sbutton.transform.SetParent(MedSplices.transform);
+                break;
+            case TraitSize.LARGE:
+                sbutton.transform.SetParent(LargeSplices.transform);
+                break;
+        }
+        //    sbutton.transform.localPosition = VecVector3tor3.zero;
+        //    sbutton.transform.localScale = .one;
+        sbutton.transform.SetAsFirstSibling();
+    }
 
     // so that buttons have different names
     string SpliceButtonName(SpliceModel model)
@@ -92,34 +147,13 @@ public class SpeciesDesignUI : MonoBehaviour
         return "SpliceButtonRenderer-" + model.InternalName;
     }
 
-    void AddSplice(SpliceModel model)
-    {
-          SpliceButton sbutton = GameObject.Instantiate(SpliceButtonRendererPrototype);
-        sbutton.gameObject.name = SpliceButtonName(model);
-        sbutton.Model = model;
-        switch (model.TraitSize)
-        {
-            case TraitSize.SMALL: 
-            sbutton.transform.SetParent(SmallSplices.transform);
-                break;
-            case TraitSize.MEDIUM: 
-            sbutton.transform.SetParent(MedSplices.transform);
-                break;
-            case TraitSize.LARGE: 
-            sbutton.transform.SetParent(LargeSplices.transform);
-                break;
-        }
-    //    sbutton.transform.localPosition = Vector3.zero;
-    //    sbutton.transform.localScale = Vector3.one;
-        sbutton.transform.SetAsFirstSibling();
-    }
-    
+
     bool ValidateSelection(SpliceModel model)
     {
         // 4 Small, 2 Med, 1 Large
-        var small = CurrentSelection.Splices.Where( x => x.TraitSize == TraitSize.SMALL).Count();
-        var med = CurrentSelection.Splices.Where( x => x.TraitSize == TraitSize.MEDIUM).Count();
-        var large = CurrentSelection.Splices.Where( x => x.TraitSize == TraitSize.LARGE).Count(); 
+        var small = DesignerModel.CurrentSpecies.Splices.Where( x => x.TraitSize == TraitSize.SMALL).Count();
+        var med = DesignerModel.CurrentSpecies.Splices.Where( x => x.TraitSize == TraitSize.MEDIUM).Count();
+        var large = DesignerModel.CurrentSpecies.Splices.Where( x => x.TraitSize == TraitSize.LARGE).Count(); 
 
         if (model.TraitSize == TraitSize.SMALL)
             small++;
@@ -134,46 +168,22 @@ public class SpeciesDesignUI : MonoBehaviour
     void OnSpliceButtonClicked(SpliceButton button)
     {
         Debug.Log(button.Model.Name);
-        if (SelectSplice(button.Model))
-            Destroy(button.gameObject);
+        SelectSplice(button.Model);
     }
 
-    void SimClickSpliceButton(SpliceButton button)
-    {
-        CurrentSelection.Splices.Add(button.Model);
-        Helix.AddSelectedSplice(button.Model);
-        InstinctsTunner.AddSplice(button.Model.EInstinct);
-        Destroy(button.gameObject);
-    }
-
-    bool SelectSplice(SpliceModel model)
+    void SelectSplice(SpliceModel model)
     {
         if (ValidateSelection(model))
         {
-            CurrentSelection.Splices.Add(model);
-            Helix.AddSelectedSplice(model);
-            DnaSequencer.ActivateSelection(CurrentSelection);
-            InstinctsTunner.AddSplice(model.EInstinct);
-            return true;
+            DesignerModel.SelectSplice(model);
+            UpdateAllViews();
         }
-        return false;
     }
     
     void OnSpliceRemovedFromHelix(SpliceModel model)
     {
-        SpliceModel toRemove = CurrentSelection.Splices.Find(toFind => toFind.InternalName == model.InternalName);
-        if(toRemove != null)
-        {
-            CurrentSelection.Splices.Remove(toRemove);
-            AddSplice(model);
-            DnaSequencer.ActivateSelection(CurrentSelection);
-            InstinctsTunner.RemoveSplice(model.EInstinct);
-        }
-        else
-        {
-            Debug.Log("No Match!");
-        }
-
+        DesignerModel.DeselectSplice(model);
+        UpdateAllViews();
     }
     
     public void OnExitButtonClicked()
@@ -185,82 +195,27 @@ public class SpeciesDesignUI : MonoBehaviour
     {
         // Validate
         
-        SpeciesModel newModel = new SpeciesModel();
-        CurrentSelection.Name = NameInput.text;
-        newModel.Name = CurrentSelection.Name;
-        newModel.Splices = CurrentSelection.Splices; //TODO: Thourough clone
+        SpeciesModel newModel = new SpeciesModel(DesignerModel.CurrentSpecies);
         Session.Instance.Species[name] = newModel;
         // Serialize Species
-        Debug.Log(JsonUtility.ToJson(CurrentSelection));
+        Debug.Log(JsonUtility.ToJson(DesignerModel.CurrentSpecies));
         
         // Send to Server
     }
-    
-    public void OnNameChanged(InputField input)
-    {
-        if (input.text.Length <= 0) 
-        {
-            Debug.Log("No value entered");
-            return;
-        }
-        CurrentSelection.Name = input.text;
-    }
 
-    void OnStartEdit()
-    {
-        // branch from the species in Session, now we are on a new species...
-        SpeciesModel temp = new SpeciesModel();
-        temp.Name = CurrentSelection.Name;
-    }
-
-
+    // note: this always loads the selected species, since the one  
+    // stored in designer model is(should be) a COPY not a REFERENCE.
+    // so if you select a species on planet -> modify it in species designer -> select the species again:
+    // your modification all get wiped.
     public void OpenWithSpecies(string name)
     {
         SpeciesModel m = Session.Instance.Species[name];
 
         if (m != null)
         {
-            if (m == CurrentSelection)
-            {
-                //do nothing...it's loaded already
-            }
-            else
-            {
-                // wipe it clean!
-                ResetWindow();
-
-                // and then "click" the responding splices
-                foreach (SpliceModel sm in m.Splices)
-                {
-                    for (int i = 0; i < SmallSplices.transform.childCount; i++)
-                    {
-                        if (SmallSplices.transform.GetChild(i).gameObject.name.Equals(SpliceButtonName(sm)))
-                        {
-                            SimClickSpliceButton(SmallSplices.transform.GetChild(i).GetComponent<SpliceButton>());
-                        }
-                    }
-                    for (int i = 0; i < MedSplices.transform.childCount; i++)
-                    {
-                        if (MedSplices.transform.GetChild(i).gameObject.name.Equals(SpliceButtonName(sm)))
-                        {
-                            SimClickSpliceButton(MedSplices.transform.GetChild(i).GetComponent<SpliceButton>());
-                        }
-                    }
-                    for (int i = 0; i < LargeSplices.transform.childCount; i++)
-                    {
-                        if (LargeSplices.transform.GetChild(i).gameObject.name.Equals(SpliceButtonName(sm)))
-                        {
-                            SimClickSpliceButton(LargeSplices.transform.GetChild(i).GetComponent<SpliceButton>());
-                        }
-                    }
-                }
-
-                CurrentSelection = m;
-
-                DnaSequencer.ActivateSelection(CurrentSelection);
-                // set name field
-                NameInput.text = CurrentSelection.Name;
-            }
+            DesignerModel.LoadSpecies(m);
+            UpdateAllViews();
+            NameInput.text = DesignerModel.CurrentSpecies.Name;
             gameObject.SetActive(true);
         }
         else
@@ -270,3 +225,6 @@ public class SpeciesDesignUI : MonoBehaviour
     }
 
 }
+
+
+
