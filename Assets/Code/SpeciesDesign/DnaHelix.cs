@@ -15,12 +15,20 @@ public class DnaHelix : MonoBehaviour
     public delegate void SpliceRemoved(SpliceModel model);
     public static event SpliceRemoved OnSpliceRemovedEvent;
 
+    private SpliceDnaHelixRenderer.Clicked RendererClickedHandler;
+
     // Use this for initialization
     void Start ()
     {
-        SpliceDnaHelixRenderer.OnClickEvent += (renderer) => OnSpliceRendererClicked(renderer);
+        RendererClickedHandler = (renderer) => OnSpliceRendererClicked(renderer);
+        SpliceDnaHelixRenderer.OnClickEvent += RendererClickedHandler;
     }
-    
+
+    void OnDestroy()
+    {
+        SpliceDnaHelixRenderer.OnClickEvent -= RendererClickedHandler;
+    }
+
     // Update is called once per frame
     void Update ()
     {

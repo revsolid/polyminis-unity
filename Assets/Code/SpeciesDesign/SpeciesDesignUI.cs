@@ -17,12 +17,23 @@ public class SpeciesDesignUI : MonoBehaviour
     public InputField NameInput;
     public static ColorConfig SColorConfig;
 
+    private SpliceButton.ButtonClicked SpliceButtonClickedHandler;
+    private DnaHelix.SpliceRemoved SpliceRemovedFromHelixHandler;
+
+
     SpeciesDesignerModel DesignerModel;
 
     void Start()
     {
         DesignerModel = new SpeciesDesignerModel();
         Initialize();
+
+    }
+
+    void OnDestroy()
+    {
+        SpliceButton.OnClickEvent -= SpliceButtonClickedHandler;
+        DnaHelix.OnSpliceRemovedEvent -= SpliceRemovedFromHelixHandler;
     }
 
     // Previously named Reset but I think Initialize fits the purpose better
@@ -36,14 +47,17 @@ public class SpeciesDesignUI : MonoBehaviour
 
         if (SpeciesDesignUI.SColorConfig == null)
         {
-            Debug.Log("Setting static");
             SpeciesDesignUI.SColorConfig = this.ColorConfig;
         }
-        SpliceButton.OnClickEvent += (button) => OnSpliceButtonClicked(button);
-        DnaHelix.OnSpliceRemovedEvent += (model) => OnSpliceRemovedFromHelix(model);
 
+        SpliceButtonClickedHandler = (button) => OnSpliceButtonClicked(button);
+        SpliceRemovedFromHelixHandler = (model) => OnSpliceRemovedFromHelix(model);
+
+        SpliceButton.OnClickEvent += SpliceButtonClickedHandler;
+        DnaHelix.OnSpliceRemovedEvent += SpliceRemovedFromHelixHandler;
         UpdateAllViews();
     }
+
     
     // read DesignerModel and update all children
     void UpdateAllViews()
@@ -167,7 +181,6 @@ public class SpeciesDesignUI : MonoBehaviour
 
     void OnSpliceButtonClicked(SpliceButton button)
     {
-        Debug.Log(button.Model.Name);
         SelectSplice(button.Model);
     }
 
