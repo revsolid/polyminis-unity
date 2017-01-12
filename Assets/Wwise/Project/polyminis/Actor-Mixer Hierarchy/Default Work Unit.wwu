@@ -3,7 +3,7 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{F541757D-A7F3-415A-962B-04C919538319}" PersistMode="Standalone">
 			<ChildrenList>
-				<WorkUnit Name="Whoosh" ID="{8B78F0DD-41D6-49FF-A3C3-01CFEC3C674A}" PersistMode="Reference"/>
+				<WorkUnit Name="Spaceship Work Unit" ID="{7538AE14-4D33-4918-8C7B-D834DB79E3C0}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

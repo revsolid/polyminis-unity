@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-            transform.position = new Vector3(RotationRadius, 0.0f, 0.0f);
+        transform.position = new Vector3(RotationRadius, 0.0f, 0.0f);
 	}
 	
 	// Update is called once per frame

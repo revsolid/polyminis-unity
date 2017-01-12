@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F7A46F5D-556C-4B02-876E-6D804E4B155E}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="creature_observation_work_unit" ID="{F7A46F5D-556C-4B02-876E-6D804E4B155E}" OwnerID="{B969FB9F-0718-4974-819F-3FECC617A358}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_creature_observation" ID="{B19382FD-1AE9-44AE-B9AD-B52CEC9C1F6B}">
+					<ChildrenList>
+						<Action Name="Stop All" ID="{EBFF0D0D-0359-4921-B861-E816CF631FDE}" ShortID="994694255" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
+						<Action Name="Play" ID="{ED10CEFD-1129-4F9F-9475-906E3F37F1C2}" ShortID="616017421" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{19748407-074C-4E8D-BB7A-D28748FD8352}" Global="false">
+									<ObjectRef Name="Creature Observation" ID="{FAB2520C-017E-46EB-B66B-5930B3ACE00C}" WorkUnitID="{EBA6FB54-6120-441D-BDAB-8E83F2606751}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

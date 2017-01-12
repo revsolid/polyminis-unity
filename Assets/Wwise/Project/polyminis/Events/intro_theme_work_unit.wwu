@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{82F81E48-238C-4568-BD79-4EA84F855D5C}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="intro_theme_work_unit" ID="{82F81E48-238C-4568-BD79-4EA84F855D5C}" OwnerID="{B969FB9F-0718-4974-819F-3FECC617A358}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_intro_theme" ID="{AB2FDFD2-2773-421E-8A5E-99964213D5BE}">
+					<ChildrenList>
+						<Action Name="Stop All" ID="{B37B00AC-A46F-48C2-97C0-ECB3844103D0}" ShortID="178012531" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
+						<Action Name="Play" ID="{BCE3E0CE-D9D4-4765-B8C5-0DFCA3B697F1}" ShortID="821493282" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{220BEE0F-5E31-4133-8610-3EF19ADEE30D}" Global="false">
+									<ObjectRef Name="intro_theme_container" ID="{D7A8A2B0-D500-462D-BD3A-8E401AD977BC}" WorkUnitID="{EBA6FB54-6120-441D-BDAB-8E83F2606751}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

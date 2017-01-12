@@ -5,6 +5,8 @@ Project("{F2A8E972-16A2-0A97-2686-88B493443A42}") = "polyminis-unity", "Assembly
 EndProject
 Project("{F2A8E972-16A2-0A97-2686-88B493443A42}") = "polyminis-unity", "Assembly-CSharp-Editor-firstpass.csproj", "{68DBB554-3A1E-297A-5625-AFC0882F4AE3}"
 EndProject
+Project("{F2A8E972-16A2-0A97-2686-88B493443A42}") = "polyminis-unity", "Assembly-CSharp-Editor.csproj", "{6129551B-1879-B005-A4E5-95B0FE469EAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{68DBB554-3A1E-297A-5625-AFC0882F4AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68DBB554-3A1E-297A-5625-AFC0882F4AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68DBB554-3A1E-297A-5625-AFC0882F4AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6129551B-1879-B005-A4E5-95B0FE469EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6129551B-1879-B005-A4E5-95B0FE469EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6129551B-1879-B005-A4E5-95B0FE469EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6129551B-1879-B005-A4E5-95B0FE469EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
