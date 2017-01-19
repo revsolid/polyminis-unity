@@ -3,7 +3,7 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{2944B4B1-FAFA-488C-AD4F-8F559E379A47}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="Y:\Desktop\Polyminis\Tracks\Exploration"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="Z:\Volumes\Apis\_LIB_LIBRERIA\SFX\BOOM_LIBRARY_SCIFI_RAW\SciFi_CK_02_10"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
 						<Value Platform="Mac"></Value>
@@ -109,6 +109,7 @@
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
+				<Property Name="SoundEngine\AudioDevice" Type="int32" Value="4"/>
 			</PropertyList>
 		</UserProjectSettings>
 	</UserProjectSettingsInfo>

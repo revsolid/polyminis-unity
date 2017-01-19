@@ -8,7 +8,18 @@
 						<Action Name="Play" ID="{2FC5D6D8-E83C-44A2-9B97-7741E3E61485}" ShortID="789095647" Type="Play" Scope="One" Global="false">
 							<ElementList>
 								<Element ID="{1E29C805-E783-4DFE-BA5C-584910A1E629}" Global="false">
-									<ObjectRef Name="whoosh01" ID="{91DD619C-6E17-4F25-811D-264829C6D92E}" WorkUnitID="{8B78F0DD-41D6-49FF-A3C3-01CFEC3C674A}"/>
+									<ObjectRef Name="whoosh01" ID="{91DD619C-6E17-4F25-811D-264829C6D92E}" WorkUnitID="{7538AE14-4D33-4918-8C7B-D834DB79E3C0}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_GUI" ID="{0EB52FD7-0B11-4F7D-962F-09AB08FAD3DC}">
+					<ChildrenList>
+						<Action Name="Play" ID="{25A57243-9D71-406B-971A-19E50B135BA6}" ShortID="296754903" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{A6FBACD0-39B2-4A7D-9A66-8633D89B78C3}" Global="false">
+									<ObjectRef Name="GUI" ID="{0DBDA70F-3DA8-4BDB-9D26-8AF35C581803}" WorkUnitID="{7538AE14-4D33-4918-8C7B-D834DB79E3C0}"/>
 								</Element>
 							</ElementList>
 						</Action>
