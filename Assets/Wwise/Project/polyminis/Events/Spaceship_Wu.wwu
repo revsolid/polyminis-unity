@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="Spaceship_Wu" ID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}" OwnerID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="P_Woosh" ID="{1746B10A-6AAC-4BCA-A931-ADE086478CBC}">
+					<ChildrenList>
+						<Action Name="Play" ID="{2FC5D6D8-E83C-44A2-9B97-7741E3E61485}" ShortID="789095647" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{1E29C805-E783-4DFE-BA5C-584910A1E629}" Global="false">
+									<ObjectRef Name="whoosh01" ID="{91DD619C-6E17-4F25-811D-264829C6D92E}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

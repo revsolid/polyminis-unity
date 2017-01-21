@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B969FB9F-0718-4974-819F-3FECC617A358}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="Music_Wu" ID="{B969FB9F-0718-4974-819F-3FECC617A358}" OwnerID="{979D1165-F0C6-445F-BC3C-41C235597E48}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_exploration" ID="{E09E7EA3-7EF0-401C-8F2C-7678025C5F72}">
+					<ChildrenList>
+						<Action Name="Stop All" ID="{FA88FBF4-E0F3-4D90-9BF4-1B81F40FAA6D}" ShortID="315282955" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
+						<Action Name="Play" ID="{1B99EE9F-5C96-422F-AF97-5D36FEED4C67}" ShortID="766340124" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{D8FB60B8-2780-428D-9C2D-32D571D24D5D}" Global="false">
+									<ObjectRef Name="exploration_container" ID="{3E54A686-2422-4481-A508-80FAA0BE3B08}" WorkUnitID="{EBA6FB54-6120-441D-BDAB-8E83F2606751}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_creature_observation" ID="{B19382FD-1AE9-44AE-B9AD-B52CEC9C1F6B}">
+					<ChildrenList>
+						<Action Name="Stop All" ID="{EBFF0D0D-0359-4921-B861-E816CF631FDE}" ShortID="994694255" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
+						<Action Name="Play" ID="{ED10CEFD-1129-4F9F-9475-906E3F37F1C2}" ShortID="616017421" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{19748407-074C-4E8D-BB7A-D28748FD8352}" Global="false">
+									<ObjectRef Name="Creature Observation" ID="{FAB2520C-017E-46EB-B66B-5930B3ACE00C}" WorkUnitID="{EBA6FB54-6120-441D-BDAB-8E83F2606751}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_intro_theme" ID="{AB2FDFD2-2773-421E-8A5E-99964213D5BE}">
+					<ChildrenList>
+						<Action Name="Stop All" ID="{B37B00AC-A46F-48C2-97C0-ECB3844103D0}" ShortID="178012531" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
+						<Action Name="Play" ID="{BCE3E0CE-D9D4-4765-B8C5-0DFCA3B697F1}" ShortID="821493282" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{220BEE0F-5E31-4133-8610-3EF19ADEE30D}" Global="false">
+									<ObjectRef Name="intro_theme_container" ID="{D7A8A2B0-D500-462D-BD3A-8E401AD977BC}" WorkUnitID="{EBA6FB54-6120-441D-BDAB-8E83F2606751}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_species_design" ID="{CBE185C1-9275-4909-8F5E-8FEAD08FC789}">
+					<ChildrenList>
+						<Action Name="Stop All" ID="{0F1A46E5-26E6-41B1-880D-0DE544CF5C8E}" ShortID="487076190" Type="Stop" Scope="All" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+						</Action>
+						<Action Name="Play" ID="{FE21E2DB-6E74-46E2-ACEB-7CB022ADB70F}" ShortID="23868728" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{564B3BB3-13FA-44E0-8503-8167BCD963CF}" Global="false">
+									<ObjectRef Name="species_design_container" ID="{69FDDD15-6FB6-4AA4-9EBE-129A3DD42773}" WorkUnitID="{EBA6FB54-6120-441D-BDAB-8E83F2606751}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
