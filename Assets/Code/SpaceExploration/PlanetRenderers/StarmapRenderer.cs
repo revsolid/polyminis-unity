@@ -6,6 +6,7 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
     [HideInInspector] public GameObject Starmap;
     private Vector2 SpacePos;
     Camera TargetCamera;
+    public GameObject WarpDialog;
     // Use this for initialization
 
     public void RenderUpdate(Planet model)
@@ -38,9 +39,8 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
 
     void OnMouseDown()
     {
-        var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.WARP, SpacePos);
-        Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));
-        Debug.Log("Clicked!");
+        GameObject wp = Instantiate(WarpDialog);
+        wp.GetComponent<WarpDialog>().SpacePos = SpacePos;
     }
 
     // update relative to starmap object
