@@ -17,12 +17,11 @@ public class SoundManager : MonoBehaviour
             for (int i = 0; i < BankNames.Length; ++i)
             {
         		AkBankManager.LoadBank(BankNames[i]+".bnk", false, false);
+                Debug.Log("Loaded " + BankNames[i]+".bnk");
             }
 			// Only UnloadBank if this instance loaded it
 			UnloadBank = true;
 			PersistentSingletonStarted = true;
-            
-            Debug.Log("Loaded bank SFX");
 		}
 		else
 		{
