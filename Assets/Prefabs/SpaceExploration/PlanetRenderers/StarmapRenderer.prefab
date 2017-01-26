@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 135000010578948312}
   - component: {fileID: 23000012862621566}
   - component: {fileID: 114000011445320340}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StarmapRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
