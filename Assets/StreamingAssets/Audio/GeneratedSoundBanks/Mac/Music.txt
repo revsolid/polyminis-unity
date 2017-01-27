@@ -1,15 +1,15 @@
 Event	ID	Name			Wwise Object Path	Notes
-	369775550	Play_creature_observation			\Default Work Unit\Music_work_unit\creature_observation_work_unit\Play_creature_observation	
-	585562449	Play_species_design			\Default Work Unit\Music_work_unit\species_design_work_unit\Play_species_design	
-	2287072429	Play_exploration			\Default Work Unit\Music_work_unit\exploration_work_unit\Play_exploration	
-	2290104414	Play_intro_theme			\Default Work Unit\Music_work_unit\intro_theme_work_unit\Play_intro_theme	
+	369775550	Play_creature_observation			\Default Work Unit\Music_Wu\Play_creature_observation	
+	585562449	Play_species_design			\Default Work Unit\Music_Wu\Play_species_design	
+	2287072429	Play_exploration			\Default Work Unit\Music_Wu\Play_exploration	
+	2290104414	Play_intro_theme			\Default Work Unit\Music_Wu\Play_intro_theme	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	29796930	Exploration First	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Exploration First_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\exploration_container\Exploration First\Exploration First		19067652
-	71673649	Intro Theme First	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Intro Theme First_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\intro_theme_container\Intro Theme First\Intro Theme First		5529664
-	401293344	Species Design First	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Species Design First_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\species_design_container\Species Design First\Species Design First		30720064
-	584759446	Species Design Loop	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Species Design Loop_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\species_design_container\Species Design Loop\Species Design Loop		30720064
-	585421635	Creature Observation	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Creature Observation_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\creature_observation_container\Creature Observation\Creature Observation		72576064
-	796678487	Exploration Loop	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Exploration Loop_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\exploration_container\Exploration Loop\Exploration Loop		15889724
-	1066362763	Intro Theme Loop	Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Intro Theme Loop_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\intro_theme_container\Intro Theme Loop\Intro Theme Loop		18432064
+	29796930	Exploration First	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Exploration First_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\exploration_container\Exploration First\Exploration First		19067652
+	71673649	Intro Theme First	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Intro Theme First_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\intro_theme_container\Intro Theme First\Intro Theme First		5529664
+	401293344	Species Design First	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Species Design First_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\species_design_container\Species Design First\Species Design First		30720064
+	584759446	Species Design Loop	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Species Design Loop_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\species_design_container\Species Design Loop\Species Design Loop		30720064
+	585421635	Creature Observation	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Creature Observation_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\creature_observation_container\Creature Observation\Creature Observation		72576064
+	796678487	Exploration Loop	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Exploration Loop_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\exploration_container\Exploration Loop\Exploration Loop		15889724
+	1066362763	Intro Theme Loop	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\Intro Theme Loop_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\intro_theme_container\Intro Theme Loop\Intro Theme Loop		18432064
 
