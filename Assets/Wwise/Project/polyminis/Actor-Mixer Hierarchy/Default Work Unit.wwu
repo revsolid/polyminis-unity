@@ -3,7 +3,767 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{F541757D-A7F3-415A-962B-04C919538319}" PersistMode="Standalone">
 			<ChildrenList>
-				<WorkUnit Name="Spaceship Work Unit" ID="{7538AE14-4D33-4918-8C7B-D834DB79E3C0}" PersistMode="Reference"/>
+				<ActorMixer Name="UI_SOUNDS" ID="{678EB843-7CE2-4616-B37F-29FEE004AE4E}" ShortID="269409612">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="UI_BEEP_01" ID="{2BEAF318-C525-4A40-8D96-41A58EBF9096}" ShortID="362656642" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Synth One" ID="{292DC7EA-C4E2-490C-A1A7-4175B89C5788}" ShortID="198839503" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
+									<PropertyList>
+										<Property Name="BaseFrequency" Type="Real32" Value="1072">
+											<RTPCList>
+												<RTPC Name="" ID="{44AEED02-A3EF-4D30-BE02-377C7B800A2D}" ShortID="8494047">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<Custom CreatedFrom="{1F6A7AF4-6A56-47A2-B9AF-5253EB99C497}">
+																<ModulatorEnvelope Name="Pitch_Up (Custom)" ID="{E1CA7244-BC2A-438A-9985-03B7688B2FC3}" ShortID="640171195">
+																	<PropertyList>
+																		<Property Name="EnvelopeAttackCurve" Type="Real64" Value="36"/>
+																		<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeDecayTime" Type="Real64" Value="0.237"/>
+																		<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0.311"/>
+																		<Property Name="EnvelopeSustainLevel" Type="Real64" Value="44.2"/>
+																	</PropertyList>
+																</ModulatorEnvelope>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{201E060D-E133-4E7E-9E6E-A89DCCDD9FB5}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>212.58666</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>3724.6403</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="Osc1Invert" Type="bool" Value="True"/>
+										<Property Name="Osc1Level" Type="Real32" Value="-15"/>
+										<Property Name="Osc1Transpose" Type="int32" Value="-834"/>
+										<Property Name="Osc1Waveform" Type="int32" Value="1"/>
+										<Property Name="Osc2Level" Type="Real32" Value="-15"/>
+										<Property Name="Osc2Transpose" Type="int32" Value="-682"/>
+										<Property Name="Osc2Waveform" Type="int32" Value="3"/>
+										<Property Name="OutputLevel" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{584960E3-DA55-4A67-A74B-D143BD74EB32}" ShortID="259527172">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<Custom>
+																<ModulatorEnvelope Name="Modulator Envelope (Custom)" ID="{F15F0748-70D5-44AE-83C0-4A706F58F27B}" ShortID="895099149">
+																	<PropertyList>
+																		<Property Name="EnvelopeAttackCurve" Type="Real64" Value="12"/>
+																		<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeAutoRelease" Type="bool" Value="True"/>
+																		<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeSustainLevel" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeSustainTime" Type="Real64" Value="0.21"/>
+																	</PropertyList>
+																</ModulatorEnvelope>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{3B3FF690-425B-4F26-AA2B-E6E781D7AEFC}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-96</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Synth One" ID="{292DC7EA-C4E2-490C-A1A7-4175B89C5788}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_BEEP_02" ID="{F8726228-2323-4038-A4D5-3AD2A29E94A6}" ShortID="595653843" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Synth One" ID="{469D0F7E-8BF3-4E13-B2AD-9B2C171BDBDE}" ShortID="297857554" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
+									<PropertyList>
+										<Property Name="BaseFrequency" Type="Real32" Value="1072">
+											<RTPCList>
+												<RTPC Name="" ID="{B5721913-6EC6-42E9-96BF-53E52AF6D82D}" ShortID="718321261">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Pitch_Down" ID="{7CD087D2-DB11-4710-ADF0-51C96A0EC75B}" WorkUnitID="{9E1AC80D-D0FE-47D7-AF62-9003062A4651}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{DC2E7F6B-5478-4FEB-9A01-3DB578FD6F3C}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>3369.27158</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>1033.85071</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="Osc1Invert" Type="bool" Value="True"/>
+										<Property Name="Osc1Level" Type="Real32" Value="-15"/>
+										<Property Name="Osc1Transpose" Type="int32" Value="-834"/>
+										<Property Name="Osc1Waveform" Type="int32" Value="1"/>
+										<Property Name="Osc2Level" Type="Real32" Value="-15"/>
+										<Property Name="Osc2Transpose" Type="int32" Value="-682"/>
+										<Property Name="Osc2Waveform" Type="int32" Value="2"/>
+										<Property Name="OutputLevel" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{B0EB4447-496C-404E-8E05-9A476E4B7E68}" ShortID="847910079">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<Custom>
+																<ModulatorEnvelope Name="Modulator Envelope (Custom)" ID="{DDBDD063-D827-44CB-BA32-ABD2A899619E}" ShortID="332306777">
+																	<PropertyList>
+																		<Property Name="EnvelopeAttackCurve" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeAutoRelease" Type="bool" Value="True"/>
+																		<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeSustainLevel" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeSustainTime" Type="Real64" Value="0.21"/>
+																	</PropertyList>
+																</ModulatorEnvelope>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{CBA9C387-1B0B-4E33-804F-851398619630}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-96</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Synth One" ID="{469D0F7E-8BF3-4E13-B2AD-9B2C171BDBDE}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_BEEP_04" ID="{D0FA7742-B7F3-4940-90A5-3582CED91B65}" ShortID="431345194" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Synth One" ID="{8C2DA862-4737-4A27-9814-84A00CC2814E}" ShortID="849870647" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
+									<PropertyList>
+										<Property Name="BaseFrequency" Type="Real32" Value="1072">
+											<RTPCList>
+												<RTPC Name="" ID="{47EEE617-15F5-4606-85E9-1CE6DDE93E6A}" ShortID="81643278">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<Custom CreatedFrom="{1F6A7AF4-6A56-47A2-B9AF-5253EB99C497}">
+																<ModulatorEnvelope Name="Pitch_Up (Custom)" ID="{0EC67757-E89F-465D-BEF4-6AFEDED13323}" ShortID="1060108527">
+																	<PropertyList>
+																		<Property Name="EnvelopeAttackCurve" Type="Real64" Value="36"/>
+																		<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeDecayTime" Type="Real64" Value="0.237"/>
+																		<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0.311"/>
+																		<Property Name="EnvelopeSustainLevel" Type="Real64" Value="44.2"/>
+																	</PropertyList>
+																</ModulatorEnvelope>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{0BB44D3D-963C-41AA-8FE1-0EF74377DAA9}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>10803.3904</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>407.04138</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="FmAmount" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{56335A45-325F-4C07-8360-ADE42F32293B}" ShortID="994352752">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<Custom CreatedFrom="{1F6A7AF4-6A56-47A2-B9AF-5253EB99C497}">
+																<ModulatorEnvelope Name="Pitch_Up (Custom)" ID="{8BB41478-7022-4AFB-8CC5-5F36FD509F1B}" ShortID="891099583">
+																	<PropertyList>
+																		<Property Name="EnvelopeAttackCurve" Type="Real64" Value="36"/>
+																		<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeDecayTime" Type="Real64" Value="0.237"/>
+																		<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0.311"/>
+																		<Property Name="EnvelopeSustainLevel" Type="Real64" Value="44.2"/>
+																	</PropertyList>
+																</ModulatorEnvelope>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{72C75809-77FF-4343-B878-7D585A918AF0}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="1"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>94.93976</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>-20.00001</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="NoiseLevel" Type="Real32" Value="-9"/>
+										<Property Name="NoiseShape" Type="int32" Value="2"/>
+										<Property Name="Osc1Invert" Type="bool" Value="True"/>
+										<Property Name="Osc1Level" Type="Real32" Value="-18"/>
+										<Property Name="Osc1Pwm" Type="Real32" Value="79"/>
+										<Property Name="Osc1Waveform" Type="int32" Value="2"/>
+										<Property Name="Osc2Level" Type="Real32" Value="-18"/>
+										<Property Name="Osc2Transpose" Type="int32" Value="-755"/>
+										<Property Name="Osc2Waveform" Type="int32" Value="2"/>
+										<Property Name="OutputLevel" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{10A919E2-B423-43EB-8142-5E26AE44D5C6}" ShortID="724569877">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<Custom>
+																<ModulatorEnvelope Name="Modulator Envelope (Custom)" ID="{FB700752-A4EB-41F5-8B30-13F0E1F2A4A6}" ShortID="809822978">
+																	<PropertyList>
+																		<Property Name="EnvelopeAttackCurve" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeAutoRelease" Type="bool" Value="True"/>
+																		<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeSustainLevel" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeSustainTime" Type="Real64" Value="0.1"/>
+																	</PropertyList>
+																</ModulatorEnvelope>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{B9BD3526-8EAE-40A5-A639-E98737DF6EE4}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-120</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Synth One" ID="{8C2DA862-4737-4A27-9814-84A00CC2814E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="UI_DATA" ID="{287BDFEF-5D27-4A0C-91AF-CD4CD0A3573B}" ShortID="592227603">
+							<PropertyList>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="UI_DATA_01" ID="{E9ADA43B-F54D-4295-86DD-C11F2365BCA0}" ShortID="602868824" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Click01" ID="{247C5A56-9720-4305-AEF6-DD12F1ED8A73}" ShortID="812774060">
+											<PropertyList>
+												<Property Name="TrimBegin" Type="Real64" Value="0.147232676878191"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.480443471918307"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SF-CK Data GUI Single 01.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Click01" ID="{247C5A56-9720-4305-AEF6-DD12F1ED8A73}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="UI_DATA_02" ID="{5234E727-AFE3-4074-B6AB-CE0573B08CF4}" ShortID="489899329" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Click01" ID="{D70B4EF2-FC1F-4D70-8AFF-797E03C1E011}" ShortID="309805726">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0232472647702407"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0542436177972283"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.2398541210795"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.61181035740335"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SF-CK Data GUI Single 01.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Click01" ID="{D70B4EF2-FC1F-4D70-8AFF-797E03C1E011}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="UI_DATA_03" ID="{C4FEEC3C-4CFC-4D32-9B59-440598034107}" ShortID="320363882" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Click01" ID="{A8B64898-011A-494E-A390-3A5725766644}" ShortID="32637561">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0387454412837345"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0387454412837345"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.23173741794311"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.66568636032093"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SF-CK Data GUI Single 01.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Click01" ID="{A8B64898-011A-494E-A390-3A5725766644}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="UI_DATA_04" ID="{B10D864C-7488-4BE7-B408-6AA5107AB883}" ShortID="12449346" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Click01" ID="{B408400A-3CF8-437E-BA79-A55A5E748C03}" ShortID="662412231">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0387454412837345"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0697417943107217"/>
+												<Property Name="TrimBegin" Type="Real64" Value="4.71144566010212"/>
+												<Property Name="TrimEnd" Type="Real64" Value="5.17639095550693"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SF-CK Data GUI Single 01.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Click01" ID="{B408400A-3CF8-437E-BA79-A55A5E748C03}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="UI_DATA_05" ID="{02C6F0BD-9920-4293-8182-D67841CD1F95}" ShortID="65551683" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Click01" ID="{8B431D47-1DE0-4C2D-9C02-8FD6CA575C25}" ShortID="566911207">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0387454412837345"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0697417943107217"/>
+												<Property Name="TrimBegin" Type="Real64" Value="3.3708533916849"/>
+												<Property Name="TrimEnd" Type="Real64" Value="3.79705324580598"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SF-CK Data GUI Single 01.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Click01" ID="{8B431D47-1DE0-4C2D-9C02-8FD6CA575C25}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<Playlist>
+								<ItemRef Name="UI_DATA_01" ID="{E9ADA43B-F54D-4295-86DD-C11F2365BCA0}"/>
+								<ItemRef Name="UI_DATA_02" ID="{5234E727-AFE3-4074-B6AB-CE0573B08CF4}"/>
+								<ItemRef Name="UI_DATA_03" ID="{C4FEEC3C-4CFC-4D32-9B59-440598034107}"/>
+								<ItemRef Name="UI_DATA_04" ID="{B10D864C-7488-4BE7-B408-6AA5107AB883}"/>
+								<ItemRef Name="UI_DATA_05" ID="{02C6F0BD-9920-4293-8182-D67841CD1F95}"/>
+							</Playlist>
+						</RandomSequenceContainer>
+						<Sound Name="UI_BEEP_05" ID="{92891DE2-46DD-4DFB-A07D-78CE8EF02895}" ShortID="215130799" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SourcePlugin Name="Wwise Synth One" ID="{1CE2C4F4-72FA-4946-8DEB-6F1A52B8AA94}" ShortID="294805706" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
+									<PropertyList>
+										<Property Name="BaseFrequency" Type="Real32" Value="1072">
+											<RTPCList>
+												<RTPC Name="" ID="{AE883159-B144-45BF-9428-291CE89CE6CB}" ShortID="833576570">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Pitch_Down" ID="{7CD087D2-DB11-4710-ADF0-51C96A0EC75B}" WorkUnitID="{9E1AC80D-D0FE-47D7-AF62-9003062A4651}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{4F9E64EB-EB28-4278-BE29-58FC4C918826}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>1033.43462</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>2080.04288</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="Osc1Invert" Type="bool" Value="True"/>
+										<Property Name="Osc1Level" Type="Real32" Value="-15"/>
+										<Property Name="Osc1Transpose" Type="int32" Value="-834"/>
+										<Property Name="Osc1Waveform" Type="int32" Value="1"/>
+										<Property Name="Osc2Level" Type="Real32" Value="-15"/>
+										<Property Name="Osc2Transpose" Type="int32" Value="-682"/>
+										<Property Name="Osc2Waveform" Type="int32" Value="2"/>
+										<Property Name="OutputLevel" Type="Real32">
+											<RTPCList>
+												<RTPC Name="" ID="{12041018-8DB5-4EBE-9F74-C9CE3C0251B8}" ShortID="15909624">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<Custom>
+																<ModulatorEnvelope Name="Modulator Envelope (Custom)" ID="{E59BA046-1618-4AD7-BB6A-073476CB8FD1}" ShortID="557356024">
+																	<PropertyList>
+																		<Property Name="EnvelopeAttackCurve" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeAutoRelease" Type="bool" Value="True"/>
+																		<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeSustainLevel" Type="Real64" Value="0"/>
+																		<Property Name="EnvelopeSustainTime" Type="Real64" Value="0.21"/>
+																	</PropertyList>
+																</ModulatorEnvelope>
+															</Custom>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{6252A204-B24D-481B-AFE8-B5B880C2BF38}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-96</YPos>
+																<Flags>21</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>53</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<Language>SFX</Language>
+								</SourcePlugin>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wwise Synth One" ID="{1CE2C4F4-72FA-4946-8DEB-6F1A52B8AA94}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_ACCEPTED" ID="{A8E4C7E6-F894-494A-BE6E-9378776EAF91}" ShortID="911742959" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UI_ACCEPTED" ID="{3C0234DC-B51F-4CA7-A1D7-BAC35D022C61}" ShortID="792914303">
+									<Language>SFX</Language>
+									<AudioFile>UI_PACK_01\UI_ACCEPTED.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="UI_ACCEPTED" ID="{3C0234DC-B51F-4CA7-A1D7-BAC35D022C61}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_CANCEL" ID="{A9B0D99B-0022-4E58-976C-3444A594375A}" ShortID="810965760" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UI_CANCEL" ID="{DF0665AF-C780-4F6A-BA21-5C9A9FC13A57}" ShortID="299834042">
+									<Language>SFX</Language>
+									<AudioFile>UI_PACK_01\UI_CANCEL.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="UI_CANCEL" ID="{DF0665AF-C780-4F6A-BA21-5C9A9FC13A57}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_Error" ID="{CE85D5BC-95E8-4D07-A523-CBB7E1CBEAF3}" ShortID="340215403" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UI_AWESOME" ID="{B24BE86F-06F5-4401-883F-F95CD7DF377C}" ShortID="973505296">
+									<Language>SFX</Language>
+									<AudioFile>UI_PACK_01\UI_AWESOME.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="UI_AWESOME" ID="{B24BE86F-06F5-4401-883F-F95CD7DF377C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_OK" ID="{B2F8DC4B-4757-4B05-B9C0-96BC48E7889D}" ShortID="388964352" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UI_OK" ID="{311F1132-B20B-4C59-8E70-F528BAC0BE1E}" ShortID="22748774">
+									<Language>SFX</Language>
+									<AudioFile>UI_PACK_01\UI_OK.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="UI_OK" ID="{311F1132-B20B-4C59-8E70-F528BAC0BE1E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_WARNING" ID="{F8C2CE32-AEA0-4ACC-A0AF-4D3156F2B2CE}" ShortID="649313747" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UI_WARNING" ID="{3A91E385-4373-4B31-8FC2-7F9286C66289}" ShortID="105738243">
+									<Language>SFX</Language>
+									<AudioFile>UI_PACK_01\UI_WARNING.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="UI_WARNING" ID="{3A91E385-4373-4B31-8FC2-7F9286C66289}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="SPACESHIP" ID="{C7694CD0-8F22-4C6E-9E4D-AC614E4E1DB1}" ShortID="472436994">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="whoosh01" ID="{91DD619C-6E17-4F25-811D-264829C6D92E}" ShortID="509631740" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-560</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="whoosh01" ID="{9A2058A2-57D1-46F6-8B5D-4D1FBDFF3CDA}" ShortID="269566149">
+									<Language>SFX</Language>
+									<AudioFile>whoosh01.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="whoosh01" ID="{9A2058A2-57D1-46F6-8B5D-4D1FBDFF3CDA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

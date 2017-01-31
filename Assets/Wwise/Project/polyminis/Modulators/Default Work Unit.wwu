@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{9E1AC80D-D0FE-47D7-AF62-9003062A4651}" SchemaVersion="72">
 	<Modulators>
-		<WorkUnit Name="Default Work Unit" ID="{9E1AC80D-D0FE-47D7-AF62-9003062A4651}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{9E1AC80D-D0FE-47D7-AF62-9003062A4651}" PersistMode="Standalone">
+			<ChildrenList>
+				<ModulatorEnvelope Name="Pitch_Up" ID="{1F6A7AF4-6A56-47A2-B9AF-5253EB99C497}" ShortID="821348973">
+					<PropertyList>
+						<Property Name="EnvelopeAttackCurve" Type="Real64" Value="36"/>
+						<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+						<Property Name="EnvelopeDecayTime" Type="Real64" Value="0.237"/>
+						<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0.311"/>
+						<Property Name="EnvelopeSustainLevel" Type="Real64" Value="44.2"/>
+					</PropertyList>
+				</ModulatorEnvelope>
+				<ModulatorLfo Name="LFO_01" ID="{067FA8CB-4F7A-474C-B5F0-0898CAD07AE1}" ShortID="539809025"/>
+				<ModulatorEnvelope Name="Pitch_Down" ID="{7CD087D2-DB11-4710-ADF0-51C96A0EC75B}" ShortID="837638695">
+					<PropertyList>
+						<Property Name="EnvelopeAttackCurve" Type="Real64" Value="36"/>
+						<Property Name="EnvelopeAttackTime" Type="Real64" Value="0"/>
+						<Property Name="EnvelopeAutoRelease" Type="bool" Value="True"/>
+						<Property Name="EnvelopeDecayTime" Type="Real64" Value="0.237"/>
+						<Property Name="EnvelopeReleaseTime" Type="Real64" Value="0.105"/>
+						<Property Name="EnvelopeSustainLevel" Type="Real64" Value="27.4"/>
+					</PropertyList>
+				</ModulatorEnvelope>
+			</ChildrenList>
+		</WorkUnit>
 	</Modulators>
 </WwiseDocument>

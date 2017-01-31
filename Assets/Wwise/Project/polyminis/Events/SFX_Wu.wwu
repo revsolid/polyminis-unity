@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="SFX_Wu" ID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" OwnerID="{979D1165-F0C6-445F-BC3C-41C235597E48}" PersistMode="Nested">
+			<ChildrenList>
+				<WorkUnit Name="Spaceship_Wu" ID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}" PersistMode="Reference"/>
+				<WorkUnit Name="UI_Wu" ID="{CA04F0DA-FC02-4982-9DA2-89812F25C019}" PersistMode="Reference"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

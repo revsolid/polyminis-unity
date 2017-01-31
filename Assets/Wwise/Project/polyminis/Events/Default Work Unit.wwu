@@ -3,8 +3,8 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{979D1165-F0C6-445F-BC3C-41C235597E48}" PersistMode="Standalone">
 			<ChildrenList>
-				<WorkUnit Name="Music_work_unit" ID="{B969FB9F-0718-4974-819F-3FECC617A358}" PersistMode="Reference"/>
-				<WorkUnit Name="SFX_work_unit" ID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" PersistMode="Reference"/>
+				<WorkUnit Name="Music_Wu" ID="{B969FB9F-0718-4974-819F-3FECC617A358}" PersistMode="Reference"/>
+				<WorkUnit Name="SFX_Wu" ID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
