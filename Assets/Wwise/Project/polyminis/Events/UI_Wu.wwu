@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{CA04F0DA-FC02-4982-9DA2-89812F25C019}" SchemaVersion="72" RootDocumentID="{979D1165-F0C6-445F-BC3C-41C235597E48}">
+	<Events>
+		<WorkUnit Name="UI_Wu" ID="{CA04F0DA-FC02-4982-9DA2-89812F25C019}" OwnerID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="P_UI_Ok" ID="{41B089CA-B55E-4394-9024-546492964AAD}">
+					<ChildrenList>
+						<Action Name="Play" ID="{F505152C-5A03-438C-88D3-5E6FCEB48214}" ShortID="554332442" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{72A4E76A-2F1C-4737-875A-05006C286A00}" Global="false">
+									<ObjectRef Name="UI_OK" ID="{B2F8DC4B-4757-4B05-B9C0-96BC48E7889D}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="P_UI_Return" ID="{89B0EC83-7AD8-4610-9CC8-81D8F9F94C97}">
+					<ChildrenList>
+						<Action Name="Play" ID="{0D787C34-477D-4FAA-BC66-687F1D476A67}" ShortID="455923015" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{67AD46FA-AB9A-4A1C-BF63-E2D46F249606}" Global="false">
+									<ObjectRef Name="UI_BEEP_01" ID="{2BEAF318-C525-4A40-8D96-41A58EBF9096}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="P_UI_Cancel" ID="{FA7B8ADA-119C-4B3A-A167-B205FBF739EA}">
+					<ChildrenList>
+						<Action Name="Play" ID="{1F32D67D-28E9-4A10-9916-6EC28BF9770A}" ShortID="275394904" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{4448267C-AF87-4B69-829A-A9DBA9E52B5D}" Global="false">
+									<ObjectRef Name="UI_CANCEL" ID="{A9B0D99B-0022-4E58-976C-3444A594375A}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="P_UI_Data" ID="{0CA6CD8F-20C7-40F6-944F-CA927C287C4D}">
+					<ChildrenList>
+						<Action Name="Play" ID="{840172ED-50E9-41E2-B5C0-6D021DA98B30}" ShortID="732993792" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{F984C05E-E74E-47C2-BF10-7B9732909D5C}" Global="false">
+									<ObjectRef Name="UI_DATA" ID="{287BDFEF-5D27-4A0C-91AF-CD4CD0A3573B}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="P_UI_Add" ID="{68BA0368-2E3A-4BFF-A9A1-8E2C45EE46E8}">
+					<ChildrenList>
+						<Action Name="Play" ID="{5DFA932A-7433-4183-B436-57029648C482}" ShortID="306660389" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{7219C622-7730-4F06-B6CF-59E2F998887F}" Global="false">
+									<ObjectRef Name="UI_BEEP_02" ID="{F8726228-2323-4038-A4D5-3AD2A29E94A6}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="P_UI_Warning" ID="{C587075B-AC94-4478-964E-95B14838E661}">
+					<ChildrenList>
+						<Action Name="Play" ID="{3E9014E2-20FF-479E-BE66-77110D764022}" ShortID="266652908" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{2FA6B271-8098-4395-B6D5-7566B21577D7}" Global="false">
+									<ObjectRef Name="UI_WARNING" ID="{F8C2CE32-AEA0-4ACC-A0AF-4D3156F2B2CE}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="P_UI_Substract" ID="{0235755C-3E4D-4FF4-B142-5F5E69292F96}">
+					<ChildrenList>
+						<Action Name="Play" ID="{A334D96A-892A-4B14-9AC2-27C2C354ECF1}" ShortID="592279996" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{0A915DD8-7535-4D24-8933-008EA5CAE826}" Global="false">
+									<ObjectRef Name="UI_BEEP_05" ID="{92891DE2-46DD-4DFB-A07D-78CE8EF02895}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="P_UI_Accepted" ID="{00759B42-E3AF-4F37-BDE2-20E5B19EA0EE}">
+					<ChildrenList>
+						<Action Name="Play" ID="{AA76D2B0-F04A-4EAD-9595-F2F318E5025B}" ShortID="633730210" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{4276D649-FA59-4AAE-9896-457A2FAA224C}" Global="false">
+									<ObjectRef Name="UI_ACCEPTED" ID="{A8E4C7E6-F894-494A-BE6E-9378776EAF91}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="P_UI_Error" ID="{D957202D-182D-4812-BB84-2ACA06182BB3}">
+					<ChildrenList>
+						<Action Name="Play" ID="{2840D01F-AD4E-4C87-9505-8E6A7E638916}" ShortID="275069319" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{F4770698-B612-4356-81AB-0D983BBD239B}" Global="false">
+									<ObjectRef Name="UI_Error" ID="{CE85D5BC-95E8-4D07-A523-CBB7E1CBEAF3}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

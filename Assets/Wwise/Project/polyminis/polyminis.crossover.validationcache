@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="72">
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Attenuations\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Audio Devices\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Control Surface Sessions\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Conversion Settings\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Conversion Settings\Factory Conversion Settings.wwu" DateLow="205327744" DateHigh="30548261"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Effects\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Effects\Factory Effects.wwu" DateLow="205327744" DateHigh="30548261"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Events\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Game Parameters\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Mixing Sessions\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Modulators\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\polyminis.wproj" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Presets\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Queries\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Queries\Factory Queries.wwu" DateLow="205327744" DateHigh="30548261"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\SoundBanks\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\States\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Switches\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
-	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Triggers\Default Work Unit.wwu" DateLow="1355393152" DateHigh="30548263"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Attenuations\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Audio Devices\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Control Surface Sessions\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Conversion Settings\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Conversion Settings\Factory Conversion Settings.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Dynamic Dialogue\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Effects\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Effects\Factory Effects.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Events\Default Work Unit.wwu" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Events\Music_Wu.wwu" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Events\SFX_Wu.wwu" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Events\Spaceship_Wu.wwu" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Events\UI_Wu.wwu" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Game Parameters\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="2957502464" DateHigh="30551691"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Mixing Sessions\Default Work Unit.wwu" DateLow="2760281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Modulators\Default Work Unit.wwu" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\polyminis.crossover.wsettings" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\polyminis.wproj" DateLow="2790281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Presets\Default Work Unit.wwu" DateLow="2790281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Queries\Default Work Unit.wwu" DateLow="2790281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Queries\Factory Queries.wwu" DateLow="2790281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\SoundBanks\Default Work Unit.wwu" DateLow="1644692352" DateHigh="30570563"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Soundcaster Sessions\Default Work Unit.wwu" DateLow="2790281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\States\Default Work Unit.wwu" DateLow="2790281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Switches\Default Work Unit.wwu" DateLow="2790281600" DateHigh="30550400"/>
+	<ValidationCacheItem File="Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\Triggers\Default Work Unit.wwu" DateLow="2790281600" DateHigh="30550400"/>
 	<ValidationCacheItem File="Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="3656756992" DateHigh="30550598"/>
 	<ValidationCacheItem File="Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\Actor-Mixer Hierarchy\Spaceship Work Unit.wwu" DateLow="3656756992" DateHigh="30550598"/>
 	<ValidationCacheItem File="Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\Actor-Mixer Hierarchy\Whoosh.wwu" DateLow="3656756992" DateHigh="30550598"/>
@@ -58,4 +63,38 @@
 	<ValidationCacheItem File="Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\States\Default Work Unit.wwu" DateLow="950455552" DateHigh="30549488"/>
 	<ValidationCacheItem File="Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\Switches\Default Work Unit.wwu" DateLow="950455552" DateHigh="30549488"/>
 	<ValidationCacheItem File="Y:\Desktop\Polyminis\polyminis-unity\Assets\Wwise\Project\polyminis\Triggers\Default Work Unit.wwu" DateLow="950455552" DateHigh="30549488"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="3565812096" DateHigh="30557449"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Actor-Mixer Hierarchy\Spaceship Work Unit.wwu" DateLow="566748288" DateHigh="30569097"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Actor-Mixer Hierarchy\Whoosh.wwu" DateLow="3565812096" DateHigh="30557449"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Attenuations\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Audio Devices\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Control Surface Sessions\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Conversion Settings\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Conversion Settings\Factory Conversion Settings.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Dynamic Dialogue\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Effects\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Effects\Factory Effects.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Events\creature_observation_work_unit.wwu" DateLow="3565812096" DateHigh="30557449"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Events\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Events\exploration_work_unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Events\intro_theme_work_unit.wwu" DateLow="3565812096" DateHigh="30557449"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Events\Music_work_unit.wwu" DateLow="3565812096" DateHigh="30557449"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Events\SFX_work_unit.wwu" DateLow="3565812096" DateHigh="30557449"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Events\Spaceship_work_unit.wwu" DateLow="2676682880" DateHigh="30569095"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Events\species_design_work_unit.wwu" DateLow="3565812096" DateHigh="30557449"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Game Parameters\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="3565812096" DateHigh="30557449"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Mixing Sessions\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Modulators\Default Work Unit.wwu" DateLow="57188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\polyminis.crossover.wsettings" DateLow="646748288" DateHigh="30569097"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\polyminis.wproj" DateLow="187188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Presets\Default Work Unit.wwu" DateLow="187188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Queries\Default Work Unit.wwu" DateLow="187188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Queries\Factory Queries.wwu" DateLow="187188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\SoundBanks\Default Work Unit.wwu" DateLow="2676682880" DateHigh="30569095"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Soundcaster Sessions\Default Work Unit.wwu" DateLow="187188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\States\Default Work Unit.wwu" DateLow="187188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Switches\Default Work Unit.wwu" DateLow="187188864" DateHigh="30549541"/>
+	<ValidationCacheItem File="Y:\POLYMINIS\polyminis-unity\Assets\Wwise\Project\polyminis\Triggers\Default Work Unit.wwu" DateLow="187188864" DateHigh="30549541"/>
 </ValidationCache>
