@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e9ca67a5944444b3ca0d0aea9d7cc669, type: 2}
+  - {fileID: 2100000, guid: f5e68286fedc24e40bfc8120f85b4449, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Starmap: {fileID: 0}
   WarpDialog: {fileID: 1803585896480258, guid: 4c0bf40fabd951441834e7706014c2b0, type: 2}
+  BlockingDialog: {fileID: 0}
 --- !u!135 &135000010578948312
 SphereCollider:
   m_ObjectHideFlags: 1
