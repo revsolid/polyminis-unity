@@ -6,31 +6,39 @@ using System.Collections.Generic;
 
 public class InstinctsTunner : MonoBehaviour
 {
-    public Slider Hoarding;
-    public Slider Herding;
-    public Slider Predatory;
-    public Slider Nomadic;
+    public Slider Hoarding , MaxHoarding;
+    public Slider Herding , MaxHerding;
+    public Slider Predatory, MaxPreadatory;
+    public Slider Nomadic, MaxNomadic;
     
+        
     public int MinLevel = 2;
     public int MaxLevel = 8;
     
     private Dictionary<Instinct, int> Levels;
-    private Dictionary<Instinct, Slider> SliderMap;
-    
+    private Dictionary<Instinct, Slider> MaxSliderMap;
+    private Dictionary<Instinct, Slider> ValueSliderMap;
+
     // Use this for initialization
     public void Initialize()
     {
-        SliderMap = new Dictionary<Instinct, Slider>();
-        SliderMap[Instinct.HOARDING] = Hoarding;
-        SliderMap[Instinct.HERDING] = Herding;
-        SliderMap[Instinct.PREDATORY] = Predatory;
-        SliderMap[Instinct.NOMADIC] = Nomadic;
+        MaxSliderMap = new Dictionary<Instinct, Slider>();
+        ValueSliderMap = new Dictionary<Instinct, Slider>();
+        MaxSliderMap[Instinct.HOARDING] = Hoarding;
+        MaxSliderMap[Instinct.HERDING] = Herding;
+        MaxSliderMap[Instinct.PREDATORY] = Predatory;
+        MaxSliderMap[Instinct.NOMADIC] = Nomadic;
+
+        ValueSliderMap[Instinct.HOARDING] = Hoarding;
+        ValueSliderMap[Instinct.HERDING] = Herding;
+        ValueSliderMap[Instinct.PREDATORY] = Predatory;
+        ValueSliderMap[Instinct.NOMADIC] = Nomadic;
 
         Levels = new Dictionary<Instinct, int>();
         foreach(Instinct i in Enum.GetValues(typeof(Instinct)))
         {
             Levels[i] = MinLevel;
-            SliderMap[i].maxValue = MaxLevel;
+            MaxSliderMap[i].maxValue = MaxLevel;
         }
     }
 
@@ -59,14 +67,14 @@ public class InstinctsTunner : MonoBehaviour
 
     
 
-    public void AddSplice(Instinct instinct)
+    public void AddSplice(Instinct instinct, int size)
     {
-        Levels[instinct] += 1;
+        Levels[instinct] += size;
     }
     
-    public void RemoveSplice(Instinct instinct)
+    public void RemoveSplice(Instinct instinct, int size)
     {
-        Levels[instinct] -= 1;
+        Levels[instinct] -= size;
     }
     
     public void OnUp(Instinct i)
@@ -75,7 +83,15 @@ public class InstinctsTunner : MonoBehaviour
     // called every frame for each level
     void UpdateLevel(Instinct i)
     {
-        SliderMap[i].value = Levels[i];
+        MaxSliderMap[i].value = Levels[i];
+    }
+
+    public void ChangeTuning(Instinct instinct, bool up)
+    {
+        if (up && ValueSliderMap[instinct].value < MaxSliderMap[instinct].value)
+        {
+            ValueSliderMap[instinct].value++;
+        }
     }
 
 }
