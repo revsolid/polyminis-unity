@@ -89,12 +89,12 @@ public class PlanetModel
     public Range<float> Temperature;
     public Range<float> Ph;
     public List<SpeciesModel> Species;
-    public string Name;
+    public string PlanetName;
     public int ID;
 
     public PlanetModel() //TODO: Default constructor... assigns arbitratry values
     {
-        Name = "Some Planet";
+        PlanetName = "Some Planet";
         SpaceCoords = new Vector2(100,0);
         Temperature = new Range<float>(0.0f, 1.0f);
         Ph = new Range<float>(1.3f, 4.2f);

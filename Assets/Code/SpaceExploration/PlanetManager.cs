@@ -124,6 +124,7 @@ public class PlanetManager : MonoBehaviour
                     PlanetModel newPlanet = spaceExEvent.Planets[i];
                     if (!HasSpawnedPlanet(newPlanet.ID))
                     {
+                        Debug.Log(newPlanet.PlanetName);
                         ToSpawn.Add(newPlanet);
                     }
                 }
