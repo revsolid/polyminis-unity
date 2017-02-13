@@ -130,7 +130,9 @@ public enum SpaceExplorationCommandType
 {
     INIT,
     ATTEMPT_MOVE,
-    WARP
+    WARP,
+    CALC_WARP_COST,
+    SAVE_POSITION
 }
 [Serializable]
 public class SpaceExplorationCommand : BaseCommand
@@ -158,7 +160,8 @@ public enum SpaceExplorationEventType
 {
     SPAWN_PLANETS,
     KICK_BACK,
-    WARP
+    WARP,
+    WARP_COST_RESULT
 }
 [Serializable]
 public class SpaceExplorationEvent : BaseEvent
@@ -172,18 +175,37 @@ public class SpaceExplorationEvent : BaseEvent
    }
    public PlanetModel[] Planets;
    public Vector2 Position;
+   public float WarpCost;
 }
 
 
 // 
+[Serializable]
 public class UserModel
 {
-    string Username;
+    public string UserName;
     string Password;  // SUPER SECURE!!
-
     // TODO: What do they own 
 }
 
+[Serializable]
+public class UserServiceCommand : BaseCommand
+{
+    public string UserName;
+    public UserServiceCommand(string username)
+    {
+        Service = "user";
+        UserName = username;
+    }
+}
+
+[Serializable]
+public class UserServiceEvent : BaseEvent
+{
+    public bool Result = false;
+    public string UserName;
+    public Vector2 LastKnownPosition;
+}
 //
 [Serializable]
 public enum TraitSize

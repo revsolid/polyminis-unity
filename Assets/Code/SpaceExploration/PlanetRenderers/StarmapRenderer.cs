@@ -4,15 +4,16 @@ using System.Collections;
 public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
 {
     [HideInInspector] public GameObject Starmap;
-    public GameObject WarpDialog;
+    public WarpDialog WarpDialog;
     public GameObject BlockingDialog;
     private Vector2 SpacePos;
     private Camera TargetCamera;
-    // Use this for initialization
+    private float DistanceToSpaceship;
 
     public void RenderUpdate(Planet model)
     {
         SpacePos = model.SpacePosition;
+        DistanceToSpaceship = model.DistanceToSpaceship;
         UpdatePosition(SpacePos);
 
         if (Starmap != null)
@@ -67,8 +68,8 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
 
     void OnMouseDown()
     {
-        GameObject wp = Instantiate(WarpDialog);
-        wp.GetComponent<WarpDialog>().SpacePos = SpacePos;
+        WarpDialog wp = Instantiate(WarpDialog);
+        wp.SetWarpParams(SpacePos);
     }
 
     // update relative to starmap object

@@ -14,4 +14,15 @@ public class Session : Singleton<Session>
     }
     // Inventory
     public IDictionary<string, SpeciesModel> Species;
+    public string UserName;
+    public Vector2 LastKnownPosition = Vector2.zero;
+    public float Biomass = 100.0f;
+    
+    
+    public virtual void OnDestroy()
+    {
+        base.OnDestroy();
+        Connection.Instance.CloseConnection();
+        Debug.Log("Session Terminated");
+    }
 }

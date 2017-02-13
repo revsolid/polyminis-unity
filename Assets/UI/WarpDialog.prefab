@@ -535,6 +535,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  RightButton: {fileID: 114390321641849996}
+  LeftButton: {fileID: 114757885951835168}
 --- !u!114 &114586208679030260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,7 +790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121b280aa92b6f749bf7ea94d2b21e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpacePos: {x: 0, y: 0}
 --- !u!222 &222025602228380928
 CanvasRenderer:
   m_ObjectHideFlags: 1

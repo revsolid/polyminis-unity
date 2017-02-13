@@ -93,7 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Starmap: {fileID: 0}
-  WarpDialog: {fileID: 1803585896480258, guid: 4c0bf40fabd951441834e7706014c2b0, type: 2}
+  WarpDialog: {fileID: 114964185109239276, guid: 4c0bf40fabd951441834e7706014c2b0,
+    type: 2}
   BlockingDialog: {fileID: 0}
 --- !u!135 &135000010578948312
 SphereCollider:
