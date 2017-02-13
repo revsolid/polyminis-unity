@@ -12,13 +12,26 @@ public class PolyminisDialog : MonoBehaviour
 
     public UnityEvent OnLeftButton;
     public UnityEvent OnRightButton;
+    
+    public Button RightButton;
+    public Button LeftButton;
 
     private void OnEnable()
     {
-        this.transform.GetChild(0).GetChild(0).FindChild("DialogMessage").GetComponent<Text>().text = DialogString;
-        this.transform.GetChild(0).GetChild(0).FindChild("LeftButton").GetChild(0).GetComponent<Text>().text = LeftButtonString;
-        this.transform.GetChild(0).GetChild(0).FindChild("RightButton").GetChild(0).GetComponent<Text>().text = RightButtonString;
+        UpdateTextOnElements();
         SetStarmapRendererBlock();
+    }
+    
+    private void UpdateTextOnElements()
+    {
+        this.transform.GetChild(0).GetChild(0).FindChild("DialogMessage").GetComponent<Text>().text = DialogString;
+        LeftButton.GetComponentInChildren<Text>().text = LeftButtonString;
+        RightButton.GetComponentInChildren<Text>().text = RightButtonString;
+    }
+    
+    public void Update()
+    {
+        UpdateTextOnElements();
     }
 
     public void OnLeftButtonClicked()

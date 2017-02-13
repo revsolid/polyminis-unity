@@ -1,23 +1,68 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LoginUI : MonoBehaviour
 {
 
-	// Use this for initialization
-	void Start ()
-	{
-	}
+    public InputField LoginField;
 	
-	// Update is called once per frame
-	void Update ()
+	UserServiceEvent EventToProcess;
+    void Awake()
+    {
+        Connection.OnMessageEvent += OnServerMessage;
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+    }
+    
+    // Update is called once per frame
+    void Update ()
+    {
+		if (EventToProcess != null)
+		{
+			if (!EventToProcess.Result)	
+			{
+				OnLoginFailed();
+			}
+			else
+			{
+				OnLoginSuccessful();
+			}
+
+			EventToProcess = null;
+		}
+    }
+    
+    public void StartLogin()
+    {
+        var loginCommand = new UserServiceCommand(LoginField.text);
+        Connection.Instance.Send(JsonUtility.ToJson(loginCommand));
+    }
+
+    void OnServerMessage(string message)
+	{
+		//
+        UserServiceEvent userEvent = JsonUtility.FromJson<UserServiceEvent>(message);
+		EventToProcess = userEvent;
+	}
+    
+    void OnLoginFailed() 
 	{
 	}
-
-	public void GoToSpaceScene()
-	{
+    void OnLoginSuccessful() 
+    {
+		Session.Instance.UserName = EventToProcess.UserName;
+		Session.Instance.LastKnownPosition = EventToProcess.LastKnownPosition;
 		SceneManager.LoadScene("space_exploration");
+    }
+	
+	void OnDestroy()
+	{
+        Connection.OnMessageEvent -= OnServerMessage;
 	}
 
 }

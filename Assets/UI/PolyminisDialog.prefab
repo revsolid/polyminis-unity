@@ -486,6 +486,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  RightButton: {fileID: 114013163020808192}
+  LeftButton: {fileID: 114698241687121544}
 --- !u!114 &114536371347350314
 MonoBehaviour:
   m_ObjectHideFlags: 1

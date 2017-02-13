@@ -4,13 +4,7 @@ using SpaceExploration.Types;
 
 public class SpaceMovementTracker : MonoBehaviour
 {
-    public GameObject SpaceSphere1;
-    public GameObject HUD;
-    
-    public Vector2 CurrentPosition { get; private set; }
-    public float Heading {get; private set; }
-    public Vector2 Forward {get; private set; }
-    public float TranslationSpeedMult = 0.0f;
+    public GameObject SpaceSphere1; public GameObject HUD; public Vector2 CurrentPosition { get; private set; } public float Heading {get; private set; } public Vector2 Forward {get; private set; } public float TranslationSpeedMult = 0.0f;
     public float RotationSpeedMult = 0.0f;
 
     
@@ -22,13 +16,14 @@ public class SpaceMovementTracker : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        CurrentPosition = Vector2.zero; 
+        CurrentPosition = Session.Instance.LastKnownPosition;
         Heading = 0;
 
         var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.INIT, CurrentPosition);
         Debug.Log(JsonUtility.ToJson(spaceExCommand));
         Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));//"init", CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
         InvokeRepeating("SendLocation", 0.5f, 0.2f);
+        InvokeRepeating("SaveLocation", 10.0f, 10.0f);
     }
 
     // Update is called once per frame
@@ -64,9 +59,15 @@ public class SpaceMovementTracker : MonoBehaviour
     void SendLocation()
     {    
         var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.ATTEMPT_MOVE, CurrentPosition);
-        //Debug.Log(JsonUtility.ToJson(spaceExCommand));
-        Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));//("mov", CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
+        Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));
     }
+    
+    void SaveLocation()
+    {    
+        var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.SAVE_POSITION, CurrentPosition);
+        Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));
+    }
+
 
     void Warp (Vector2 dest)
     {
