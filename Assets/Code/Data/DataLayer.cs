@@ -184,7 +184,7 @@ public class SpaceExplorationEvent : BaseEvent
 public class UserModel
 {
     public string UserName;
-    string Password;  // SUPER SECURE!!
+    string Password;  // SUPER SECURE!! (it's ok we will display them as *, no one will know)
     // TODO: What do they own 
 }
 
@@ -207,6 +207,49 @@ public class UserServiceEvent : BaseEvent
     public Vector2 LastKnownPosition;
 }
 //
+
+[Serializable]
+public enum SpeciesCatalogueCommandType
+{
+    SAVE_SPECIES
+}
+[Serializable]
+public class SpeciesCatalogueCommand : BaseCommand
+{
+    SpeciesCatalogueCommandType CommandType;
+    public List<SpeciesModel> Species;
+
+    public SpeciesCatalogueCommand(SpeciesCatalogueCommandType commandType, List<SpeciesModel> species)
+    {
+        CommandType = commandType; 
+        Species = species;
+        Command = CommandType.ToString();
+        Service = "species_catalogue";
+    }
+}
+
+/*
+[Serializable]
+public enum SpeciesCatalogueEventType
+{
+    SAVE_SPECIES
+}
+
+public class SpeciesDesignerEvent : BaseEvent
+{
+    public SpeciesCatalogueEventType EventType
+    {
+        get
+        {
+            return (SpeciesCatalogueEventType) Enum.Parse(typeof(SpeciesCatalogueEventType), EventString); 
+        }
+    }
+
+    public string UserName;
+}
+*/
+
+
 [Serializable]
 public enum TraitSize
 {

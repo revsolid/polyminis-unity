@@ -207,13 +207,14 @@ public class SpeciesDesignUI : MonoBehaviour
     public void OnSaveButtonClicked()
     {
         // Validate
-        
+        DesignerModel.CurrentSpecies.Name = NameInput.text;
         SpeciesModel newModel = new SpeciesModel(DesignerModel.CurrentSpecies);
-        Session.Instance.Species[name] = newModel;
-        // Serialize Species
-        Debug.Log(JsonUtility.ToJson(DesignerModel.CurrentSpecies));
-        
+        Session.Instance.AddSpecies(newModel);
+
         // Send to Server
+        var speciesDsnCommand = new SpeciesCatalogueCommand(SpeciesCatalogueCommandType.SAVE_SPECIES, Session.Instance.ListOfSpecies());
+        Debug.Log (JsonUtility.ToJson (speciesDsnCommand));
+        Connection.Instance.Send(JsonUtility.ToJson(speciesDsnCommand));
     }
 
     // note: this always loads the selected species, since the one  
