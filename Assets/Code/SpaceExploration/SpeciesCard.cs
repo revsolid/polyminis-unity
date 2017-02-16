@@ -4,15 +4,30 @@ using System.Collections;
 public class SpeciesCard : MonoBehaviour
 {
 
-    GameObject OrbitalUI;
+    public OrbitalUI OrbitalUI;
+    public GameObject EmptyState;
+    public GameObject FilledState;
+    
+    bool Empty = true; 
+    
+    SpeciesModel Species;
+    
+    
 	// Use this for initialization
 	void Start ()
     {
-        OrbitalUI = GameObject.FindGameObjectWithTag("OrbitalUI");
+        FilledState.SetActive(false);
+        EmptyState.SetActive(true);
 	}
-
+    
     public void OnClicked()
     {
-        OrbitalUI.GetComponent<OrbitalUI>().OnEditCreatureClicked("Cool dudes");
+        if (!Empty)
+        {
+            OrbitalUI.OnEditCreatureClicked("Cool dudes");
+        }
+        else
+        {
+        }
     }
 }

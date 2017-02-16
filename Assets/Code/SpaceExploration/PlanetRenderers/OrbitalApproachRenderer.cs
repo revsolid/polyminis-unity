@@ -57,5 +57,6 @@ public class OrbitalApproachRenderer :  SpaceExPlanetRenderer
         TargetCamera.gameObject.SetActive(true);
         TargetCamera.enabled = true;
         TargetCamera.GetComponentInChildren<OrbitalUI>().OnUIOpened(Model);
+        Debug.Log("Orbiting: "+Model.PlanetName);
 	}
 }

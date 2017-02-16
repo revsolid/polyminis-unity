@@ -48,6 +48,8 @@ public class OrbitalUI : MonoBehaviour
         TempSlider.value = p.Temperature.Average() * 100;
         PlanetName.text = p.PlanetName;
         PlanetRenderer.GetComponent<PlanetCloseupRenderer>().RenderUpdate(p);
+        
+        Debug.Log(">>>>>>" + p.PlanetName);
 
         //TODO: Add instantiation of Species "Cards" to SpeciesLayout
 

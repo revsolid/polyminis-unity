@@ -14,10 +14,51 @@ public class Session : Singleton<Session>
     }
     // Inventory
     public IDictionary<string, SpeciesModel> Species;
-    public string UserName;
+    private string _userName;
+    public string UserName
+    {
+        get
+        {
+            return _userName;
+        }
+        set
+        {
+            _userName = value;
+            Debug.Log("Setting UserName");
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("Player");
+            if (objects.Length > 0)
+            {
+                PlayerID pid = objects[0].GetComponent<PlayerID>();
+                if (pid != null)
+                    pid.PlayerName.text = UserName;
+            }
+            else
+            {
+                Debug.Log("But didn't find the thingy :(");
+            }
+        }
+    }
     public Vector2 LastKnownPosition = Vector2.zero;
-    public float Biomass = 100.0f;
-    
+    private float _biomass = 100.0f;
+    public float Biomass
+    {
+        get
+        {
+            return _biomass;
+        }
+        set
+        {
+            _biomass = value;
+            
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("Player");
+            if (objects.Length > 0)
+            {
+                PlayerID pid = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerID>();
+                if (pid != null)
+                    pid.Biomass.text = Biomass + "";
+            }
+        }
+    }    
     
     public virtual void OnDestroy()
     {
