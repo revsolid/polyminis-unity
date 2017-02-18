@@ -44,18 +44,19 @@ using System;
 
 
 //
-public class Range<T> where T: IComparable
+[Serializable]
+public class Range
 {
-    public T Min { get; private set; }
-    public T Max { get; private set; }
+    public float Min;
+    public float Max;
 
-    public Range(T min, T max)
+    public Range(float min, float max)
     {
         Min = min;
         Max = max;
     }
 
-    public bool Within(T value)
+    public bool Within(float value)
     {
         return (Min.CompareTo(value) != -1 && Max.CompareTo(value) != 1);
     }
@@ -86,18 +87,16 @@ public class Range<T> where T: IComparable
 public class PlanetModel
 {
     public Vector2 SpaceCoords;
-    public Range<float> Temperature;
-    public Range<float> Ph;
+    public Range Temperature; // = new Range(0.0f, 1.0f);
+    public Range Ph; // = new Range(1.3f, 4.2f);
     public List<SpeciesModel> Species;
     public string PlanetName;
     public int ID;
 
     public PlanetModel() //TODO: Default constructor... assigns arbitratry values
     {
-        PlanetName = "Some Planet";
-        SpaceCoords = new Vector2(100,0);
-        Temperature = new Range<float>(0.0f, 1.0f);
-        Ph = new Range<float>(1.3f, 4.2f);
+ //       PlanetName = "Some Planet";
+ //       SpaceCoords = new Vector2(100,0);
     }
 }
 
@@ -176,6 +175,7 @@ public class SpaceExplorationEvent : BaseEvent
    public PlanetModel[] Planets;
    public Vector2 Position;
    public float WarpCost;
+   public int NewBiomassAvailable;
 }
 
 
@@ -331,8 +331,8 @@ public class IndividualModel
   public CreatureMorphologyModel Morphology;
   public int HP;
   public IndividualPhysics Physics;
-  public Range<float> Temperature;
-  public Range<float> Ph;
+  public Range Temperature;
+  public Range Ph;
   // TODO: Neural Network Representation (?)
 }
 

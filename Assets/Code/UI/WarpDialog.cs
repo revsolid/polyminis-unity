@@ -47,13 +47,13 @@ public class WarpDialog : MonoBehaviour
     
     public void OnCostCalculated(string message)
     {
-        Connection.OnMessageEvent -= OnCostCalculated;
         SpaceExplorationEvent spaceExEvent = JsonUtility.FromJson<SpaceExplorationEvent>(message);
         if (spaceExEvent != null)
         {
             switch (spaceExEvent.EventType)
             {
             case SpaceExplorationEventType.WARP_COST_RESULT:
+                Connection.OnMessageEvent -= OnCostCalculated;
                 WarpCost = spaceExEvent.WarpCost;
                 Debug.Log("RESULT! " + WarpCost);
                 break;
