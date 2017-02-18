@@ -13,7 +13,15 @@ public class PlayerID : MonoBehaviour
     {
         PlayerName.text = Session.Instance.UserName;
         Biomass.text = Session.Instance.Biomass + "";
+		
+        Session.OnSessionChangedEvent += () => OnSessionChanged();
     }
+	
+	void OnSessionChanged()
+	{
+        PlayerName.text = Session.Instance.UserName;
+        Biomass.text = Session.Instance.Biomass + "";
+	}
     
     // Update is called once per frame
     void Update ()
