@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
+public class StarmapRenderer : UIPlanetRenderer
 {
     [HideInInspector] public GameObject Starmap;
     public WarpDialog WarpDialog;
@@ -10,7 +10,7 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
     private Camera TargetCamera;
     private float DistanceToSpaceship;
 
-    public void RenderUpdate(Planet model)
+    public override void RenderUpdate(Planet model)
     {
         SpacePos = model.SpacePosition;
         DistanceToSpaceship = model.DistanceToSpaceship;
@@ -29,19 +29,19 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
                 this.gameObject.SetActive (false);
             }
         }
-
+//		base.RenderUpdate (model);
     }
 
     private void Update()
     {
-        if (BlockingDialog != null && this.GetComponent<SphereCollider>().enabled)
-        {
-            UpdateCollider(false);
-        }
-        else if(BlockingDialog == null && !this.GetComponent<SphereCollider>().enabled)
-        {
-            UpdateCollider(true);
-        }
+//        if (BlockingDialog != null && this.GetComponent<SphereCollider>().enabled)
+//        {
+//            UpdateCollider(false);
+//        }
+//        else if(BlockingDialog == null && !this.GetComponent<SphereCollider>().enabled)
+//        {
+//            UpdateCollider(true);
+//        }
     }
 
     private void OnEnable()
@@ -50,13 +50,13 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
         PolyminisDialog dialog = FindObjectOfType<PolyminisDialog>();
         if (dialog)
         {
-            UpdateCollider(false);
+    //        UpdateCollider(false);
         }
     }
     
-    public  void UpdateCollider(bool enable)
+    public void UpdateCollider(bool enable)
     {
-        this.GetComponent<SphereCollider>().enabled = enable;
+     //   this.GetComponent<SphereCollider>().enabled = enable;
     }
 
     public void SetTargetCamera(Camera camera)
@@ -66,8 +66,9 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
 
 
 
-    void OnMouseDown()
+    public void OnMouseeDown()
     {
+		Debug.Log("XXXXXX");
         WarpDialog wp = Instantiate(WarpDialog);
         wp.SetWarpParams(SpacePos);
     }

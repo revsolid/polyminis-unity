@@ -40,7 +40,6 @@ public class RadarRenderer : UIPlanetRenderer
             return;
         }
         //+ Mathf.Abs(model.RelativeAngle) / 100.0f
-		print ("BBBBBB " + model.RelativeAngle * 100.0f);
 		PlanetContainer.transform.position = new Vector3(StartingX + model.RelativeAngle * 3.0f, StartingY, gameObject.transform.position.z);
 
 		DistanceText.text = Math.Round(DistanceToSpaceship).ToString();
