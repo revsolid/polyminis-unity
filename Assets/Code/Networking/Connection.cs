@@ -62,7 +62,6 @@ public class Connection
     {
         if (ws != null)
         {
-            Debug.Log(content);
             ws.Send(content);
         }
     }

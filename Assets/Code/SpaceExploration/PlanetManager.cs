@@ -23,6 +23,7 @@ public class PlanetManager : MonoBehaviour
     Camera MainCamera;
     bool DoWarp = false;
     Vector2 WarpDest = Vector2.zero;
+    float NewBiomassAvailable;
 
 //TODO: Planets should have a few Events in them (GotInRadarDistance, GotInOrbitDistance, ...) and 
 // other systems should subscribe (or event the PlanetManager itself) that makes some renderers way
@@ -38,14 +39,12 @@ public class PlanetManager : MonoBehaviour
         Planets = new List<Planet>();
         ToSpawn = new List<PlanetModel>();
         LastKnownPos = MovementTracker.CurrentPosition;
+        NewBiomassAvailable = Session.Instance.Biomass;
     }
     
     // This shouldn't be called directly
-    Planet CreatePlanetAt(Vector2 position, int inID)
+    Planet CreatePlanetAt(PlanetModel pm) //Vector2 position, int inID)
     {
-        PlanetModel pm = new PlanetModel();
-        pm.SpaceCoords = position;
-        pm.ID = inID;
         Planet p1 = new Planet(pm);
         SpaceExPlanetRenderer spaceExRenderer = GameObject.Instantiate(SpaceExRendererPrototype);
         OrbitalApproachRenderer orbAppRenderer = GameObject.Instantiate(OrbitalApproachRendererPrototype);
@@ -103,12 +102,18 @@ public class PlanetManager : MonoBehaviour
             OrbitalCamera.enabled = true;
             OrbitalCamera.GetComponentInChildren<OrbitalUI>().OnUIOpened(GetPlanetAt(WarpDest));
         }
+        
+        if (NewBiomassAvailable != Session.Instance.Biomass)
+        {
+            Session.Instance.Biomass = NewBiomassAvailable;
+            NewBiomassAvailable = Session.Instance.Biomass;
+        }
     }
 
     // Create a new planet and add it to manager 
     void SpawnNewPlanet(PlanetModel p)
     {
-        Planets.Add(CreatePlanetAt(p.SpaceCoords, p.ID));
+        Planets.Add(CreatePlanetAt(p));
     }
 
     void OnServerMessage(string message)
@@ -124,7 +129,6 @@ public class PlanetManager : MonoBehaviour
                     PlanetModel newPlanet = spaceExEvent.Planets[i];
                     if (!HasSpawnedPlanet(newPlanet.ID))
                     {
-                        Debug.Log(newPlanet.PlanetName);
                         ToSpawn.Add(newPlanet);
                     }
                 }
@@ -132,6 +136,8 @@ public class PlanetManager : MonoBehaviour
             case SpaceExplorationEventType.WARP:
                 WarpDest = spaceExEvent.Position;
                 DoWarp = true;
+                Debug.Log(message);
+                NewBiomassAvailable = spaceExEvent.NewBiomassAvailable;
                 break;
             }
         }
