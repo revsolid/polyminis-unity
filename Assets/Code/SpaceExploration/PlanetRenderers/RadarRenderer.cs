@@ -1,25 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 
-public class RadarRenderer : MonoBehaviour, IPlanetRenderer
+public class RadarRenderer : UIPlanetRenderer
 {
     bool Visible = false;
+	float StartingX;
     float StartingY;
     public float DistanceToSpaceship = 0.0f;
     public Text DistanceText;
+	public GameObject PlanetContainer;
 
     // Use this for initialization
     void Start ()
     {
-        StartingY = gameObject.transform.position.y;
+		StartingY = PlanetContainer.transform.position.y;
+		StartingX = PlanetContainer.transform.position.x;
         gameObject.SetActive(false);
     }
+
+	void Update(){}
     
-    public void RenderUpdate(Planet model)
+    public override void RenderUpdate(Planet model)
     {
         DistanceToSpaceship = model.DistanceToSpaceship;
-        if (Mathf.Abs(model.RelativeAngle) < 25 && DistanceToSpaceship > 30 && DistanceToSpaceship < 300)
+        if (Mathf.Abs(model.RelativeAngle) < 60 && DistanceToSpaceship > 30 && DistanceToSpaceship < 300)
         {
             if (!Visible)
             {
@@ -33,8 +39,11 @@ public class RadarRenderer : MonoBehaviour, IPlanetRenderer
             gameObject.SetActive(false);
             return;
         }
-        //+ Mathf.Abs(model.RelativeAngle) / 100.0f 
-        gameObject.transform.position = new Vector3(model.RelativeAngle / 5.0f, StartingY, gameObject.transform.position.z);
-        DistanceText.text = DistanceToSpaceship.ToString();
+        //+ Mathf.Abs(model.RelativeAngle) / 100.0f
+		print ("BBBBBB " + model.RelativeAngle * 100.0f);
+		PlanetContainer.transform.position = new Vector3(StartingX + model.RelativeAngle * 3.0f, StartingY, gameObject.transform.position.z);
+
+		DistanceText.text = Math.Round(DistanceToSpaceship).ToString();
+		base.RenderUpdate (model);
     }
 }

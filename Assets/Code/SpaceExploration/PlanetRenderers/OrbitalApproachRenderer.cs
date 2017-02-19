@@ -2,14 +2,15 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class OrbitalApproachRenderer :  SpaceExPlanetRenderer
+public class OrbitalApproachRenderer : UIPlanetRenderer
 {
     Camera TargetCamera;
-    Planet Model = null;
+	public bool Visible = false;
+	public float DistanceToSpaceship = 0.0f;
+
     // Use this for initialization
     void Start ()
     {
-        //Canvas canvas = gameObject.GetComponent(typeof(Canvas)) as Canvas;
         Canvas canvas = GetComponent<Canvas>();
         canvas.worldCamera = Camera.main;
         gameObject.SetActive(Visible);
@@ -17,28 +18,24 @@ public class OrbitalApproachRenderer :  SpaceExPlanetRenderer
     
     public override void RenderUpdate(Planet model)
     {
-        if(Model == null)
-        {
-            Model = model;
-            Texture2D EnvTexture = PrepareTexture(model);
-            GetComponentInChildren<Renderer>().material.SetTexture("_EnvTexture", EnvTexture);
-        }
-        DistanceToSpaceship = model.DistanceToSpaceship;
-        if (DistanceToSpaceship < 30)
-        {
-            if (!Visible)
-            {
-                Visible = true;
-                gameObject.SetActive(true);  
-                Canvas canvas = gameObject.GetComponent(typeof(Canvas)) as Canvas;
-                canvas.enabled = true;
-            }
-        }
-        else
-        {          
-            gameObject.SetActive(false);  
-            Visible = false;
-        }
+		base.RenderUpdate (model);
+		DistanceToSpaceship = model.DistanceToSpaceship;
+
+		if (DistanceToSpaceship < 30)
+		{
+			if (!Visible)
+			{
+				Visible = true;
+				gameObject.SetActive(true);  
+				Canvas canvas = gameObject.GetComponent(typeof(Canvas)) as Canvas;
+				canvas.enabled = true;
+			}
+		}
+		else
+		{
+			gameObject.SetActive(false);  
+			Visible = false;
+		}
     }
     
     public void SetTargetCamera(Camera camera)
