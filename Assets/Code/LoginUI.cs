@@ -39,7 +39,7 @@ public class LoginUI : MonoBehaviour
     
     public void StartLogin()
     {
-        var loginCommand = new UserServiceCommand(LoginField.text);
+        UserServiceCommand loginCommand = new UserServiceCommand(LoginField.text);
         Connection.Instance.Send(JsonUtility.ToJson(loginCommand));
     }
 
@@ -57,6 +57,10 @@ public class LoginUI : MonoBehaviour
     {
 		Session.Instance.UserName = EventToProcess.UserName;
 		Session.Instance.LastKnownPosition = EventToProcess.LastKnownPosition;
+        
+        // Request User Data, other systems will listen for it 
+        InventoryCommand requestInventoryCommand = new InventoryCommand(InventoryCommandType.GET_INVENTORY);
+        Connection.Instance.Send(JsonUtility.ToJson(requestInventoryCommand));
 		SceneManager.LoadScene("space_exploration");
     }
 	

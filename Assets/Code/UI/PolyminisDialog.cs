@@ -15,6 +15,7 @@ public class PolyminisDialog : MonoBehaviour
     
     public Button RightButton;
     public Button LeftButton;
+    public Text   DialogMessage;
 
     private void OnEnable()
     {
@@ -24,7 +25,7 @@ public class PolyminisDialog : MonoBehaviour
     
     private void UpdateTextOnElements()
     {
-        this.transform.GetChild(0).GetChild(0).FindChild("DialogMessage").GetComponent<Text>().text = DialogString;
+        DialogMessage.text = DialogString;
         LeftButton.GetComponentInChildren<Text>().text = LeftButtonString;
         RightButton.GetComponentInChildren<Text>().text = RightButtonString;
     }

@@ -19,7 +19,7 @@ public class WarpDialog : MonoBehaviour
     {
         if(SpacePos != null)
         {
-            var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.WARP, SpacePos);
+            var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.ATTEMPT_WARP, SpacePos);
             Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));
             Destroy(gameObject);
         }
