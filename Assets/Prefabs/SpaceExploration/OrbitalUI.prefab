@@ -1256,8 +1256,8 @@ MonoBehaviour:
     type: 2}
   Slots:
   - {fileID: 114757437986726914}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114700867096430864}
+  - {fileID: 114276296170801146}
 --- !u!114 &114000011549424698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2190,9 +2190,9 @@ MonoBehaviour:
   EmptyState: {fileID: 1851463742812460}
   FilledState: {fileID: 114414607867604200}
   Species:
-    Name: 
+    SpeciesName: 
     Splices: []
-    Creator: 
+    CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
 --- !u!114 &114303527884812320
@@ -2603,9 +2603,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Species:
-    Name: 
+    SpeciesName: 
     Splices: []
-    Creator: 
+    CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
   ExtractButton: {fileID: 114555218013633476}
@@ -3042,9 +3042,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Species:
-    Name: 
+    SpeciesName: 
     Splices: []
-    Creator: 
+    CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
   ExtractButton: {fileID: 114754419498136822}
@@ -3232,9 +3232,9 @@ MonoBehaviour:
   EmptyState: {fileID: 1985694041474326}
   FilledState: {fileID: 114862563463410916}
   Species:
-    Name: 
+    SpeciesName: 
     Splices: []
-    Creator: 
+    CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
 --- !u!114 &114708434246356458
@@ -3445,9 +3445,9 @@ MonoBehaviour:
   EmptyState: {fileID: 1131351123715032}
   FilledState: {fileID: 114577064382445486}
   Species:
-    Name: 
+    SpeciesName: 
     Splices: []
-    Creator: 
+    CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
 --- !u!114 &114759245479216676
@@ -3714,9 +3714,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Species:
-    Name: 
+    SpeciesName: 
     Splices: []
-    Creator: 
+    CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
   ExtractButton: {fileID: 114828275124692020}

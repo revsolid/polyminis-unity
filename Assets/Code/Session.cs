@@ -11,17 +11,13 @@ public class Session : Singleton<Session>
     
     protected Session()
     {
-       /*Species = new Dictionary<string, SpeciesModel>();
-       SpeciesModel model = JsonUtility.FromJson<SpeciesModel>("{\"Name\":\"Cool dudes\",\"Splices\":[{\"Instinct\":\"Nomadic\",\"Size\":\"SMALL\",\"Name\":\"Tropical\",\"InternalName\":\"tropical\",\"Description\":\"Better adapted to hot weather\",\"Traits\":[2,3]},{\"Instinct\":\"Nomadic\",\"Size\":\"MEDIUM\",\"Name\":\"Thermophile\",\"InternalName\":\"thermophile\",\"Description\":\"Love me some hot weather\",\"Traits\":[2,17]},{\"Instinct\":\"Hoarding\",\"Size\":\"SMALL\",\"Name\":\"G-Eater\",\"InternalName\":\"g_eater\",\"Description\":\"Can eat G!\",\"Traits\":[4,5]}]}");
-       Species[model.Name] = model; */
        OnSessionChangedEvent += () => {};
-       
        Connection.OnMessageEvent += (message) => { OnMessageReceived(message); };
     }
     // Inventory
- //   public IDictionary<string, SpeciesModel> Species;
     public List<InventoryEntry> InventoryEntries;
-   
+    
+    public int Slots;
    
     private string _userName;
     public string UserName
@@ -70,6 +66,13 @@ public class Session : Singleton<Session>
                 {
                     Debug.Log(message);
                     InventoryEntries = invEvent.InventoryEntries;
+                    
+                    foreach(var ie in InventoryEntries)
+                    {
+                        Debug.Log(ie.InventoryType);
+                        Debug.Log(ie.Value);
+                        OnSessionChangedEvent();
+                    }
                 }
             }
         }

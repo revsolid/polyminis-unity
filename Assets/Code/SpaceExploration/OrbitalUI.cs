@@ -40,9 +40,9 @@ public class OrbitalUI : MonoBehaviour
         SpaceflightCamera.enabled = true;
 	}
 	
-	public void OnEditCreatureClicked(string speciesname)
+	public void OnEditCreatureClicked(SpeciesModel species)
 	{
-		SpeciesEditor.OpenWithSpecies(speciesname);
+		SpeciesEditor.OpenWithSpecies(species);
 	}
     
     public void OnDeployCreatureClicked()
@@ -82,7 +82,7 @@ public class OrbitalUI : MonoBehaviour
         
         for(int i=0; i < p.Model.Species.Count; i++)
         {
-            Debug.Log(p.Model.Species[i]);
+            Debug.Log(p.Model.Species[i].SpeciesName);
             Slots[i].Species = p.Model.Species[i];
         }
         Planet = p.Model;

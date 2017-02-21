@@ -54,6 +54,10 @@ public class SpeciesPlanetDialog : MonoBehaviour
 				BiomassSlider.gameObject.SetActive(false);
 				break;
 		}
+		if (!BiomassSlider.gameObject.active)
+		{
+			BiomassValue.text = "";
+		}
 		
 	}
 	

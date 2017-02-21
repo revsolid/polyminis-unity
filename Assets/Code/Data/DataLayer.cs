@@ -205,6 +205,7 @@ public class UserServiceEvent : BaseEvent
     public bool Result = false;
     public string UserName;
     public Vector2 LastKnownPosition;
+    public int     InventorySlots;
 }
 
 
@@ -214,6 +215,7 @@ public enum InventoryCommandType
 {
     RESEARCH,
     NEW_SPECIES,
+    UPDATE_SPECIES,
     SAMPLE_FROM_PLANET,
     GET_INVENTORY
 }
@@ -223,7 +225,6 @@ public class InventoryCommand : BaseCommand
 {
     InventoryCommandType CommandType;
     public int Slot;
-    public int Epoch;
     public SpeciesModel Species;
     
     public InventoryCommand(InventoryCommandType commandType)
@@ -253,7 +254,7 @@ public class InventoryServiceEvent : BaseEvent
 }
 
 [Serializable]
-public enum InventoryType
+public enum EInventoryType
 {
     Research,
     SpeciesSeed
@@ -262,23 +263,42 @@ public enum InventoryType
 [Serializable]
 public class InventoryEntry
 {
-   InventoryType InvType
+   EInventoryType InvType
    {
        get
        {
-           return (InventoryType) Enum.Parse(typeof(InventoryType), Type);
+           return (EInventoryType) Enum.Parse(typeof(EInventoryType), InventoryType);
        }
    }
-   string  Type;
-   
-   SpeciesModel SpeciesSeed;
+
+   public string InventoryType;
+   public SpeciesModel Value;
+   public SpeciesModel Species 
+   {
+       get
+       {
+           return Value;
+       }
+   }
    ResearchModel Research;
+   
+   public string GetName()
+   {
+       if (InvType == EInventoryType.SpeciesSeed)
+       {
+           return Value.SpeciesName;
+       }
+       else
+       {
+           return Research.PlanetEpoch;
+       }
+   }
 }
 
 [Serializable]
 public class ResearchModel
 {
-    string PlanetEpoch;
+    public string PlanetEpoch;
 }
 
 // PLANET INTERACTIONS
@@ -362,11 +382,11 @@ public class SpliceModel
 [Serializable]
 public class SpeciesModel
 {
-    public string Name;
+    public string SpeciesName;
     public List<SpliceModel> Splices = new List<SpliceModel>();
     public object InstinctTuning = new object();
     public object GAConfiguration = new object();
-    public string Creator;
+    public string CreatorName;
     public string OriginalSpeciesName;
     public string PlanetEpoch;
 
@@ -376,7 +396,10 @@ public class SpeciesModel
     }
     public SpeciesModel(SpeciesModel toCopy)
     {
-        Name = toCopy.Name;
+        SpeciesName = toCopy.SpeciesName;
+        OriginalSpeciesName = toCopy.OriginalSpeciesName;
+        CreatorName = toCopy.CreatorName;
+        PlanetEpoch = toCopy.PlanetEpoch;
         Splices = new List<SpliceModel>();
         foreach(SpliceModel sm in toCopy.Splices)
         {

@@ -57,6 +57,7 @@ public class LoginUI : MonoBehaviour
     {
 		Session.Instance.UserName = EventToProcess.UserName;
 		Session.Instance.LastKnownPosition = EventToProcess.LastKnownPosition;
+        Session.Instance.Slots = EventToProcess.InventorySlots;
         
         // Request User Data, other systems will listen for it 
         InventoryCommand requestInventoryCommand = new InventoryCommand(InventoryCommandType.GET_INVENTORY);

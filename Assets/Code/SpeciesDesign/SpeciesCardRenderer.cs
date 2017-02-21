@@ -17,7 +17,7 @@ public class SpeciesCardRenderer : MonoBehaviour
     {
         if (!Ready)
         {
-            NameText.text = Model.Name;
+            NameText.text = Model.SpeciesName;
             Ready = true;
         }
 
