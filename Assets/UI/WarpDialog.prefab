@@ -537,6 +537,7 @@ MonoBehaviour:
       PublicKeyToken=null
   RightButton: {fileID: 114390321641849996}
   LeftButton: {fileID: 114757885951835168}
+  DialogMessage: {fileID: 114759655464391236}
 --- !u!114 &114586208679030260
 MonoBehaviour:
   m_ObjectHideFlags: 1

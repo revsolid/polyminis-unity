@@ -208,12 +208,18 @@ public class SpeciesDesignUI : MonoBehaviour
     {
         // Validate
         
+        string nsName = NameInput.text;
+        DesignerModel.CurrentSpecies.Name = NameInput.text; 
+        
         SpeciesModel newModel = new SpeciesModel(DesignerModel.CurrentSpecies);
-        Session.Instance.Species[name] = newModel;
+        //Session.Instance.Species[name] = newModel;
         // Serialize Species
         Debug.Log(JsonUtility.ToJson(DesignerModel.CurrentSpecies));
         
         // Send to Server
+        InventoryCommand saveSpeciesCommand = new InventoryCommand(InventoryCommandType.NEW_SPECIES);
+        saveSpeciesCommand.Species = newModel;
+        Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
     }
 
     // note: this always loads the selected species, since the one  
@@ -222,7 +228,7 @@ public class SpeciesDesignUI : MonoBehaviour
     // your modification all get wiped.
     public void OpenWithSpecies(string name)
     {
-        SpeciesModel m = Session.Instance.Species[name];
+        SpeciesModel m = null; // = Session.Instance.Species[name];
 
         if (m != null)
         {

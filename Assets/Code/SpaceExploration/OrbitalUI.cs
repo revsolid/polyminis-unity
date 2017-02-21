@@ -8,12 +8,15 @@ public class OrbitalUI : MonoBehaviour
 	public Camera SpaceflightCamera;
 	public Camera OrbitalCamera;
 	public SpeciesDesignUI SpeciesEditor;
-    public GameObject PlanetRenderer;
+    public PlanetCloseupRenderer PlanetRenderer;
     public Slider PhSlider;
     public Slider TempSlider;
     public Text PlanetName;
-    public VerticalLayoutGroup SpeciesLayoutGroup;
-    public SpeciesCatalog SpeciesCatalog;
+    public SpeciesPlanetDialog InteractionsDialogPrototype;
+    
+    public SpeciesCard[] Slots;
+    
+    PlanetModel Planet;
 
 	// Use this for initialization
     void Awake()
@@ -41,29 +44,52 @@ public class OrbitalUI : MonoBehaviour
 	{
 		SpeciesEditor.OpenWithSpecies(speciesname);
 	}
+    
+    public void OnDeployCreatureClicked()
+    {
+        SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
+        dialog.PlanetModel = Planet;
+        dialog.CurrentAction = SpeciesPlanetAction.Deploy;
+    }
+    
+    public void OnResearchCreatureClicked(string speciesName)
+    {
+        SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
+        dialog.PlanetModel = Planet;
+        dialog.CurrentAction = SpeciesPlanetAction.Research;
+    }
+    
+    public void OnExtractCreatureClicked(string speciesName)
+    {
+        SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
+        dialog.PlanetModel = Planet;
+        dialog.CurrentAction = SpeciesPlanetAction.Extract;
+    }
+    
+    public void OnSampleCreatureClicked(string speciesName)
+    {
+        SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
+        dialog.PlanetModel = Planet;
+        dialog.CurrentAction = SpeciesPlanetAction.Sample;
+    }
 
     public void OnUIOpened(Planet p)
     {
         PhSlider.value = p.PH.Average() * 100;
         TempSlider.value = p.Temperature.Average() * 100;
         PlanetName.text = p.PlanetName;
-        PlanetRenderer.GetComponent<PlanetCloseupRenderer>().RenderUpdate(p);
+        PlanetRenderer.RenderUpdate(p);
         
-        Debug.Log(">>>>>>" + p.PlanetName);
-
-        //TODO: Add instantiation of Species "Cards" to SpeciesLayout
-
+        for(int i=0; i < p.Model.Species.Count; i++)
+        {
+            Debug.Log(p.Model.Species[i]);
+            Slots[i].Species = p.Model.Species[i];
+        }
+        Planet = p.Model;
     }
 
     public void OnSpeciesCatalogClicked()
     {
-        bool toggleOn = !SpeciesCatalog.gameObject.activeInHierarchy;
-        SpeciesCatalog.gameObject.SetActive(toggleOn);
-        
-        if (toggleOn)
-        {
-            SpeciesCatalog.Populate(Session.Instance.Species);
-        }
     }
     
     public void OnObservePlanetClicked()

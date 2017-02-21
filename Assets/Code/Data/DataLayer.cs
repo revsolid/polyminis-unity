@@ -90,7 +90,8 @@ public class PlanetModel
     public Range Temperature; // = new Range(0.0f, 1.0f);
     public Range Ph; // = new Range(1.3f, 4.2f);
     public List<SpeciesModel> Species;
-    public string PlanetName;
+    public string PlanetName; 
+    public int Epoch;
     public int ID;
 
     public PlanetModel() //TODO: Default constructor... assigns arbitratry values
@@ -129,7 +130,7 @@ public enum SpaceExplorationCommandType
 {
     INIT,
     ATTEMPT_MOVE,
-    WARP,
+    ATTEMPT_WARP,
     CALC_WARP_COST,
     SAVE_POSITION
 }
@@ -179,13 +180,12 @@ public class SpaceExplorationEvent : BaseEvent
 }
 
 
-// 
+// USER
 [Serializable]
 public class UserModel
 {
     public string UserName;
     string Password;  // SUPER SECURE!!
-    // TODO: What do they own 
 }
 
 [Serializable]
@@ -206,6 +206,111 @@ public class UserServiceEvent : BaseEvent
     public string UserName;
     public Vector2 LastKnownPosition;
 }
+
+
+// INVENTORY
+[Serializable]
+public enum InventoryCommandType
+{
+    RESEARCH,
+    NEW_SPECIES,
+    SAMPLE_FROM_PLANET,
+    GET_INVENTORY
+}
+
+[Serializable]
+public class InventoryCommand : BaseCommand
+{
+    InventoryCommandType CommandType;
+    public int Slot;
+    public int Epoch;
+    public SpeciesModel Species;
+    
+    public InventoryCommand(InventoryCommandType commandType)
+    {
+        CommandType = commandType; 
+        Command = CommandType.ToString();
+        Service = "inventory";
+    }
+}
+[Serializable]
+public enum InventoryEventType
+{
+    InventoryUpdate,
+    ResearchDone
+}
+[Serializable]
+public class InventoryServiceEvent : BaseEvent
+{
+    public List<InventoryEntry> InventoryEntries;
+    public InventoryEventType InventoryEventType
+    {
+        get
+        {
+           return (InventoryEventType) Enum.Parse(typeof(InventoryEventType), EventString); 
+        }
+    }
+}
+
+[Serializable]
+public enum InventoryType
+{
+    Research,
+    SpeciesSeed
+}
+
+[Serializable]
+public class InventoryEntry
+{
+   InventoryType InvType
+   {
+       get
+       {
+           return (InventoryType) Enum.Parse(typeof(InventoryType), Type);
+       }
+   }
+   string  Type;
+   
+   SpeciesModel SpeciesSeed;
+   ResearchModel Research;
+}
+
+[Serializable]
+public class ResearchModel
+{
+    string PlanetEpoch;
+}
+
+// PLANET INTERACTIONS
+[Serializable]
+public enum PlanetInteractionCommandType
+{
+    EXTRACT,
+    DEPLOY,
+    EDIT_IN_PLANET
+}
+
+[Serializable]
+public class PlanetInteractionCommand : BaseCommand
+{
+    PlanetInteractionCommandType CommandType;
+    public int Slot;
+    public int Epoch;
+    public int PlanetId;
+    public SpeciesModel Species;
+    public string SpeciesName;
+    
+    public float ExtractedPopulation = 0.0f;
+    public float DeployedBiomass     = 0.0f;
+    
+    public PlanetInteractionCommand(PlanetInteractionCommandType commandType)
+    {
+        CommandType = commandType; 
+        Command = CommandType.ToString();
+        Service = "orbital_interactions";
+    }
+}
+
 //
 [Serializable]
 public enum TraitSize
@@ -260,6 +365,10 @@ public class SpeciesModel
     public string Name;
     public List<SpliceModel> Splices = new List<SpliceModel>();
     public object InstinctTuning = new object();
+    public object GAConfiguration = new object();
+    public string Creator;
+    public string OriginalSpeciesName;
+    public string PlanetEpoch;
 
     public SpeciesModel()
     {
