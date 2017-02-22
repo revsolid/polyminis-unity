@@ -13,6 +13,7 @@ public class OrbitalUI : MonoBehaviour
     public Slider TempSlider;
     public Text PlanetName;
     public SpeciesPlanetDialog InteractionsDialogPrototype;
+    public InventoryUI Inventory;
     
     public SpeciesCard[] Slots;
     
@@ -25,6 +26,7 @@ public class OrbitalUI : MonoBehaviour
     }
 	void Start ()
 	{ 
+        Connection.OnMessageEvent += OnMessageReceived;
 	}
 	
 	// Update is called once per frame
@@ -47,9 +49,18 @@ public class OrbitalUI : MonoBehaviour
     
     public void OnDeployCreatureClicked()
     {
-        SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
-        dialog.PlanetModel = Planet;
-        dialog.CurrentAction = SpeciesPlanetAction.Deploy;
+        // Start Deploy Flow - First show the Inventory in Selection Mode
+        InventoryUI.OnEntrySelected += (entryModel, slot) =>
+        {
+            // If something was selected, then ask for Biomass for Deployment 
+            SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
+            Debug.Log(entryModel.Value.SpeciesName);
+            dialog.SpeciesModel = entryModel.Species;
+            dialog.PlanetModel = Planet;
+            dialog.CurrentAction = SpeciesPlanetAction.Deploy;
+        };
+        Inventory.ShowInMode(InventoryMode.SELECTION);
+        
     }
     
     public void OnResearchCreatureClicked(string speciesName)
@@ -59,10 +70,11 @@ public class OrbitalUI : MonoBehaviour
         dialog.CurrentAction = SpeciesPlanetAction.Research;
     }
     
-    public void OnExtractCreatureClicked(string speciesName)
+    public void OnExtractCreatureClicked(SpeciesModel species)
     {
         SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
         dialog.PlanetModel = Planet;
+        dialog.SpeciesModel = species;
         dialog.CurrentAction = SpeciesPlanetAction.Extract;
     }
     
@@ -85,6 +97,10 @@ public class OrbitalUI : MonoBehaviour
             Debug.Log(p.Model.Species[i].SpeciesName);
             Slots[i].Species = p.Model.Species[i];
         }
+        for(int i=p.Model.Species.Count; i < Slots.Length; i++)
+        {
+            Slots[i].Species = null;
+        }
         Planet = p.Model;
     }
 
@@ -95,5 +111,11 @@ public class OrbitalUI : MonoBehaviour
     public void OnObservePlanetClicked()
     {
         SceneManager.LoadScene("creature_observation");
+    }
+    
+    void OnMessageReceived(string message)
+    {
+       // 
+       
     }
 }

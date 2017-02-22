@@ -46,6 +46,7 @@ public class LoginUI : MonoBehaviour
     void OnServerMessage(string message)
 	{
 		//
+        Debug.Log(message);
         UserServiceEvent userEvent = JsonUtility.FromJson<UserServiceEvent>(message);
 		EventToProcess = userEvent;
 	}
@@ -57,6 +58,7 @@ public class LoginUI : MonoBehaviour
     {
 		Session.Instance.UserName = EventToProcess.UserName;
 		Session.Instance.LastKnownPosition = EventToProcess.LastKnownPosition;
+        Session.Instance.Biomass = EventToProcess.Biomass;
         Session.Instance.Slots = EventToProcess.InventorySlots;
         
         // Request User Data, other systems will listen for it 

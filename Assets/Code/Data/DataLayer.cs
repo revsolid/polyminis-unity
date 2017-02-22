@@ -206,6 +206,7 @@ public class UserServiceEvent : BaseEvent
     public string UserName;
     public Vector2 LastKnownPosition;
     public int     InventorySlots;
+    public int     Biomass;
 }
 
 
@@ -318,7 +319,7 @@ public class PlanetInteractionCommand : BaseCommand
     public int Epoch;
     public int PlanetId;
     public SpeciesModel Species;
-    public string SpeciesName;
+    //public string SpeciesName;
     
     public float ExtractedPopulation = 0.0f;
     public float DeployedBiomass     = 0.0f;
@@ -330,6 +331,17 @@ public class PlanetInteractionCommand : BaseCommand
         Service = "orbital_interactions";
     }
 }
+
+[Serializable]
+public enum PlanetInteractionEventType
+{
+    INTERACTION_RESULT
+}
+[Serializable]
+public class PlanetInteractionEvent : BaseEvent
+{
+}
+
 
 //
 [Serializable]

@@ -19,11 +19,14 @@ public class InventoryUI : MonoBehaviour
     
     InventoryMode CurrentMode;
     
+    public delegate void EntrySelected(InventoryEntry model, int slotNum);
+    public static event EntrySelected OnEntrySelected;
+
     bool Reload = false;
 
     void Start ()
     {
-        ShowInMode(InventoryMode.NORMAL);
+        gameObject.SetActive(false);
         Session.OnSessionChangedEvent += () => { Reload = true; };
     }
     void Awake () {}
@@ -37,7 +40,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void ShowInMode(InventoryMode mode)
+    public void ShowInMode(InventoryMode mode)
     {
         CurrentMode = mode;
         if (CurrentMode == InventoryMode.NORMAL)
@@ -51,6 +54,7 @@ public class InventoryUI : MonoBehaviour
 
         // Always Re-get from the Session as it has the latest and greatest        
         LoadFromSession();
+        gameObject.SetActive(true);
     }
     void LoadFromSession()
     {
@@ -78,32 +82,39 @@ public class InventoryUI : MonoBehaviour
             uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
         }
 
-        gameObject.SetActive(true);
     } 
     
     void HandleEdit(InventoryEntry currentModel, int slot)
     {
+        InventoryCommandType cmdType;
+        SpeciesModel sm = null;
         if (currentModel == null)
         {
             Debug.Log("New Species");
+            cmdType = InventoryCommandType.NEW_SPECIES;
         }
         else
         {
             Debug.Log("Editing: " + currentModel);
-            
-            SpeciesDesignUI.OnSaveEvent += (resultingModel) => {
-                Debug.Log(JsonUtility.ToJson(resultingModel));
-                    InventoryCommand saveSpeciesCommand = new InventoryCommand(InventoryCommandType.UPDATE_SPECIES);
-                    saveSpeciesCommand.Species = resultingModel;
-                    Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
-            };
-            SpeciesDesigner.OpenWithSpecies(currentModel.Species);
+            cmdType = InventoryCommandType.UPDATE_SPECIES;
+            sm = currentModel.Species;
         }
+        
+        SpeciesDesignUI.OnSaveEvent += (resultingModel) => {
+            Debug.Log(JsonUtility.ToJson(resultingModel));
+                InventoryCommand saveSpeciesCommand = new InventoryCommand(cmdType);
+                saveSpeciesCommand.Species = resultingModel;
+                saveSpeciesCommand.Slot = slot;
+                Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
+        };
+        SpeciesDesigner.OpenWithSpecies(sm);
     }
     
     void HandleSelection(InventoryEntry currentModel, int slot)
     {
             Debug.Log("Selecting: " + currentModel);
+            OnEntrySelected(currentModel, slot);
+            Dismiss();
     }
 
     public void Dismiss()
@@ -117,5 +128,6 @@ public class InventoryUI : MonoBehaviour
         {
             InventoryUIEntry.OnClickEvent -= HandleSelection;
         }
+        OnEntrySelected = null;
     }
 }

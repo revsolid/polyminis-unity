@@ -22,12 +22,19 @@ public class SpeciesCard : MonoBehaviour
     
     void Update()
     {
-        if (Species != null && Species.SpeciesName != "" && Empty)
+        if (Species != null)
         {
             FilledState.gameObject.SetActive(true);
             FilledState.Species = Species;
             EmptyState.SetActive(false);
             Empty = false;
+        }
+        
+        if (Species == null && !Empty)
+        {
+            FilledState.gameObject.SetActive(false);
+            EmptyState.SetActive(true);
+            Empty = true;
         }
     }
     
@@ -52,7 +59,7 @@ public class SpeciesCard : MonoBehaviour
     
     public void OnExtractButton()
     {
-        OrbitalUI.OnExtractCreatureClicked(Species.SpeciesName);
+        OrbitalUI.OnExtractCreatureClicked(Species);
     }
     public void OnSampleButton()
     {

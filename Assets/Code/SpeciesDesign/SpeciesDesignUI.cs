@@ -249,8 +249,8 @@ public class SpeciesDesignUI : MonoBehaviour
             DesignerModel.LoadSpecies(m);
             UpdateAllViews();
             NameInput.text = DesignerModel.CurrentSpecies.SpeciesName;
-            gameObject.SetActive(true);
         }
+        gameObject.SetActive(true);
     }
 
 }

@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 222653010602331288}
   - component: {fileID: 114700867096430864}
   m_Layer: 0
-  m_Name: SpeciesCard (1)
+  m_Name: SpeciesCard_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,7 +828,7 @@ GameObject:
   - component: {fileID: 222039375512157604}
   - component: {fileID: 114276296170801146}
   m_Layer: 0
-  m_Name: SpeciesCard (2)
+  m_Name: SpeciesCard_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1254,10 +1254,11 @@ MonoBehaviour:
   PlanetName: {fileID: 114347814917725978}
   InteractionsDialogPrototype: {fileID: 114409682113792166, guid: 1694168e169374154a64d3928c89b2c9,
     type: 2}
+  Inventory: {fileID: 0}
   Slots:
   - {fileID: 114757437986726914}
-  - {fileID: 114700867096430864}
   - {fileID: 114276296170801146}
+  - {fileID: 114700867096430864}
 --- !u!114 &114000011549424698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4209,7 +4210,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.01, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4373,7 +4374,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4584,8 +4585,8 @@ RectTransform:
   m_Children:
   - {fileID: 224000010999913396}
   - {fileID: 224017832084126644}
-  - {fileID: 224261767125908904}
   - {fileID: 224999323366901234}
+  - {fileID: 224261767125908904}
   m_Father: {fileID: 224898708442931066}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4739,7 +4740,7 @@ RectTransform:
   - {fileID: 224414738557406058}
   - {fileID: 224018132788958760}
   m_Father: {fileID: 224115023865868102}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5438,7 +5439,7 @@ RectTransform:
   - {fileID: 224151221579877884}
   - {fileID: 224841316289306468}
   m_Father: {fileID: 224115023865868102}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
