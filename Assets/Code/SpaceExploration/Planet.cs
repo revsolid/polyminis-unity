@@ -20,6 +20,9 @@ public class Planet
     public string PlanetName {get; private set;}
     public PlanetModel Model { get; private set;}
     
+    public delegate void PlanetModelChanged(Planet p);
+    public static event PlanetModelChanged OnPlanetModelChanged;
+    
     
 
     public Planet(PlanetModel pm)
@@ -29,10 +32,16 @@ public class Planet
         Renderers = new List<IPlanetRenderer>();
         ID = Model.ID;
         PlanetName = Model.PlanetName;
-
-        //TODO: This should come from the server
         Temperature = Model.Temperature;
         PH = Model.Ph;
+    }
+    
+    public void RefreshPlanetModel(PlanetModel model)
+    {
+        Model = model;
+        if (OnPlanetModelChanged != null)
+            OnPlanetModelChanged(this);
+        Debug.Log("Refresh me this");
     }
     
     public void UpdateSpaceshipPosition(Vector2 newPosition, Vector2 newForward)

@@ -308,7 +308,8 @@ public enum PlanetInteractionCommandType
 {
     EXTRACT,
     DEPLOY,
-    EDIT_IN_PLANET
+    EDIT_IN_PLANET,
+    GET_TO_EDIT_IN_PLANET
 }
 
 [Serializable]
@@ -335,11 +336,23 @@ public class PlanetInteractionCommand : BaseCommand
 [Serializable]
 public enum PlanetInteractionEventType
 {
-    INTERACTION_RESULT
+    INTERACTION_RESULT,
+    GET_EDIT_RESULT
 }
 [Serializable]
 public class PlanetInteractionEvent : BaseEvent
 {
+    public PlanetInteractionEventType EventType
+    {
+        get
+        {
+            return (PlanetInteractionEventType) Enum.Parse(typeof(PlanetInteractionEventType), EventString.ToUpper());
+        }
+    }
+    public PlanetModel UpdatedPlanet;
+    public SpeciesModel Species;
+    public int NewBiomassAvailable;
+    public int InPlanet;
 }
 
 

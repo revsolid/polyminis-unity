@@ -220,26 +220,6 @@ public class SpeciesDesignUI : MonoBehaviour
         Debug.Log(JsonUtility.ToJson(DesignerModel.CurrentSpecies));
             
         OnExitButtonClicked();
-        
-        // Send to Server
-        
-       /*
-       if (InPlanetFlow)
-       {
-           // Completely different flow as this goes to the PlanetInteractions Service
-           return;
-       }
-        
-       InventoryCommandType cmdType = InventoryCommandType.UPDATE_SPECIES;
-       if (NewSpeciesFlow) 
-       {
-           cmdType = InventoryCommandType.NEW_SPECIES; 
-       }
-        
-        InventoryCommand saveSpeciesCommand = new InventoryCommand(cmdType);
-        saveSpeciesCommand.Species = newModel;
-        Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
-        */
     }
 
     public void OpenWithSpecies(SpeciesModel m)

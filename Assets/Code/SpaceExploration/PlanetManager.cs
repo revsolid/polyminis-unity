@@ -18,7 +18,7 @@ public class PlanetManager : MonoBehaviour
     public Camera OrbitalCamera;
     public GameObject Starmap;
     Vector2 LastKnownPos;
-    public IList<Planet> Planets { get; private set;}
+    public IDictionary<int, Planet> Planets { get; private set;}
     List<PlanetModel> ToSpawn;
     Camera MainCamera;
     bool DoWarp = false;
@@ -36,7 +36,7 @@ public class PlanetManager : MonoBehaviour
     // Use this for initialization
     void Start ()
     {    
-        Planets = new List<Planet>();
+        Planets = new Dictionary<int, Planet>();
         ToSpawn = new List<PlanetModel>();
         LastKnownPos = MovementTracker.CurrentPosition;
         NewBiomassAvailable = Session.Instance.Biomass;
@@ -69,7 +69,7 @@ public class PlanetManager : MonoBehaviour
         //    TODO: This should be using Time.deltaTime instead of raw values as frame rate fucks up the pacing entirely
         transform.localEulerAngles = new Vector3(0.0f, -1*MovementTracker.Heading, 0.0f);
         bool inOrbit = false;
-        foreach (Planet planet in Planets)
+        foreach (Planet planet in Planets.Values)
         {
             planet.UpdateSpaceshipPosition(MovementTracker.CurrentPosition, MovementTracker.Forward);
             if (planet.InOrbitRange())
@@ -113,40 +113,76 @@ public class PlanetManager : MonoBehaviour
     // Create a new planet and add it to manager 
     void SpawnNewPlanet(PlanetModel p)
     {
-        Planets.Add(CreatePlanetAt(p));
+        Planets[p.ID] = CreatePlanetAt(p);
     }
 
     void OnServerMessage(string message)
     {
-        SpaceExplorationEvent spaceExEvent = JsonUtility.FromJson<SpaceExplorationEvent>(message);
-        if (spaceExEvent != null)
+        BaseEvent baseEv = JsonUtility.FromJson<BaseEvent>(message);
+        
+        if (baseEv.Service == "space_exploration")
         {
-            switch (spaceExEvent.EventType)
+            SpaceExplorationEvent spaceExEvent = JsonUtility.FromJson<SpaceExplorationEvent>(message);
+            if (spaceExEvent != null)
             {
-            case SpaceExplorationEventType.SPAWN_PLANETS:
-                for (var i = 0; i < spaceExEvent.Planets.Length; i++)
+                switch (spaceExEvent.EventType)
                 {
-                    PlanetModel newPlanet = spaceExEvent.Planets[i];
-                    if (!HasSpawnedPlanet(newPlanet.ID))
+                case SpaceExplorationEventType.SPAWN_PLANETS:
+                    for (var i = 0; i < spaceExEvent.Planets.Length; i++)
                     {
-                        Debug.Log(message);
-                        ToSpawn.Add(newPlanet);
+                        PlanetModel newPlanet = spaceExEvent.Planets[i];
+                        if (!HasSpawnedPlanet(newPlanet.ID))
+                        {
+                            Debug.Log(message);
+                            ToSpawn.Add(newPlanet);
+                        }
+                    }
+                    break;
+                case SpaceExplorationEventType.WARP:
+                    WarpDest = spaceExEvent.Position;
+                    DoWarp = true;
+                    Debug.Log(message);
+                    NewBiomassAvailable = spaceExEvent.NewBiomassAvailable;
+                    break;
+                }
+            }
+        }
+        else if (baseEv.Service == "orbital_interactions")
+        {
+            Debug.Log(message);
+            PlanetInteractionEvent pie = JsonUtility.FromJson<PlanetInteractionEvent>(message); // Yumm... pie! :D
+            if (pie.EventType == PlanetInteractionEventType.INTERACTION_RESULT)
+            {
+                NewBiomassAvailable = pie.NewBiomassAvailable;
+                PlanetModel p = pie.UpdatedPlanet;
+                Debug.Log(p.ID);
+                Planets[p.ID].RefreshPlanetModel(p);
+            }
+            if (pie.EventType == PlanetInteractionEventType.GET_EDIT_RESULT)
+            {
+                Debug.Log("ORBITAL!!");
+                PlanetModel p = Planets[pie.InPlanet].Model;
+                
+                for(int i = 0; i < p.Species.Count; ++i)
+                {
+                    SpeciesModel species = p.Species[i];
+                    Debug.Log("LOOKING FOR: " + pie.Species.SpeciesName);
+                    if (species.SpeciesName == pie.Species.SpeciesName)
+                    {
+                        p.Species[i] = pie.Species;
+                        Debug.Log("FOUND!");
+                        Planets[p.ID].RefreshPlanetModel(p);
+                        break;
                     }
                 }
-                break;
-            case SpaceExplorationEventType.WARP:
-                WarpDest = spaceExEvent.Position;
-                DoWarp = true;
-                Debug.Log(message);
-                NewBiomassAvailable = spaceExEvent.NewBiomassAvailable;
-                break;
             }
+            
         }
     }
 
     Planet GetPlanetAt(Vector2 inPos)
     {
-        foreach (Planet p in Planets)
+        foreach (Planet p in Planets.Values)
         {
             if(p.SpacePosition == inPos)
             {
@@ -160,13 +196,6 @@ public class PlanetManager : MonoBehaviour
 
     bool HasSpawnedPlanet(int inID)
     {
-        foreach(Planet p in Planets)
-        {
-            if(p.ID == inID)
-            {
-                return true;
-            }
-        }
-        return false;
+        return Planets.ContainsKey(inID);
     }
 }

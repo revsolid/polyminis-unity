@@ -18,6 +18,9 @@ public class OrbitalUI : MonoBehaviour
     public SpeciesCard[] Slots;
     
     PlanetModel Planet;
+    string SpeciesToOpen;
+    bool HasHookedCallbacks = false;
+    SpeciesModel ShowSpeciesNextUpdate = null;
 
 	// Use this for initialization
     void Awake()
@@ -26,13 +29,31 @@ public class OrbitalUI : MonoBehaviour
     }
 	void Start ()
 	{ 
-        Connection.OnMessageEvent += OnMessageReceived;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-	
+        //TODO: This is ugly
+        if (!HasHookedCallbacks)
+        {
+            global::Planet.OnPlanetModelChanged += OnPlanetChanged;
+            HasHookedCallbacks = true;
+        }
+        
+        if (ShowSpeciesNextUpdate != null)
+        {
+            SpeciesDesignUI.OnSaveEvent += (resultingModel) => {
+                Debug.Log(JsonUtility.ToJson(resultingModel));
+                PlanetInteractionCommand editInPlanetCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.EDIT_IN_PLANET);
+                editInPlanetCommand.Epoch = Planet.Epoch; 
+                editInPlanetCommand.PlanetId = Planet.ID; 
+                editInPlanetCommand.Species = resultingModel;
+                Connection.Instance.Send(JsonUtility.ToJson(editInPlanetCommand));
+            };
+            SpeciesEditor.OpenWithSpecies(ShowSpeciesNextUpdate);
+            ShowSpeciesNextUpdate = null;
+        }
 	}
 	
 	public void OnBackClicked()
@@ -44,7 +65,14 @@ public class OrbitalUI : MonoBehaviour
 	
 	public void OnEditCreatureClicked(SpeciesModel species)
 	{
-		SpeciesEditor.OpenWithSpecies(species);
+        
+        PlanetInteractionCommand getEditInfoCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.GET_TO_EDIT_IN_PLANET);
+        getEditInfoCommand.Epoch = Planet.Epoch; 
+        getEditInfoCommand.PlanetId = Planet.ID; 
+        getEditInfoCommand.Species = species;
+        Connection.Instance.Send(JsonUtility.ToJson(getEditInfoCommand));
+        
+        SpeciesToOpen = species.SpeciesName;
 	}
     
     public void OnDeployCreatureClicked()
@@ -60,7 +88,6 @@ public class OrbitalUI : MonoBehaviour
             dialog.CurrentAction = SpeciesPlanetAction.Deploy;
         };
         Inventory.ShowInMode(InventoryMode.SELECTION);
-        
     }
     
     public void OnResearchCreatureClicked(string speciesName)
@@ -87,25 +114,8 @@ public class OrbitalUI : MonoBehaviour
 
     public void OnUIOpened(Planet p)
     {
-        PhSlider.value = p.PH.Average() * 100;
-        TempSlider.value = p.Temperature.Average() * 100;
-        PlanetName.text = p.PlanetName;
-        PlanetRenderer.RenderUpdate(p);
-        
-        for(int i=0; i < p.Model.Species.Count; i++)
-        {
-            Debug.Log(p.Model.Species[i].SpeciesName);
-            Slots[i].Species = p.Model.Species[i];
-        }
-        for(int i=p.Model.Species.Count; i < Slots.Length; i++)
-        {
-            Slots[i].Species = null;
-        }
-        Planet = p.Model;
-    }
-
-    public void OnSpeciesCatalogClicked()
-    {
+        Debug.Log("On UI Opened");
+        LoadFromPlanet(p);
     }
     
     public void OnObservePlanetClicked()
@@ -113,9 +123,56 @@ public class OrbitalUI : MonoBehaviour
         SceneManager.LoadScene("creature_observation");
     }
     
-    void OnMessageReceived(string message)
+    public void OnPlanetChanged(Planet inPlanet)
     {
-       // 
-       
+        PlanetModel p = inPlanet.Model;
+        if (p.ID == Planet.ID)
+        {
+            Planet = p;
+            LoadFromPlanet(inPlanet);
+            
+            if (!string.IsNullOrEmpty(SpeciesToOpen))
+            {
+                SpeciesModel m = null;
+                for (int i = 0; i < p.Species.Count; ++i)
+                {
+                    if (p.Species[i].SpeciesName == SpeciesToOpen)
+                    {
+                        m = p.Species[i];
+                        break;
+                    }
+                }
+                
+                SpeciesToOpen = "";
+                if (m != null)
+                {
+                    ShowSpeciesNextUpdate = m;
+                }
+                else
+                {
+                    Debug.LogError("OnPlanetChanged tried to open species: " + SpeciesToOpen + " but couldn't find it");
+                }
+            }
+        }
+    }
+    
+    void LoadFromPlanet(Planet planet)
+    {
+        PlanetModel p = planet.Model;
+        PhSlider.value = planet.PH.Average() * 100;
+        TempSlider.value = planet.Temperature.Average() * 100;
+        PlanetName.text = p.PlanetName;
+        PlanetRenderer.RenderUpdate(planet);
+        
+        for(int i=0; i < p.Species.Count; i++)
+        {
+            Debug.Log(p.Species[i].SpeciesName);
+            Slots[i].Species = p.Species[i];
+        }
+        for(int i=p.Species.Count; i < Slots.Length; i++)
+        {
+            Slots[i].Species = null;
+        }
+        Planet = p;
     }
 }
