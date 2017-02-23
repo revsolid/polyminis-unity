@@ -3,12 +3,51 @@
 	<Events>
 		<WorkUnit Name="Spaceship_Wu" ID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}" OwnerID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" PersistMode="Nested">
 			<ChildrenList>
-				<Event Name="P_Woosh" ID="{1746B10A-6AAC-4BCA-A931-ADE086478CBC}">
+				<Event Name="P_Spshp_Thrust" ID="{DC0923B2-76E2-4C2A-B8CA-C87EA7DC536F}">
 					<ChildrenList>
-						<Action Name="Play" ID="{2FC5D6D8-E83C-44A2-9B97-7741E3E61485}" ShortID="789095647" Type="Play" Scope="One" Global="false">
+						<Action Name="Play" ID="{EFCB076A-AEDE-4581-AC5B-A973AA500210}" ShortID="104468524" Type="Play" Scope="One" Global="false">
 							<ElementList>
-								<Element ID="{1E29C805-E783-4DFE-BA5C-584910A1E629}" Global="false">
-									<ObjectRef Name="whoosh01" ID="{91DD619C-6E17-4F25-811D-264829C6D92E}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								<Element ID="{5C98A88F-C217-4385-B677-8B0D843183F4}" Global="false">
+									<ObjectRef Name="Spshp_lftThrust" ID="{C386F608-9F0D-4604-B1F5-2E3000E41F8D}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{53776C53-A7CE-4281-96CB-EE97B1F60A86}" ShortID="199606967" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{B82E0A21-EF5A-4408-98C2-39D2EF46A5D6}" Global="false">
+									<ObjectRef Name="Spshp_rigThrust" ID="{67715648-64AE-4BA6-AABE-20F8A016EA49}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{1935DDB1-EF43-40BF-B3E6-2119B6A71508}" ShortID="185491490" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{48EBFC71-BC3E-4B58-A824-18CCDEFE384E}" Global="false">
+									<ObjectRef Name="Spshp_thrustMain" ID="{08E3AD33-B856-4A4F-9E5C-51C879A216DB}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="S_Spshp_Thrust" ID="{982135BB-0C3E-4038-87A5-6961444C5855}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{D449E370-A386-4B92-A13A-3F7171163003}" ShortID="673279464" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{69028AC5-BE56-4D7E-87EC-2FBEDE914E6B}" Global="false">
+									<ObjectRef Name="Spshp_lftThrust" ID="{C386F608-9F0D-4604-B1F5-2E3000E41F8D}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Stop" ID="{EDC07E7E-04BA-40FE-87C3-58E110F06972}" ShortID="215833213" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{002B85E3-E36F-49C1-B346-E9E67EE61C76}" Global="false">
+									<ObjectRef Name="Spshp_rigThrust" ID="{67715648-64AE-4BA6-AABE-20F8A016EA49}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Stop" ID="{07FF1A64-D729-4613-9B07-950F330F960B}" ShortID="715917469" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{C60474C9-318F-4471-AB94-093E2D1EDC6A}" Global="false">
+									<ObjectRef Name="Spshp_thrustMain" ID="{08E3AD33-B856-4A4F-9E5C-51C879A216DB}" WorkUnitID="{F541757D-A7F3-415A-962B-04C919538319}"/>
 								</Element>
 							</ElementList>
 						</Action>

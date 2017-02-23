@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{8A61E1F6-BA0E-4AFA-B16A-66905D4A83ED}" SchemaVersion="72">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{8A61E1F6-BA0E-4AFA-B16A-66905D4A83ED}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{8A61E1F6-BA0E-4AFA-B16A-66905D4A83ED}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Thrust_Test" ID="{7B46F120-4F1F-41C0-9AA6-71BBD3C56D59}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="P_Spshp_Thrust" ID="{DC0923B2-76E2-4C2A-B8CA-C87EA7DC536F}" WorkUnitID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="S_Spshp_Thrust" ID="{982135BB-0C3E-4038-87A5-6961444C5855}" WorkUnitID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="Spaceship_Speed" ID="{F91D1A09-2700-40A3-8DFF-76557B304CF0}"/>
+							<Value>82</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>

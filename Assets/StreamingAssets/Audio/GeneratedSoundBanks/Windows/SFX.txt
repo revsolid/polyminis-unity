@@ -1,4 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
+	1216185298	S_Spshp_Thrust			\Default Work Unit\SFX_Wu\Spaceship_Wu\S_Spshp_Thrust	
 	1935057997	P_UI_Warning			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Warning	
 	2141736205	P_UI_Ok			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Ok	
 	2187412920	P_UI_Accepted			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Accepted	
@@ -6,9 +7,12 @@ Event	ID	Name			Wwise Object Path	Notes
 	2374130668	P_UI_Substract			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Substract	
 	2581921037	P_UI_Return			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Return	
 	2903831199	P_UI_Data			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Data	
+	3501292951	P_Spshp_Thrust			\Default Work Unit\SFX_Wu\Spaceship_Wu\P_Spshp_Thrust	
 	3781701507	P_UI_Error			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Error	
-	4058515758	P_Woosh			\Default Work Unit\SFX_Wu\Spaceship_Wu\P_Woosh	
 	4094348196	P_UI_Add			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Add	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3042288591	Spaceship_Speed			\Default Work Unit\Spaceship_Speed	
 
 Modulator Envelope	ID	Name			Wwise Object Path	Notes
 	332306777	Modulator Envelope (Custom)				
@@ -18,20 +22,22 @@ Modulator Envelope	ID	Name			Wwise Object Path	Notes
 	895099149	Modulator Envelope (Custom)				
 
 Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	7623956	Wwise Synth One	Wwise Synth One		\Actor-Mixer Hierarchy\Default Work Unit\SPACESHIP\THRUST\Spshp_thrustMain\Wwise Synth One	
 	198839503	Wwise Synth One	Wwise Synth One		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_BEEP_01\Wwise Synth One	
 	294805706	Wwise Synth One	Wwise Synth One		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_BEEP_05\Wwise Synth One	
 	297857554	Wwise Synth One	Wwise Synth One		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_BEEP_02\Wwise Synth One	
+	307617834	Wwise Synth One	Wwise Synth One		\Actor-Mixer Hierarchy\Default Work Unit\SPACESHIP\THRUST\Spshp_rigThrust\Wwise Synth One	
+	781754126	Wwise Synth One	Wwise Synth One		\Actor-Mixer Hierarchy\Default Work Unit\SPACESHIP\THRUST\Spshp_lftThrust\Wwise Synth One	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	22748774	UI_OK	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_OK_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_OK		76640
-	32637561	UI_DATA_03	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_0CE4E06B.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_03		83380
-	105738243	UI_WARNING	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_WARNING_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_WARNING		79260
-	269566149	whoosh01	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\whoosh01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SPACESHIP\whoosh01		421068
-	299834042	UI_CANCEL	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_CANCEL_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_CANCEL		83004
-	309805726	UI_DATA_02	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_B91C577D.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_02		71476
-	566911207	UI_DATA_05	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_7D786894.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_05		81892
-	662412231	UI_DATA_04	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_1F3B888F.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_04		89332
-	792914303	UI_ACCEPTED	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_ACCEPTED_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_ACCEPTED		84672
-	812774060	UI_DATA_01	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_91E1B6CA.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_01		64040
-	973505296	UI_Error	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_AWESOME_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_Error		203664
+	22748774	UI_OK	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_OK_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_OK		76640
+	32637561	UI_DATA_03	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_D1C915FE.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_03		83380
+	105738243	UI_WARNING	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_WARNING_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_WARNING		79260
+	299834042	UI_CANCEL	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_CANCEL_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_CANCEL		83004
+	309805726	UI_DATA_02	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_B91C577D.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_02		71476
+	566911207	UI_DATA_05	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_24CD281B.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_05		81892
+	662412231	UI_DATA_04	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_1F3B888F.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_04		89332
+	792914303	UI_ACCEPTED	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_ACCEPTED_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_ACCEPTED		84672
+	812774060	UI_DATA_01	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\SF-CK Data GUI Single 01_C1B0D729.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_01		64040
+	973505296	UI_Error	Y:\POLY\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\SFX\UI_PACK_01\UI_AWESOME_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_Error		203664
 
