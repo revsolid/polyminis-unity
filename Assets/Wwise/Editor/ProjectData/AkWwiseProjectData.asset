@@ -13,106 +13,254 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentPluginConfig: 
   EventWwu:
-  - PhysicalPath: Events/Default Work Unit.wwu
+  - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{979D1165-F0C6-445F-BC3C-41C235597E48}'
-    m_lastTimePsrt1: 189356032
-    m_lastTimePart2: -1999374415
+    m_lastTimePsrt1: -712926993
+    m_lastTimePart2: -1999348828
     List: []
-  - PhysicalPath: Events/exploration_work_unit.wwu
-    ParentPhysicalPath: Events/Music_work_unit.wwu
-    Guid: '{0DBB71AE-6E58-41DE-809E-EAE0D5DF8E4C}'
-    m_lastTimePsrt1: 189356032
-    m_lastTimePart2: -1999374415
+  - PhysicalPath: Events\Music_Wu.wwu
+    ParentPhysicalPath: Events\Default Work Unit.wwu
+    Guid: '{B969FB9F-0718-4974-819F-3FECC617A358}'
+    m_lastTimePsrt1: -712726500
+    m_lastTimePart2: -1999348828
     List:
-    - Name: Play_exploration
-      Path: Default Work Unit/Music_work_unit/exploration_work_unit/Play_exploration
+    - Name: Play_creature_observation
+      Path: Default Work Unit\Music_Wu\Play_creature_observation
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Music_work_unit
+      - ElementName: Music_Wu
         ObjectType: 12
-      - ElementName: exploration_work_unit
+      - ElementName: Play_creature_observation
+        ObjectType: 3
+      ID: 369775550
+      Guid: fd8293b1e91aae44b9adb52cec9c1f6b
+      maxAttenuation: 0
+    - Name: Play_exploration
+      Path: Default Work Unit\Music_Wu\Play_exploration
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music_Wu
         ObjectType: 12
       - ElementName: Play_exploration
         ObjectType: 3
       ID: -2007894867
       Guid: a37e9ee0f07e1c408f2c7678025c5f72
       maxAttenuation: 0
-  - PhysicalPath: Events/Music_work_unit.wwu
-    ParentPhysicalPath: Events/Default Work Unit.wwu
-    Guid: '{B969FB9F-0718-4974-819F-3FECC617A358}'
-    m_lastTimePsrt1: 189356032
-    m_lastTimePart2: -1999374415
-    List: []
-  - PhysicalPath: Events/SFX_work_unit.wwu
-    ParentPhysicalPath: Events/Default Work Unit.wwu
-    Guid: '{2DE101C9-A49A-4463-BD3C-DB0395A7F117}'
-    m_lastTimePsrt1: 189356032
-    m_lastTimePart2: -1999374415
-    List:
-    - Name: Play_whoosh_1
-      Path: Default Work Unit/SFX_work_unit/Play_whoosh_1
+    - Name: Play_intro_theme
+      Path: Default Work Unit\Music_Wu\Play_intro_theme
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: SFX_work_unit
+      - ElementName: Music_Wu
         ObjectType: 12
-      - ElementName: Play_whoosh_1
+      - ElementName: Play_intro_theme
         ObjectType: 3
-      ID: -26417136
-      Guid: 0ab14617ac6aca4ba931ade086478cbc
+      ID: -2004862882
+      Guid: d2df2fab73271e428a5e99964213d5be
       maxAttenuation: 0
-  - PhysicalPath: Events/species_design_work_unit.wwu
-    ParentPhysicalPath: Events/Music_work_unit.wwu
-    Guid: '{393CEB3E-BA45-47DB-AA53-5F4E45310B09}'
-    m_lastTimePsrt1: 189356032
-    m_lastTimePart2: -1999374415
-    List:
     - Name: Play_species_design
-      Path: Default Work Unit/Music_work_unit/species_design_work_unit/Play_species_design
+      Path: Default Work Unit\Music_Wu\Play_species_design
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Music_work_unit
-        ObjectType: 12
-      - ElementName: species_design_work_unit
+      - ElementName: Music_Wu
         ObjectType: 12
       - ElementName: Play_species_design
         ObjectType: 3
       ID: 585562449
       Guid: c185e1cb759209498f5e8fead08fc789
       maxAttenuation: 0
+  - PhysicalPath: Events\SFX_Wu.wwu
+    ParentPhysicalPath: Events\Default Work Unit.wwu
+    Guid: '{2DE101C9-A49A-4463-BD3C-DB0395A7F117}'
+    m_lastTimePsrt1: -712545703
+    m_lastTimePart2: -1999348828
+    List: []
+  - PhysicalPath: Events\Spaceship_Wu.wwu
+    ParentPhysicalPath: Events\SFX_Wu.wwu
+    Guid: '{F72ED000-5869-42A8-8506-0A8ABE971BF4}'
+    m_lastTimePsrt1: -712365121
+    m_lastTimePart2: -1999348828
+    List:
+    - Name: P_Woosh
+      Path: Default Work Unit\SFX_Wu\Spaceship_Wu\P_Woosh
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: Spaceship_Wu
+        ObjectType: 12
+      - ElementName: P_Woosh
+        ObjectType: 3
+      ID: -236451538
+      Guid: 0ab14617ac6aca4ba931ade086478cbc
+      maxAttenuation: 0
+  - PhysicalPath: Events\UI_Wu.wwu
+    ParentPhysicalPath: Events\SFX_Wu.wwu
+    Guid: '{CA04F0DA-FC02-4982-9DA2-89812F25C019}'
+    m_lastTimePsrt1: -712154750
+    m_lastTimePart2: -1999348828
+    List:
+    - Name: P_UI_Accepted
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Accepted
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Accepted
+        ObjectType: 3
+      ID: -2107554376
+      Guid: 429b7500afe3374fbde220e5b19ea0ee
+      maxAttenuation: 0
+    - Name: P_UI_Add
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Add
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Add
+        ObjectType: 3
+      ID: -200619100
+      Guid: 6803ba683a2eff4ba9a18e2c45ee46e8
+      maxAttenuation: 0
+    - Name: P_UI_Cancel
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Cancel
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Cancel
+        ObjectType: 3
+      ID: -2036217039
+      Guid: da8a7bfa9c113a4ba167b205fbf739ea
+      maxAttenuation: 0
+    - Name: P_UI_Data
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Data
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Data
+        ObjectType: 3
+      ID: -1391136097
+      Guid: 8fcda60cc720f640944fca927c287c4d
+      maxAttenuation: 0
+    - Name: P_UI_Error
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Error
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Error
+        ObjectType: 3
+      ID: -513265789
+      Guid: 2d2057d92d181248bb842aca06182bb3
+      maxAttenuation: 0
+    - Name: P_UI_Ok
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Ok
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Ok
+        ObjectType: 3
+      ID: 2141736205
+      Guid: ca89b0415eb594439024546492964aad
+      maxAttenuation: 0
+    - Name: P_UI_Return
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Return
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Return
+        ObjectType: 3
+      ID: -1713046259
+      Guid: 83ecb089d87a10469cc881d8f9f94c97
+      maxAttenuation: 0
+    - Name: P_UI_Substract
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Substract
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Substract
+        ObjectType: 3
+      ID: -1920836628
+      Guid: 5c7535024d3ef44fb1425f5e69292f96
+      maxAttenuation: 0
+    - Name: P_UI_Warning
+      Path: Default Work Unit\SFX_Wu\UI_Wu\P_UI_Warning
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Wu
+        ObjectType: 12
+      - ElementName: UI_Wu
+        ObjectType: 12
+      - ElementName: P_UI_Warning
+        ObjectType: 3
+      ID: 1935057997
+      Guid: 5b0787c594ac7844964e95b14838e661
+      maxAttenuation: 0
   AuxBusWwu:
-  - PhysicalPath: Master-Mixer Hierarchy/Default Work Unit.wwu
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{2EB4B522-7363-484B-A9D7-261CCBE3931C}'
-    m_lastTimePsrt1: 189356032
-    m_lastTimePart2: -1999374415
+    m_lastTimePsrt1: 1516523922
+    m_lastTimePart2: -1999348824
     List: []
   StateWwu:
-  - PhysicalPath: States/Default Work Unit.wwu
+  - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{24AB2D6D-4210-4072-9965-ED02A0983DEF}'
-    m_lastTimePsrt1: 219356032
-    m_lastTimePart2: -1999374415
+    m_lastTimePsrt1: -456986914
+    m_lastTimePart2: -1999348828
     List: []
   SwitchWwu:
-  - PhysicalPath: Switches/Default Work Unit.wwu
+  - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{10D3934A-F8C3-4E94-B90B-6AC22DB87490}'
-    m_lastTimePsrt1: 219356032
-    m_lastTimePart2: -1999374415
+    m_lastTimePsrt1: -456706167
+    m_lastTimePart2: -1999348828
     List: []
   BankWwu:
-  - PhysicalPath: SoundBanks/Default Work Unit.wwu
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{C92780B3-6ADC-4800-8A0D-98E6FDBF84B8}'
-    m_lastTimePsrt1: 219356032
-    m_lastTimePart2: -1999374415
+    m_lastTimePsrt1: 323933959
+    m_lastTimePart2: -1999348823
     List:
     - Name: Music
-      Path: Default Work Unit/Music
+      Path: Default Work Unit\Music
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
@@ -120,6 +268,15 @@ MonoBehaviour:
         ObjectType: 7
       ID: -303024426
       Guid: f613437d1a12054b8ecf76887f879427
+    - Name: SFX
+      Path: Default Work Unit\SFX
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 7
+      ID: 393239870
+      Guid: cb24399cc7db9c41bd03e350fa4370aa
   ExpandedItems:
   - /polyminis
   m_lastPopulateTimePsrt1: 0

@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="118">
 	<RootPaths>
-		<ProjectRoot>/Users/Sisnett/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Code/polyminis-unity/Assets/Wwise/Project/polyminis/</ProjectRoot>
-		<SourceFilesRoot>/Users/Sisnett/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Code/polyminis-unity/Assets/Wwise/Project/polyminis/.cache/Windows/</SourceFilesRoot>
-		<SoundBanksRoot>/Users/Sisnett/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Code/polyminis-unity/Assets/StreamingAssets/Audio/GeneratedSoundBanks/Windows/</SoundBanksRoot>
+		<ProjectRoot>C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\nefas\Poly\polyminis-unity\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>/Users/Sisnett/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Code/polyminis-unity/Assets/Wwise/Project/polyminis/GeneratedSoundBanks/Windows/</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
-	<StreamedFiles/>
+	<StreamedFiles>
+		<File Id="29796930" Language="SFX">
+			<ShortName>Exploration First.wav</ShortName>
+			<Path>SFX\Exploration First_4B8CC0C5.wem</Path>
+		</File>
+		<File Id="71673649" Language="SFX">
+			<ShortName>Intro Theme First.wav</ShortName>
+			<Path>SFX\Intro Theme First_4B8CC0C5.wem</Path>
+		</File>
+		<File Id="401293344" Language="SFX">
+			<ShortName>Species Design First.wav</ShortName>
+			<Path>SFX\Species Design First_4B8CC0C5.wem</Path>
+		</File>
+		<File Id="584759446" Language="SFX">
+			<ShortName>Species Design Loop.wav</ShortName>
+			<Path>SFX\Species Design Loop_4B8CC0C5.wem</Path>
+		</File>
+		<File Id="585421635" Language="SFX">
+			<ShortName>Creature Observation.wav</ShortName>
+			<Path>SFX\Creature Observation_4B8CC0C5.wem</Path>
+		</File>
+		<File Id="796678487" Language="SFX">
+			<ShortName>Exploration Loop.wav</ShortName>
+			<Path>SFX\Exploration Loop_4B8CC0C5.wem</Path>
+		</File>
+		<File Id="1066362763" Language="SFX">
+			<ShortName>Intro Theme Loop.wav</ShortName>
+			<Path>SFX\Intro Theme Loop_4B8CC0C5.wem</Path>
+		</File>
+	</StreamedFiles>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
 		<SoundBank Id="393239870" Language="SFX">
@@ -30,47 +59,47 @@
 			<IncludedMemoryFiles>
 				<File Id="22748774" Language="SFX">
 					<ShortName>UI_PACK_01\UI_OK.wav</ShortName>
-					<Path>SFX/UI_PACK_01/UI_OK_9E69E797.wem</Path>
+					<Path>SFX\UI_PACK_01\UI_OK_9E69E797.wem</Path>
 				</File>
 				<File Id="32637561" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX/SF-CK Data GUI Single 01_D1C915FE.wem</Path>
+					<Path>SFX\SF-CK Data GUI Single 01_0CE4E06B.wem</Path>
 				</File>
 				<File Id="105738243" Language="SFX">
 					<ShortName>UI_PACK_01\UI_WARNING.wav</ShortName>
-					<Path>SFX/UI_PACK_01/UI_WARNING_9E69E797.wem</Path>
+					<Path>SFX\UI_PACK_01\UI_WARNING_9E69E797.wem</Path>
 				</File>
 				<File Id="269566149" Language="SFX">
 					<ShortName>whoosh01.wav</ShortName>
-					<Path>SFX/whoosh01_9E69E797.wem</Path>
+					<Path>SFX\whoosh01_9E69E797.wem</Path>
 				</File>
 				<File Id="299834042" Language="SFX">
 					<ShortName>UI_PACK_01\UI_CANCEL.wav</ShortName>
-					<Path>SFX/UI_PACK_01/UI_CANCEL_9E69E797.wem</Path>
+					<Path>SFX\UI_PACK_01\UI_CANCEL_9E69E797.wem</Path>
 				</File>
 				<File Id="309805726" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX/SF-CK Data GUI Single 01_B91C577D.wem</Path>
+					<Path>SFX\SF-CK Data GUI Single 01_B91C577D.wem</Path>
 				</File>
 				<File Id="566911207" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX/SF-CK Data GUI Single 01_24CD281B.wem</Path>
+					<Path>SFX\SF-CK Data GUI Single 01_7D786894.wem</Path>
 				</File>
 				<File Id="662412231" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX/SF-CK Data GUI Single 01_1F3B888F.wem</Path>
+					<Path>SFX\SF-CK Data GUI Single 01_1F3B888F.wem</Path>
 				</File>
 				<File Id="792914303" Language="SFX">
 					<ShortName>UI_PACK_01\UI_ACCEPTED.wav</ShortName>
-					<Path>SFX/UI_PACK_01/UI_ACCEPTED_9E69E797.wem</Path>
+					<Path>SFX\UI_PACK_01\UI_ACCEPTED_9E69E797.wem</Path>
 				</File>
 				<File Id="812774060" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX/SF-CK Data GUI Single 01_C1B0D729.wem</Path>
+					<Path>SFX\SF-CK Data GUI Single 01_91E1B6CA.wem</Path>
 				</File>
 				<File Id="973505296" Language="SFX">
 					<ShortName>UI_PACK_01\UI_AWESOME.wav</ShortName>
-					<Path>SFX/UI_PACK_01/UI_AWESOME_9E69E797.wem</Path>
+					<Path>SFX\UI_PACK_01\UI_AWESOME_9E69E797.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
@@ -89,36 +118,15 @@
 				<Event Id="2290104414" Name="Play_intro_theme" ObjectPath="\Events\Default Work Unit\Music_Wu\Play_intro_theme"/>
 				<Event Id="585562449" Name="Play_species_design" ObjectPath="\Events\Default Work Unit\Music_Wu\Play_species_design"/>
 			</IncludedEvents>
-			<IncludedMemoryFiles>
-				<File Id="29796930" Language="SFX">
-					<ShortName>Exploration First.wav</ShortName>
-					<Path>SFX/Exploration First_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="71673649" Language="SFX">
-					<ShortName>Intro Theme First.wav</ShortName>
-					<Path>SFX/Intro Theme First_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="401293344" Language="SFX">
-					<ShortName>Species Design First.wav</ShortName>
-					<Path>SFX/Species Design First_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="584759446" Language="SFX">
-					<ShortName>Species Design Loop.wav</ShortName>
-					<Path>SFX/Species Design Loop_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="585421635" Language="SFX">
-					<ShortName>Creature Observation.wav</ShortName>
-					<Path>SFX/Creature Observation_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="796678487" Language="SFX">
-					<ShortName>Exploration Loop.wav</ShortName>
-					<Path>SFX/Exploration Loop_4B8CC0C5.wem</Path>
-				</File>
-				<File Id="1066362763" Language="SFX">
-					<ShortName>Intro Theme Loop.wav</ShortName>
-					<Path>SFX/Intro Theme Loop_4B8CC0C5.wem</Path>
-				</File>
-			</IncludedMemoryFiles>
+			<ReferencedStreamedFiles>
+				<File Id="29796930"/>
+				<File Id="71673649"/>
+				<File Id="401293344"/>
+				<File Id="584759446"/>
+				<File Id="585421635"/>
+				<File Id="796678487"/>
+				<File Id="1066362763"/>
+			</ReferencedStreamedFiles>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

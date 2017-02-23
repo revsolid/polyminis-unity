@@ -9,7 +9,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+							<ObjectRef Name="UI" ID="{3A7C3D67-3196-4443-9F7D-23782F4A7D72}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -403,8 +403,8 @@
 									<ChildrenList>
 										<AudioFileSource Name="Click01" ID="{D70B4EF2-FC1F-4D70-8AFF-797E03C1E011}" ShortID="309805726">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="0.0232472647702407"/>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.0542436177972283"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="2.32472647702407E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="5.42436177972283E-02"/>
 												<Property Name="TrimBegin" Type="Real64" Value="1.2398541210795"/>
 												<Property Name="TrimEnd" Type="Real64" Value="1.61181035740335"/>
 											</PropertyList>
@@ -428,8 +428,8 @@
 									<ChildrenList>
 										<AudioFileSource Name="Click01" ID="{A8B64898-011A-494E-A390-3A5725766644}" ShortID="32637561">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="0.0387454412837345"/>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.0387454412837345"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="3.87454412837345E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="3.87454412837345E-02"/>
 												<Property Name="TrimBegin" Type="Real64" Value="2.23173741794311"/>
 												<Property Name="TrimEnd" Type="Real64" Value="2.66568636032093"/>
 											</PropertyList>
@@ -453,8 +453,8 @@
 									<ChildrenList>
 										<AudioFileSource Name="Click01" ID="{B408400A-3CF8-437E-BA79-A55A5E748C03}" ShortID="662412231">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="0.0387454412837345"/>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.0697417943107217"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="3.87454412837345E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="6.97417943107217E-02"/>
 												<Property Name="TrimBegin" Type="Real64" Value="4.71144566010212"/>
 												<Property Name="TrimEnd" Type="Real64" Value="5.17639095550693"/>
 											</PropertyList>
@@ -478,8 +478,8 @@
 									<ChildrenList>
 										<AudioFileSource Name="Click01" ID="{8B431D47-1DE0-4C2D-9C02-8FD6CA575C25}" ShortID="566911207">
 											<PropertyList>
-												<Property Name="FadeInDuration" Type="Real64" Value="0.0387454412837345"/>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.0697417943107217"/>
+												<Property Name="FadeInDuration" Type="Real64" Value="3.87454412837345E-02"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="6.97417943107217E-02"/>
 												<Property Name="TrimBegin" Type="Real64" Value="3.3708533916849"/>
 												<Property Name="TrimEnd" Type="Real64" Value="3.79705324580598"/>
 											</PropertyList>
@@ -732,7 +732,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+							<ObjectRef Name="INGAME" ID="{D767E418-174F-4E66-A2C5-B3F2D5929715}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>

@@ -23,15 +23,15 @@ Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 	297857554	Wwise Synth One	Wwise Synth One		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_BEEP_02\Wwise Synth One	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	22748774	UI_OK	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_OK_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_OK		76640
-	32637561	UI_DATA_03	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_D1C915FE.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_03		83380
-	105738243	UI_WARNING	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_WARNING_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_WARNING		79260
-	269566149	whoosh01	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\whoosh01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SPACESHIP\whoosh01		421068
-	299834042	UI_CANCEL	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_CANCEL_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_CANCEL		83004
-	309805726	UI_DATA_02	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_B91C577D.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_02		71476
-	566911207	UI_DATA_05	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_24CD281B.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_05		81892
-	662412231	UI_DATA_04	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_1F3B888F.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_04		89332
-	792914303	UI_ACCEPTED	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_ACCEPTED_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_ACCEPTED		84672
-	812774060	UI_DATA_01	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_C1B0D729.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_01		64040
-	973505296	UI_Error	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_AWESOME_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_Error		203664
+	22748774	UI_OK	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_OK_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_OK		76640
+	32637561	UI_DATA_03	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_0CE4E06B.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_03		83380
+	105738243	UI_WARNING	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_WARNING_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_WARNING		79260
+	269566149	whoosh01	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\whoosh01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SPACESHIP\whoosh01		421068
+	299834042	UI_CANCEL	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_CANCEL_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_CANCEL		83004
+	309805726	UI_DATA_02	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_B91C577D.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_02		71476
+	566911207	UI_DATA_05	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_7D786894.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_05		81892
+	662412231	UI_DATA_04	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_1F3B888F.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_04		89332
+	792914303	UI_ACCEPTED	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_ACCEPTED_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_ACCEPTED		84672
+	812774060	UI_DATA_01	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_91E1B6CA.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_01		64040
+	973505296	UI_Error	C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_AWESOME_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_Error		203664
 
