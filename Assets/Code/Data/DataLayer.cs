@@ -227,6 +227,8 @@ public class InventoryCommand : BaseCommand
     InventoryCommandType CommandType;
     public int Slot;
     public SpeciesModel Species;
+    public int PlanetId;
+    public int Epoch;
     
     public InventoryCommand(InventoryCommandType commandType)
     {

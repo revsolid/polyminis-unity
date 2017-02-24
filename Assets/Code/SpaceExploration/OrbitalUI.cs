@@ -105,10 +105,11 @@ public class OrbitalUI : MonoBehaviour
         dialog.CurrentAction = SpeciesPlanetAction.Extract;
     }
     
-    public void OnSampleCreatureClicked(string speciesName)
+    public void OnSampleCreatureClicked(SpeciesModel species)
     {
         SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
         dialog.PlanetModel = Planet;
+        dialog.SpeciesModel = species;
         dialog.CurrentAction = SpeciesPlanetAction.Sample;
     }
 

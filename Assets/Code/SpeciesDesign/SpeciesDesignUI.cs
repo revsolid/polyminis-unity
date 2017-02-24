@@ -224,12 +224,9 @@ public class SpeciesDesignUI : MonoBehaviour
 
     public void OpenWithSpecies(SpeciesModel m)
     {
-        if (m != null)
-        {
-            DesignerModel.LoadSpecies(m);
-            UpdateAllViews();
-            NameInput.text = DesignerModel.CurrentSpecies.SpeciesName;
-        }
+        DesignerModel.LoadSpecies(m);
+        UpdateAllViews();
+        NameInput.text = DesignerModel.CurrentSpecies.SpeciesName;
         gameObject.SetActive(true);
     }
 
