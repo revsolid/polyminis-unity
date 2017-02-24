@@ -21,6 +21,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
 	public SpeciesPlanetAction CurrentAction = SpeciesPlanetAction.Deploy;
 	
 	public PlanetModel PlanetModel;
+	public SpeciesModel SpeciesModel;
 	
 	// Use this for initialization
 	void Start ()
@@ -54,6 +55,10 @@ public class SpeciesPlanetDialog : MonoBehaviour
 				BiomassSlider.gameObject.SetActive(false);
 				break;
 		}
+		if (!BiomassSlider.gameObject.active)
+		{
+			BiomassValue.text = "";
+		}
 		
 	}
 	
@@ -64,17 +69,25 @@ public class SpeciesPlanetDialog : MonoBehaviour
 	
 	public void OnAccept()
 	{
+		PlanetInteractionCommand deployCommand;
 		switch (CurrentAction)	
 		{
 			case SpeciesPlanetAction.Deploy:
-				PlanetInteractionCommand deployCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.DEPLOY);
+				deployCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.DEPLOY);
 				deployCommand.Epoch = PlanetModel.Epoch; 
 				deployCommand.PlanetId = PlanetModel.ID; 
 				deployCommand.DeployedBiomass = 0.10f;
-				deployCommand.SpeciesName = "SpeciesNamen";
+				deployCommand.Species = SpeciesModel;
 				Connection.Instance.Send(JsonUtility.ToJson(deployCommand));
 				break;
 			case SpeciesPlanetAction.Extract:
+				deployCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.EXTRACT);
+				deployCommand.Epoch = PlanetModel.Epoch; 
+				deployCommand.PlanetId = PlanetModel.ID; 
+				//deployCommand.ExtractedPercentage = 0.10f;
+				deployCommand.Species = SpeciesModel;
+				Connection.Instance.Send(JsonUtility.ToJson(deployCommand));
+				break;
 				break;
 			case SpeciesPlanetAction.Research:
 				break;

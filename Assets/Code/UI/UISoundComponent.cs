@@ -8,35 +8,43 @@ using UnityEditor;
 [AddComponentMenu("Wwise/UISoundElement")]
 public class UISoundComponent : AkEvent 
 {
-    public int UIEventID = 0; 
-    public string UIEventName = ""; 
+    public int UIEventID; // = 0; 
+    public string UIEventName; //  = ""; 
+    bool CallbacksWired = false;
     void Awake()
     {
     }
     
     void Start()
     {
-        Selectable sel = gameObject.GetComponent<Selectable>();
-        
-        Button b = sel as Button;
-        if (b != null)
-        {
-            b.onClick.AddListener( () =>
-            {
-                Debug.Log(UIEventName);
-                OnClick();
-            });
-        }
-        
-        Toggle t = sel as Toggle;
-        if (t != null)
-        {
-
-        }
+        UIEventID = eventID;
     }
     
     void Update()
     {
+        if (!CallbacksWired)
+        {
+            Selectable sel = gameObject.GetComponent<Selectable>();
+            
+            Button b = sel as Button;
+            if (b != null)
+            {
+                b.onClick.AddListener( () =>
+                {
+                    Debug.Log("Clicked-ze-zound-button");
+                    Debug.Log(UIEventID);
+                    Debug.Log(eventID);
+                    OnClick();
+                });
+                CallbacksWired = true;
+            }
+            
+            Toggle t = sel as Toggle;
+            if (t != null)
+            {
+                CallbacksWired = true;
+            }
+        }
     }
     
     void OnClick()

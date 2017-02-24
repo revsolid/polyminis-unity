@@ -4,13 +4,12 @@ using System.Collections;
 public class UIManager : MonoBehaviour {
 
     public GameObject StarMap;
-    public GameObject SpeciesEditor;
+    public InventoryUI Inventory;
     bool StarMapToggle = false;
 
     // Use this for initialization
     void Start ()
     {
-
     }
     
     // Update is called once per frame
@@ -27,7 +26,7 @@ public class UIManager : MonoBehaviour {
 
     public void OnSpeciesEditorClick()
     {
-        SpeciesEditor.SetActive(true);
+        Inventory.ShowInMode(InventoryMode.NORMAL);
     }
 
     // takes space position and convert it to 3D position on starmap

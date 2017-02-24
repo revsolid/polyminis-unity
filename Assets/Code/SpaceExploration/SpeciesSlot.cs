@@ -13,16 +13,19 @@ public class SpeciesSlot : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		if (Species.Creator != Session.Instance.UserName)	
+		if (Species.CreatorName != Session.Instance.UserName)	
 		{
 			ExtractButton.gameObject.SetActive(false);	
 			SampleButton.gameObject.SetActive(false);
 		}
+		Debug.Log(Species.CreatorName);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		SpeciesNameText.text = Species.Name;
+		ExtractButton.gameObject.SetActive(Species.CreatorName == Session.Instance.UserName);
+		SampleButton.gameObject.SetActive(Species.CreatorName == Session.Instance.UserName);
+		SpeciesNameText.text = Species.SpeciesName;
 	}
 }

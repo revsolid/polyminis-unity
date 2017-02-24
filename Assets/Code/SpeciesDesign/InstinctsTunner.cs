@@ -15,17 +15,15 @@ public class InstinctsTunner : MonoBehaviour
     public int MinLevel = 2;
     public int MaxLevel = 8;
     
-    private Dictionary<Instinct, int> Levels;
-    private Dictionary<Instinct, int> MaxLevels;
-    private Dictionary<Instinct, Slider> MaxSliderMap;
-    private Dictionary<Instinct, Slider> ValueSliderMap;
-    private Dictionary<Instinct, Instinct> Opposites;
+    private Dictionary<Instinct, int> Levels = new Dictionary<Instinct, int>();
+    private Dictionary<Instinct, int> MaxLevels = new Dictionary<Instinct, int>();
+    private Dictionary<Instinct, Slider> MaxSliderMap = new Dictionary<Instinct, Slider>();
+    private Dictionary<Instinct, Slider> ValueSliderMap = new Dictionary<Instinct, Slider>();
+    private Dictionary<Instinct, Instinct> Opposites = new Dictionary<Instinct, Instinct>();
 
     // Use this for initialization
     public void Initialize()
     {
-        MaxSliderMap = new Dictionary<Instinct, Slider>();
-        ValueSliderMap = new Dictionary<Instinct, Slider>();
         MaxSliderMap[Instinct.HOARDING] = MaxHoarding;
         MaxSliderMap[Instinct.HERDING] = MaxHerding;
         MaxSliderMap[Instinct.PREDATORY] = MaxPredatory;
@@ -36,15 +34,11 @@ public class InstinctsTunner : MonoBehaviour
         ValueSliderMap[Instinct.PREDATORY] = Predatory;
         ValueSliderMap[Instinct.NOMADIC] = Nomadic;
 
-        Opposites = new Dictionary<Instinct, Instinct>();
-
         Opposites[Instinct.HOARDING] = Instinct.NOMADIC;
         Opposites[Instinct.PREDATORY] = Instinct.HERDING;
         Opposites[Instinct.NOMADIC] = Instinct.HOARDING;
         Opposites[Instinct.HERDING] = Instinct.PREDATORY;
 
-        Levels = new Dictionary<Instinct, int>();
-        MaxLevels = new Dictionary<Instinct, int>();
         foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
         {
             Levels[i] = 0;

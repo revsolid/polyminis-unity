@@ -32,7 +32,6 @@ public class SpeciesCatalog : MonoBehaviour
     	        speciesCard.transform.SetAsFirstSibling();
                 Models.Add(kvp.Value);
             }
-            Debug.Log(kvp.Value.Name);
         }
         Debug.Log("Leaving with: " + Models.Count);
     }

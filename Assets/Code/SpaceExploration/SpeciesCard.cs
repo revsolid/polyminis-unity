@@ -13,21 +13,28 @@ public class SpeciesCard : MonoBehaviour
     
     
     
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         FilledState.gameObject.SetActive(false);
         EmptyState.SetActive(true);
-	}
+    }
     
     void Update()
     {
-        if (Species != null && Species.Name != "" && Empty)
+        if (Species != null)
         {
             FilledState.gameObject.SetActive(true);
             FilledState.Species = Species;
             EmptyState.SetActive(false);
             Empty = false;
+        }
+        
+        if (Species == null && !Empty)
+        {
+            FilledState.gameObject.SetActive(false);
+            EmptyState.SetActive(true);
+            Empty = true;
         }
     }
     
@@ -35,13 +42,13 @@ public class SpeciesCard : MonoBehaviour
     {
         if (!Empty)
         {
-            if (Species.Creator == Session.Instance.UserName)
+            if (Species.CreatorName == Session.Instance.UserName)
             {
-                OrbitalUI.OnEditCreatureClicked(Species.Name);
+                OrbitalUI.OnEditCreatureClicked(Species);
             }
             else
             {
-                OrbitalUI.OnResearchCreatureClicked(Species.Name);
+                OrbitalUI.OnResearchCreatureClicked(Species.SpeciesName);
             }
         }
         else
@@ -52,10 +59,10 @@ public class SpeciesCard : MonoBehaviour
     
     public void OnExtractButton()
     {
-        OrbitalUI.OnExtractCreatureClicked(Species.Name);
+        OrbitalUI.OnExtractCreatureClicked(Species);
     }
     public void OnSampleButton()
     {
-        OrbitalUI.OnSampleCreatureClicked(Species.Name);
+        OrbitalUI.OnSampleCreatureClicked(Species.SpeciesName);
     }
 }

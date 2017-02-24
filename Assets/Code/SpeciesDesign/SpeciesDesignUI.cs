@@ -15,19 +15,20 @@ public class SpeciesDesignUI : MonoBehaviour
     public InstinctsTunner InstinctsTunner;
     public ColorConfig ColorConfig;
     public InputField NameInput;
+    
     public static ColorConfig SColorConfig;
+    
+    public delegate void SaveClicked(SpeciesModel result);
+    public static event SaveClicked OnSaveEvent;
 
-    private SpliceButton.ButtonClicked SpliceButtonClickedHandler;
-    private DnaHelix.SpliceRemoved SpliceRemovedFromHelixHandler;
-
-
-    SpeciesDesignerModel DesignerModel;
+    SpliceButton.ButtonClicked SpliceButtonClickedHandler;
+    DnaHelix.SpliceRemoved SpliceRemovedFromHelixHandler;
+    
+    SpeciesDesignerModel DesignerModel = new SpeciesDesignerModel();
 
     void Start()
     {
-        DesignerModel = new SpeciesDesignerModel();
         Initialize();
-
     }
 
     void OnDestroy()
@@ -202,6 +203,7 @@ public class SpeciesDesignUI : MonoBehaviour
     public void OnExitButtonClicked()
     {
         gameObject.SetActive(false);
+        OnSaveEvent = null;
     }
     
     public void OnSaveButtonClicked()
@@ -209,38 +211,26 @@ public class SpeciesDesignUI : MonoBehaviour
         // Validate
         
         string nsName = NameInput.text;
-        DesignerModel.CurrentSpecies.Name = NameInput.text; 
+        DesignerModel.CurrentSpecies.SpeciesName = NameInput.text; 
         
         SpeciesModel newModel = new SpeciesModel(DesignerModel.CurrentSpecies);
-        //Session.Instance.Species[name] = newModel;
-        // Serialize Species
-        Debug.Log(JsonUtility.ToJson(DesignerModel.CurrentSpecies));
         
-        // Send to Server
-        InventoryCommand saveSpeciesCommand = new InventoryCommand(InventoryCommandType.NEW_SPECIES);
-        saveSpeciesCommand.Species = newModel;
-        Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
+        if (OnSaveEvent != null)
+            OnSaveEvent(newModel);
+        Debug.Log(JsonUtility.ToJson(DesignerModel.CurrentSpecies));
+            
+        OnExitButtonClicked();
     }
 
-    // note: this always loads the selected species, since the one  
-    // stored in designer model is(should be) a COPY not a REFERENCE.
-    // so if you select a species on planet -> modify it in species designer -> select the species again:
-    // your modification all get wiped.
-    public void OpenWithSpecies(string name)
+    public void OpenWithSpecies(SpeciesModel m)
     {
-        SpeciesModel m = null; // = Session.Instance.Species[name];
-
         if (m != null)
         {
             DesignerModel.LoadSpecies(m);
             UpdateAllViews();
-            NameInput.text = DesignerModel.CurrentSpecies.Name;
-            gameObject.SetActive(true);
+            NameInput.text = DesignerModel.CurrentSpecies.SpeciesName;
         }
-        else
-        {
-            //Error openning the species!
-        }
+        gameObject.SetActive(true);
     }
 
 }

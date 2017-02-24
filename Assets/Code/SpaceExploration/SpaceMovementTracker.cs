@@ -6,6 +6,8 @@ public class SpaceMovementTracker : MonoBehaviour
 {
     public GameObject SpaceSphere1; public GameObject HUD; public Vector2 CurrentPosition { get; private set; } public float Heading {get; private set; } public Vector2 Forward {get; private set; } public float TranslationSpeedMult = 0.0f;
     public float RotationSpeedMult = 0.0f;
+    
+    bool HasMoved = true;
 
     
     void Awake()
@@ -22,7 +24,7 @@ public class SpaceMovementTracker : MonoBehaviour
         var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.INIT, CurrentPosition);
         Debug.Log(JsonUtility.ToJson(spaceExCommand));
         Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));//"init", CurrentPosition.x.ToString() + "," + CurrentPosition.y.ToString());
-        InvokeRepeating("SendLocation", 0.5f, 0.2f);
+        InvokeRepeating("SendLocationIR", 0.0f, 1.0f);
         InvokeRepeating("SaveLocation", 10.0f, 10.0f);
     }
 
@@ -35,6 +37,14 @@ public class SpaceMovementTracker : MonoBehaviour
         float tDamp = Mathf.Max(TranslationSpeedMult, 1/15.0f); //TODO: This should be delta time or something derived instead of a static value 
         float rDamp = Mathf.Max(RotationSpeedMult, 0.07f);
 
+        if (horImpulse == 0.0f && verImpulse == 0.0f)
+        {
+            HasMoved = false;
+        }
+        else
+        {
+            HasMoved = true;
+        }
         // Rotate the Hud a bit.
         
         if (horImpulse != 0.0f && verImpulse == 0.0f) 
@@ -56,8 +66,15 @@ public class SpaceMovementTracker : MonoBehaviour
 
 
     // send current location to server (attempt move)
-    void SendLocation()
-    {    
+    void SendLocationIR()
+    {
+        SendLocation(false);
+    }
+    
+    void SendLocation(bool force)
+    {   
+        if (!HasMoved && !force) 
+            return;
         var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.ATTEMPT_MOVE, CurrentPosition);
         Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));
     }

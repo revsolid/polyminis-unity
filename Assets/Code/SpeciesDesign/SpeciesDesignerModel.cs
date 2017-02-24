@@ -9,12 +9,15 @@ public class SpeciesDesignerModel
 
     public SpeciesModel CurrentSpecies { get; private set; }
     
-    public void Initialize ()
+    public SpeciesDesignerModel()
     {
         UnselectedSplices = new List<SpliceModel>();
         SelectedSplices = new List<SpliceModel>();
         CurrentSpecies = new SpeciesModel();
-
+    }
+    
+    public void Initialize ()
+    {
         foreach (KeyValuePair<string, SpliceModel> entry in Almanac.Instance.AvailableSplices)
         {
             AddNewSplice(entry.Value);
