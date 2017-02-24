@@ -65,12 +65,13 @@ public class SpaceMovementTracker : MonoBehaviour
     }
 
 
-    // send current location to server (attempt move)
+    // SendLocation Invoke Repeating
     void SendLocationIR()
     {
         SendLocation(false);
     }
     
+    // send current location to server (attempt move)
     void SendLocation(bool force)
     {   
         if (!HasMoved && !force) 
