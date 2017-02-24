@@ -24,6 +24,8 @@ public class SpeciesSlot : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		ExtractButton.gameObject.SetActive(Species.CreatorName == Session.Instance.UserName);
+		SampleButton.gameObject.SetActive(Species.CreatorName == Session.Instance.UserName);
 		SpeciesNameText.text = Species.SpeciesName;
 	}
 }

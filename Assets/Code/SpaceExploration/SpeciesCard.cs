@@ -13,12 +13,12 @@ public class SpeciesCard : MonoBehaviour
     
     
     
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         FilledState.gameObject.SetActive(false);
         EmptyState.SetActive(true);
-	}
+    }
     
     void Update()
     {

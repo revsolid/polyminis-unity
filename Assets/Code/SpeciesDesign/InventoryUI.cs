@@ -69,6 +69,8 @@ public class InventoryUI : MonoBehaviour
             uiEntry.InvEntry = Session.Instance.InventoryEntries[i];
             uiEntry.SlotNum = i;
             uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
+            uiEntry.Mode = CurrentMode;
+            uiEntry.gameObject.SetActive(true);
         }
         
         // Add Empty Slots
@@ -80,8 +82,9 @@ public class InventoryUI : MonoBehaviour
             uiEntry.InvEntry = null;
             uiEntry.SlotNum = i + fullEntries;
             uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
+            uiEntry.Mode = CurrentMode;
+            uiEntry.gameObject.SetActive(true);
         }
-
     } 
     
     void HandleEdit(InventoryEntry currentModel, int slot)

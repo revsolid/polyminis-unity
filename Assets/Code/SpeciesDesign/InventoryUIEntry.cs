@@ -14,6 +14,7 @@ public class InventoryUIEntry : MonoBehaviour
     public InventoryEntry InvEntry;
     public Text EntryName;
     public int SlotNum;    
+    public InventoryMode Mode;
     
     void Start () {}
     void Awake () {}
@@ -23,10 +24,14 @@ public class InventoryUIEntry : MonoBehaviour
         {
             EntryName.text =  InvEntry.GetName();
         }
-        else
+        else if (Mode == InventoryMode.NORMAL)
         {
             EntryName.text = "Create new Species";
         }
+	else
+	{
+	    gameObject.SetActive(false);
+	}
     }
     
     public void OnClickEntry() 

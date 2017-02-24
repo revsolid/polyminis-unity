@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class OrbitalUI : MonoBehaviour
 {
-	public Camera SpaceflightCamera;
-	public Camera OrbitalCamera;
-	public SpeciesDesignUI SpeciesEditor;
+    public Camera SpaceflightCamera;
+    public Camera OrbitalCamera;
+    public SpeciesDesignUI SpeciesEditor;
     public PlanetCloseupRenderer PlanetRenderer;
     public Slider PhSlider;
     public Slider TempSlider;
@@ -22,18 +22,18 @@ public class OrbitalUI : MonoBehaviour
     bool HasHookedCallbacks = false;
     SpeciesModel ShowSpeciesNextUpdate = null;
 
-	// Use this for initialization
+    // Use this for initialization
     void Awake()
     {
         
     }
-	void Start ()
-	{ 
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
+    void Start ()
+    { 
+    }
+    
+    // Update is called once per frame
+    void Update ()
+    {
         //TODO: This is ugly
         if (!HasHookedCallbacks)
         {
@@ -54,17 +54,17 @@ public class OrbitalUI : MonoBehaviour
             SpeciesEditor.OpenWithSpecies(ShowSpeciesNextUpdate);
             ShowSpeciesNextUpdate = null;
         }
-	}
-	
-	public void OnBackClicked()
-	{
+    }
+    
+    public void OnBackClicked()
+    {
         OrbitalCamera.gameObject.SetActive(false);
         SpaceflightCamera.gameObject.SetActive(true);
         SpaceflightCamera.enabled = true;
-	}
-	
-	public void OnEditCreatureClicked(SpeciesModel species)
-	{
+    }
+    
+    public void OnEditCreatureClicked(SpeciesModel species)
+    {
         
         PlanetInteractionCommand getEditInfoCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.GET_TO_EDIT_IN_PLANET);
         getEditInfoCommand.Epoch = Planet.Epoch; 
@@ -73,7 +73,7 @@ public class OrbitalUI : MonoBehaviour
         Connection.Instance.Send(JsonUtility.ToJson(getEditInfoCommand));
         
         SpeciesToOpen = species.SpeciesName;
-	}
+    }
     
     public void OnDeployCreatureClicked()
     {
