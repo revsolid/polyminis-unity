@@ -36,6 +36,11 @@ public class WarpDialog : MonoBehaviour
                 dialog.DialogString = "You don't have enough Biomass to warp to that planet. (" + Session.Instance.Biomass + "/" + WarpCost + ")";
                 dialog.LeftButton.gameObject.SetActive(false);
             }
+            else if (WarpCost < 0.0f)
+            {
+                dialog.DialogString = "You cannot Warp that far!";
+                dialog.LeftButton.gameObject.SetActive(false);
+            }
             else
             {
                 dialog.DialogString = "The cost of warping to this planet is " + WarpCost + " Biomass.\n";
@@ -55,7 +60,7 @@ public class WarpDialog : MonoBehaviour
             case SpaceExplorationEventType.WARP_COST_RESULT:
                 Connection.OnMessageEvent -= OnCostCalculated;
                 WarpCost = spaceExEvent.WarpCost;
-                Debug.Log("RESULT! " + WarpCost);
+                Debug.Log("RESULT! " + message);
                 break;
             }
         }

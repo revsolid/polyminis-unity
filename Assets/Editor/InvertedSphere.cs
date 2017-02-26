@@ -4,7 +4,7 @@ using UnityEngine;
  public class InvertedSphere : EditorWindow {
      private string st = "1.0";
   
-     [MenuItem("GameObject/3D Object/Inward Facing Sphere")]
+     [MenuItem("Polyminis/GameObjects/Inward Facing Sphere")]
      public static void ShowWindow() {
          EditorWindow.GetWindow(typeof(InvertedSphere));
      }

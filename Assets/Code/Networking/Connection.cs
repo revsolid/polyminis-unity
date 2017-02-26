@@ -12,7 +12,7 @@ public class Connection
 
     private WebSocket ws;
     private static Connection instance;
-
+    
     public static Connection Instance
     {
         get 
@@ -25,16 +25,17 @@ public class Connection
             return instance;
         }
     }
+    public string Address { get; private set; }
 
 
     public Connection()
     {
         // the url to sisnett's Amazon EC2 linux box
         //TODO: Make this configurable
-        string address = "ws://ec2-54-70-6-182.us-west-2.compute.amazonaws.com:8080";
-        //string address = "ws://localhost:8080";
-        ws = new WebSocket(address);
-        Debug.Log("Initilizing Connection to: " + address);
+        //string address = "ws://ec2-54-70-6-182.us-west-2.compute.amazonaws.com:8080";
+        Address = "ws://localhost:8080";
+        ws = new WebSocket(Address);
+        Debug.Log("Initilizing Connection to: " + Address);
         ws.OnMessage += (sender, e) => OnMessage(e.Data);
         ws.Connect();
     }
@@ -56,5 +57,6 @@ public class Connection
     {
         ws.Close();
         instance = null;
+        OnMessageEvent = null;
     }
 }
