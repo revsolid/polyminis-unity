@@ -69,27 +69,42 @@ public class SpeciesPlanetDialog : MonoBehaviour
 	
 	public void OnAccept()
 	{
-		PlanetInteractionCommand deployCommand;
+		PlanetInteractionCommand pInteractionCommand;
 		switch (CurrentAction)	
 		{
 			case SpeciesPlanetAction.Deploy:
-				deployCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.DEPLOY);
-				deployCommand.Epoch = PlanetModel.Epoch; 
-				deployCommand.PlanetId = PlanetModel.ID; 
-				deployCommand.DeployedBiomass = 0.10f;
-				deployCommand.Species = SpeciesModel;
-				Connection.Instance.Send(JsonUtility.ToJson(deployCommand));
+				pInteractionCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.DEPLOY);
+				pInteractionCommand.Epoch = PlanetModel.Epoch; 
+				pInteractionCommand.PlanetId = PlanetModel.ID; 
+				pInteractionCommand.DeployedBiomass = 0.10f;
+				pInteractionCommand.Species = SpeciesModel;
+				Connection.Instance.Send(JsonUtility.ToJson(pInteractionCommand));
 				break;
-			case SpeciesPlanetAction.Extract:
-				deployCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.EXTRACT);
-				deployCommand.Epoch = PlanetModel.Epoch; 
-				deployCommand.PlanetId = PlanetModel.ID; 
-				//deployCommand.ExtractedPercentage = 0.10f;
-				deployCommand.Species = SpeciesModel;
-				Connection.Instance.Send(JsonUtility.ToJson(deployCommand));
-				break;
+			case SpeciesPlanetAction.Sample:
+				InventoryCommand sampleSpeciesCommand = new InventoryCommand(InventoryCommandType.SAMPLE_FROM_PLANET);
+                sampleSpeciesCommand.Species = SpeciesModel;
+				sampleSpeciesCommand.Epoch = PlanetModel.Epoch; 
+				sampleSpeciesCommand.PlanetId = PlanetModel.ID; 
+                sampleSpeciesCommand.Slot = Session.Instance.NextAvailableSlot();
+				if (sampleSpeciesCommand.Slot == -1)
+				{
+				// This is an issue	
+					Debug.Log("NO MORE SLOTS FOR YOU!!!!!");
+				}
+				else
+				{
+					Connection.Instance.Send(JsonUtility.ToJson(sampleSpeciesCommand));
+				}
 				break;
 			case SpeciesPlanetAction.Research:
+				break;
+			case SpeciesPlanetAction.Extract:
+				pInteractionCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.EXTRACT);
+				pInteractionCommand.Epoch = PlanetModel.Epoch; 
+				pInteractionCommand.PlanetId = PlanetModel.ID; 
+				//pInteractionCommand.ExtractedPercentage = 0.10f;
+				pInteractionCommand.Species = SpeciesModel;
+				Connection.Instance.Send(JsonUtility.ToJson(pInteractionCommand));
 				break;
 		}
 		Destroy(gameObject);

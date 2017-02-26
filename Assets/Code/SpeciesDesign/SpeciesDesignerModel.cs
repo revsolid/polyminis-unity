@@ -26,10 +26,21 @@ public class SpeciesDesignerModel
 
     public void LoadSpecies(SpeciesModel species)
     {
-        // load from almanac...maybe there's a better way?
         Clear();
         Initialize();
         List<SpliceModel> toUnselect = new List<SpliceModel>();
+        
+        if (species == null)
+        {
+            species = new SpeciesModel();
+        }
+        else
+        {
+            // Copy the species so we can operate on it and not change anything
+            // until Save is pressed
+            species = new SpeciesModel(species);
+        }
+        
         foreach(SpliceModel sm in species.Splices)
         {
             foreach(SpliceModel unselected in UnselectedSplices)
@@ -46,10 +57,7 @@ public class SpeciesDesignerModel
         {
             SelectSplice(sm);
         }
-
-        // make a copy everytime you open up a species. 
-        // This way the changes don't get applied until you click save.
-        CurrentSpecies = new SpeciesModel(species);
+        CurrentSpecies = species;
     }
 
     public void AddNewSplice(SpliceModel model)

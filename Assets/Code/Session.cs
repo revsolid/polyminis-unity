@@ -18,6 +18,17 @@ public class Session : Singleton<Session>
     public List<InventoryEntry> InventoryEntries;
     
     public int Slots;
+    public int NextAvailableSlot()
+    {
+        if (InventoryEntries.Count < Slots)
+        {
+            return InventoryEntries.Count;
+        }
+        else
+        {
+            return -1;
+        }
+    }
    
     private string _userName;
     public string UserName

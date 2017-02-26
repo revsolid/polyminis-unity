@@ -1,6 +1,5 @@
 
 // This classes are just the translation layer between JSON and C# 
-// BIG TODO: UUID
 // BIG TODO: REFACTOR THIS IN SEVERAL FILES (or at least organize inside file)
 /*
 // Current Step JSON blob with minimal serialization from server
@@ -227,6 +226,8 @@ public class InventoryCommand : BaseCommand
     InventoryCommandType CommandType;
     public int Slot;
     public SpeciesModel Species;
+    public int PlanetId;
+    public int Epoch;
     
     public InventoryCommand(InventoryCommandType commandType)
     {

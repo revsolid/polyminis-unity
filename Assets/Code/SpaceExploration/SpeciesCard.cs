@@ -63,6 +63,6 @@ public class SpeciesCard : MonoBehaviour
     }
     public void OnSampleButton()
     {
-        OrbitalUI.OnSampleCreatureClicked(Species.SpeciesName);
+        OrbitalUI.OnSampleCreatureClicked(Species);
     }
 }
