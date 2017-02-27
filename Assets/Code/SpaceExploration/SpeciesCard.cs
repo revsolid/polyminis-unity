@@ -48,7 +48,7 @@ public class SpeciesCard : MonoBehaviour
             }
             else
             {
-                OrbitalUI.OnResearchCreatureClicked(Species.SpeciesName);
+                OrbitalUI.OnResearchCreatureClicked(Species);
             }
         }
         else

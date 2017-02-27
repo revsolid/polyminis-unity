@@ -51,6 +51,7 @@ public class InventoryUI : MonoBehaviour
         {
             InventoryUIEntry.OnClickEvent += HandleSelection;
         }
+        InventoryUIEntry.OnDeleteEvent += HandleDelete;
 
         // Always Re-get from the Session as it has the latest and greatest        
         LoadFromSession();
@@ -67,10 +68,8 @@ public class InventoryUI : MonoBehaviour
         {
             InventoryUIEntry uiEntry = Instantiate(EntryPrototype);
             uiEntry.InvEntry = Session.Instance.InventoryEntries[i];
-            uiEntry.SlotNum = i;
-            uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
             uiEntry.Mode = CurrentMode;
-            uiEntry.gameObject.SetActive(true);
+            uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
         }
         
         // Add Empty Slots
@@ -80,44 +79,54 @@ public class InventoryUI : MonoBehaviour
         {
             InventoryUIEntry uiEntry = Instantiate(EntryPrototype);
             uiEntry.InvEntry = null;
-            uiEntry.SlotNum = i + fullEntries;
-            uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
             uiEntry.Mode = CurrentMode;
-            uiEntry.gameObject.SetActive(true);
+            uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
         }
+
     } 
     
-    void HandleEdit(InventoryEntry currentModel, int slot)
+    void HandleEdit(InventoryEntry currentModel)
     {
         InventoryCommandType cmdType;
         SpeciesModel sm = null;
+        int slot;
         if (currentModel == null)
         {
             Debug.Log("New Species");
             cmdType = InventoryCommandType.NEW_SPECIES;
+            slot = Session.Instance.NextAvailableSlot();
         }
         else
         {
             Debug.Log("Editing: " + currentModel);
             cmdType = InventoryCommandType.UPDATE_SPECIES;
             sm = currentModel.Species;
+            slot = currentModel.Slot;
         }
         
         SpeciesDesignUI.OnSaveEvent += (resultingModel) => {
             Debug.Log(JsonUtility.ToJson(resultingModel));
-                InventoryCommand saveSpeciesCommand = new InventoryCommand(cmdType);
-                saveSpeciesCommand.Species = resultingModel;
-                saveSpeciesCommand.Slot = slot;
-                Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
+            InventoryCommand saveSpeciesCommand = new InventoryCommand(cmdType);
+            saveSpeciesCommand.Species = resultingModel;
+            saveSpeciesCommand.Slot = slot;
+            Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
         };
         SpeciesDesigner.OpenWithSpecies(sm);
     }
     
-    void HandleSelection(InventoryEntry currentModel, int slot)
+    void HandleSelection(InventoryEntry currentModel)
     {
-            Debug.Log("Selecting: " + currentModel);
-            OnEntrySelected(currentModel, slot);
-            Dismiss();
+        Debug.Log("Selecting: " + currentModel);
+        OnEntrySelected(currentModel, currentModel.Slot);
+        Dismiss();
+    }
+    
+    void HandleDelete(InventoryEntry currentModel)
+    {
+        Debug.Log("Deleting: " + currentModel);
+        InventoryCommand deleteSpeciesCommand = new InventoryCommand(InventoryCommandType.DELETE_ENTRY);
+        deleteSpeciesCommand.Slot = currentModel.Slot;
+        Connection.Instance.Send(JsonUtility.ToJson(deleteSpeciesCommand));
     }
 
     public void Dismiss()
@@ -131,6 +140,7 @@ public class InventoryUI : MonoBehaviour
         {
             InventoryUIEntry.OnClickEvent -= HandleSelection;
         }
+        InventoryUIEntry.OnDeleteEvent -= HandleDelete;
         OnEntrySelected = null;
     }
 }

@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour {
     public GameObject StarMap;
     public InventoryUI Inventory;
     bool StarMapToggle = false;
+    bool InventoryToggle = false;
 
     // Use this for initialization
     void Start ()
@@ -26,7 +27,12 @@ public class UIManager : MonoBehaviour {
 
     public void OnSpeciesEditorClick()
     {
-        Inventory.ShowInMode(InventoryMode.NORMAL);
+        InventoryToggle = !Inventory.gameObject.active; 
+        
+        if (InventoryToggle)
+            Inventory.ShowInMode(InventoryMode.NORMAL);
+        else
+            Inventory.Dismiss();
     }
 
     // takes space position and convert it to 3D position on starmap
