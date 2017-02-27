@@ -26,7 +26,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        BiomassValue.text = BiomassSlider.value "";
+        BiomassValue.text = BiomassSlider.value + "";
     }
     
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
                 MainDialog.DialogMessage.text = "How much Biomass do you want to Deploy this species with?";
                 BiomassSlider.gameObject.SetActive(true);
                 BiomassSlider.minValue = 10.0f;
-                BiomassSlider.maxValue = 100.0f / ( PlanetModel.Species.Count  1); 
+                BiomassSlider.maxValue = 100.0f / ( PlanetModel.Species.Count + 1); 
                 break;
             case SpeciesPlanetAction.Extract:
                 MainDialog.DialogMessage.text  = "How much Biomass do you want to Extract from this Species?";
@@ -68,7 +68,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
     
     public void OnSliderValueChange()
     {
-        BiomassValue.text = BiomassSlider.value "";
+        BiomassValue.text = BiomassSlider.value + "";
     }
     
     public void OnAccept()

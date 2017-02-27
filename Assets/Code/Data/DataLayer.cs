@@ -316,7 +316,7 @@ public class PlanetInteractionCommand : BaseCommand
     public SpeciesModel Species;
     //public string SpeciesName;
     
-    public float ExtractedPopulation = 0.0f;
+    public float ExtractedPercentage = 0.0f;
     public float DeployedBiomass     = 0.0f;
     
     public PlanetInteractionCommand(PlanetInteractionCommandType commandType)

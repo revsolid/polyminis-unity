@@ -112,6 +112,7 @@ MonoBehaviour:
       CreatorName: 
       OriginalSpeciesName: 
       PlanetEpoch: 
+      Percentage: 0
       BeingResearched: 0
       EpochStarted: -1
       EpochDone: -1
