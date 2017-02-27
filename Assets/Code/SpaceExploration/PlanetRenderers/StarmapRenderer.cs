@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
+public class StarmapRenderer : UIPlanetRenderer
 {
     [HideInInspector] public GameObject Starmap;
     public WarpDialog WarpDialog;
@@ -10,7 +10,7 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
     private Camera TargetCamera;
     private float DistanceToSpaceship;
 
-    public void RenderUpdate(Planet model)
+    public override void RenderUpdate(Planet model)
     {
         SpacePos = model.SpacePosition;
         DistanceToSpaceship = model.DistanceToSpaceship;
@@ -22,54 +22,26 @@ public class StarmapRenderer : MonoBehaviour, IPlanetRenderer
 
             if (Starmap.activeSelf)
             {
-                this.gameObject.SetActive (true);
-            } 
+                this.gameObject.SetActive(true);
+            }
             else
             {
-                this.gameObject.SetActive (false);
+                this.gameObject.SetActive(false);
             }
         }
 
+        base.RenderUpdate(model);
     }
 
-    private void Update()
-    {
-        if (BlockingDialog != null && this.GetComponent<SphereCollider>().enabled)
-        {
-            UpdateCollider(false);
-        }
-        else if(BlockingDialog == null && !this.GetComponent<SphereCollider>().enabled)
-        {
-            UpdateCollider(true);
-        }
-    }
-
-    private void OnEnable()
-    {
-        // to prevent that there already is a dialog in the scene
-        PolyminisDialog dialog = FindObjectOfType<PolyminisDialog>();
-        if (dialog)
-        {
-            UpdateCollider(false);
-        }
-    }
-    
-    public  void UpdateCollider(bool enable)
-    {
-        this.GetComponent<SphereCollider>().enabled = enable;
-    }
-
-    public void SetTargetCamera(Camera camera)
-    {
-        TargetCamera = camera;
-    }
-
-
-
-    void OnMouseDown()
+    public void PlanetClick()
     {
         WarpDialog wp = Instantiate(WarpDialog);
         wp.SetWarpParams(SpacePos);
+    }
+    
+    public void SetTargetCamera(Camera camera)
+    {
+        TargetCamera = camera;
     }
 
     // update relative to starmap object
