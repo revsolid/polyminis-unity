@@ -217,7 +217,8 @@ public enum InventoryCommandType
     NEW_SPECIES,
     UPDATE_SPECIES,
     SAMPLE_FROM_PLANET,
-    GET_INVENTORY
+    GET_INVENTORY,
+    DELETE_ENTRY
 }
 
 [Serializable]
@@ -265,42 +266,34 @@ public enum EInventoryType
 [Serializable]
 public class InventoryEntry
 {
-   EInventoryType InvType
-   {
-       get
-       {
-           return (EInventoryType) Enum.Parse(typeof(EInventoryType), InventoryType);
-       }
-   }
+    EInventoryType InvType
+    {
+        get
+        {
+            return (EInventoryType) Enum.Parse(typeof(EInventoryType), InventoryType);
+        }
+    }
 
-   public string InventoryType;
-   public SpeciesModel Value;
-   public SpeciesModel Species 
-   {
-       get
-       {
-           return Value;
-       }
-   }
-   ResearchModel Research;
+    public int Slot;
+    public string InventoryType;
+    public SpeciesModel Value;
+    public SpeciesModel Species 
+    {
+        get
+        {
+            return Value;
+        }
+    }
    
-   public string GetName()
-   {
-       if (InvType == EInventoryType.SpeciesSeed)
-       {
-           return Value.SpeciesName;
-       }
-       else
-       {
-           return Research.PlanetEpoch;
-       }
+    public string GetName()
+    {
+        string ret = Value.SpeciesName;
+        if (InvType == EInventoryType.Research)
+        {
+            ret += "[R]";
+        }
+        return ret;
    }
-}
-
-[Serializable]
-public class ResearchModel
-{
-    public string PlanetEpoch;
 }
 
 // PLANET INTERACTIONS
@@ -406,15 +399,27 @@ public class SpliceModel
 
 //
 [Serializable]
+public class InstinctTuningModel
+{
+
+}
+//
+[Serializable]
 public class SpeciesModel
 {
     public string SpeciesName;
     public List<SpliceModel> Splices = new List<SpliceModel>();
-    public object InstinctTuning = new object();
+    public InstinctTuningModel InstinctTuning;
     public object GAConfiguration = new object();
     public string CreatorName;
     public string OriginalSpeciesName;
     public string PlanetEpoch;
+    public float Percentage;
+    
+    // Research information
+    public bool BeingResearched = false;
+    public int EpochStarted = -1;
+    public int EpochDone = -1;
 
     public SpeciesModel()
     {
@@ -431,7 +436,10 @@ public class SpeciesModel
         {
             Splices.Add(sm);
         }
-        InstinctTuning = new object();
+        InstinctTuning = toCopy.InstinctTuning;
+        BeingResearched = toCopy.BeingResearched;
+        EpochStarted = toCopy.EpochStarted;
+        EpochDone = toCopy.EpochDone;
     }
 }
 

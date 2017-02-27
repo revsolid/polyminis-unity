@@ -90,10 +90,11 @@ public class OrbitalUI : MonoBehaviour
         Inventory.ShowInMode(InventoryMode.SELECTION);
     }
     
-    public void OnResearchCreatureClicked(string speciesName)
+    public void OnResearchCreatureClicked(SpeciesModel species)
     {
         SpeciesPlanetDialog dialog = Instantiate(InteractionsDialogPrototype);
         dialog.PlanetModel = Planet;
+        dialog.SpeciesModel = species;
         dialog.CurrentAction = SpeciesPlanetAction.Research;
     }
     

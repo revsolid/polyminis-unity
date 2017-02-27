@@ -22,12 +22,31 @@ public class Session : Singleton<Session>
     {
         if (InventoryEntries.Count < Slots)
         {
-            return InventoryEntries.Count;
+            Dictionary<int, bool> busy = new Dictionary<int, bool>();
+            
+            // Init assuming all Slots are free
+            for(int i = 0; i < Slots; ++i)
+            {
+                busy[i] = false;
+            }
+
+            // Mark busy Slots 
+            foreach(var entry in InventoryEntries)
+            {
+                busy[entry.Slot] = true;
+            }
+            
+            // Return first free slot
+            for(int i = 0; i < Slots; ++i)
+            {
+                if (!busy[i])
+                {
+                    return i;
+                }
+            }
         }
-        else
-        {
-            return -1;
-        }
+        // Couldn't find free slot
+        return -1;
     }
    
     private string _userName;

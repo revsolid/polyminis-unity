@@ -26,7 +26,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		BiomassValue.text = BiomassSlider.normalizedValue + "";
+		BiomassValue.text = BiomassSlider.value + "";
 	}
 	
 	// Update is called once per frame
@@ -37,10 +37,14 @@ public class SpeciesPlanetDialog : MonoBehaviour
 			case SpeciesPlanetAction.Deploy:
 				MainDialog.DialogMessage.text = "How much Biomass do you want to Deploy this species with?";
 				BiomassSlider.gameObject.SetActive(true);
+				BiomassSlider.minValue = 10.0f;
+				BiomassSlider.maxValue = 100.0f / ( PlanetModel.Species.Count  + 1); 
 				break;
 			case SpeciesPlanetAction.Extract:
 				MainDialog.DialogMessage.text  = "How much Biomass do you want to Extract from this Species?";
 				BiomassSlider.gameObject.SetActive(true);
+				BiomassSlider.minValue = 0.0f;
+				BiomassSlider.maxValue = SpeciesModel.Percentage; 
 				break;
 			case SpeciesPlanetAction.Research:
 				MainDialog.DialogMessage.text = "Do you want to research this Species? (Researching takes a slot)";
@@ -64,7 +68,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
 	
 	public void OnSliderValueChange()
 	{
-		BiomassValue.text = BiomassSlider.normalizedValue + "";
+		BiomassValue.text = BiomassSlider.value + "";
 	}
 	
 	public void OnAccept()
@@ -97,6 +101,20 @@ public class SpeciesPlanetDialog : MonoBehaviour
 				}
 				break;
 			case SpeciesPlanetAction.Research:
+				InventoryCommand researchSpeciesCommand = new InventoryCommand(InventoryCommandType.RESEARCH);
+				researchSpeciesCommand.Species = SpeciesModel;
+				researchSpeciesCommand.Epoch = PlanetModel.Epoch; 
+				researchSpeciesCommand.PlanetId = PlanetModel.ID; 
+                researchSpeciesCommand.Slot = Session.Instance.NextAvailableSlot();
+				if (researchSpeciesCommand.Slot == -1)
+				{
+				// This is an issue	
+					Debug.Log("NO MORE SLOTS FOR YOU!!!!!");
+				}
+				else
+				{
+					Connection.Instance.Send(JsonUtility.ToJson(researchSpeciesCommand));
+				}
 				break;
 			case SpeciesPlanetAction.Extract:
 				pInteractionCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.EXTRACT);
