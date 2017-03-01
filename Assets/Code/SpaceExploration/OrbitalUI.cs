@@ -16,11 +16,13 @@ public class OrbitalUI : MonoBehaviour
     public InventoryUI Inventory;
     
     public SpeciesCard[] Slots;
-    
+    public PlanetPopulationWidget PopulationWidget;
+
     PlanetModel Planet;
     string SpeciesToOpen;
     bool HasHookedCallbacks = false;
     SpeciesModel ShowSpeciesNextUpdate = null;
+    
 
     // Use this for initialization
     void Awake()
@@ -165,6 +167,7 @@ public class OrbitalUI : MonoBehaviour
         TempSlider.value = planet.Temperature.Average() * 100;
         PlanetName.text = p.PlanetName;
         PlanetRenderer.RenderUpdate(planet);
+        PopulationWidget.UpdateWidget(p);
         
         for(int i=0; i < p.Species.Count; i++)
         {
