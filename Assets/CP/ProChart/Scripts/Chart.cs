@@ -106,6 +106,11 @@ namespace CP.ProChart
 			{ new Color32(22, 55, 89, 255), 	new Color32(54, 100, 195, 255) },
 		};
 
+        public Color32 GetColor(int column)
+        {
+            return colors[column, 1];
+        }
+
 		///<summary>
 		/// Default color scheme for selected items
 		///</summary>

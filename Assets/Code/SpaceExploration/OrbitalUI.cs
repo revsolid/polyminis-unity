@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using CP.ProChart;
 
 public class OrbitalUI : MonoBehaviour
 {
@@ -14,7 +16,10 @@ public class OrbitalUI : MonoBehaviour
     public Text PlanetName;
     public SpeciesPlanetDialog InteractionsDialogPrototype;
     public InventoryUI Inventory;
-    
+    public PieChart PopulationChart;
+    public PieChart ResourceChart;
+    public GameObject TextPopup;
+
     public SpeciesCard[] Slots;
     
     PlanetModel Planet;
@@ -22,19 +27,50 @@ public class OrbitalUI : MonoBehaviour
     bool HasHookedCallbacks = false;
     SpeciesModel ShowSpeciesNextUpdate = null;
 
+    private ChartData1D PopulationData, ResourceData;
+    private Dictionary<int , string> SpeciesNames , ResourceNames;
+    private string PopupString;
     // Use this for initialization
     void Awake()
     {
         
     }
+
+    void OnEnable()
+    {
+        PopulationChart.onOverDelegate += OnPopulationChartHover;
+        ResourceChart.onOverDelegate += OnMaterialChartHover;
+    }
+
+    void OnDisable()
+    {
+        PopulationChart.onOverDelegate -= OnPopulationChartHover;
+        ResourceChart.onOverDelegate -= OnMaterialChartHover;
+    }
     void Start ()
-    { 
+    {
+        PopulationData = new ChartData1D();
+        ResourceData = new ChartData1D();
+        SpeciesNames = new Dictionary<int, string>();
+        ResourceNames = new Dictionary<int, string>();
+        PopupString = "";
+        
     }
     
     // Update is called once per frame
     void Update ()
     {
         //TODO: This is ugly
+        TextPopup.GetComponent<Text>().text = PopupString;
+
+        if(PopulationChart.ChartSize <= 180)
+        {
+            const int speed = 10;
+            PopulationChart.ChartSize += speed;
+            ResourceChart.ChartSize += speed;
+            if (PopulationChart.ChartSize > 180) PopulationChart.ChartSize = 180;
+            if (ResourceChart.ChartSize > 180) ResourceChart.ChartSize = 180;
+        }
         if (!HasHookedCallbacks)
         {
             global::Planet.OnPlanetModelChanged += OnPlanetChanged;
@@ -165,8 +201,44 @@ public class OrbitalUI : MonoBehaviour
         TempSlider.value = planet.Temperature.Average() * 100;
         PlanetName.text = p.PlanetName;
         PlanetRenderer.RenderUpdate(planet);
-        
-        for(int i=0; i < p.Species.Count; i++)
+
+
+        //Populate species chart widget
+
+        PopulationData.Clear();
+        PopulationData.Resize(1, p.Species.Count);
+        SpeciesNames.Clear();
+
+        int j = 0;
+        foreach(SpeciesModel sm in p.Species)
+        {
+            print(j);
+            PopulationData[j] = sm.Percentage;
+            SpeciesNames.Add(j, sm.SpeciesName);
+            j++;
+        }
+
+        PopulationChart.SetValues(ref PopulationData);
+
+        //Populate Resource Chart
+        ResourceData.Clear();
+        ResourceData.Resize(1, p.Materials.Count);
+        ResourceNames.Clear();
+
+        j = 0;
+        foreach (MaterialEntry me in p.Materials)
+        {
+            ResourceData[j] = me.Percentage;
+            ResourceNames.Add(j, me.Material);
+            j++;
+        }
+
+        PopulationChart.ChartSize = 0;
+        ResourceChart.ChartSize = 0;
+
+        ResourceChart.SetValues(ref ResourceData);
+
+        for (int i=0; i < p.Species.Count; i++)
         {
             Debug.Log(p.Species[i].SpeciesName);
             Slots[i].Species = p.Species[i];
@@ -176,5 +248,36 @@ public class OrbitalUI : MonoBehaviour
             Slots[i].Species = null;
         }
         Planet = p;
+    }
+
+    void OnPopulationChartHover(int column)
+    {
+        Text t = TextPopup.GetComponentInChildren<Text>();
+
+        if (column == -1)
+        {
+            PopupString = "";
+            return;
+        }
+        
+        PopupString = SpeciesNames[column];
+        t.color = PopulationChart.GetColor(column);
+    }
+
+    void OnMaterialChartHover(int column)
+    {
+        //TextPopup.SetActive(true);
+        Text t = TextPopup.GetComponentInChildren<Text>();
+        if (column == -1)
+        {
+            
+            //PopupString = "";
+            return;
+
+        }
+
+        
+        PopupString = ResourceNames[column];
+        t.color = ResourceChart.GetColor(column);
     }
 }

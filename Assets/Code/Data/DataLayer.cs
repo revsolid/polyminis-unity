@@ -89,14 +89,38 @@ public class PlanetModel
     public Range Temperature; // = new Range(0.0f, 1.0f);
     public Range Ph; // = new Range(1.3f, 4.2f);
     public List<SpeciesModel> Species;
+    public List<MaterialEntry> Materials;
     public string PlanetName; 
     public int Epoch;
     public int ID;
 
     public PlanetModel() //TODO: Default constructor... assigns arbitratry values
     {
- //       PlanetName = "Some Planet";
- //       SpaceCoords = new Vector2(100,0);
+        //       PlanetName = "Some Planet";
+        //       SpaceCoords = new Vector2(100,0);
+
+        Materials = new List<MaterialEntry>();
+        MaterialEntry newMat = new MaterialEntry("A", 0.3f);
+        Materials.Add(newMat);
+        newMat = new MaterialEntry("T", 0.2f);        
+        newMat = new MaterialEntry("G", 0.4f);        
+        Materials.Add(newMat);
+        newMat = new MaterialEntry("U", 0.1f);        
+        Materials.Add(newMat);
+
+    }
+}
+
+[Serializable]
+public class MaterialEntry
+{
+    public string Material;
+    public float Percentage;
+
+    public MaterialEntry(string name , float percent)
+    {
+        Material = name;
+        Percentage = percent;
     }
 }
 
