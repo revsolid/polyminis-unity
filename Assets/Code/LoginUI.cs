@@ -11,7 +11,7 @@ public class LoginUI : MonoBehaviour
 	UserServiceEvent EventToProcess;
     void Awake()
     {
-        Connection.OnMessageEvent += OnServerMessage;
+        Connection.Instance.OnMessageEvent += OnServerMessage;
     }
 
     // Use this for initialization
@@ -69,7 +69,7 @@ public class LoginUI : MonoBehaviour
 	
 	void OnDestroy()
 	{
-        Connection.OnMessageEvent -= OnServerMessage;
+        Connection.Instance.OnMessageEvent -= OnServerMessage;
 	}
 
 }

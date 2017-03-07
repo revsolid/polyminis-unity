@@ -12,7 +12,7 @@ public class SpaceMovementTracker : MonoBehaviour
     
     void Awake()
     {
-        Connection.OnMessageEvent += (message) => OnServerMessage(message);
+        Connection.Instance.OnMessageEvent += OnServerMessage;
     }
 
     // Use this for initialization
@@ -109,5 +109,10 @@ public class SpaceMovementTracker : MonoBehaviour
                 break;
             }
         }
+    }
+    
+    void OnDestroy()
+    {
+        Connection.Instance.OnMessageEvent -= OnServerMessage;
     }
 }

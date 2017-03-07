@@ -19,11 +19,14 @@ public class Creature : MonoBehaviour
 	
 	public Text DebugText;
 	
+	public SpeciesController Controller;
+	
     public delegate void CreatureClicked(Creature creature);
     public static event CreatureClicked OnCreatureClickedEvent;
 	
 	void Awake()
 	{
+		OnCreatureClickedEvent = null;
 	}
 	
 	public void AddStep(IndividualStep step)
@@ -75,8 +78,8 @@ public class Creature : MonoBehaviour
 		if (OnCreatureClickedEvent != null)
 		{
 			OnCreatureClickedEvent(this);
-			Connection.OnMessageEvent += (msg) => { Debug.Log("I can't even"); };
 		}
+		Controller.OnCreatureClicked(this);
 	}
 	
 	// Update is called once per frame

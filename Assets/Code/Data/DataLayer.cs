@@ -600,13 +600,13 @@ public class SimulationStartup
 [Serializable]
 public class SpeciesStartup
 {
-    public string Name;
+    public string SpeciesName;
     public List<IndividualModel> Individuals;
 }
 [Serializable]
 public class SpeciesStep
 {
-    public string Name; 
+    public string SpeciesName; 
     public List<IndividualStep> Individuals;
 }
 [Serializable]

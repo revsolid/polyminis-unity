@@ -9,7 +9,7 @@ public class WarpDialog : MonoBehaviour
 
     public void SetWarpParams(Vector2 targetPosition)
     {
-        Connection.OnMessageEvent += OnCostCalculated;
+        Connection.Instance.OnMessageEvent += OnCostCalculated;
         SpacePos = targetPosition;
         var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.CALC_WARP_COST, SpacePos);
         Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));
@@ -58,7 +58,7 @@ public class WarpDialog : MonoBehaviour
             switch (spaceExEvent.EventType)
             {
             case SpaceExplorationEventType.WARP_COST_RESULT:
-                Connection.OnMessageEvent -= OnCostCalculated;
+                Connection.Instance.OnMessageEvent -= OnCostCalculated;
                 WarpCost = spaceExEvent.WarpCost;
                 Debug.Log("RESULT! " + message);
                 break;
