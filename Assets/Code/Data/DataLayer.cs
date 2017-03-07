@@ -517,12 +517,14 @@ public class IndividualModel
 {
   // A creature in a simulation
 
-  public int  ID;
-  public CreatureMorphologyModel Morphology;
-  public int HP;
-  public IndividualPhysics Physics;
-  public Range Temperature;
-  public Range Ph;
+    public int  ID;
+    public CreatureMorphologyModel Morphology;
+    public int HP;
+    public IndividualPhysics Physics;
+    public Range Temperature;
+    public Range Ph;
+    public float Fitness;
+
   // TODO: Neural Network Representation (?)
 }
 
