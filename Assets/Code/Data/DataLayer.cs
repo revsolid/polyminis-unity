@@ -394,7 +394,7 @@ public class SpliceModel
     public string Name;
     public string InternalName;
     public string Description;
-    public int[] Traits;
+    public List<string> Traits;
 }
 
 //

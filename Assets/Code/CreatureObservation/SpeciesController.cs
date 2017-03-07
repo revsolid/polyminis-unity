@@ -4,22 +4,40 @@ using System.Collections.Generic;
 
 public class SpeciesController : MonoBehaviour
 {
+	public Creature CreaturePrototype;
+	public StaticObject ObjectPrototype;
+
+	public FollowerCamera DetailViewCamera;
+	public DetailedViewUI DetailViewUI;
 
 	Dictionary<int, Creature> Individuals = new Dictionary<int, Creature>();
 	List<SpeciesStep> Steps = new List<SpeciesStep>();
 	List<Creature> CreaturesSpawned = new List<Creature>();
-	public Creature CreaturePrototype;
-	public StaticObject ObjectPrototype;
 	bool IdleCoroutine = true;
 	bool QuitCoroutine = false;
 	bool Restart = false;
 	// Use this for initialization
 	
+	void Awake()
+	{
+	}
 	void Start()
 	{
 		LoadExperiment("demo_0_1");
+		InvokeRepeating("Poll", 1.0f, 3.0f);
+
+		Creature.OnCreatureClickedEvent += OnCreatureClicked;
+        Connection.OnMessageEvent += (message) => OnServerMessage(message);
 	}
 
+	void Poll()
+	{
+		BaseCommand dummyCmd = new BaseCommand();
+        dummyCmd.Service = "creature_observation";
+        dummyCmd.Command = "POLL";
+        Connection.Instance.Send(JsonUtility.ToJson(dummyCmd));
+		Debug.Log("XX");
+	}
 
 	public void LoadExperiment(string expname)
 	{
@@ -84,6 +102,7 @@ public class SpeciesController : MonoBehaviour
 		}
 		
 		IdleCoroutine = true;
+		Creature.OnCreatureClickedEvent += OnCreatureClicked;
 	}
 	
 	IEnumerator PassStepToCreatures(SpeciesStep ss, Dictionary<int, Creature> inds)
@@ -141,5 +160,22 @@ public class SpeciesController : MonoBehaviour
 	void AddStep(SpeciesStep ss)
 	{
 		Steps.Add(ss);
+	}
+	
+	void OnCreatureClicked(Creature creature)
+	{
+		DetailViewCamera.gameObject.SetActive(true);
+		DetailViewCamera.Target = creature.transform;
+		DetailViewUI.ToDetail = creature;
+	}
+	
+	void OnServerMessage(string msg)
+	{
+		Debug.Log("Got a message! ");
+		BaseEvent ev = JsonUtility.FromJson<BaseEvent>(msg);
+		
+		{
+			Debug.Log("Got a message! " + ev.Service);
+		}
 	}
 }

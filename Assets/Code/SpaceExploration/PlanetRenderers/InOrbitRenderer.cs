@@ -47,14 +47,12 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
 			y = DistanceToSpaceship/1.5f - 20.0f;
 			x = model.RelativeAngle / 2.0f;
 		}
-		Debug.Log(model.RelativeAngle);
 		float delta_z = 17.0f - DistanceToSpaceship / 2.0f; 
         gameObject.transform.position = new Vector3(x, y, StartingZ + delta_z);
 	    if (DistanceToSpaceship > 30)
         {
           Visible = false;
           gameObject.SetActive(Visible);  
-		  Debug.Log("CIAO");
           return;
         }
         else if (!Visible)

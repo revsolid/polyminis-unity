@@ -41,6 +41,7 @@ public class Session : Singleton<Session>
             {
                 if (!busy[i])
                 {
+                    Debug.Log("First Free Slot:" + i);
                     return i;
                 }
             }

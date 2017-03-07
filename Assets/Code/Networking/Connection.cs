@@ -12,6 +12,7 @@ public class Connection
 
     private WebSocket ws;
     private static Connection instance;
+    private static int KK;
     
     public static Connection Instance
     {
@@ -19,9 +20,9 @@ public class Connection
         {
             if (instance == null)
             {
+                Debug.Log("Creating New Instance of Connection");
                 instance = new Connection();
             }
-
             return instance;
         }
     }
@@ -38,12 +39,15 @@ public class Connection
         Debug.Log("Initilizing Connection to: " + Address);
         ws.OnMessage += (sender, e) => OnMessage(e.Data);
         ws.Connect();
+         
     }
 
 
     void OnMessage(string message)
     {
+        Debug.Log("MESSAGE! "+KK);
         OnMessageEvent(message);
+        Debug.Log(this);
     }
 
     public void Send(string content)
@@ -58,5 +62,6 @@ public class Connection
         ws.Close();
         instance = null;
         OnMessageEvent = null;
+        Debug.Log("CLOSING CONNECTION!");
     }
 }

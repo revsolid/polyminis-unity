@@ -44,15 +44,18 @@ public class DnaSeq : MonoBehaviour
 
 		foreach (SpliceModel sm in model.Splices)
 		{
-			for(int i =0; i < sm.Traits.Length; ++i)
+			for(int i =0; i < sm.Traits.Count; ++i)
 			{
-				int j = sm.Traits[i];
+				/* TODO: This breaks now that we're using InternalName instead of TID to indicate which
+				   traits make up a Splice
+				string name = sm.Traits[i];
 				DnaSeqRenderer r = null;
-				Renderers.TryGetValue(j, out r);
+				Renderers.TryGetValue(name, out r);
 				if (r != null)
 				{
 					r.Active = true;
 				}
+				*/
 			}
 		}
 	}

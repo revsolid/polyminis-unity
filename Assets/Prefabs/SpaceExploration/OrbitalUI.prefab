@@ -2196,6 +2196,10 @@ MonoBehaviour:
     CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
+    Percentage: 0
+    BeingResearched: 0
+    EpochStarted: -1
+    EpochDone: -1
 --- !u!114 &114303527884812320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2609,6 +2613,10 @@ MonoBehaviour:
     CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
+    Percentage: 0
+    BeingResearched: 0
+    EpochStarted: -1
+    EpochDone: -1
   ExtractButton: {fileID: 114555218013633476}
   SampleButton: {fileID: 114199256487731360}
   SpeciesNameText: {fileID: 114414774870495412}
@@ -3048,6 +3056,10 @@ MonoBehaviour:
     CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
+    Percentage: 0
+    BeingResearched: 0
+    EpochStarted: -1
+    EpochDone: -1
   ExtractButton: {fileID: 114754419498136822}
   SampleButton: {fileID: 114598874893503574}
   SpeciesNameText: {fileID: 114591523916528656}
@@ -3238,6 +3250,10 @@ MonoBehaviour:
     CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
+    Percentage: 0
+    BeingResearched: 0
+    EpochStarted: -1
+    EpochDone: -1
 --- !u!114 &114708434246356458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3451,6 +3467,10 @@ MonoBehaviour:
     CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
+    Percentage: 0
+    BeingResearched: 0
+    EpochStarted: -1
+    EpochDone: -1
 --- !u!114 &114759245479216676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3720,6 +3740,10 @@ MonoBehaviour:
     CreatorName: 
     OriginalSpeciesName: 
     PlanetEpoch: 
+    Percentage: 0
+    BeingResearched: 0
+    EpochStarted: -1
+    EpochDone: -1
   ExtractButton: {fileID: 114828275124692020}
   SampleButton: {fileID: 114338302706595930}
   SpeciesNameText: {fileID: 114480816218031446}
