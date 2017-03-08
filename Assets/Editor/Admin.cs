@@ -58,7 +58,7 @@ public class PmAdminPanel : EditorWindow
     
     void HookCallbacks()
     {
-        Connection.OnMessageEvent += (msg) =>
+  /*      Connection.OnMessageEvent += (msg) =>
         {
             PmAdminCommand ev = JsonUtility.FromJson<PmAdminCommand>(msg);
             
@@ -72,7 +72,7 @@ public class PmAdminPanel : EditorWindow
                     //TODO: WarpCostCurve = ev.WarpCostCurve;
                 }
             }
-        };
+        }; */
     }
 
     void OnGUI()
@@ -93,7 +93,7 @@ public class PmAdminPanel : EditorWindow
         EditorGUILayout.Space();
         
         EditorGUILayout.LabelField("SERVER");
-        EditorGUILayout.LabelField(Connection.Instance.Address);
+        //EditorGUILayout.LabelField(Connection.Instance.Address);
         if (GUILayout.Button("Upload Current Ruleset To Server"))
         {
             EditorApplication.delayCall += () => { SaveToServer(AdminCommandType.UPLOAD_GAME_RULES); };
@@ -121,9 +121,9 @@ public class PmAdminPanel : EditorWindow
         if (GUILayout.Button("Refresh Server Connection"))
         {
             EditorApplication.delayCall += () => { 
-                Connection.Instance.CloseConnection();
-                Debug.Log(Connection.Instance.Address);
-                HookCallbacks();
+             //   Connection.Instance.CloseConnection();
+             //   Debug.Log(Connection.Instance.Address);
+             //   HookCallbacks();
             };
         }
     }
@@ -154,6 +154,6 @@ public class PmAdminPanel : EditorWindow
                 break;
         }
         Debug.Log(JsonUtility.ToJson(comm)); 
-        Connection.Instance.Send(JsonUtility.ToJson(comm));
+       // Connection.Instance.Send(JsonUtility.ToJson(comm));
     }
 }

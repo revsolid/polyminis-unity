@@ -418,7 +418,7 @@ public class SpliceModel
     public string Name;
     public string InternalName;
     public string Description;
-    public int[] Traits;
+    public List<string> Traits;
 }
 
 //
@@ -626,13 +626,13 @@ public class SimulationStartup
 [Serializable]
 public class SpeciesStartup
 {
-    public string Name;
+    public string SpeciesName;
     public List<IndividualModel> Individuals;
 }
 [Serializable]
 public class SpeciesStep
 {
-    public string Name; 
+    public string SpeciesName; 
     public List<IndividualStep> Individuals;
 }
 [Serializable]

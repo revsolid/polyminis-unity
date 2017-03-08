@@ -12,7 +12,7 @@ public class Session : Singleton<Session>
     protected Session()
     {
        OnSessionChangedEvent += () => {};
-       Connection.OnMessageEvent += (message) => { OnMessageReceived(message); };
+       Connection.Instance.OnMessageEvent += OnMessageReceived;
     }
     // Inventory
     public List<InventoryEntry> InventoryEntries;
@@ -41,6 +41,7 @@ public class Session : Singleton<Session>
             {
                 if (!busy[i])
                 {
+                    Debug.Log("First Free Slot:" + i);
                     return i;
                 }
             }
@@ -80,7 +81,7 @@ public class Session : Singleton<Session>
     public virtual void OnDestroy()
     {
         base.OnDestroy();
-        Connection.Instance.CloseConnection();
+//        Connection.Instance.CloseConnection();
         Debug.Log("Session Terminated");
     }
     

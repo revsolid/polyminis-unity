@@ -158,6 +158,10 @@ public class OrbitalUI : MonoBehaviour
     
     public void OnObservePlanetClicked()
     {
+        BaseCommand dummyCmd = new BaseCommand();
+        dummyCmd.Service = "creature_observation";
+        dummyCmd.Command = "GO_TO_EPOCH";
+        Connection.Instance.Send(JsonUtility.ToJson(dummyCmd));
         SceneManager.LoadScene("creature_observation");
     }
     

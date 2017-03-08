@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
     public GameObject TargetPoint;
     public float RotationRadius = 500;
+    public Camera ToControl;
+    public Slider ZoomSlider;
 
     float Angle = 0.0f;
     float HorImpulse;
@@ -13,7 +16,7 @@ public class CameraController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-        transform.position = new Vector3(RotationRadius, RotationRadius / 2, 0.0f);
+        transform.position = new Vector3(RotationRadius, 100, 0.0f);
 	}
 	
 	// Update is called once per frame
@@ -38,5 +41,7 @@ public class CameraController : MonoBehaviour
         }
         transform.position = newPos;
         transform.LookAt(TargetPoint.transform);
+        
+        ToControl.fieldOfView = ZoomSlider.value;
     }
 }
