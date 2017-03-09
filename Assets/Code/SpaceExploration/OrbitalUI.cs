@@ -28,7 +28,9 @@ public class OrbitalUI : MonoBehaviour
     SpeciesModel ShowSpeciesNextUpdate = null;
 
     private ChartData1D PopulationData, ResourceData;
-    private Dictionary<int , string> SpeciesNames , ResourceNames;
+    private Dictionary<int, SpeciesModel> Species;
+    private Dictionary<int,string> ResourceNames;
+
     private string PopupString;
     // Use this for initialization
     void Awake()
@@ -204,20 +206,20 @@ public class OrbitalUI : MonoBehaviour
 
         PopulationData = new ChartData1D();
         ResourceData = new ChartData1D();
-        SpeciesNames = new Dictionary<int, string>();
+        Species = new Dictionary<int, SpeciesModel>();
         ResourceNames = new Dictionary<int, string>();
 
         //Populate species chart widget
         PopulationData.Clear();
         PopulationData.Resize(1, p.Species.Count);
-        SpeciesNames.Clear();
+        Species.Clear();
 
         int j = 0;
         foreach(SpeciesModel sm in p.Species)
         {
             print(j);
             PopulationData[j] = sm.Percentage;
-            SpeciesNames.Add(j, sm.SpeciesName);
+            Species.Add(j, sm);
             j++;
         }
 
@@ -278,7 +280,7 @@ public class OrbitalUI : MonoBehaviour
             return;
         }
         
-        PopupString = SpeciesNames[column];
+        PopupString = Species[column].Percentage.ToString("0.00")+ "% | " + Species[column].SpeciesName +"\n( " + Species[column].CreatorName + " )";
         t.color = PopulationChart.GetColor(column);
     }
 

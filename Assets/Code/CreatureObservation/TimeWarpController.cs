@@ -13,7 +13,7 @@ public class TimeWarpController : MonoBehaviour {
      
 	// Use this for initialization
 	void Start () {
-        UpdateButtons();
+        //UpdateButtons();
 	}
 	
 	// Update is called once per frame
@@ -46,6 +46,7 @@ public class TimeWarpController : MonoBehaviour {
 
     public void OnEpochButtonClicked(int buttonNumber)
     {
-        Experiment.OnLoadExp("demo_" + Buttons[buttonNumber].GetComponentInChildren<Text>().text + "_1");
+        //HACKY!! FOR FL ONLY
+        Experiment.OnLoadExp("demo_" + buttonNumber + "_1");
     }
 }
