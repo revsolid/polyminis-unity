@@ -13,7 +13,7 @@ public class SpeciesController : MonoBehaviour
 {
     public Creature CreaturePrototype;
     public StaticObject ObjectPrototype;
-
+    public GameObject foodModel;
     public FollowerCamera DetailViewCamera;
     public DetailedViewUI DetailViewUI;
 
@@ -32,7 +32,7 @@ public class SpeciesController : MonoBehaviour
     }
     void Start()
     {
-//        LoadExperiment("demo_0_1");
+        LoadExperiment("demo_0_1");
         //InvokeRepeating("Poll", 1.0f, 5.0f);
 		Connection.Instance.OnMessageEvent += OnServerMessage;
         InvokeRepeating("Poll", 0.1f, 3.0f);
@@ -47,9 +47,7 @@ public class SpeciesController : MonoBehaviour
     }
 
     public void LoadExperiment(string expname)
-    {
-	}
-	/*{
+	{
         string species_file = expname + "_species";
         string steps_file = expname + "_steps";
         Individuals = new Dictionary<int, Creature>();
@@ -111,7 +109,7 @@ public class SpeciesController : MonoBehaviour
         }
         
         IdleCoroutine = true;
-    }*/
+    }
     
     IEnumerator PassStepToCreatures(SpeciesStep ss, Dictionary<int, Creature> inds)
     {
@@ -208,6 +206,11 @@ public class SpeciesController : MonoBehaviour
         Individuals[model.ID] = creature;
         creature.SetStartingPosition(model.Physics.StartingPos);
         creature.Controller = this;
+        GameObject obj = Instantiate<GameObject>(foodModel);
+        obj.transform.position = creature.transform.position;
+        obj.transform.localScale *= 20.0f;
+        obj.transform.parent = creature.transform;
+        creature.foodSource = obj; 
         CreaturesSpawned.Add(creature);
     }
     

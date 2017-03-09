@@ -16,7 +16,7 @@ public class Creature : MonoBehaviour
 	public int SpeciesIndex = 0;
 	public int ID;
 	public bool Alive;
-	
+    public GameObject foodSource;
 	public Text DebugText;
 	
 	public SpeciesController Controller;
@@ -34,8 +34,13 @@ public class Creature : MonoBehaviour
 		if (Mover != null)
 		{
 			Mover.AddStep(step.Physics);
-		}
-		Alive = step.Alive;
+            //Animation setting here based on step/impulse
+            //Know that the obj is a food source for now:
+            float rand = Random.Range(-0.5f, 0.5f);
+            foodSource.GetComponent<Animator>().SetFloat("Impulse",rand);
+        }
+        Alive = step.Alive;
+        
 	}
 	
 	public void SetDataFromModel(IndividualModel model)
