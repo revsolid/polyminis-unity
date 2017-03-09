@@ -242,7 +242,8 @@ public enum InventoryCommandType
     UPDATE_SPECIES,
     SAMPLE_FROM_PLANET,
     GET_INVENTORY,
-    DELETE_ENTRY
+    DELETE_ENTRY,
+    GET_GLOBAL_EPOCH
 }
 
 [Serializable]
@@ -265,7 +266,8 @@ public class InventoryCommand : BaseCommand
 public enum InventoryEventType
 {
     InventoryUpdate,
-    ResearchDone
+    ResearchDone,
+    ReceiveGlobalEpoch
 }
 [Serializable]
 public class InventoryServiceEvent : BaseEvent
@@ -276,6 +278,24 @@ public class InventoryServiceEvent : BaseEvent
         get
         {
            return (InventoryEventType) Enum.Parse(typeof(InventoryEventType), EventString); 
+        }
+    }
+}
+
+[Serializable]
+public enum EpochEventType
+{
+    ReceiveGlobalEpoch
+}
+[Serializable]
+public class EpochEvent : BaseEvent
+{
+    public int Epoch;
+    public EpochEventType EpochEventType
+    {
+        get
+        {
+            return (EpochEventType) Enum.Parse(typeof(EpochEventType), EventString); 
         }
     }
 }

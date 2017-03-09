@@ -23,13 +23,17 @@ public class InventoryUI : MonoBehaviour
     public static event EntrySelected OnEntrySelected;
 
     bool Reload = false;
+    int Epoch = -1;
 
     void Start ()
     {
         gameObject.SetActive(false);
         Session.OnSessionChangedEvent += () => { Reload = true; };
     }
-    void Awake () {}
+    void Awake () 
+    {
+        Connection.Instance.OnMessageEvent += OnServerMessage;
+    }
     
     void Update() 
     {
@@ -37,6 +41,14 @@ public class InventoryUI : MonoBehaviour
         {
             LoadFromSession();
             Reload = false;
+        }
+
+        if (Epoch != -1)
+        {
+            foreach (InventoryUIEntry entry in this.gameObject.GetComponentsInChildren<InventoryUIEntry> ())
+            {
+                entry.UpdateProgressBar (Epoch);
+            }
         }
     }
 
@@ -143,4 +155,22 @@ public class InventoryUI : MonoBehaviour
         InventoryUIEntry.OnDeleteEvent -= HandleDelete;
         OnEntrySelected = null;
     }
+
+    void OnServerMessage(string message)
+    {
+        EpochEvent evt = JsonUtility.FromJson<EpochEvent>(message);
+        if (evt != null)
+        {
+            switch (evt.EpochEventType)
+            {
+            case EpochEventType.ReceiveGlobalEpoch:
+                Debug.Log ("Received Global epoch");
+                Debug.Log ("Epoch: " + evt.Epoch.ToString ());
+                Epoch = evt.Epoch;
+                break;
+            }
+        }
+    }
+
+
 }
