@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -208,7 +208,7 @@ public class SpeciesController : MonoBehaviour
         creature.Controller = this;
         GameObject obj = Instantiate<GameObject>(foodModel);
         obj.transform.position = creature.transform.position;
-        obj.transform.localScale *= 20.0f;
+        //obj.transform.localScale *= 20.0f;
         obj.transform.parent = creature.transform;
         creature.foodSource = obj; 
         CreaturesSpawned.Add(creature);
