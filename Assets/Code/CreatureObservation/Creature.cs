@@ -38,6 +38,7 @@ public class Creature : MonoBehaviour
             //Know that the obj is a food source for now:
             float rand = Random.Range(-0.5f, 0.5f);
             foodSource.GetComponent<Animator>().SetFloat("Impulse",rand);
+            //foodource.GetComponent<Animator>().SetFloat ("Impulse", [Impulse value here] );
         }
         Alive = step.Alive;
         
