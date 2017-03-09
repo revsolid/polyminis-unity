@@ -69,18 +69,7 @@ public class InstinctsTunner : MonoBehaviour
         UpdateLevel(Instinct.PREDATORY);
         UpdateLevel(Instinct.HERDING);
     }
-
-    
-
-    public void AddSplice(Instinct instinct, int size)
-    {
-        MaxLevels[instinct] += size;
-    }
-    
-    public void RemoveSplice(Instinct instinct, int size)
-    {
-        MaxLevels[instinct] -= size;
-    }
+        
     
     public void OnUp(Instinct i)
     {}
@@ -117,6 +106,32 @@ public class InstinctsTunner : MonoBehaviour
         UpdateLevel(Instinct.NOMADIC);
         UpdateLevel(Instinct.PREDATORY);
         UpdateLevel(Instinct.HERDING);
+    }
+
+    public InstinctTuningModel ToModel()
+    {
+        InstinctTuningModel ret = new InstinctTuningModel();
+        ret.HoardingLvl = Levels [Instinct.HOARDING];
+        ret.HerdingLvl = Levels [Instinct.HERDING];
+        ret.NomadicLvl = Levels [Instinct.NOMADIC];
+        ret.PredatoryLvl = Levels [Instinct.PREDATORY];
+        ret.HoardingMaxLvl = MaxLevels [Instinct.HOARDING];
+        ret.HerdingMaxLvl = MaxLevels [Instinct.HERDING];
+        ret.NomadicMaxLvl = MaxLevels [Instinct.NOMADIC];
+        ret.PredatoryMaxLvl = MaxLevels [Instinct.PREDATORY];
+        return ret;
+    }
+
+    public void LoadModel(InstinctTuningModel model)
+    {
+        Levels [Instinct.HOARDING] = model.HoardingLvl;
+        Levels [Instinct.HERDING] = model.HerdingLvl;
+        Levels [Instinct.NOMADIC] = model.NomadicLvl;
+        Levels [Instinct.PREDATORY] = model.PredatoryLvl;
+        MaxLevels [Instinct.HOARDING] = model.HoardingMaxLvl;
+        MaxLevels [Instinct.HERDING] = model.HerdingMaxLvl;
+        MaxLevels [Instinct.NOMADIC] = model.NomadicMaxLvl;
+        MaxLevels [Instinct.PREDATORY] = model.PredatoryMaxLvl;
     }
 
     public void Tune(int i)

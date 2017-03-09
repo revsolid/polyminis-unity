@@ -116,11 +116,13 @@ public class InventoryUI : MonoBehaviour
             slot = currentModel.Slot;
         }
         
-        SpeciesDesignUI.OnSaveEvent += (resultingModel) => {
-            Debug.Log(JsonUtility.ToJson(resultingModel));
+        SpeciesDesignUI.OnSaveEvent += (resultingModel) => 
+        {
+            //Debug.Log(JsonUtility.ToJson(resultingModel));
             InventoryCommand saveSpeciesCommand = new InventoryCommand(cmdType);
             saveSpeciesCommand.Species = resultingModel;
             saveSpeciesCommand.Slot = slot;
+            Debug.Log(saveSpeciesCommand);
             Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
         };
         SpeciesDesigner.OpenWithSpecies(sm);

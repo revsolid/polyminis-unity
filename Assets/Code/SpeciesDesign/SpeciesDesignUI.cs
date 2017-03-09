@@ -214,7 +214,7 @@ public class SpeciesDesignUI : MonoBehaviour
         DesignerModel.CurrentSpecies.SpeciesName = NameInput.text; 
         
         SpeciesModel newModel = new SpeciesModel(DesignerModel.CurrentSpecies);
-        
+        newModel.InstinctTuning = InstinctsTunner.ToModel ();
         if (OnSaveEvent != null)
             OnSaveEvent(newModel);
         Debug.Log(JsonUtility.ToJson(DesignerModel.CurrentSpecies));
@@ -225,6 +225,8 @@ public class SpeciesDesignUI : MonoBehaviour
     public void OpenWithSpecies(SpeciesModel m)
     {
         DesignerModel.LoadSpecies(m);
+        if(m != null && m.InstinctTuning != null)
+            InstinctsTunner.LoadModel (m.InstinctTuning);
         UpdateAllViews();
         NameInput.text = DesignerModel.CurrentSpecies.SpeciesName;
         gameObject.SetActive(true);

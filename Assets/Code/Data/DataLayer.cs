@@ -445,7 +445,14 @@ public class SpliceModel
 [Serializable]
 public class InstinctTuningModel
 {
-
+    public int HoardingLvl = 0;
+    public int PredatoryLvl = 0;
+    public int HerdingLvl = 0;
+    public int NomadicLvl = 0;
+    public int HoardingMaxLvl = 0;
+    public int PredatoryMaxLvl = 0;
+    public int HerdingMaxLvl = 0;
+    public int NomadicMaxLvl = 0;
 }
 //
 [Serializable]
@@ -453,7 +460,7 @@ public class SpeciesModel
 {
     public string SpeciesName;
     public List<SpliceModel> Splices = new List<SpliceModel>();
-    public InstinctTuningModel InstinctTuning;
+    public InstinctTuningModel InstinctTuning = new InstinctTuningModel();
     public object GAConfiguration = new object();
     public string CreatorName;
     public string OriginalSpeciesName;
