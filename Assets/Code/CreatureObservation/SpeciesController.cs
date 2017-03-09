@@ -9,6 +9,19 @@ class CreatureObservationEvent : BaseEvent
     public List<SimulationStep> Steps;
 }
 
+class CreatureObservationCommand : BaseCommand
+{
+    public int PlanetId;
+    public int Epoch;
+    // Type
+    public CreatureObservationCommand(int pid, int epoch)
+    {
+        Service = "creature_observation";
+        PlanetId = pid; 
+        Epoch = epoch;
+    }
+}
+
 public class SpeciesController : MonoBehaviour
 {
     public Creature CreaturePrototype;
@@ -23,7 +36,6 @@ public class SpeciesController : MonoBehaviour
     bool IdleCoroutine = true;
     bool QuitCoroutine = false;
     bool Restart = false;
-	bool ALREADY = false;
     CreatureObservationEvent PendingSpawn;
     List<CreatureObservationEvent> PendingSteps = new List<CreatureObservationEvent>();
     
@@ -32,7 +44,7 @@ public class SpeciesController : MonoBehaviour
     }
     void Start()
     {
-        LoadExperiment("demo_0_1");
+        //LoadExperiment("demo_0_1");
         //InvokeRepeating("Poll", 1.0f, 5.0f);
 		Connection.Instance.OnMessageEvent += OnServerMessage;
         InvokeRepeating("Poll", 0.1f, 3.0f);
@@ -138,10 +150,6 @@ public class SpeciesController : MonoBehaviour
     void Update ()
     {
 
-		{
-			ALREADY = true;
-		}
-
         if (Steps.Count > 0 && IdleCoroutine)
         {
             SpeciesStep ss = Steps[0];
@@ -205,12 +213,7 @@ public class SpeciesController : MonoBehaviour
         creature.SetDataFromModel(model);
         Individuals[model.ID] = creature;
         creature.SetStartingPosition(model.Physics.StartingPos);
-        creature.Controller = this;
-        GameObject obj = Instantiate<GameObject>(foodModel);
-        obj.transform.position = creature.transform.position;
-        obj.transform.localScale *= 20.0f;
-        obj.transform.parent = creature.transform;
-        creature.foodSource = obj; 
+        creature.Controller = this; 
         CreaturesSpawned.Add(creature);
     }
     

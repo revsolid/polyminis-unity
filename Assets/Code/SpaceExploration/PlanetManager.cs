@@ -40,24 +40,6 @@ public class PlanetManager : MonoBehaviour
         ToSpawn = new List<PlanetModel>();
         LastKnownPos = MovementTracker.CurrentPosition;
         NewBiomassAvailable = Session.Instance.Biomass;
-
-        //TODO: Mock data; remove when you get internet back .....
-        PlanetModel pm = new PlanetModel();
-        SpeciesModel sm = new SpeciesModel();
-        sm.SpeciesName = "Good species";
-        sm.Percentage = 0.7f;
-        pm.Species = new List<SpeciesModel>();
-        pm.Species.Add(sm);
-
-        sm = new SpeciesModel();
-        sm.SpeciesName = "Bad species";
-        sm.Percentage = 0.3f;
-        pm.Species.Add(sm);
-
-        pm.SpaceCoords = new Vector2(10 , 0);
-        pm.Ph = new Range(0.05f, 0.20f);
-        pm.Temperature = new Range(0.0f, 0.3f);
-        SpawnNewPlanet(pm);
     }
     
     // This shouldn't be called directly

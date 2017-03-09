@@ -32,7 +32,6 @@ public class InventoryUI : MonoBehaviour
     }
     void Awake () 
     {
-        Connection.Instance.OnMessageEvent += OnServerMessage;
     }
     
     void Update() 
@@ -71,6 +70,7 @@ public class InventoryUI : MonoBehaviour
     }
     void LoadFromSession()
     {
+        Connection.Instance.OnMessageEvent -= OnServerMessage;
         var children = new List<GameObject>();
         foreach (Transform child in EntriesLayoutGroup.transform) children.Add(child.gameObject);
         children.ForEach(child => Destroy(child));
@@ -94,7 +94,7 @@ public class InventoryUI : MonoBehaviour
             uiEntry.Mode = CurrentMode;
             uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
         }
-
+        Connection.Instance.OnMessageEvent += OnServerMessage;
     } 
     
     void HandleEdit(InventoryEntry currentModel)

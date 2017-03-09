@@ -10,8 +10,19 @@ public class Connection : Singleton<Connection>
 {
     public delegate void MessageReceived(string message);
     public event MessageReceived OnMessageEvent;
+    private WebSocket _ws;
 
-    private WebSocket ws;
+    public WebSocket ws {
+        get
+        {
+            return _ws;
+        }
+        set
+        {
+            Debug.Log("SHIT GOT SET!!!!!");
+            _ws = value;
+        }
+    }
     
     //private static Connection instance;
     
@@ -55,10 +66,8 @@ public class Connection : Singleton<Connection>
 
     public void Send(string content)
     {
-        Debug.Log("about to sending...");
         if (ws != null)
         {
-            Debug.Log("sending...");
             ws.Send(content);
         }
     }

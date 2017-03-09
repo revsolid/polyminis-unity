@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: c33d9d1acaf40441987b40ae01d153a0
+timeCreated: 1489069044
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Amsi Pro
+  fontNames:
+  - Amsi Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3e629c902605c4c3dbd3ce60b1d557be, type: 3}
+  - {fileID: 12800000, guid: 69fdba737eb9444e0ace023b3c47a23b, type: 3}
+  - {fileID: 12800000, guid: a5a61164d4bd440799997c3ac63d6025, type: 3}
+  - {fileID: 12800000, guid: 0471f8e78e20c414e8c1c3e24fb5f2d2, type: 3}
+  - {fileID: 12800000, guid: 889c39195da934ba5bd6e6a20dae64f9, type: 3}
+  - {fileID: 12800000, guid: 7b1549591573b4a578d2de71544e9379, type: 3}
+  - {fileID: 12800000, guid: 5b2c2ce92deff4902b53184cb2364586, type: 3}
+  - {fileID: 12800000, guid: 504ca5caee6424d59a63aa956bead8ff, type: 3}
+  - {fileID: 12800000, guid: 6efc8ecac2d1c4ea79cc619bd3f2ec58, type: 3}
+  - {fileID: 12800000, guid: 2895b68b4a2074c3d9c3894451a8a565, type: 3}
+  - {fileID: 12800000, guid: aca769ce947384bf3a261f6acd1a91d7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

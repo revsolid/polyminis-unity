@@ -1,0 +1,35 @@
+fileFormatVersion: 2
+guid: ca2fb6a9607bd4f179b4abc9b0f4ad98
+timeCreated: 1489069044
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Amsi Pro Narw
+  fontNames:
+  - Amsi Pro Narw
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9d68ecb040dac4b2a876ced8132a009f, type: 3}
+  - {fileID: 12800000, guid: 1d76920216ca04b9289775b7c93d09ef, type: 3}
+  - {fileID: 12800000, guid: 08b7266257c9b46e291989bbc1b04dce, type: 3}
+  - {fileID: 12800000, guid: 256247a2825b547e593b7f3d433df850, type: 3}
+  - {fileID: 12800000, guid: 860f6c451d3094a918bdf574bcd022be, type: 3}
+  - {fileID: 12800000, guid: 79a79406d8e384921a271da30a5c9851, type: 3}
+  - {fileID: 12800000, guid: 48717846c4008441face33e3b01968a5, type: 3}
+  - {fileID: 12800000, guid: 5c6825f6cbf5544b29f69e26bd242b5e, type: 3}
+  - {fileID: 12800000, guid: 6b0855c8b90254782b7344d7ff08f0c2, type: 3}
+  - {fileID: 12800000, guid: 390d970a578e94c3e8fb40a4c6e5f33f, type: 3}
+  - {fileID: 12800000, guid: 4987f8aa99bbc4f4cb02f020804add22, type: 3}
+  - {fileID: 12800000, guid: 6a789e0ca601347af9bdca6534bbc0de, type: 3}
+  - {fileID: 12800000, guid: 218c0f4dc1f1c469e870adb084557800, type: 3}
+  - {fileID: 12800000, guid: a9066d7f1f17c4c5aa567cde1afd9fe5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

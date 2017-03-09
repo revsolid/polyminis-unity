@@ -8,7 +8,7 @@ public class Creature : MonoBehaviour
 	public Organelle OrganellePrototype;
 	
 	// TODO - This should be a proper data-driven table	
-	public Organelle OrganellePrototype2;
+	public Actuator OrganellePrototype2;
 	
 
 	public Nucleus NucleusPrototype;
@@ -20,9 +20,12 @@ public class Creature : MonoBehaviour
 	public Text DebugText;
 	
 	public SpeciesController Controller;
+	public ControlStep LastControlStep;
 	
     public delegate void CreatureClicked(Creature creature);
     public static event CreatureClicked OnCreatureClickedEvent;
+	
+	public IndividualModel Model;
 	
 	void Awake()
 	{
@@ -36,11 +39,14 @@ public class Creature : MonoBehaviour
 			Mover.AddStep(step.Physics);
             //Animation setting here based on step/impulse
             //Know that the obj is a food source for now:
-            float rand = Random.Range(-0.5f, 0.5f);
-            foodSource.GetComponent<Animator>().SetFloat("Impulse",rand);
         }
+        float rand = Random.Range(-0.5f, 0.5f);
+        foreach (var anim in GetComponentsInChildren<Animator>())
+		{
+			anim.SetFloat("Impulse",rand);
+		}
         Alive = step.Alive;
-        
+        LastControlStep = step.Control; 
 	}
 	
 	public void SetDataFromModel(IndividualModel model)
@@ -59,7 +65,7 @@ public class Creature : MonoBehaviour
 			}
 			else
 			{
-				Organelle o = organelle.Trait.TID <= 5 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
+				Organelle o = 5 <= organelle.Trait.TID  && organelle.Trait.TID <= 8 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
 				o.transform.SetParent(transform);
 				delta *= 2.5f;
 				o.transform.localPosition += new Vector3(delta.x, 0.0f, delta.y);
@@ -69,6 +75,7 @@ public class Creature : MonoBehaviour
 		}
 		Mover.SetDataFromModel(model);
 		DebugText.text = "ID: " + ID + "\n" + "Remaining Steps: "+Mover.GetRemainingSteps();
+		Model = model;
 		
 	}
 	
