@@ -80,7 +80,7 @@ public class InventoryUIEntry : MonoBehaviour
         {
             Slider slider = this.transform.FindChild ("Progress").gameObject.GetComponent<Slider> ();
             slider.gameObject.SetActive (true);
-            float value = (EpochNow - InvEntry.Value.EpochStarted) / (InvEntry.Value.EpochDone - InvEntry.Value.EpochStarted);
+            float value = (float)(EpochNow - InvEntry.Value.EpochStarted) / (float)(InvEntry.Value.EpochDone - InvEntry.Value.EpochStarted);
 
             if (value < 0) value = 0;
             else if (value > 1.0f) value = 1.0f;

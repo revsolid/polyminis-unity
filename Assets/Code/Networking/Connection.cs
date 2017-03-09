@@ -49,7 +49,7 @@ public class Connection : Singleton<Connection>
 
     void OnMessage(string message)
     {
-        Debug.Log("MESSAGE! :" + message);
+        Debug.Log("MESSAGE! " + message.Length);
         OnMessageEvent(message);
     }
 
