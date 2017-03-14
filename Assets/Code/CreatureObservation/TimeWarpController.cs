@@ -13,7 +13,7 @@ public class TimeWarpController : MonoBehaviour {
      
 	// Use this for initialization
 	void Start () {
-        UpdateButtons();
+        //UpdateButtons();
 	}
 	
 	// Update is called once per frame
