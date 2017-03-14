@@ -26,7 +26,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        BiomassValue.text = BiomassSlider.value + "";
+        BiomassValue.text = BiomassSlider.value.ToString("0.00");
     }
     
     // Update is called once per frame
@@ -68,7 +68,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
     
     public void OnSliderValueChange()
     {
-        BiomassValue.text = BiomassSlider.value + "";
+        BiomassValue.text = BiomassSlider.value.ToString("0.00");
     }
     
     public void OnAccept()

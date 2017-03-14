@@ -1,0 +1,35 @@
+fileFormatVersion: 2
+guid: adb4ed7dd484f49e58388d78f4bae850
+timeCreated: 1489069044
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Amsi Pro Cond
+  fontNames:
+  - Amsi Pro Cond
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6a35cac08b1474d3fb83fe4e9bd741be, type: 3}
+  - {fileID: 12800000, guid: 89db64925c78a4465af1117b31139642, type: 3}
+  - {fileID: 12800000, guid: 444b2283a71874570ae4df07ea41635c, type: 3}
+  - {fileID: 12800000, guid: 248e1f841768d4f5b91a403d4570d219, type: 3}
+  - {fileID: 12800000, guid: 36674d1532c014e9ab0e5566571e1403, type: 3}
+  - {fileID: 12800000, guid: 7b7f4d65d89a34717934fca937e30bad, type: 3}
+  - {fileID: 12800000, guid: a04113a5685a04c96b70670759eba9ba, type: 3}
+  - {fileID: 12800000, guid: 779e6367cb5214e0eaee463cfcae985a, type: 3}
+  - {fileID: 12800000, guid: 1b54d1a781ea54a428ded9ac75a4005e, type: 3}
+  - {fileID: 12800000, guid: 3accde38fde45440cab8c567877cb658, type: 3}
+  - {fileID: 12800000, guid: 1f13abd9b8d804ebdba2077fa670845b, type: 3}
+  - {fileID: 12800000, guid: 5eca711ed2f494d86a0a827a68923d75, type: 3}
+  - {fileID: 12800000, guid: 86c5c57ee60e546959c6252d5eaf9281, type: 3}
+  - {fileID: 12800000, guid: 5f9cbd9f53fda4bca93deb26e6363aa9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 79a79406d8e384921a271da30a5c9851
+timeCreated: 1489069043
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Amsi Pro Narw
+  fontNames:
+  - Amsi Pro Narw
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1d76920216ca04b9289775b7c93d09ef, type: 3}
+  - {fileID: 12800000, guid: 08b7266257c9b46e291989bbc1b04dce, type: 3}
+  - {fileID: 12800000, guid: 256247a2825b547e593b7f3d433df850, type: 3}
+  - {fileID: 12800000, guid: 48717846c4008441face33e3b01968a5, type: 3}
+  - {fileID: 12800000, guid: 5c6825f6cbf5544b29f69e26bd242b5e, type: 3}
+  - {fileID: 12800000, guid: 6b0855c8b90254782b7344d7ff08f0c2, type: 3}
+  - {fileID: 12800000, guid: 390d970a578e94c3e8fb40a4c6e5f33f, type: 3}
+  - {fileID: 12800000, guid: 4987f8aa99bbc4f4cb02f020804add22, type: 3}
+  - {fileID: 12800000, guid: 6a789e0ca601347af9bdca6534bbc0de, type: 3}
+  - {fileID: 12800000, guid: 218c0f4dc1f1c469e870adb084557800, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

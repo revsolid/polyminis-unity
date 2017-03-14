@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1655b5fde70344b16806f7d2e8dd50cb
-timeCreated: 1480227201
+timeCreated: 1489043271
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -339,13 +339,13 @@ SubstanceImporter:
       wrapMode: 0
     textureAssignments:
     - shaderProp:
-        name: _MainTex
-      material: {instanceID: 0}
-      baseUID: 769119445
-    - shaderProp:
         name: _BumpMap
       material: {instanceID: 0}
       baseUID: 773006199
+    - shaderProp:
+        name: _MainTex
+      material: {instanceID: 0}
+      baseUID: 769119445
     - shaderProp:
         name: _EmissionMap
       material: {instanceID: 0}
@@ -565,7 +565,7 @@ SubstanceImporter:
       - first:
           name: _MainTex
         second:
-          texture: {fileID: 2800000, guid: 69f2eda4b3ded3a4bbc3a6ba6f48134b, type: 3}
+          texture: {fileID: 2800000, guid: 787dae459364e4794a917fbbe557727e, type: 3}
           scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       floats:
@@ -649,8 +649,8 @@ SubstanceImporter:
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
-      textureWidth: 512
-      textureHeight: 512
+      textureWidth: 2048
+      textureHeight: 2048
       textureFormat: 0
       loadingBehavior: 1
   deletedPrototypes: []

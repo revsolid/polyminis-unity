@@ -89,14 +89,38 @@ public class PlanetModel
     public Range Temperature; // = new Range(0.0f, 1.0f);
     public Range Ph; // = new Range(1.3f, 4.2f);
     public List<SpeciesModel> Species;
+    public List<MaterialEntry> Materials;
     public string PlanetName; 
     public int Epoch;
     public int ID;
 
     public PlanetModel() //TODO: Default constructor... assigns arbitratry values
     {
- //       PlanetName = "Some Planet";
- //       SpaceCoords = new Vector2(100,0);
+        //       PlanetName = "Some Planet";
+        //       SpaceCoords = new Vector2(100,0);
+
+        Materials = new List<MaterialEntry>();
+        MaterialEntry newMat = new MaterialEntry("A", 0.3f);
+        Materials.Add(newMat);
+        newMat = new MaterialEntry("T", 0.2f);        
+        newMat = new MaterialEntry("G", 0.4f);        
+        Materials.Add(newMat);
+        newMat = new MaterialEntry("U", 0.1f);        
+        Materials.Add(newMat);
+
+    }
+}
+
+[Serializable]
+public class MaterialEntry
+{
+    public string Material;
+    public float Percentage;
+
+    public MaterialEntry(string name , float percent)
+    {
+        Material = name;
+        Percentage = percent;
     }
 }
 
@@ -218,7 +242,8 @@ public enum InventoryCommandType
     UPDATE_SPECIES,
     SAMPLE_FROM_PLANET,
     GET_INVENTORY,
-    DELETE_ENTRY
+    DELETE_ENTRY,
+    GET_GLOBAL_EPOCH
 }
 
 [Serializable]
@@ -241,7 +266,8 @@ public class InventoryCommand : BaseCommand
 public enum InventoryEventType
 {
     InventoryUpdate,
-    ResearchDone
+    ResearchDone,
+    ReceiveGlobalEpoch
 }
 [Serializable]
 public class InventoryServiceEvent : BaseEvent
@@ -252,6 +278,24 @@ public class InventoryServiceEvent : BaseEvent
         get
         {
            return (InventoryEventType) Enum.Parse(typeof(InventoryEventType), EventString); 
+        }
+    }
+}
+
+[Serializable]
+public enum EpochEventType
+{
+    ReceiveGlobalEpoch
+}
+[Serializable]
+public class EpochEvent : BaseEvent
+{
+    public int Epoch;
+    public EpochEventType EpochEventType
+    {
+        get
+        {
+            return (EpochEventType) Enum.Parse(typeof(EpochEventType), EventString); 
         }
     }
 }
@@ -394,14 +438,21 @@ public class SpliceModel
     public string Name;
     public string InternalName;
     public string Description;
-    public int[] Traits;
+    public List<string> Traits;
 }
 
 //
 [Serializable]
 public class InstinctTuningModel
 {
-
+    public int HoardingLvl = 0;
+    public int PredatoryLvl = 0;
+    public int HerdingLvl = 0;
+    public int NomadicLvl = 0;
+    public int HoardingMaxLvl = 0;
+    public int PredatoryMaxLvl = 0;
+    public int HerdingMaxLvl = 0;
+    public int NomadicMaxLvl = 0;
 }
 //
 [Serializable]
@@ -409,7 +460,7 @@ public class SpeciesModel
 {
     public string SpeciesName;
     public List<SpliceModel> Splices = new List<SpliceModel>();
-    public InstinctTuningModel InstinctTuning;
+    public InstinctTuningModel InstinctTuning = new InstinctTuningModel();
     public object GAConfiguration = new object();
     public string CreatorName;
     public string OriginalSpeciesName;
@@ -493,12 +544,14 @@ public class IndividualModel
 {
   // A creature in a simulation
 
-  public int  ID;
-  public CreatureMorphologyModel Morphology;
-  public int HP;
-  public IndividualPhysics Physics;
-  public Range Temperature;
-  public Range Ph;
+    public int  ID;
+    public CreatureMorphologyModel Morphology;
+    public int HP;
+    public IndividualPhysics Physics;
+    public Range Temperature;
+    public Range Ph;
+    public float Fitness;
+
   // TODO: Neural Network Representation (?)
 }
 
@@ -600,13 +653,13 @@ public class SimulationStartup
 [Serializable]
 public class SpeciesStartup
 {
-    public string Name;
+    public string SpeciesName;
     public List<IndividualModel> Individuals;
 }
 [Serializable]
 public class SpeciesStep
 {
-    public string Name; 
+    public string SpeciesName; 
     public List<IndividualStep> Individuals;
 }
 [Serializable]

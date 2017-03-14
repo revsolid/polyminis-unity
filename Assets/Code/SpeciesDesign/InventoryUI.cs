@@ -23,13 +23,16 @@ public class InventoryUI : MonoBehaviour
     public static event EntrySelected OnEntrySelected;
 
     bool Reload = false;
+    int Epoch = -1;
 
     void Start ()
     {
         gameObject.SetActive(false);
         Session.OnSessionChangedEvent += () => { Reload = true; };
     }
-    void Awake () {}
+    void Awake () 
+    {
+    }
     
     void Update() 
     {
@@ -37,6 +40,14 @@ public class InventoryUI : MonoBehaviour
         {
             LoadFromSession();
             Reload = false;
+        }
+
+        if (Epoch != -1)
+        {
+            foreach (InventoryUIEntry entry in this.gameObject.GetComponentsInChildren<InventoryUIEntry> ())
+            {
+                entry.UpdateProgressBar (Epoch);
+            }
         }
     }
 
@@ -59,6 +70,7 @@ public class InventoryUI : MonoBehaviour
     }
     void LoadFromSession()
     {
+        Connection.Instance.OnMessageEvent -= OnServerMessage;
         var children = new List<GameObject>();
         foreach (Transform child in EntriesLayoutGroup.transform) children.Add(child.gameObject);
         children.ForEach(child => Destroy(child));
@@ -82,7 +94,7 @@ public class InventoryUI : MonoBehaviour
             uiEntry.Mode = CurrentMode;
             uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
         }
-
+        Connection.Instance.OnMessageEvent += OnServerMessage;
     } 
     
     void HandleEdit(InventoryEntry currentModel)
@@ -104,11 +116,13 @@ public class InventoryUI : MonoBehaviour
             slot = currentModel.Slot;
         }
         
-        SpeciesDesignUI.OnSaveEvent += (resultingModel) => {
-            Debug.Log(JsonUtility.ToJson(resultingModel));
+        SpeciesDesignUI.OnSaveEvent += (resultingModel) => 
+        {
+            //Debug.Log(JsonUtility.ToJson(resultingModel));
             InventoryCommand saveSpeciesCommand = new InventoryCommand(cmdType);
             saveSpeciesCommand.Species = resultingModel;
             saveSpeciesCommand.Slot = slot;
+            Debug.Log(saveSpeciesCommand);
             Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
         };
         SpeciesDesigner.OpenWithSpecies(sm);
@@ -143,4 +157,22 @@ public class InventoryUI : MonoBehaviour
         InventoryUIEntry.OnDeleteEvent -= HandleDelete;
         OnEntrySelected = null;
     }
+
+    void OnServerMessage(string message)
+    {
+        EpochEvent evt = JsonUtility.FromJson<EpochEvent>(message);
+        if (evt != null)
+        {
+            switch (evt.EpochEventType)
+            {
+            case EpochEventType.ReceiveGlobalEpoch:
+                Debug.Log ("Received Global epoch");
+                Debug.Log ("Epoch: " + evt.Epoch.ToString ());
+                Epoch = evt.Epoch;
+                break;
+            }
+        }
+    }
+
+
 }

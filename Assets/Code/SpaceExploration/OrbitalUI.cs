@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using CP.ProChart;
 
 public class OrbitalUI : MonoBehaviour
 {
@@ -14,7 +16,10 @@ public class OrbitalUI : MonoBehaviour
     public Text PlanetName;
     public SpeciesPlanetDialog InteractionsDialogPrototype;
     public InventoryUI Inventory;
-    
+    public PieChart PopulationChart;
+    public PieChart ResourceChart;
+    public GameObject TextPopup;
+
     public SpeciesCard[] Slots;
     
     PlanetModel Planet;
@@ -22,19 +27,48 @@ public class OrbitalUI : MonoBehaviour
     bool HasHookedCallbacks = false;
     SpeciesModel ShowSpeciesNextUpdate = null;
 
+    private ChartData1D PopulationData, ResourceData;
+    private Dictionary<int, SpeciesModel> Species;
+    private Dictionary<int,string> ResourceNames;
+
+    private string PopupString;
     // Use this for initialization
     void Awake()
     {
         
     }
+
+    void OnEnable()
+    {
+        PopulationChart.onOverDelegate += OnPopulationChartHover;
+        ResourceChart.onOverDelegate += OnMaterialChartHover;
+    }
+
+    void OnDisable()
+    {
+        PopulationChart.onOverDelegate -= OnPopulationChartHover;
+        ResourceChart.onOverDelegate -= OnMaterialChartHover;
+    }
     void Start ()
-    { 
+    {
+        PopupString = "";
     }
     
     // Update is called once per frame
     void Update ()
     {
         //TODO: This is ugly
+        TextPopup.GetComponent<Text>().text = PopupString;
+
+        if(PopulationChart.ChartSize < 180)
+        {
+            const int speed = 10;
+            PopulationChart.ChartSize += speed;
+            
+            ResourceChart.ChartSize += speed;
+            if (PopulationChart.ChartSize > 180) PopulationChart.ChartSize = 180;
+            if (ResourceChart.ChartSize > 180) ResourceChart.ChartSize = 180;
+        }
         if (!HasHookedCallbacks)
         {
             global::Planet.OnPlanetModelChanged += OnPlanetChanged;
@@ -122,6 +156,9 @@ public class OrbitalUI : MonoBehaviour
     
     public void OnObservePlanetClicked()
     {
+        CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(1414, 2);
+        loadSimCmd.Command = "GO_TO_EPOCH";
+ //       Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
         SceneManager.LoadScene("creature_observation");
     }
     
@@ -161,12 +198,62 @@ public class OrbitalUI : MonoBehaviour
     void LoadFromPlanet(Planet planet)
     {
         PlanetModel p = planet.Model;
-        PhSlider.value = planet.PH.Average() * 100;
-        TempSlider.value = planet.Temperature.Average() * 100;
+        //PhSlider.value = planet.PH.Average() * 100;
+        //TempSlider.value = planet.Temperature.Average() * 100;
         PlanetName.text = p.PlanetName;
         PlanetRenderer.RenderUpdate(planet);
-        
-        for(int i=0; i < p.Species.Count; i++)
+
+
+        PopulationData = new ChartData1D();
+        ResourceData = new ChartData1D();
+        Species = new Dictionary<int, SpeciesModel>();
+        ResourceNames = new Dictionary<int, string>();
+
+        //Populate species chart widget
+        PopulationData.Clear();
+        PopulationData.Resize(1, p.Species.Count);
+        Species.Clear();
+
+        int j = 0;
+        foreach(SpeciesModel sm in p.Species)
+        {
+            print(j);
+            PopulationData[j] = sm.Percentage;
+            Species.Add(j, sm);
+            j++;
+        }
+
+        PopulationChart.SetValues(ref PopulationData);
+
+        //  TODO:
+        // Hijacking Resource Chart for Temperature
+        // and heavily... all your resources are belong to us
+        ResourceData.Clear();
+        ResourceData.Resize(1, 3);
+        ResourceNames.Clear();
+
+        if (p.Temperature.Max == 0)
+        {
+            p.Temperature.Max = 1;
+        }
+        float scMin =  p.Temperature.Min / p.Temperature.Max;
+        float scAverage =  p.Temperature.Average() / p.Temperature.Max;
+
+
+        Debug.Log(scMin + " XXX " + scAverage + " XXX " + p.Temperature.Max);
+        ResourceData[0] = scMin;
+        ResourceNames.Add(0, "Low: "+scMin+" K");
+        ResourceData[1] = scAverage - scMin;
+        ResourceNames.Add(1, "Average");
+        ResourceData[2] = 1 - scAverage;
+        ResourceNames.Add(2, "High: "+ scAverage +" K");
+
+        PopulationChart.ChartSize = 0;
+        ResourceChart.ChartSize = 0;
+
+        ResourceChart.SetValues(ref ResourceData);
+
+        for (int i=0; i < p.Species.Count; i++)
         {
             Debug.Log(p.Species[i].SpeciesName);
             Slots[i].Species = p.Species[i];
@@ -176,5 +263,41 @@ public class OrbitalUI : MonoBehaviour
             Slots[i].Species = null;
         }
         Planet = p;
+        
+        // This is savagery
+        CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(1414, 2);
+        loadSimCmd.Command = "GO_TO_EPOCH";
+        //Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
+    }
+
+    void OnPopulationChartHover(int column)
+    {
+        Text t = TextPopup.GetComponentInChildren<Text>();
+
+        if (column == -1)
+        {
+            PopupString = "";
+            return;
+        }
+        
+        PopupString = Species[column].Percentage.ToString("0.00")+ "% | " + Species[column].SpeciesName +"\n( " + Species[column].CreatorName + " )";
+        t.color = PopulationChart.GetColor(column);
+    }
+
+    void OnMaterialChartHover(int column)
+    {
+        //TextPopup.SetActive(true);
+        Text t = TextPopup.GetComponentInChildren<Text>();
+        if (column == -1)
+        {
+            
+            //PopupString = "";
+            return;
+
+        }
+
+        
+        PopupString = ResourceNames[column];
+        t.color = ResourceChart.GetColor(column);
     }
 }

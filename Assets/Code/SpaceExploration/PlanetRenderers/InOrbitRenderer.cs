@@ -5,6 +5,7 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
 {
     // Use this for initialization
 	float StartingZ;
+    bool ReloadRenderer;
     void Start ()
     { 
 		StartingZ = gameObject.transform.position.z;
@@ -14,6 +15,14 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
     void Update()
     {
        transform.Rotate(0, 1, 0);
+          
+        // Prepare texture
+        if (ReloadRenderer && Model != null)
+        {
+            Texture2D EnvTexture = PrepareTexture(Model);
+            GetComponent<Renderer>().material.SetTexture("_EnvTexture", EnvTexture);
+            ReloadRenderer = false;
+        }
     }
     
 	public override void RenderUpdate(Planet model)
@@ -22,10 +31,7 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
         {
             // We got a new model
             Model = model;
-          
-            // Prepare texture
-            Texture2D EnvTexture = PrepareTexture(model);
-            GetComponent<Renderer>().material.SetTexture("_EnvTexture", EnvTexture);
+            ReloadRenderer = true;
 		}
 		
 		DistanceToSpaceship = model.DistanceToSpaceship;
@@ -47,14 +53,12 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
 			y = DistanceToSpaceship/1.5f - 20.0f;
 			x = model.RelativeAngle / 2.0f;
 		}
-		Debug.Log(model.RelativeAngle);
 		float delta_z = 17.0f - DistanceToSpaceship / 2.0f; 
         gameObject.transform.position = new Vector3(x, y, StartingZ + delta_z);
 	    if (DistanceToSpaceship > 30)
         {
           Visible = false;
           gameObject.SetActive(Visible);  
-		  Debug.Log("CIAO");
           return;
         }
         else if (!Visible)

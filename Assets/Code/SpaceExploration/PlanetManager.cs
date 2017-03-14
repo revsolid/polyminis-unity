@@ -30,7 +30,7 @@ public class PlanetManager : MonoBehaviour
 // easier to write and avoid having several of them in the scene
     void Awake()
     {
-        Connection.OnMessageEvent += (message) => OnServerMessage(message);
+        Connection.Instance.OnMessageEvent += OnServerMessage;
     }
 
     // Use this for initialization

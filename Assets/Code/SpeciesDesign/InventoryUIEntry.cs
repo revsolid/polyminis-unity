@@ -18,7 +18,7 @@ public class InventoryUIEntry : MonoBehaviour
     public Button DeleteButton;
     
     void Start () {}
-    void Awake () {}
+    void Awake(){}
     void Update()
     {
         if (InvEntry != null)
@@ -59,4 +59,34 @@ public class InventoryUIEntry : MonoBehaviour
         if (OnDeleteEvent != null)
             OnDeleteEvent(InvEntry);
     }
+
+    public void OnEnable()
+    {
+        // if it is being researched, query server of current epoch, 
+        if (InvEntry != null && InvEntry.Value.BeingResearched)
+        {
+            InventoryCommand queryEpochComman = new InventoryCommand(InventoryCommandType.GET_GLOBAL_EPOCH);
+            Connection.Instance.Send(JsonUtility.ToJson(queryEpochComman));
+            Slider slider = this.transform.FindChild ("Progress").gameObject.GetComponent<Slider> ();
+            slider.gameObject.SetActive (true);
+
+        }
+    }
+        
+
+    public void UpdateProgressBar(int EpochNow)
+    {
+        if (InvEntry != null && InvEntry.Value.BeingResearched)
+        {
+            Slider slider = this.transform.FindChild ("Progress").gameObject.GetComponent<Slider> ();
+            slider.gameObject.SetActive (true);
+            float value = (float)(EpochNow - InvEntry.Value.EpochStarted) / (float)(InvEntry.Value.EpochDone - InvEntry.Value.EpochStarted);
+
+            if (value < 0) value = 0;
+            else if (value > 1.0f) value = 1.0f;
+
+            slider.value = value;
+        }
+    }
+
 }

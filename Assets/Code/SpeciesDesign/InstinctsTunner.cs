@@ -14,13 +14,32 @@ public class InstinctsTunner : MonoBehaviour
         
     public int MinLevel = 2;
     public int MaxLevel = 8;
-    
+
+    // data representation of instinct levels. Value of the solid bars.
     private Dictionary<Instinct, int> Levels = new Dictionary<Instinct, int>();
+    // the actual max level.
     private Dictionary<Instinct, int> MaxLevels = new Dictionary<Instinct, int>();
+    // the "base" max level determined by selected splices (without use messing with arrow buttons).
+    private Dictionary<Instinct, int> MaxLevelsBase = new Dictionary<Instinct, int>();
+    // the "tunned" max level determined by user clicking arrow buttons, but nothing to do with splices
+    private Dictionary<Instinct, int> MaxLevelsTunned = new Dictionary<Instinct, int>();
+
     private Dictionary<Instinct, Slider> MaxSliderMap = new Dictionary<Instinct, Slider>();
     private Dictionary<Instinct, Slider> ValueSliderMap = new Dictionary<Instinct, Slider>();
     private Dictionary<Instinct, Instinct> Opposites = new Dictionary<Instinct, Instinct>();
 
+    void ResetValues()
+    {
+        foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
+        {
+            Levels[i] = 0;
+            MaxLevels[i] = MinLevel;
+            MaxLevelsBase[i] = MinLevel;
+            MaxLevelsTunned[i] = 0;
+            MaxSliderMap[i].maxValue = MaxLevel;
+            ValueSliderMap[i].maxValue = MaxLevel;
+        }
+    }
     // Use this for initialization
     public void Initialize()
     {
@@ -39,53 +58,58 @@ public class InstinctsTunner : MonoBehaviour
         Opposites[Instinct.NOMADIC] = Instinct.HOARDING;
         Opposites[Instinct.HERDING] = Instinct.PREDATORY;
 
-        foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
-        {
-            Levels[i] = 0;
-            MaxSliderMap[i].maxValue = MaxLevel;
-            ValueSliderMap[i].maxValue = MaxLevel;
-        }
+        ResetValues();
     }
 
-    void Reset()
+    // make MaxLevelBase reflect selected splices
+    void UpdateMaxLevelsBase(SpeciesDesignerModel model)
     {
         foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
         {
-            MaxLevels[i] = MinLevel;
+            MaxLevelsBase[i] = MinLevel;
         }
-    }
-
-    public void UpdateView(SpeciesDesignerModel model)
-    {
-        Reset();
 
         foreach (SpliceModel sm in model.SelectedSplices)
         {
-            MaxLevels[sm.EInstinct] += 1;
+            MaxLevelsBase[sm.EInstinct] += 1;
         }
+    }
 
+    void UpdateMaxLevels()
+    {
+        foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
+        {
+            MaxLevels[i] = MaxLevelsBase[i] + MaxLevelsTunned[i];
+        }
+    }
+
+    void UpdateSliders()
+    {
         UpdateLevel(Instinct.HOARDING);
         UpdateLevel(Instinct.NOMADIC);
         UpdateLevel(Instinct.PREDATORY);
         UpdateLevel(Instinct.HERDING);
     }
 
-    
+    public void UpdateView(SpeciesDesignerModel model)
+    {
+        UpdateMaxLevelsBase(model);
+        UpdateMaxLevels();
+        UpdateSliders();
+    }
 
-    public void AddSplice(Instinct instinct, int size)
+    void UpdateView()
     {
-        MaxLevels[instinct] += size;
+        UpdateMaxLevels();
+        UpdateSliders();
     }
-    
-    public void RemoveSplice(Instinct instinct, int size)
-    {
-        MaxLevels[instinct] -= size;
-    }
+        
     
     public void OnUp(Instinct i)
     {}
 
     // called every frame for each level
+    // update sliders to reflect lists.
     void UpdateLevel(Instinct i)
     {
         MaxSliderMap[i].value = MaxLevels[i];
@@ -98,54 +122,89 @@ public class InstinctsTunner : MonoBehaviour
         else return (Levels[i] > 0);
     }
 
-    public void ChangeTuning(Instinct i, bool up)
+    void ArrowKeyClicked(Instinct i, bool up)
     {
-        Debug.Log("Tuning: " + i + " " + (up ? "up" : "down"));
+        Debug.Log("Arrow key clicked: " + i + " " + (up ? "up" : "down"));
         if (!CanTune(i, up)) return;
-        if (up)
+        
+        if(up)
         {
             Levels[i]++;
-            MaxLevels[Opposites[i]]--;
-        }else
+            MaxLevelsTunned[Opposites[i]]--;
+        }
+        else
         {
             Levels[i]--;
-            MaxLevels[Opposites[i]]++;
+            MaxLevelsTunned[Opposites[i]]++;
         }
 
-        Debug.Log("Instinct: " + i + " Max Value: " + MaxLevels[i] + " Current Level: " + Levels[i]);
-        UpdateLevel(Instinct.HOARDING);
-        UpdateLevel(Instinct.NOMADIC);
-        UpdateLevel(Instinct.PREDATORY);
-        UpdateLevel(Instinct.HERDING);
+        UpdateView();
     }
 
+    public InstinctTuningModel ToModel()
+    {
+        InstinctTuningModel ret = new InstinctTuningModel();
+        ret.HoardingLvl = Levels [Instinct.HOARDING];
+        ret.HerdingLvl = Levels [Instinct.HERDING];
+        ret.NomadicLvl = Levels [Instinct.NOMADIC];
+        ret.PredatoryLvl = Levels [Instinct.PREDATORY];
+        ret.HoardingMaxLvl = MaxLevels [Instinct.HOARDING];
+        ret.HerdingMaxLvl = MaxLevels [Instinct.HERDING];
+        ret.NomadicMaxLvl = MaxLevels [Instinct.NOMADIC];
+        ret.PredatoryMaxLvl = MaxLevels [Instinct.PREDATORY];
+        return ret;
+    }
+
+    // this should be called only after MaxLevelBase has been loaded (possibly through UpdateView())
+    public void LoadModel(InstinctTuningModel model)
+    {
+        if(model != null)
+        {
+            Levels[Instinct.HOARDING] = model.HoardingLvl;
+            Levels[Instinct.HERDING] = model.HerdingLvl;
+            Levels[Instinct.NOMADIC] = model.NomadicLvl;
+            Levels[Instinct.PREDATORY] = model.PredatoryLvl;
+
+            MaxLevelsTunned[Instinct.HOARDING] = model.HoardingMaxLvl - MaxLevelsBase[Instinct.HOARDING];
+            MaxLevelsTunned[Instinct.HERDING] = model.HerdingMaxLvl - MaxLevelsBase[Instinct.HERDING];
+            MaxLevelsTunned[Instinct.NOMADIC] = model.NomadicMaxLvl - MaxLevelsBase[Instinct.NOMADIC];
+            MaxLevelsTunned[Instinct.PREDATORY] = model.PredatoryMaxLvl - MaxLevelsBase[Instinct.PREDATORY];
+        }
+        else
+        {
+            ResetValues();
+        }
+        UpdateView();
+    }
+
+    // wraps around ChangeTune, each case correspond to an arrow button.
     public void Tune(int i)
     {
         switch (i)
         {
             case 0:
-                ChangeTuning(Instinct.HERDING, true);
+                ArrowKeyClicked(Instinct.HERDING, true);
                 break;
             case 1:
-                ChangeTuning(Instinct.HERDING, false);
+                ArrowKeyClicked(Instinct.HERDING, false);
                 break;
             case 2:
-                ChangeTuning(Instinct.HOARDING, true);
+                ArrowKeyClicked(Instinct.HOARDING, true);
                 break;
             case 3:
-                ChangeTuning(Instinct.HOARDING, false);
+                ArrowKeyClicked(Instinct.HOARDING, false);
                 break;
             case 4:
-                ChangeTuning(Instinct.PREDATORY, true);
+                ArrowKeyClicked(Instinct.PREDATORY, true);
                 break;
             case 5:
-                ChangeTuning(Instinct.PREDATORY, false);
+                ArrowKeyClicked(Instinct.PREDATORY, false);
                 break;
             case 6:
-                ChangeTuning(Instinct.NOMADIC, true);
+                ArrowKeyClicked(Instinct.NOMADIC, true);
                 break;
             case 7:
-                ChangeTuning(Instinct.NOMADIC, false);
+                ArrowKeyClicked(Instinct.NOMADIC, false);
                 break;
         }
     }

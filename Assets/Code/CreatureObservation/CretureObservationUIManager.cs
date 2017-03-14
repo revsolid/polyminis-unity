@@ -3,15 +3,18 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-public class CretureObservationUIManager : MonoBehaviour {
+public class CretureObservationUIManager : MonoBehaviour
+{
+	public PlanetModel ObservingPlanet;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 	
 	}
 	

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0471f8e78e20c414e8c1c3e24fb5f2d2
+timeCreated: 1489069042
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Amsi Pro
+  fontNames:
+  - Amsi Pro
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
