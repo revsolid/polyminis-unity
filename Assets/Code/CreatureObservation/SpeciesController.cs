@@ -44,10 +44,10 @@ public class SpeciesController : MonoBehaviour
     }
     void Start()
     {
-        //LoadExperiment("demo_0_1");
+        LoadExperiment("demo_46_1");
         //InvokeRepeating("Poll", 1.0f, 5.0f);
 		Connection.Instance.OnMessageEvent += OnServerMessage;
-        InvokeRepeating("Poll", 0.1f, 3.0f);
+ //       InvokeRepeating("Poll", 0.1f, 3.0f);
     }
 
     void Poll()

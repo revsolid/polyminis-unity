@@ -5,6 +5,7 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
 {
     // Use this for initialization
 	float StartingZ;
+    bool ReloadRenderer;
     void Start ()
     { 
 		StartingZ = gameObject.transform.position.z;
@@ -14,6 +15,14 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
     void Update()
     {
        transform.Rotate(0, 1, 0);
+          
+        // Prepare texture
+        if (ReloadRenderer && Model != null)
+        {
+            Texture2D EnvTexture = PrepareTexture(Model);
+            GetComponent<Renderer>().material.SetTexture("_EnvTexture", EnvTexture);
+            ReloadRenderer = false;
+        }
     }
     
 	public override void RenderUpdate(Planet model)
@@ -22,10 +31,7 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
         {
             // We got a new model
             Model = model;
-          
-            // Prepare texture
-            Texture2D EnvTexture = PrepareTexture(model);
-            GetComponent<Renderer>().material.SetTexture("_EnvTexture", EnvTexture);
+            ReloadRenderer = true;
 		}
 		
 		DistanceToSpaceship = model.DistanceToSpaceship;
