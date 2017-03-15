@@ -9,7 +9,7 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
     void Start ()
     { 
 		StartingZ = gameObject.transform.position.z;
-        gameObject.SetActive(Visible);
+        gameObject.SetActive(false);
     }
     
     void Update()
@@ -27,6 +27,7 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
     
 	public override void RenderUpdate(Planet model)
     {
+        /*
         if (Model != model)
         {
             // We got a new model
@@ -66,6 +67,7 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
           Visible = true;
           gameObject.SetActive(Visible);
         }
+        */
 	
 
 	}

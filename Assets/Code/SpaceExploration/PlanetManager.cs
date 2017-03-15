@@ -11,16 +11,16 @@ public class PlanetManager : MonoBehaviour
     public OrbitalApproachRenderer OrbitalApproachRendererPrototype;
 
     // Non-prototype
-    public InOrbitRenderer InOrbitRenderer; 
+    //public InOrbitRenderer InOrbitRenderer; 
 		
     
     public SpaceMovementTracker MovementTracker;
     public Camera OrbitalCamera;
+    public Camera MainCamera;
     public GameObject Starmap;
     Vector2 LastKnownPos;
     public IDictionary<int, Planet> Planets { get; private set;}
     List<PlanetModel> ToSpawn;
-    Camera MainCamera;
     bool DoWarp = false;
     Vector2 WarpDest = Vector2.zero;
     float NewBiomassAvailable;
@@ -51,6 +51,7 @@ public class PlanetManager : MonoBehaviour
         RadarRenderer radarRenderer = GameObject.Instantiate(RadarRendererPrototype);
         StarmapRenderer starmapRenderer = GameObject.Instantiate(StarmapRendererPrototype);
 
+        orbAppRenderer.transform.parent = MainCamera.transform;
         orbAppRenderer.SetTargetCamera(OrbitalCamera);
         starmapRenderer.Starmap = this.Starmap;
         starmapRenderer.SetTargetCamera(OrbitalCamera);
@@ -67,22 +68,22 @@ public class PlanetManager : MonoBehaviour
     void Update ()
     {
         //    TODO: This should be using Time.deltaTime instead of raw values as frame rate fucks up the pacing entirely
-        transform.localEulerAngles = new Vector3(0.0f, -1*MovementTracker.Heading, 0.0f);
+      //  transform.localEulerAngles = new Vector3(0.0f, -1*MovementTracker.Heading, 0.0f);
         bool inOrbit = false;
         foreach (Planet planet in Planets.Values)
         {
             planet.UpdateSpaceshipPosition(MovementTracker.CurrentPosition, MovementTracker.Forward);
-            if (planet.InOrbitRange())
+            /*if (planet.InOrbitRange())
             {
                 InOrbitRenderer.RenderUpdate(planet);
                 inOrbit = true;
-            }
+            }*/
         }
-        if (!inOrbit)
+        /*if (!inOrbit)
         {
             InOrbitRenderer.gameObject.SetActive(false);
             InOrbitRenderer.Visible = false;
-        }
+        }*/
         LastKnownPos = MovementTracker.CurrentPosition;
 
         // Check if any planet needs to be spawned

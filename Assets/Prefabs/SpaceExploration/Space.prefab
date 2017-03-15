@@ -52,7 +52,7 @@ Transform:
   m_GameObject: {fileID: 1000012904895786}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: -0, z: -570.3171}
-  m_LocalScale: {x: 4.0973563, y: 4.0973587, z: 4.0973587}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 4000012363513788}
   m_RootOrder: 0
@@ -123,4 +123,5 @@ MonoBehaviour:
   SpaceSphere1: {fileID: 1000012904895786}
   HUD: {fileID: 0}
   TranslationSpeedMult: 0.3
-  RotationSpeedMult: 0
+  RotationSpeedMult: 0.035
+  SpaceFlightCamera: {fileID: 0}
