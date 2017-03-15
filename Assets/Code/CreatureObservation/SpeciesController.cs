@@ -29,6 +29,7 @@ public class SpeciesController : MonoBehaviour
     public GameObject foodModel;
     public FollowerCamera DetailViewCamera;
     public DetailedViewUI DetailViewUI;
+    public NeuralNetworkUI NeuralNetworkUI;
 
     Dictionary<int, Creature> Individuals = new Dictionary<int, Creature>();
     List<SpeciesStep> Steps = new List<SpeciesStep>();
@@ -234,7 +235,8 @@ public class SpeciesController : MonoBehaviour
     {
         DetailViewCamera.gameObject.SetActive(true);
         DetailViewCamera.Target = creature.transform;
-        DetailViewUI.ToDetail = creature;
+        //DetailViewUI.ToDetail = creature;
+        NeuralNetworkUI.SetCreature(creature);
     }
     
     public void OnServerMessage(string msg)
