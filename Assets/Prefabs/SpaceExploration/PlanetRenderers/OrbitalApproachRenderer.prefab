@@ -109,9 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b10a9be6aad4b7e98e91be7232bc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlanetImage: {fileID: 114826771460330976}
   Visible: 0
   DistanceToSpaceship: 0
-  PlanetImage: {fileID: 114826771460330976}
 --- !u!114 &114000013643704646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,7 +299,7 @@ Canvas:
   m_GameObject: {fileID: 1000014181576884}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 20
   m_PixelPerfect: 0

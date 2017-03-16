@@ -4,8 +4,14 @@ using SpaceExploration.Types;
 
 public class SpaceMovementTracker : MonoBehaviour
 {
-    public GameObject SpaceSphere1; public GameObject HUD; public Vector2 CurrentPosition { get; private set; } public float Heading {get; private set; } public Vector2 Forward {get; private set; } public float TranslationSpeedMult = 0.0f;
+    public GameObject SpaceSphere1;
+    public GameObject HUD;
+    public Vector2 CurrentPosition { get; private set; }
+    public float Heading {get; private set; }
+    public Vector2 Forward {get; private set; }
+    public float TranslationSpeedMult = 0.0f;
     public float RotationSpeedMult = 0.0f;
+    public Camera SpaceFlightCamera;
     
     bool HasMoved = true;
 
@@ -34,8 +40,9 @@ public class SpaceMovementTracker : MonoBehaviour
         float horImpulse = Input.GetAxis ("Horizontal");
         float verImpulse = Input.GetAxis ("Vertical");
         SpaceSphere1.transform.Rotate(new Vector3(-1*verImpulse * 0.01f, horImpulse * 0.1f, 0.0f));
+        SpaceFlightCamera.transform.localEulerAngles = new Vector3(0.0f, Heading, 0.0f);
         float tDamp = Mathf.Max(TranslationSpeedMult, 1/15.0f); //TODO: This should be delta time or something derived instead of a static value 
-        float rDamp = Mathf.Max(RotationSpeedMult, 0.07f);
+        float rDamp = Mathf.Max(RotationSpeedMult, 0.001f);
 
         if (horImpulse == 0.0f && verImpulse == 0.0f)
         {
@@ -49,7 +56,7 @@ public class SpaceMovementTracker : MonoBehaviour
         
         if (horImpulse != 0.0f && verImpulse == 0.0f) 
         {
-            verImpulse = 0.3f;
+            verImpulse = 0.1f;
         }
 
         HUD.transform.eulerAngles = new Vector3(0.0f, 0.0f, -1*horImpulse);

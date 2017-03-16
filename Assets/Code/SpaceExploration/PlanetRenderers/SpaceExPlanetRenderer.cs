@@ -46,9 +46,19 @@ public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
 
         DistanceToSpaceship = model.DistanceToSpaceship;
         Vector2 delta = model.LastDelta;
+        
         transform.localPosition += delta.FromSpaceCoordsToVec3();
+        
+        if (DistanceToSpaceship < 50)
+        {
+            transform.localPosition =  new Vector3(transform.localPosition.x, -25f + DistanceToSpaceship / 2.0f , transform.localPosition.z);
+        }
+        else
+        {
+            transform.localPosition =  new Vector3(transform.localPosition.x, 0.0f, transform.localPosition.z);
+        }
      
-        if (DistanceToSpaceship > 200 || DistanceToSpaceship < 30)
+        if (DistanceToSpaceship > 200)
         {
           Visible = false;
           gameObject.SetActive(Visible);  
@@ -61,7 +71,8 @@ public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
         }
 
         DistanceToSpaceship = Mathf.Max(0.0000001f, DistanceToSpaceship);
-        transform.localScale = (Vector3.one * (600 / (0.05f*DistanceToSpaceship*DistanceToSpaceship)));
+        
+        transform.localScale = (Vector3.one * Mathf.Min(600 / (0.05f*DistanceToSpaceship*DistanceToSpaceship), 30));
     }
     
     protected Texture2D PrepareTexture(Planet model)

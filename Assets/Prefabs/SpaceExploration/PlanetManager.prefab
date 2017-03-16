@@ -16,10 +16,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000012790351780}
-  - 114: {fileID: 114000011189635808}
+  - component: {fileID: 4000012790351780}
+  - component: {fileID: 114000011189635808}
   m_Layer: 0
   m_Name: PlanetManager
   m_TagString: Untagged
@@ -34,12 +34,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010928337622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000011189635808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,6 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe65b239260c4e4385b2c39f54322a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlanetPrototype: {fileID: 114000013681988436, guid: 939f15c6e202b4823906bb76fcd24c34,
+  SpaceExRendererPrototype: {fileID: 114000013338247966, guid: 939f15c6e202b4823906bb76fcd24c34,
+    type: 2}
+  RadarRendererPrototype: {fileID: 114000012117424198, guid: 2a5e64b781e664664918647ff045a8e7,
+    type: 2}
+  StarmapRendererPrototype: {fileID: 114000011445320340, guid: d59d6e49def8dea4a8fe4b893ccf12b6,
+    type: 2}
+  OrbitalApproachRendererPrototype: {fileID: 114000012289245492, guid: e5db7ef27ece949709e1db817f67bfc2,
     type: 2}
   MovementTracker: {fileID: 0}
+  OrbitalCamera: {fileID: 0}
+  MainCamera: {fileID: 0}
+  Starmap: {fileID: 0}
