@@ -25,7 +25,7 @@ public class NeuralNode : MonoBehaviour
             Debug.Log("Warning: node has no value label");
         }
 
-        image = this.gameObject.GetComponent<Image>();
+        image = transform.FindChild("Background").gameObject.GetComponent<Image>();
         if (!image)
         {
             Debug.Log("Warning: node has no bg image");
