@@ -552,7 +552,8 @@ public class IndividualModel
     public Range Ph;
     public float Fitness;
 
-  // TODO: Neural Network Representation (?)
+    public ControlStartUp Control;
+  
 }
 
 //
@@ -614,6 +615,14 @@ public class ControlStep
     public List<float> Outputs;
     public List<float> Hidden;
 }
+
+[Serializable]
+public class ControlStartUp
+{
+    public List<float> HiddenToOutput;
+    public List<float> InToHidden;
+}
+
 [Serializable]
 public class IndividualStep
 {

@@ -9,6 +9,7 @@ struct NeuralLink
     public Line line;
     public int startNodeId;
     public int endNodeId;
+    public float weight;
 }
 
 public class NeuralNetworkUI : MonoBehaviour
@@ -29,6 +30,7 @@ public class NeuralNetworkUI : MonoBehaviour
     int numInputNodes = 0;
     int numHiddenNodes = 0;
     int numOutputNodes = 0;
+    Text DNAText;
 
     public void SetCreature(Creature inCreature)
     {
@@ -56,10 +58,15 @@ public class NeuralNetworkUI : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+        foreach (Transform child in LinkParentObject.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
         numInputNodes = 0;
         numOutputNodes = 0;
         numHiddenNodes = 0;
 
+        DNAText = this.transform.parent.FindChild("DNA").GetComponent<Text>();
         // instantiate nodes
         int i = 0;
         foreach (var i_v in ToDetail.LastControlStep.Inputs)
@@ -98,19 +105,22 @@ public class NeuralNetworkUI : MonoBehaviour
     void DrawLinks()
     {
         // draw links
+        int i = 0;
         for (int j = 0; j < numInputNodes; j++)
         {
             for (int k = 0; k < numHiddenNodes; k++)
             {
-                DrawLink(nodeMap[1000 + j], nodeMap[2000 + k], 1000 + j, 2000 + k);
-
+                DrawLink(nodeMap[1000 + j], nodeMap[2000 + k], 1000 + j, 2000 + k, ToDetail.Model.Control.InToHidden[i]);
+                i++;
             }
         }
+        i = 0; 
         for (int j = 0; j < numHiddenNodes; j++)
         {
             for (int k = 0; k < numOutputNodes; k++)
             {
-                DrawLink(nodeMap[2000 + j], nodeMap[3000 + k], 2000 + j, 3000 + k);
+                DrawLink(nodeMap[2000 + j], nodeMap[3000 + k], 2000 + j, 3000 + k, ToDetail.Model.Control.HiddenToOutput[i]);
+                i++;
             }
         }
     }
@@ -148,7 +158,22 @@ public class NeuralNetworkUI : MonoBehaviour
         }
     }
 
-    void DrawLink(NeuralNode fromNode, NeuralNode toNode, int fromId, int toId)
+    /// <summary>
+    /// Return link color based on its weight
+    /// </summary>
+    Color WeightToColor(float inWeight)
+    {
+        float weight = inWeight > 1.0f ? 1.0f : inWeight;
+        weight = weight < -1.0f ? -1.0f : weight;
+        weight = (weight - (-1.0f)) / 2;
+
+        // lerp between red and green
+        Vector3 colorSpaceCoord = Vector3.Lerp(new Vector3(1.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), weight);
+
+        return new Color(colorSpaceCoord.x, colorSpaceCoord.y, colorSpaceCoord.z, 1.0f);
+    }
+
+    void DrawLink(NeuralNode fromNode, NeuralNode toNode, int fromId, int toId, float weight)
     {
         GameObject line = Instantiate(LineObject);
         line.transform.SetParent(LinkParentObject.transform);
@@ -158,7 +183,8 @@ public class NeuralNetworkUI : MonoBehaviour
         nlink.line = line.GetComponent<Line>();
         nlink.startNodeId = fromId;
         nlink.endNodeId = toId;
-
+        nlink.weight = weight;
+        nlink.line.color = WeightToColor(weight);
         linkList.Add(nlink);
     }
 
@@ -177,10 +203,29 @@ public class NeuralNetworkUI : MonoBehaviour
         }
     }
 
+    void PrintText()
+    {
+        DNAText.text = " DNA Sequence: ";
+        foreach (var el in ToDetail.Model.Morphology.Body)
+        {
+            DNAText.text += string.Format("{0}", el.Trait.TID);
+        }
+
+        DNAText.text += "\n";
+        DNAText.text += " Fitness: ";
+        DNAText.text += ToDetail.Model.Fitness;
+
+        DNAText.text += "\n";
+        DNAText.text += " BestFitness: ";
+        DNAText.text += ToDetail.Controller.BestFitness;
+
+    }
+
     void LateUpdate ()
     {
         SetNodeValues(); 
         UpdateLinks();
+        PrintText();
 
     }
 }
