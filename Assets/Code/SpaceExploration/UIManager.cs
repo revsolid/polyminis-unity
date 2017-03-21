@@ -25,6 +25,12 @@ public class UIManager : MonoBehaviour {
         StarMap.SetActive(StarMapToggle);
     }
 
+    public void OnCloseStarmapClick()
+    {
+        StarMapToggle = false;
+        StarMap.SetActive(StarMapToggle);
+    }
+
     public void OnSpeciesEditorClick()
     {
         InventoryToggle = !Inventory.gameObject.active; 
