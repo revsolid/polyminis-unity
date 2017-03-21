@@ -58,3 +58,4 @@ MonoBehaviour:
   foodModel: {fileID: 1725801424138112, guid: b324defa47b7ddb429445ead4697f8d5, type: 2}
   DetailViewCamera: {fileID: 0}
   DetailViewUI: {fileID: 0}
+  NeuralNetworkUI: {fileID: 0}

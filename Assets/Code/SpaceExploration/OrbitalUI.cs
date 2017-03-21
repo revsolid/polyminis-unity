@@ -158,7 +158,8 @@ public class OrbitalUI : MonoBehaviour
     {
         CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(1414, 2);
         loadSimCmd.Command = "GO_TO_EPOCH";
- //       Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
+        // Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
+        PlanetInfoCacher.planetModel = Planet;
         SceneManager.LoadScene("creature_observation");
     }
     

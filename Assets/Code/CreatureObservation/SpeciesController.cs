@@ -29,8 +29,11 @@ public class SpeciesController : MonoBehaviour
     public GameObject foodModel;
     public FollowerCamera DetailViewCamera;
     public DetailedViewUI DetailViewUI;
+    public NeuralNetworkUI NeuralNetworkUI;
+    [HideInInspector]public float BestFitness = 0;
 
     Dictionary<int, Creature> Individuals = new Dictionary<int, Creature>();
+    List<int> IndividualIDs = new List<int>();
     List<SpeciesStep> Steps = new List<SpeciesStep>();
     List<Creature> CreaturesSpawned = new List<Creature>();
     bool IdleCoroutine = true;
@@ -204,6 +207,14 @@ public class SpeciesController : MonoBehaviour
             PendingSpawn = null;
             InvokeRepeating("Poll", 0.1f, 3.0f); 
         }
+
+        foreach(int id in IndividualIDs)
+        {
+            if(Individuals[id].Model.Fitness > BestFitness)
+            {
+                BestFitness = Individuals[id].Model.Fitness;
+            }
+        }
     }
     
     void SpawnCreature(IndividualModel model, int index = 0)    
@@ -212,6 +223,7 @@ public class SpeciesController : MonoBehaviour
         creature.SpeciesIndex = index;
         creature.SetDataFromModel(model);
         Individuals[model.ID] = creature;
+        IndividualIDs.Add(model.ID);
         creature.SetStartingPosition(model.Physics.StartingPos);
         creature.Controller = this; 
         CreaturesSpawned.Add(creature);
@@ -234,7 +246,8 @@ public class SpeciesController : MonoBehaviour
     {
         DetailViewCamera.gameObject.SetActive(true);
         DetailViewCamera.Target = creature.transform;
-        DetailViewUI.ToDetail = creature;
+        //DetailViewUI.ToDetail = creature;
+        NeuralNetworkUI.SetCreature(creature);
     }
     
     public void OnServerMessage(string msg)
