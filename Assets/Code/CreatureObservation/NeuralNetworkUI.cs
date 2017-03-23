@@ -110,7 +110,7 @@ public class NeuralNetworkUI : MonoBehaviour
         {
             for (int k = 0; k < numHiddenNodes; k++)
             {
-                DrawLink(nodeMap[1000 + j], nodeMap[2000 + k], 1000 + j, 2000 + k, ToDetail.Model.Control.InToHidden[i]);
+                DrawLink(nodeMap[1000 + j], nodeMap[2000 + k], 1000 + j, 2000 + k, ToDetail.Model.Control.InToHidden.Coefficients[i]);
                 i++;
             }
         }
@@ -119,7 +119,7 @@ public class NeuralNetworkUI : MonoBehaviour
         {
             for (int k = 0; k < numOutputNodes; k++)
             {
-                DrawLink(nodeMap[2000 + j], nodeMap[3000 + k], 2000 + j, 3000 + k, ToDetail.Model.Control.HiddenToOutput[i]);
+                DrawLink(nodeMap[2000 + j], nodeMap[3000 + k], 2000 + j, 3000 + k, ToDetail.Model.Control.HiddenToOutput.Coefficients[i]);
                 i++;
             }
         }
@@ -218,7 +218,13 @@ public class NeuralNetworkUI : MonoBehaviour
         DNAText.text += "\n";
         DNAText.text += " BestFitness: ";
         DNAText.text += ToDetail.Controller.BestFitness;
-
+        
+        DNAText.text += "\n";
+        DNAText.text += " DebugInfo: ";
+        DNAText.text += ToDetail.DebugText;
+        DNAText.text += "\n";
+        DNAText.text += " Mover Executed: ";
+        DNAText.text += ToDetail.Mover.ExecutedSteps;
     }
 
     void LateUpdate ()
@@ -226,6 +232,5 @@ public class NeuralNetworkUI : MonoBehaviour
         SetNodeValues(); 
         UpdateLinks();
         PrintText();
-
     }
 }

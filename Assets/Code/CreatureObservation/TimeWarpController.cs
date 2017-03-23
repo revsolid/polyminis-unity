@@ -6,23 +6,24 @@ using UnityEngine.UI;
 public class TimeWarpController : MonoBehaviour {
 
     public int StartEpoch;
+    public GameObject ButtonPrototype;
+    public HorizontalLayoutGroup TimeLine;
     int EndEpoch;
-    public ExperimentManager Experiment;
-
-    public Button[] Buttons = new Button[10];
      
 	// Use this for initialization
-	void Start () {
-        //UpdateButtons();
+	void Start ()
+    {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
     void UpdateButtons()
     {
+        /*
         Buttons[0].GetComponentInChildren<Text>().text =  "0";
         Buttons[1].GetComponentInChildren<Text>().text =  "10";
         Buttons[2].GetComponentInChildren<Text>().text =  "25";
@@ -30,14 +31,7 @@ public class TimeWarpController : MonoBehaviour {
         for (int i = 3; i < 10; i++)
         {
             Buttons[i].GetComponentInChildren<Text>().text =  "";
-        }
-
-        //EndEpoch = 46;
-/*
-        for (int i = StartEpoch; i <= EndEpoch; i++)
-        {
-            Buttons[i - StartEpoch].GetcomponentInChildren<Text>().text = .GetComponentInChildren<Text>().text = "" + i;
-        } */
+        }*/
     }
 
     public void OnForwardClicked()
@@ -56,7 +50,7 @@ public class TimeWarpController : MonoBehaviour {
     public void OnEpochButtonClicked(int buttonNumber)
     {
         var exps = new string[]{"demo_0_1", "demo_31_1", "demo_46_1"};
-        Experiment.OnLoadExp(exps[buttonNumber]);
+        //Experiment.OnLoadExp(exps[buttonNumber]);
 //        Experiment.OnLoadExp("demo_" + Buttons[buttonNumber].GetcomponentInChildren<Text>().text = .GetComponentInChildren<Text>().text + "_1");
     }
 }

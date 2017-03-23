@@ -14,7 +14,7 @@ public class PlayerID : MonoBehaviour
         PlayerName.text = Session.Instance.UserName;
         Biomass.text = Session.Instance.Biomass + "";
 		
-        Session.OnSessionChangedEvent += () => OnSessionChanged();
+        Session.OnSessionChangedEvent += OnSessionChanged;
     }
 	
 	void OnSessionChanged()
@@ -27,5 +27,10 @@ public class PlayerID : MonoBehaviour
     void Update ()
     {
         
+    }
+    
+    void Destroy()
+    {
+        Session.OnSessionChangedEvent -= OnSessionChanged;
     }
 }
