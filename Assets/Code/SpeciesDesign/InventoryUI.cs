@@ -29,7 +29,16 @@ public class InventoryUI : MonoBehaviour
     {
         gameObject.SetActive(false);
         Session.OnSessionChangedEvent += () => { Reload = true; };
+        OrbitalUI.OnGoBackToSpaceExScreen += Dismiss;
+        OrbitalApproachRenderer.OnToOrbitScreen += Dismiss;
     }
+
+    void OnDestroy()
+    {
+        OrbitalUI.OnGoBackToSpaceExScreen -= Dismiss;
+        OrbitalApproachRenderer.OnToOrbitScreen -= Dismiss;
+    }
+
     void Awake () 
     {
     }
