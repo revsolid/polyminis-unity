@@ -110,9 +110,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
                 researchSpeciesCommand.Slot = Session.Instance.NextAvailableSlot();
                 if (researchSpeciesCommand.Slot == -1)
                 {
-                    // This is an issue    
                     InventoryFullDialog ifDialog = Instantiate(InvFullDialog);
-
                     Debug.Log("NO MORE SLOTS FOR YOU!!!!!");
                 }
                 else
