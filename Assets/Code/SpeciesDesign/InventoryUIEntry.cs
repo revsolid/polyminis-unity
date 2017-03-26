@@ -40,6 +40,7 @@ public class InventoryUIEntry : MonoBehaviour
         {
             EntryName.text = "Create new Species";
             DeleteButton.gameObject.SetActive(false);
+            ResearchProgressBar.gameObject.SetActive(false);
         }
         else
         {

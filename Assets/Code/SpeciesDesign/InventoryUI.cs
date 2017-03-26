@@ -77,34 +77,43 @@ public class InventoryUI : MonoBehaviour
         LoadFromSession();
         gameObject.SetActive(true);
     }
+
     void LoadFromSession()
     {
         Connection.Instance.OnMessageEvent -= OnServerMessage;
-        var children = new List<GameObject>();
-        foreach (Transform child in EntriesLayoutGroup.transform) children.Add(child.gameObject);
-        children.ForEach(child => Destroy(child));
 
-        int fullEntries = Session.Instance.InventoryEntries.Count;
-        for(int i = 0; i < fullEntries; i++)
+        // first check if we have the right number of slots
+        var children = new List<GameObject>();
+        while(EntriesLayoutGroup.transform.childCount > Session.Instance.Slots)
+        {
+            Destroy(EntriesLayoutGroup.transform.GetChild(0));
+        }
+        while(EntriesLayoutGroup.transform.childCount < Session.Instance.Slots)
         {
             InventoryUIEntry uiEntry = Instantiate(EntryPrototype);
-            uiEntry.InvEntry = Session.Instance.InventoryEntries[i];
             uiEntry.Mode = CurrentMode;
             uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
         }
-        
-        // Add Empty Slots
-        int emptySlots = Session.Instance.Slots - Session.Instance.InventoryEntries.Count;
-        
-        for(int i = 0; i < emptySlots; ++i)
+
+        // update slots 
+        int sessionEntriesIndex = 0;
+        for(int i = 0; i < EntriesLayoutGroup.transform.childCount; i++)
         {
-            InventoryUIEntry uiEntry = Instantiate(EntryPrototype);
-            uiEntry.InvEntry = null;
+            InventoryUIEntry uiEntry = EntriesLayoutGroup.transform.GetChild(i).gameObject.GetComponent<InventoryUIEntry>();
             uiEntry.Mode = CurrentMode;
-            uiEntry.transform.SetParent(EntriesLayoutGroup.transform);
+            if (sessionEntriesIndex < Session.Instance.InventoryEntries.Count)
+            {
+                uiEntry.InvEntry = Session.Instance.InventoryEntries[sessionEntriesIndex];
+                sessionEntriesIndex++;
+            }
+            else
+            {
+                uiEntry.InvEntry = null;
+            }
         }
         Connection.Instance.OnMessageEvent += OnServerMessage;
-    } 
+
+    }
     
     void HandleEdit(InventoryEntry currentModel)
     {
