@@ -38,14 +38,7 @@ class MovementFactory
             tRot = CreatureMover.SimulationRotationToSceneRotation(step.EOrientation);
         }
         
-        if (step.Collisions.Count != 0)
-        {
-            return new CollisionAction(type, tPos, tRot);
-        }
-        else
-        {
-            return new CreatureMovementAction(type, tPos, tRot);
-        }
+        return new CreatureMovementAction(type, tPos, tRot);
     }
 }
 
@@ -72,8 +65,6 @@ class CreatureMovementAction
         TargetRotation = tRot;
     }
     
-//    [{"Control":{"Hidden":[0.9177292585372925,0.8209009766578674,0.8652114272117615,0.8968551158905029,0.7769179940223694,0.8013090491294861],"Inputs":[0.7400000095367432,0.05000000074505806,0.0,1.0],"Outputs":[]},"ID":8,"Physics":{"ID":8,"Orientation":"UP","Position":[74.0,5.0],"collisions":[],"last_action":{}}}
-    
     public virtual void StartOn(CreatureMover mover)
     {
         TimeStarted = Time.time;
@@ -91,14 +82,15 @@ class CreatureMovementAction
             case MovementType.TRANSLATE:
                 Vector3 azimuth = mover.gameObject.transform.position - TargetPosition; 
                 
-                if (azimuth.sqrMagnitude < 0.05)
+                if (azimuth.sqrMagnitude < 0.005)
                 {
+                    mover.gameObject.transform.position = TargetPosition;
                     return true;
                 }
                 else
                 {
                     azimuth.Normalize();
-                    mover.gameObject.transform.Translate(-1 * azimuth * Time.deltaTime * Speed, Space.World);
+                    mover.gameObject.transform.Translate(-1 * azimuth * Time.deltaTime * Speed * 1.25f, Space.World);
                 }
                 break;
                 
@@ -137,8 +129,7 @@ class CollisionAction: CreatureMovementAction
     
     public override bool ApplyTo(CreatureMover mover)
     {
-        WaitTime -= Time.deltaTime;
-        return WaitTime < 0.0f;
+        return true; 
     }
 
 }
@@ -151,6 +142,7 @@ public class CreatureMover : MonoBehaviour
     public const float TOTAL_SIZE = 125f;
     public float Speed;
     public Vector2 InitialPosition;
+    public int ExecutedSteps {get; private set;}
     
     Vector2  SimulationPosition;
     
@@ -191,6 +183,7 @@ public class CreatureMover : MonoBehaviour
     
     public void SetDataFromModel(IndividualModel model)
     {
+        Speed = model.Speed;
         SetInitialPosition(model.Physics.Position);
     }
     
@@ -220,6 +213,7 @@ public class CreatureMover : MonoBehaviour
             {
                 CurrentAction = ActionStream.Dequeue();
                 CurrentAction.StartOn(this);
+                ExecutedSteps++;
             }
             else
             {

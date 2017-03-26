@@ -551,6 +551,7 @@ public class IndividualModel
     public Range Temperature;
     public Range Ph;
     public float Fitness;
+    public float Speed; 
 
     public ControlStartUp Control;
   
@@ -616,11 +617,19 @@ public class ControlStep
     public List<float> Hidden;
 }
 
+
+[Serializable]
+public class NNLayer
+{
+    public List<float> Coefficients;
+    public List<float> Biases;
+}
+
 [Serializable]
 public class ControlStartUp
 {
-    public List<float> HiddenToOutput;
-    public List<float> InToHidden;
+    public NNLayer HiddenToOutput;
+    public NNLayer InToHidden;
 }
 
 [Serializable]

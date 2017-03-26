@@ -68,7 +68,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
     
     public void OnSliderValueChange()
     {
-        BiomassValue.text = BiomassSlider.value.ToString("0.00");
+        BiomassValue.text = BiomassSlider.value.ToString("0.0");
     }
     
     public void OnAccept()

@@ -29,11 +29,12 @@ public class WarpDialog : MonoBehaviour
     {
         if (WarpCost != 0.0f)
         {
+            string warpCostString = WarpCost.ToString("0.0");
             PolyminisDialog dialog = GetComponent<PolyminisDialog>();
             
             if (WarpCost > Session.Instance.Biomass) 
             {
-                dialog.DialogString = "You don't have enough Biomass to warp to that planet. (" + Session.Instance.Biomass + "/" + WarpCost + ")";
+                dialog.DialogString = "You don't have enough Biomass to warp to that planet. (" + Session.Instance.Biomass + "/" + warpCostString + ")";
                 dialog.LeftButton.gameObject.SetActive(false);
             }
             else if (WarpCost < 0.0f)
@@ -43,9 +44,9 @@ public class WarpDialog : MonoBehaviour
             }
             else
             {
-                dialog.DialogString = "The cost of warping to this planet is " + WarpCost + " Biomass.\n";
+                dialog.DialogString = "The cost of warping to this planet is " + warpCostString + " Biomass.\n";
                 dialog.DialogString += "Do you want to warp?";
-                dialog.LeftButton.gameObject.gameObject.SetActive(true);
+                dialog.LeftButton.gameObject.SetActive(true);
             }
         }
     }
