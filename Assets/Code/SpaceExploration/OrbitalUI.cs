@@ -32,6 +32,10 @@ public class OrbitalUI : MonoBehaviour
     private Dictionary<int,string> ResourceNames;
 
     private string PopupString;
+
+    public delegate void BackToSpaceAction();
+    public static event BackToSpaceAction OnGoBackToSpaceExScreen;
+
     // Use this for initialization
     void Awake()
     {
@@ -92,6 +96,10 @@ public class OrbitalUI : MonoBehaviour
     
     public void OnBackClicked()
     {
+        if(OnGoBackToSpaceExScreen != null)
+        {
+            OnGoBackToSpaceExScreen();
+        }
         OrbitalCamera.gameObject.SetActive(false);
         SpaceflightCamera.gameObject.SetActive(true);
         SpaceflightCamera.enabled = true;
