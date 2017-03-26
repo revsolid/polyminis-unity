@@ -22,6 +22,10 @@ public class InventoryUI : MonoBehaviour
     public delegate void EntrySelected(InventoryEntry model, int slotNum);
     public static event EntrySelected OnEntrySelected;
 
+    public delegate void OpenInventoryAction();
+    public static event OpenInventoryAction OnOpenInventory;
+
+
     bool Reload = false;
     int Epoch = -1;
 
@@ -31,12 +35,14 @@ public class InventoryUI : MonoBehaviour
         Session.OnSessionChangedEvent += () => { Reload = true; };
         OrbitalUI.OnGoBackToSpaceExScreen += Dismiss;
         OrbitalApproachRenderer.OnToOrbitScreen += Dismiss;
+        SpeciesDesignUI.OnOpenSpeciesDesigner += Dismiss;
     }
 
     void OnDestroy()
     {
         OrbitalUI.OnGoBackToSpaceExScreen -= Dismiss;
         OrbitalApproachRenderer.OnToOrbitScreen -= Dismiss;
+        SpeciesDesignUI.OnOpenSpeciesDesigner -= Dismiss;
     }
 
     void Awake () 
@@ -62,6 +68,10 @@ public class InventoryUI : MonoBehaviour
 
     public void ShowInMode(InventoryMode mode)
     {
+        if(OnOpenInventory != null)
+        {
+            OnOpenInventory();
+        }
         CurrentMode = mode;
         if (CurrentMode == InventoryMode.NORMAL)
         {
