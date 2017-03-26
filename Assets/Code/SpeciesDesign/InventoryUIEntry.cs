@@ -16,8 +16,13 @@ public class InventoryUIEntry : MonoBehaviour
     public Text EntryName;
     public InventoryMode Mode;
     public Button DeleteButton;
+
+    private Slider ResearchProgressBar;
     
-    void Start () {}
+    void Start ()
+    {
+        ResearchProgressBar = this.transform.FindChild("Progress").gameObject.GetComponent<Slider>();
+    }
     void Awake(){}
     void Update()
     {
@@ -29,6 +34,7 @@ public class InventoryUIEntry : MonoBehaviour
             }
             EntryName.text =  InvEntry.GetName();
             DeleteButton.gameObject.SetActive(Mode != InventoryMode.SELECTION);
+            ResearchProgressBar.gameObject.SetActive(InvEntry.Value.BeingResearched);
         }
         else if (Mode == InventoryMode.NORMAL)
         {
@@ -67,9 +73,6 @@ public class InventoryUIEntry : MonoBehaviour
         {
             InventoryCommand queryEpochComman = new InventoryCommand(InventoryCommandType.GET_GLOBAL_EPOCH);
             Connection.Instance.Send(JsonUtility.ToJson(queryEpochComman));
-            Slider slider = this.transform.FindChild ("Progress").gameObject.GetComponent<Slider> ();
-            slider.gameObject.SetActive (true);
-
         }
     }
         
@@ -78,14 +81,12 @@ public class InventoryUIEntry : MonoBehaviour
     {
         if (InvEntry != null && InvEntry.Value.BeingResearched)
         {
-            Slider slider = this.transform.FindChild ("Progress").gameObject.GetComponent<Slider> ();
-            slider.gameObject.SetActive (true);
             float value = (float)(EpochNow - InvEntry.Value.EpochStarted) / (float)(InvEntry.Value.EpochDone - InvEntry.Value.EpochStarted);
 
             if (value < 0) value = 0;
             else if (value > 1.0f) value = 1.0f;
 
-            slider.value = value;
+            ResearchProgressBar.value = value;
         }
     }
 
