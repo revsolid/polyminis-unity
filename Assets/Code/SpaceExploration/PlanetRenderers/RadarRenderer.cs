@@ -25,7 +25,7 @@ public class RadarRenderer : UIPlanetRenderer
     public override void RenderUpdate(Planet model)
     {
         DistanceToSpaceship = model.DistanceToSpaceship;
-        if (Mathf.Abs(model.RelativeAngle) < 60 && DistanceToSpaceship > 30 && DistanceToSpaceship < 300)
+        if (Mathf.Abs(model.RelativeAngle) < 60 && DistanceToSpaceship > 30 && DistanceToSpaceship < 1200)
         {
             if (!Visible)
             {

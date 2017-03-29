@@ -21,6 +21,9 @@ public class SpeciesDesignUI : MonoBehaviour
     public delegate void SaveClicked(SpeciesModel result);
     public static event SaveClicked OnSaveEvent;
 
+    public delegate void OpenSpeciesDesignerAction();
+    public static event OpenSpeciesDesignerAction OnOpenSpeciesDesigner;
+
     SpliceButton.ButtonClicked SpliceButtonClickedHandler;
     DnaHelix.SpliceRemoved SpliceRemovedFromHelixHandler;
     
@@ -29,12 +32,24 @@ public class SpeciesDesignUI : MonoBehaviour
     void Start()
     {
         Initialize();
+        OrbitalUI.OnGoBackToSpaceExScreen += OnExitButtonClicked;
+        OrbitalApproachRenderer.OnToOrbitScreen += OnExitButtonClicked;
+        InventoryUI.OnOpenInventory += OnExitButtonClicked;
     }
 
     void OnDestroy()
     {
         SpliceButton.OnClickEvent -= SpliceButtonClickedHandler;
         DnaHelix.OnSpliceRemovedEvent -= SpliceRemovedFromHelixHandler;
+        OrbitalUI.OnGoBackToSpaceExScreen -= OnExitButtonClicked;
+        OrbitalApproachRenderer.OnToOrbitScreen -= OnExitButtonClicked;
+        InventoryUI.OnOpenInventory -= OnExitButtonClicked;
+
+    }
+
+    void OnEnable()
+    {
+        OnOpenSpeciesDesigner();
     }
 
     // Previously named Reset but I think Initialize fits the purpose better
@@ -63,7 +78,7 @@ public class SpeciesDesignUI : MonoBehaviour
     // read DesignerModel and update all children
     void UpdateAllViews()
     {
-        InstinctsTunner.UpdateView(DesignerModel);
+   //     InstinctsTunner.UpdateView(DesignerModel);
         Helix.UpdateView(DesignerModel);
         this.UpdateView();
         DnaSequencer.ActivateSelection(DesignerModel.CurrentSpecies);

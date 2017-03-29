@@ -14,7 +14,7 @@ public class InOrbitRenderer: SpaceExPlanetRenderer
     
     void Update()
     {
-       transform.Rotate(0, 1, 0);
+       transform.Rotate(0, 3, 0);
           
         // Prepare texture
         if (ReloadRenderer && Model != null)

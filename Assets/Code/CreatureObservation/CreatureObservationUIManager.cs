@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-public class CretureObservationUIManager : MonoBehaviour
+public class CreatureObservationUIManager : MonoBehaviour
 {
 	public PlanetModel ObservingPlanet;
 

@@ -4,19 +4,40 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject TargetPoint;
+    public Camera FloatingCamera;
     public float RotationRadius = 500;
-    public Camera ToControl;
+    
+    public Camera TopDownCamera;
+    public Transform TargetPoint;
+    
+    public PlanetLiquid Liquid;
+    
     public Slider ZoomSlider;
 
     float Angle = 0.0f;
     float HorImpulse;
     float VerImpulse;
+    
+    
+    public void UseTopDownCamera()
+    {
+        FloatingCamera.enabled = false;
+        TopDownCamera.enabled = true;
+    }
+    public void UseFloatingCamera()
+    {
+        FloatingCamera.enabled = true;
+        TopDownCamera.enabled = false;
+    }
 
 	// Use this for initialization
 	void Start ()
 	{
-        transform.position = new Vector3(RotationRadius, 100, 0.0f);
+        FloatingCamera.transform.position = new Vector3(RotationRadius, 100, 0.0f);
+        TopDownCamera.enabled = false;
+        Liquid.TopDownCamera = TopDownCamera;
+        Liquid.FloatingCamera = FloatingCamera;
+        Liquid.OnClick += LookAtPoint;
 	}
 	
 	// Update is called once per frame
@@ -28,7 +49,20 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 newPos = transform.position;
+       if (FloatingCamera == Camera.current) 
+       {
+           LateUpdateFloating(); 
+       }
+       
+       if (TopDownCamera == Camera.current)
+       {
+           LateUpdateTopDown(); 
+       }
+    }
+    
+    void LateUpdateFloating()
+    {
+        Vector3 newPos = FloatingCamera.transform.position;
         newPos.y = Mathf.Min(125, Mathf.Max(newPos.y + VerImpulse, 5.0f));
         if (HorImpulse != 0)
         {
@@ -39,9 +73,40 @@ public class CameraController : MonoBehaviour
             newPos.x = x * RotationRadius;
             newPos.z = z * RotationRadius;
         }
-        transform.position = newPos;
-        transform.LookAt(TargetPoint.transform);
+        FloatingCamera.transform.position = newPos;
+        FloatingCamera.transform.LookAt(Vector3.zero);
+        //ToControl.fieldOfView = ZoomSlider.value;       
+    }
+    
+    void LateUpdateTopDown()
+    {
+        Vector3 newPos = TargetPoint.position;
+        if (HorImpulse != 0)
+        {
+            newPos.x = Mathf.Min(100, Mathf.Max(newPos.x + HorImpulse, -100.0f));
+        }
+        if (VerImpulse != 0)
+        {
+            newPos.z = Mathf.Min(100, Mathf.Max(newPos.z + VerImpulse, -100.0f));
+        }
         
-        ToControl.fieldOfView = ZoomSlider.value;
+        TargetPoint.position = newPos;
+        
+        TopDownCamera.transform.position = TargetPoint.position + Vector3.up*100; 
+        TopDownCamera.transform.LookAt(TargetPoint);
+    } 
+        
+    void LookAtPoint(Vector3 lookAt)
+    {
+        TargetPoint.position = lookAt;
+        TopDownCamera.transform.position = lookAt + Vector3.up*100; 
+        FloatingCamera.enabled = false;
+        TopDownCamera.enabled = true;
+    }
+    
+    void OnDestroy()
+    {
+        //
+        Liquid.OnClick -= LookAtPoint;
     }
 }

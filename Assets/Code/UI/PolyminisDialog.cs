@@ -17,6 +17,18 @@ public class PolyminisDialog : MonoBehaviour
     public Button LeftButton;
     public Text   DialogMessage;
 
+    private void Start()
+    {
+        OrbitalUI.OnGoBackToSpaceExScreen += OnSwitchScreen;
+        OrbitalApproachRenderer.OnToOrbitScreen += OnSwitchScreen;
+    }
+
+    private void OnDestroy()
+    {
+        OrbitalUI.OnGoBackToSpaceExScreen -= OnSwitchScreen;
+        OrbitalApproachRenderer.OnToOrbitScreen -= OnSwitchScreen;
+    }
+
     private void OnEnable()
     {
         UpdateTextOnElements();
@@ -51,5 +63,11 @@ public class PolyminisDialog : MonoBehaviour
         {
             s.BlockingDialog = this.gameObject;
         }
+    }
+
+    private void OnSwitchScreen()
+    {
+        // destroy self when screen switch
+        Destroy(this.gameObject);
     }
 }

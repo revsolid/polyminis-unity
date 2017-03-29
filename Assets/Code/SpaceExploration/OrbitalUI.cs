@@ -32,6 +32,10 @@ public class OrbitalUI : MonoBehaviour
     private Dictionary<int,string> ResourceNames;
 
     private string PopupString;
+
+    public delegate void BackToSpaceAction();
+    public static event BackToSpaceAction OnGoBackToSpaceExScreen;
+
     // Use this for initialization
     void Awake()
     {
@@ -92,6 +96,10 @@ public class OrbitalUI : MonoBehaviour
     
     public void OnBackClicked()
     {
+        if(OnGoBackToSpaceExScreen != null)
+        {
+            OnGoBackToSpaceExScreen();
+        }
         OrbitalCamera.gameObject.SetActive(false);
         SpaceflightCamera.gameObject.SetActive(true);
         SpaceflightCamera.enabled = true;
@@ -156,9 +164,6 @@ public class OrbitalUI : MonoBehaviour
     
     public void OnObservePlanetClicked()
     {
-        CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(1414, 2);
-        loadSimCmd.Command = "GO_TO_EPOCH";
-        // Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
         PlanetInfoCacher.planetModel = Planet;
         SceneManager.LoadScene("creature_observation");
     }
@@ -243,11 +248,11 @@ public class OrbitalUI : MonoBehaviour
 
         Debug.Log(scMin + " XXX " + scAverage + " XXX " + p.Temperature.Max);
         ResourceData[0] = scMin;
-        ResourceNames.Add(0, "Low: "+scMin+" K");
+        ResourceNames.Add(0, "Low:\n"+ (p.Temperature.Min * 273).ToString("0.0")+" K");
         ResourceData[1] = scAverage - scMin;
-        ResourceNames.Add(1, "Average");
+        ResourceNames.Add(1, "Average:\n" + ((p.Temperature.Min +  p.Temperature.Max) * 273 / 2).ToString("0.0") + " K");
         ResourceData[2] = 1 - scAverage;
-        ResourceNames.Add(2, "High: "+ scAverage +" K");
+        ResourceNames.Add(2, "High:\n"+ (p.Temperature.Max * 273).ToString("0.0") +" K");
 
         PopulationChart.ChartSize = 0;
         ResourceChart.ChartSize = 0;

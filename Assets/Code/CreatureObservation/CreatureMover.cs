@@ -38,14 +38,7 @@ class MovementFactory
             tRot = CreatureMover.SimulationRotationToSceneRotation(step.EOrientation);
         }
         
-        if (step.Collisions.Count != 0)
-        {
-            return new CollisionAction(type, tPos, tRot);
-        }
-        else
-        {
-            return new CreatureMovementAction(type, tPos, tRot);
-        }
+        return new CreatureMovementAction(type, tPos, tRot, step);
     }
 }
 
@@ -53,6 +46,7 @@ class CreatureMovementAction
 {
     public MovementType MovType;
     public MovementDirection MovDir;
+    public PhysicsStep Step;
     protected float TimeStarted;
     protected float Speed;
     public Vector3 InitialPosition;
@@ -65,14 +59,13 @@ class CreatureMovementAction
         MovDir = mDir;
     }
     
-    public CreatureMovementAction(MovementType mType, Vector3 tPos, Quaternion tRot )
+    public CreatureMovementAction(MovementType mType, Vector3 tPos, Quaternion tRot, PhysicsStep step)
     {
         MovType = mType;
         TargetPosition = tPos;
         TargetRotation = tRot;
+        Step = step;        
     }
-    
-//    [{"Control":{"Hidden":[0.9177292585372925,0.8209009766578674,0.8652114272117615,0.8968551158905029,0.7769179940223694,0.8013090491294861],"Inputs":[0.7400000095367432,0.05000000074505806,0.0,1.0],"Outputs":[]},"ID":8,"Physics":{"ID":8,"Orientation":"UP","Position":[74.0,5.0],"collisions":[],"last_action":{}}}
     
     public virtual void StartOn(CreatureMover mover)
     {
@@ -93,12 +86,13 @@ class CreatureMovementAction
                 
                 if (azimuth.sqrMagnitude < 0.05)
                 {
+                    mover.gameObject.transform.position = TargetPosition;
                     return true;
                 }
                 else
                 {
                     azimuth.Normalize();
-                    mover.gameObject.transform.Translate(-1 * azimuth * Time.deltaTime * Speed, Space.World);
+                    mover.gameObject.transform.Translate(-1 * azimuth * Time.deltaTime * Speed * 1.25f, Space.World);
                 }
                 break;
                 
@@ -111,7 +105,7 @@ class CreatureMovementAction
                 else
                 {
                     float t = Time.time - TimeStarted;
-                    mover.gameObject.transform.localRotation = Quaternion.Slerp(mover.gameObject.transform.localRotation, TargetRotation, t * Speed / 8);
+                    mover.gameObject.transform.localRotation = Quaternion.Slerp(mover.gameObject.transform.localRotation, TargetRotation, t * Speed / 2);
                 }
                 break;
         }
@@ -126,7 +120,7 @@ class CollisionAction: CreatureMovementAction
     public CollisionAction(MovementType mType, MovementDirection mDir) : base(mType, mDir)
     {
     }
-    public CollisionAction(MovementType mType, Vector3 tPos, Quaternion tRot ) : base(mType, tPos, tRot)
+    public CollisionAction(MovementType mType, Vector3 tPos, Quaternion tRot ) : base(mType, tPos, tRot, null)
     {
     }
 
@@ -137,8 +131,7 @@ class CollisionAction: CreatureMovementAction
     
     public override bool ApplyTo(CreatureMover mover)
     {
-        WaitTime -= Time.deltaTime;
-        return WaitTime < 0.0f;
+        return true; 
     }
 
 }
@@ -151,6 +144,8 @@ public class CreatureMover : MonoBehaviour
     public const float TOTAL_SIZE = 125f;
     public float Speed;
     public Vector2 InitialPosition;
+    public int ExecutedSteps {get; private set;}
+    public string DebugText = "\n";
     
     Vector2  SimulationPosition;
     
@@ -191,6 +186,7 @@ public class CreatureMover : MonoBehaviour
     
     public void SetDataFromModel(IndividualModel model)
     {
+        Speed = Mathf.Min(model.Speed, 4);
         SetInitialPosition(model.Physics.Position);
     }
     
@@ -219,7 +215,11 @@ public class CreatureMover : MonoBehaviour
             if (ActionStream.Count > 0)
             {
                 CurrentAction = ActionStream.Dequeue();
+                
+                DebugText = string.Format("\nDebug Movement: {0} {1} Speed: {2}", CurrentAction.Step.Orientation, CurrentAction.Step.Position, Speed);
+
                 CurrentAction.StartOn(this);
+                ExecutedSteps++;
             }
             else
             {

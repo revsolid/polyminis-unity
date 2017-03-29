@@ -47,10 +47,10 @@ public class SpeciesController : MonoBehaviour
     }
     void Start()
     {
-        LoadExperiment("demo_46_1");
-        //InvokeRepeating("Poll", 1.0f, 5.0f);
 		Connection.Instance.OnMessageEvent += OnServerMessage;
- //       InvokeRepeating("Poll", 0.1f, 3.0f);
+        CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(31415, 98);
+        loadSimCmd.Command = "GO_TO_EPOCH";
+        Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
     }
 
     void Poll()
@@ -59,6 +59,14 @@ public class SpeciesController : MonoBehaviour
         dummyCmd.Service = "creature_observation";
         dummyCmd.Command = "POLL";
         Connection.Instance.Send(JsonUtility.ToJson(dummyCmd));
+    }
+    
+    void Step()
+    {
+       foreach(Creature ind in Individuals.Values) 
+       {
+           ind.Step();
+       }
     }
 
     public void LoadExperiment(string expname)
@@ -205,15 +213,21 @@ public class SpeciesController : MonoBehaviour
             }
             
             PendingSpawn = null;
-            InvokeRepeating("Poll", 0.1f, 3.0f); 
-        }
 
-        foreach(int id in IndividualIDs)
-        {
-            if(Individuals[id].Model.Fitness > BestFitness)
+            foreach(KeyValuePair<int, Creature> entry in Individuals)
             {
-                BestFitness = Individuals[id].Model.Fitness;
+                Creature ind = entry.Value; 
+                if(ind.Model.Fitness > BestFitness)
+                {
+                    BestFitness = ind.Model.Fitness;
+                }
             }
+            // Always cleanup before adding the repeating call 
+            // it is ok to do this since CancelInvoke just NOOPs the first time
+            CancelInvoke("Poll");
+            CancelInvoke("Step");
+            InvokeRepeating("Poll", 0.1f, 3.0f); 
+            InvokeRepeating("Step", 0.0f, 0.5f);
         }
     }
     
@@ -252,12 +266,10 @@ public class SpeciesController : MonoBehaviour
     
     public void OnServerMessage(string msg)
     {
-		Debug.Log("XXXXXXXXX");
-        CreatureObservationEvent ev = JsonUtility.FromJson<CreatureObservationEvent>(msg);
-        
-        if (ev.Service == "creature_observation")
+        BaseEvent base_ev = JsonUtility.FromJson<BaseEvent>(msg);
+        if (base_ev.Service == "creature_observation")
         {
-			Debug.Log("SPECIES CONTROLLER - OSMsg");
+            CreatureObservationEvent ev = JsonUtility.FromJson<CreatureObservationEvent>(msg);
             if (ev.EventString == "NEW_EPOCH")
             {
                 PendingSpawn = ev;
@@ -267,5 +279,12 @@ public class SpeciesController : MonoBehaviour
                 PendingSteps.Add(ev);
             }
         }
+    }
+    
+    void OnDestroy()
+    {
+        Connection.Instance.OnMessageEvent -= OnServerMessage;
+        CancelInvoke("Poll");
+        CancelInvoke("Step");
     }
 }

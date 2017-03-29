@@ -8,6 +8,10 @@ public class OrbitalApproachRenderer : UIPlanetRenderer
 	public bool Visible = false;
 	public float DistanceToSpaceship = 0.0f;
 
+    public delegate void ToOrbitAction();
+    public static event ToOrbitAction OnToOrbitScreen;
+
+
     // Use this for initialization
     void Start ()
     {
@@ -50,6 +54,10 @@ public class OrbitalApproachRenderer : UIPlanetRenderer
     
 	public void OnButtonClick()
 	{
+        if (OnToOrbitScreen != null)
+        {
+            OnToOrbitScreen();
+        }
         Camera.main.gameObject.SetActive(false);
         TargetCamera.gameObject.SetActive(true);
         TargetCamera.enabled = true;

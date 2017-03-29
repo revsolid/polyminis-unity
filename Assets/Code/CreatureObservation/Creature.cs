@@ -17,7 +17,7 @@ public class Creature : MonoBehaviour
 	public int ID;
 	public bool Alive;
     public GameObject foodSource;
-	public Text DebugText;
+	public string DebugText;
 	
 	public SpeciesController Controller;
 	public ControlStep LastControlStep;
@@ -27,6 +27,10 @@ public class Creature : MonoBehaviour
 	
 	public IndividualModel Model;
 	
+	private List<IndividualStep> Steps;
+	private int StepsToIgnore = 0;
+	private int ExecutedSteps = 0;
+	
 	void Awake()
 	{
 		OnCreatureClickedEvent = null;
@@ -34,19 +38,47 @@ public class Creature : MonoBehaviour
 	
 	public void AddStep(IndividualStep step)
 	{
+		if (Steps == null)
+		{
+			Steps = new List<IndividualStep>();
+			SetStartingPosition(step.Physics.Position);
+		}
+		Steps.Add(step);
+	}
+	
+	public void Step()
+	{
+		if (Steps == null || Steps.Count == 0)
+		{
+			return;
+		}
+		IndividualStep step = Steps[0];
+		Steps.RemoveAt(0);
+		
 		if (Mover != null)
 		{
-			Mover.AddStep(step.Physics);
-            //Animation setting here based on step/impulse
-            //Know that the obj is a food source for now:
-        }
-        float rand = Random.Range(-0.5f, 0.5f);
-        foreach (var anim in GetComponentsInChildren<Animator>())
-		{
-			anim.SetFloat("Impulse",rand);
+			if (StepsToIgnore == 0)
+			{
+				Mover.AddStep(step.Physics);
+				StepsToIgnore = Mathf.Max(0, 4 - (int)Model.Speed);
+			}
+			else
+			{
+				StepsToIgnore -= 1;
+			}
 		}
+
         Alive = step.Alive;
         LastControlStep = step.Control; 
+		ExecutedSteps += 1;
+		
+		DebugText = string.Format("Executing Step {0}/{1} ", ExecutedSteps, Steps.Count);
+		
+		DebugText += string.Format("\nPosition: {0}", step.Physics.Position);
+		DebugText += string.Format("\nAlive: {0}", step.Alive);
+		DebugText += string.Format("\nIgnoring: {0}", StepsToIgnore);
+		
+		DebugText += Mover.DebugText;
 	}
 	
 	public void SetDataFromModel(IndividualModel model)
@@ -74,9 +106,7 @@ public class Creature : MonoBehaviour
 			}
 		}
 		Mover.SetDataFromModel(model);
-		DebugText.text = "ID: " + ID + "\n" + "Remaining Steps: "+Mover.GetRemainingSteps();
 		Model = model;
-		
 	}
 	
 	public void SetStartingPosition(Vector2 v)
@@ -86,7 +116,6 @@ public class Creature : MonoBehaviour
 	
 	public void OnMouseDown()
 	{
-		Debug.Log("Click");
 		if (OnCreatureClickedEvent != null)
 		{
 			OnCreatureClickedEvent(this);
@@ -97,6 +126,5 @@ public class Creature : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		DebugText.text = "ID: " + ID + "\n" + "Remaining Steps: "+Mover.GetRemainingSteps();
 	}
 }

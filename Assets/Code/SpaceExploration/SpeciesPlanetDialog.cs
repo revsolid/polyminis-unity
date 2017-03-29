@@ -22,6 +22,8 @@ public class SpeciesPlanetDialog : MonoBehaviour
     
     public PlanetModel PlanetModel;
     public SpeciesModel SpeciesModel;
+
+    public InventoryFullDialog InvFullDialog;
     
     // Use this for initialization
     void Start ()
@@ -68,7 +70,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
     
     public void OnSliderValueChange()
     {
-        BiomassValue.text = BiomassSlider.value.ToString("0.00");
+        BiomassValue.text = BiomassSlider.value.ToString("0.0");
     }
     
     public void OnAccept()
@@ -108,7 +110,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
                 researchSpeciesCommand.Slot = Session.Instance.NextAvailableSlot();
                 if (researchSpeciesCommand.Slot == -1)
                 {
-                // This is an issue    
+                    InventoryFullDialog ifDialog = Instantiate(InvFullDialog);
                     Debug.Log("NO MORE SLOTS FOR YOU!!!!!");
                 }
                 else

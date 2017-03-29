@@ -79,6 +79,7 @@ public class InstinctsTunner : MonoBehaviour
     {
         foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
         {
+            Debug.Log(i);
             MaxLevels[i] = MaxLevelsBase[i] + MaxLevelsTunned[i];
         }
     }

@@ -102,8 +102,8 @@ public class Session : Singleton<Session>
                     {
                         Debug.Log(ie.InventoryType);
                         Debug.Log(ie.Value);
-                        OnSessionChangedEvent();
                     }
+                    OnSessionChangedEvent();
                 }
             }
         }
