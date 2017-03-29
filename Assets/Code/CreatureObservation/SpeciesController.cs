@@ -48,7 +48,7 @@ public class SpeciesController : MonoBehaviour
     void Start()
     {
 		Connection.Instance.OnMessageEvent += OnServerMessage;
-        CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(31415, 9);
+        CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(31415, 98);
         loadSimCmd.Command = "GO_TO_EPOCH";
         Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
     }
