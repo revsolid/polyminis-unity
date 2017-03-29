@@ -55,14 +55,17 @@ public class Creature : MonoBehaviour
 		IndividualStep step = Steps[0];
 		Steps.RemoveAt(0);
 		
-		if (Mover != null && StepsToIgnore == 0)
+		if (Mover != null)
 		{
-			Mover.AddStep(step.Physics);
-			StepsToIgnore = 4 - (int)Model.Speed;
-        }
-		else
-		{
-			StepsToIgnore -= 1;
+			if (StepsToIgnore == 0)
+			{
+				Mover.AddStep(step.Physics);
+				StepsToIgnore = Mathf.Max(0, 4 - (int)Model.Speed);
+			}
+			else
+			{
+				StepsToIgnore -= 1;
+			}
 		}
 
         Alive = step.Alive;
@@ -70,6 +73,12 @@ public class Creature : MonoBehaviour
 		ExecutedSteps += 1;
 		
 		DebugText = string.Format("Executing Step {0}/{1} ", ExecutedSteps, Steps.Count);
+		
+		DebugText += string.Format("\nPosition: {0}", step.Physics.Position);
+		DebugText += string.Format("\nAlive: {0}", step.Alive);
+		DebugText += string.Format("\nIgnoring: {0}", StepsToIgnore);
+		
+		DebugText += Mover.DebugText;
 	}
 	
 	public void SetDataFromModel(IndividualModel model)

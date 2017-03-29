@@ -38,7 +38,7 @@ class MovementFactory
             tRot = CreatureMover.SimulationRotationToSceneRotation(step.EOrientation);
         }
         
-        return new CreatureMovementAction(type, tPos, tRot);
+        return new CreatureMovementAction(type, tPos, tRot, step);
     }
 }
 
@@ -46,6 +46,7 @@ class CreatureMovementAction
 {
     public MovementType MovType;
     public MovementDirection MovDir;
+    public PhysicsStep Step;
     protected float TimeStarted;
     protected float Speed;
     public Vector3 InitialPosition;
@@ -58,11 +59,12 @@ class CreatureMovementAction
         MovDir = mDir;
     }
     
-    public CreatureMovementAction(MovementType mType, Vector3 tPos, Quaternion tRot )
+    public CreatureMovementAction(MovementType mType, Vector3 tPos, Quaternion tRot, PhysicsStep step)
     {
         MovType = mType;
         TargetPosition = tPos;
         TargetRotation = tRot;
+        Step = step;        
     }
     
     public virtual void StartOn(CreatureMover mover)
@@ -82,7 +84,7 @@ class CreatureMovementAction
             case MovementType.TRANSLATE:
                 Vector3 azimuth = mover.gameObject.transform.position - TargetPosition; 
                 
-                if (azimuth.sqrMagnitude < 0.005)
+                if (azimuth.sqrMagnitude < 0.05)
                 {
                     mover.gameObject.transform.position = TargetPosition;
                     return true;
@@ -103,7 +105,7 @@ class CreatureMovementAction
                 else
                 {
                     float t = Time.time - TimeStarted;
-                    mover.gameObject.transform.localRotation = Quaternion.Slerp(mover.gameObject.transform.localRotation, TargetRotation, t * Speed / 8);
+                    mover.gameObject.transform.localRotation = Quaternion.Slerp(mover.gameObject.transform.localRotation, TargetRotation, t * Speed / 2);
                 }
                 break;
         }
@@ -118,7 +120,7 @@ class CollisionAction: CreatureMovementAction
     public CollisionAction(MovementType mType, MovementDirection mDir) : base(mType, mDir)
     {
     }
-    public CollisionAction(MovementType mType, Vector3 tPos, Quaternion tRot ) : base(mType, tPos, tRot)
+    public CollisionAction(MovementType mType, Vector3 tPos, Quaternion tRot ) : base(mType, tPos, tRot, null)
     {
     }
 
@@ -143,6 +145,7 @@ public class CreatureMover : MonoBehaviour
     public float Speed;
     public Vector2 InitialPosition;
     public int ExecutedSteps {get; private set;}
+    public string DebugText = "\n";
     
     Vector2  SimulationPosition;
     
@@ -183,7 +186,7 @@ public class CreatureMover : MonoBehaviour
     
     public void SetDataFromModel(IndividualModel model)
     {
-        Speed = model.Speed;
+        Speed = Mathf.Min(model.Speed, 4);
         SetInitialPosition(model.Physics.Position);
     }
     
@@ -212,6 +215,9 @@ public class CreatureMover : MonoBehaviour
             if (ActionStream.Count > 0)
             {
                 CurrentAction = ActionStream.Dequeue();
+                
+                DebugText = string.Format("\nDebug Movement: {0} {1} Speed: {2}", CurrentAction.Step.Orientation, CurrentAction.Step.Position, Speed);
+
                 CurrentAction.StartOn(this);
                 ExecutedSteps++;
             }
