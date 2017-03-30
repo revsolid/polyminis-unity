@@ -409,6 +409,35 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
+--- !u!1 &1037505037 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1710772461836288, guid: 4861fefe0612a47579e1b1c1c50c830e,
+    type: 2}
+  m_PrefabInternal: {fileID: 224321937}
+--- !u!114 &1037505038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1037505037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 429b7500afe3374fbde220e5b19ea0ee
+  eventID: -2107554376
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!1001 &1283492965
 Prefab:
   m_ObjectHideFlags: 0
