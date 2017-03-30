@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="11" SoundbankVersion="118">
 	<RootPaths>
-		<ProjectRoot>C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\nefas\Poly\polyminis-unity\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ProjectRoot>/Users/Elopez/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/POLY/polyminis-unity/Assets/Wwise/Project/polyminis/</ProjectRoot>
+		<SourceFilesRoot>/Users/Elopez/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/POLY/polyminis-unity/Assets/Wwise/Project/polyminis/.cache/Mac/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/Elopez/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/POLY/polyminis-unity/Assets/StreamingAssets/Audio/GeneratedSoundBanks/Mac/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\nefas\Poly\polyminis-unity\Assets\Wwise\Project\polyminis\GeneratedSoundBanks\Mac\</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/Elopez/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/POLY/polyminis-unity/Assets/Wwise/Project/polyminis/GeneratedSoundBanks/Mac/</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles>
 		<File Id="29796930" Language="SFX">
 			<ShortName>Exploration First.wav</ShortName>
-			<Path>SFX\Exploration First_4B8CC0C5.wem</Path>
+			<Path>SFX/Exploration First_4B8CC0C5.wem</Path>
 		</File>
 		<File Id="71673649" Language="SFX">
 			<ShortName>Intro Theme First.wav</ShortName>
-			<Path>SFX\Intro Theme First_4B8CC0C5.wem</Path>
+			<Path>SFX/Intro Theme First_4B8CC0C5.wem</Path>
 		</File>
 		<File Id="401293344" Language="SFX">
 			<ShortName>Species Design First.wav</ShortName>
-			<Path>SFX\Species Design First_4B8CC0C5.wem</Path>
+			<Path>SFX/Species Design First_4B8CC0C5.wem</Path>
 		</File>
 		<File Id="584759446" Language="SFX">
 			<ShortName>Species Design Loop.wav</ShortName>
-			<Path>SFX\Species Design Loop_4B8CC0C5.wem</Path>
+			<Path>SFX/Species Design Loop_4B8CC0C5.wem</Path>
 		</File>
 		<File Id="585421635" Language="SFX">
 			<ShortName>Creature Observation.wav</ShortName>
-			<Path>SFX\Creature Observation_4B8CC0C5.wem</Path>
+			<Path>SFX/Creature Observation_4B8CC0C5.wem</Path>
 		</File>
 		<File Id="796678487" Language="SFX">
 			<ShortName>Exploration Loop.wav</ShortName>
-			<Path>SFX\Exploration Loop_4B8CC0C5.wem</Path>
+			<Path>SFX/Exploration Loop_4B8CC0C5.wem</Path>
 		</File>
 		<File Id="1066362763" Language="SFX">
 			<ShortName>Intro Theme Loop.wav</ShortName>
-			<Path>SFX\Intro Theme Loop_4B8CC0C5.wem</Path>
+			<Path>SFX/Intro Theme Loop_4B8CC0C5.wem</Path>
 		</File>
 	</StreamedFiles>
 	<MediaFilesNotInAnyBank/>
@@ -45,6 +45,7 @@
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<IncludedEvents>
+				<Event Id="3501292951" Name="P_Spshp_Thrust" ObjectPath="\Events\Default Work Unit\SFX_Wu\Spaceship_Wu\P_Spshp_Thrust"/>
 				<Event Id="2187412920" Name="P_UI_Accepted" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Accepted"/>
 				<Event Id="4094348196" Name="P_UI_Add" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Add"/>
 				<Event Id="2258750257" Name="P_UI_Cancel" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Cancel"/>
@@ -54,52 +55,48 @@
 				<Event Id="2581921037" Name="P_UI_Return" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Return"/>
 				<Event Id="2374130668" Name="P_UI_Substract" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Substract"/>
 				<Event Id="1935057997" Name="P_UI_Warning" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Warning"/>
-				<Event Id="4058515758" Name="P_Woosh" ObjectPath="\Events\Default Work Unit\SFX_Wu\Spaceship_Wu\P_Woosh"/>
+				<Event Id="1216185298" Name="S_Spshp_Thrust" ObjectPath="\Events\Default Work Unit\SFX_Wu\Spaceship_Wu\S_Spshp_Thrust"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="22748774" Language="SFX">
 					<ShortName>UI_PACK_01\UI_OK.wav</ShortName>
-					<Path>SFX\UI_PACK_01\UI_OK_9E69E797.wem</Path>
+					<Path>SFX/UI_PACK_01/UI_OK_9E69E797.wem</Path>
 				</File>
 				<File Id="32637561" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX\SF-CK Data GUI Single 01_0CE4E06B.wem</Path>
+					<Path>SFX/SF-CK Data GUI Single 01_D1C915FE.wem</Path>
 				</File>
 				<File Id="105738243" Language="SFX">
 					<ShortName>UI_PACK_01\UI_WARNING.wav</ShortName>
-					<Path>SFX\UI_PACK_01\UI_WARNING_9E69E797.wem</Path>
-				</File>
-				<File Id="269566149" Language="SFX">
-					<ShortName>whoosh01.wav</ShortName>
-					<Path>SFX\whoosh01_9E69E797.wem</Path>
+					<Path>SFX/UI_PACK_01/UI_WARNING_9E69E797.wem</Path>
 				</File>
 				<File Id="299834042" Language="SFX">
 					<ShortName>UI_PACK_01\UI_CANCEL.wav</ShortName>
-					<Path>SFX\UI_PACK_01\UI_CANCEL_9E69E797.wem</Path>
+					<Path>SFX/UI_PACK_01/UI_CANCEL_9E69E797.wem</Path>
 				</File>
 				<File Id="309805726" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX\SF-CK Data GUI Single 01_B91C577D.wem</Path>
+					<Path>SFX/SF-CK Data GUI Single 01_B91C577D.wem</Path>
 				</File>
 				<File Id="566911207" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX\SF-CK Data GUI Single 01_7D786894.wem</Path>
+					<Path>SFX/SF-CK Data GUI Single 01_24CD281B.wem</Path>
 				</File>
 				<File Id="662412231" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX\SF-CK Data GUI Single 01_1F3B888F.wem</Path>
+					<Path>SFX/SF-CK Data GUI Single 01_1F3B888F.wem</Path>
 				</File>
 				<File Id="792914303" Language="SFX">
 					<ShortName>UI_PACK_01\UI_ACCEPTED.wav</ShortName>
-					<Path>SFX\UI_PACK_01\UI_ACCEPTED_9E69E797.wem</Path>
+					<Path>SFX/UI_PACK_01/UI_ACCEPTED_9E69E797.wem</Path>
 				</File>
 				<File Id="812774060" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
-					<Path>SFX\SF-CK Data GUI Single 01_91E1B6CA.wem</Path>
+					<Path>SFX/SF-CK Data GUI Single 01_C1B0D729.wem</Path>
 				</File>
 				<File Id="973505296" Language="SFX">
 					<ShortName>UI_PACK_01\UI_AWESOME.wav</ShortName>
-					<Path>SFX\UI_PACK_01\UI_AWESOME_9E69E797.wem</Path>
+					<Path>SFX/UI_PACK_01/UI_AWESOME_9E69E797.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
