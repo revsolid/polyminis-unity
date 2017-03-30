@@ -5,18 +5,15 @@
 			<ChildrenList>
 				<SoundBank Name="Music" ID="{7D4313F6-121A-4B05-8ECF-76887F879427}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Play_exploration" ID="{E09E7EA3-7EF0-401C-8F2C-7678025C5F72}" WorkUnitID="{B969FB9F-0718-4974-819F-3FECC617A358}" Filter="7" Origin="Manual"/>
-						<ObjectRef Name="Play_intro_theme" ID="{AB2FDFD2-2773-421E-8A5E-99964213D5BE}" WorkUnitID="{B969FB9F-0718-4974-819F-3FECC617A358}" Filter="7" Origin="Manual"/>
-						<ObjectRef Name="Play_creature_observation" ID="{B19382FD-1AE9-44AE-B9AD-B52CEC9C1F6B}" WorkUnitID="{B969FB9F-0718-4974-819F-3FECC617A358}" Filter="7" Origin="Manual"/>
-						<ObjectRef Name="Play_species_design" ID="{CBE185C1-9275-4909-8F5E-8FEAD08FC789}" WorkUnitID="{B969FB9F-0718-4974-819F-3FECC617A358}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Music_Wu" ID="{B969FB9F-0718-4974-819F-3FECC617A358}" WorkUnitID="{B969FB9F-0718-4974-819F-3FECC617A358}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
 				<SoundBank Name="SFX" ID="{9C3924CB-DBC7-419C-BD03-E350FA4370AA}">
 					<ObjectInclusionList>
-						<ObjectRef Name="P_Woosh" ID="{1746B10A-6AAC-4BCA-A931-ADE086478CBC}" WorkUnitID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}" Filter="7" Origin="Manual"/>
-						<ObjectRef Name="P_UIData01" ID="{0EB52FD7-0B11-4F7D-962F-09AB08FAD3DC}" WorkUnitID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SFX_Wu" ID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" WorkUnitID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="UI_Wu" ID="{CA04F0DA-FC02-4982-9DA2-89812F25C019}" WorkUnitID="{CA04F0DA-FC02-4982-9DA2-89812F25C019}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

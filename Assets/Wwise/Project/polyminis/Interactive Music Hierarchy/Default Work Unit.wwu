@@ -9,7 +9,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+							<ObjectRef Name="MUSIC" ID="{A8AAFF29-7E96-4230-9306-CE0C3DD41E2B}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -27,6 +27,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Exploration First" ID="{4A58195A-90DD-4BE8-9499-F2A7551061D1}" ShortID="728694589">
+									<PropertyList>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
@@ -86,6 +93,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Exploration Loop" ID="{77BC8073-277A-4B7A-AA7F-59AD1AA01973}" ShortID="1006400314">
+									<PropertyList>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
@@ -174,7 +188,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+							<ObjectRef Name="MUSIC" ID="{A8AAFF29-7E96-4230-9306-CE0C3DD41E2B}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -192,6 +206,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Species Design First" ID="{5680B45B-849E-49CD-B088-21852CAE37B6}" ShortID="256198515">
+									<PropertyList>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
@@ -251,6 +272,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Species Design Loop" ID="{8DC47DCE-326B-4ABA-BD41-BD63DB42260A}" ShortID="684206939">
+									<PropertyList>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
@@ -336,7 +364,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+							<ObjectRef Name="MUSIC" ID="{A8AAFF29-7E96-4230-9306-CE0C3DD41E2B}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -354,6 +382,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Intro Theme First" ID="{0C51A404-1F31-47E7-8FC9-2DC8EE2444A4}" ShortID="893979313">
+									<PropertyList>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
@@ -413,6 +448,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Intro Theme Loop" ID="{F988E35C-B7C3-44D6-B050-43EF2603573B}" ShortID="1036847906">
+									<PropertyList>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
@@ -498,7 +540,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+							<ObjectRef Name="MUSIC" ID="{A8AAFF29-7E96-4230-9306-CE0C3DD41E2B}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -516,6 +558,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Creature Observation" ID="{044A1D58-5008-49E8-89BB-20DC0A5AFC3D}" ShortID="402063367">
+									<PropertyList>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
