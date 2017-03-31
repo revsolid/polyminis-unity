@@ -59,14 +59,14 @@
 				<Property Name="ProjectExplorer\Expanded_17_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_18_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_19_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\Expanded_1_1" Type="string" Value="IrW0LmNzS0ip1yYcy+OTHA=="/>
+				<Property Name="ProjectExplorer\Expanded_1_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_20_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\Expanded_2_1" Type="string" Value="fXVB9fOnWkGWKwTJGVODGTkKqhuPYkBGlCmZS4ZMR5zQTGnHIo9uTJ5NrGFOTh2x"/>
+				<Property Name="ProjectExplorer\Expanded_2_1" Type="string" Value="fXVB9fOnWkGWKwTJGVODGQ=="/>
 				<Property Name="ProjectExplorer\Expanded_3_1" Type="string" Value="ANAu92lYqEKFBgqKvpcb9GURnZfG8F9EvDxBwjVZfkjJAeEtmqRjRL082wOVp/EXn/tpuRgHdEmBnz/sxhejWA=="/>
 				<Property Name="ProjectExplorer\Expanded_4_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_5_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_6_1" Type="string" Value="s4AnydxqAEiKDZjm/b+EuA=="/>
-				<Property Name="ProjectExplorer\Expanded_7_1" Type="string" Value="dYUVdCSV1kKLvjxWWM+5gw=="/>
+				<Property Name="ProjectExplorer\Expanded_7_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_8_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\FirstVisible_10_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
 				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
@@ -75,7 +75,6 @@
 				<Property Name="ProjectExplorer\FirstVisible_4_1" Type="string" Value="{CB6175F1-6080-4A23-92EF-0807E304D0C1}"/>
 				<Property Name="ProjectExplorer\FirstVisible_6_1" Type="string" Value="{C98E673F-A24C-48A8-960F-10565FFE70A0}"/>
 				<Property Name="ProjectExplorer\FirstVisible_8_1" Type="string" Value="{41093F77-829F-4D88-8601-E8B25F3D4781}"/>
-				<Property Name="RTPC\GameParameterSimValue\{F91D1A09-2700-40A3-8DFF-76557B304CF0}" Type="Real64" Value="82"/>
 				<Property Name="SettingsUserOverride" Type="bool" Value="True"/>
 				<Property Name="SoundBank Manager\Expand States" Type="string" Value="s4AnydxqAEiKDZjm/b+EuA=="/>
 				<Property Name="SoundBankGenerateHeaderFile" Type="bool" Value="True"/>
@@ -111,7 +110,6 @@
 					</ValueList>
 				</Property>
 				<Property Name="SoundEngine\AudioDevice" Type="int32" Value="4"/>
-				<Property Name="Soundcaster\PreviousSession" Type="string" Value="{7B46F120-4F1F-41C0-9AA6-71BBD3C56D59}"/>
 			</PropertyList>
 		</UserProjectSettings>
 	</UserProjectSettingsInfo>

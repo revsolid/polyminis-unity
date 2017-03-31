@@ -14,6 +14,7 @@ public class SpaceMovementTracker : MonoBehaviour
     public Camera SpaceFlightCamera;
     
     bool HasMoved = true;
+    float LastImpulse = 0.0f;
 
     
     void Awake()
@@ -69,6 +70,13 @@ public class SpaceMovementTracker : MonoBehaviour
 
 
         CurrentPosition += (Forward * verImpulse * tDamp);
+        
+        if (LastImpulse != verImpulse)
+        {
+            Debug.Log(LastImpulse);
+            LastImpulse = Mathf.Min(Mathf.Max(verImpulse, LastImpulse - 0.005f), LastImpulse + 0.005f);
+            AkSoundEngine.SetRTPCValue("Spaceship_Speed", LastImpulse * 85, gameObject);
+        }
     }
 
 
