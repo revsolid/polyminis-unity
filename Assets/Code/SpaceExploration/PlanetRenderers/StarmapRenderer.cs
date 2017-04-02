@@ -9,11 +9,19 @@ public class StarmapRenderer : UIPlanetRenderer
     private Vector2 SpacePos;
     private Camera TargetCamera;
     private float DistanceToSpaceship;
+    public float ScaleFactor;
+    public Sprite PlanetArrow;
+    public float DisplayRange , MaxRange;
 
     public override void RenderUpdate(Planet model)
     {
         SpacePos = model.SpacePosition;
         DistanceToSpaceship = model.DistanceToSpaceship;
+
+        if( DistanceToSpaceship < DisplayRange)
+        {
+
+        }
         UpdatePosition(SpacePos);
 
         if (Starmap != null)
@@ -48,5 +56,7 @@ public class StarmapRenderer : UIPlanetRenderer
     void UpdatePosition(Vector2 newSpacePos)
     {
         this.transform.localPosition = UIManager.ToStarmapPos(newSpacePos);
+
+
     }
 }
