@@ -12,7 +12,10 @@ public class ShaderHarness: MonoBehaviour
     public int XPoints = 10;
     public int YPoints = 10;
     public Material material;
-     
+
+    public Color HighTempColor;
+    public Color LowTempColor;
+
     //TODO: Temp Implementation - x,y = pos, z = value
     public List<Vector3> Emmitters;
     
@@ -21,6 +24,7 @@ public class ShaderHarness: MonoBehaviour
 	void Start ()
     {
         UpdateTexture();
+        UpdateTiling();
     }
     
     void UpdateTexture()
@@ -29,9 +33,16 @@ public class ShaderHarness: MonoBehaviour
         //material.SetFloatArray("_Values", intensities);
         TempTexture = PrepareTexture(intensities);
         Debug.Log("Setting");
-        material.SetTexture("_TempTexture", TempTexture);
+        material.SetTexture("_TemperatureTexture", TempTexture);
     }
-    
+
+    void UpdateTiling()
+    {
+        // these are for if the geometry is created from a standard plane in unity.
+        material.SetFloat("_NormalTiling", this.gameObject.transform.localScale.x * 10000f);
+        material.SetFloat("_FoamTiling", this.gameObject.transform.localScale.x * 10000f);
+    }
+
     float[,] FillIntensities()
     {
         float[,] intensities =  new float[XPoints,YPoints];
@@ -78,7 +89,7 @@ public class ShaderHarness: MonoBehaviour
         {
             for(int j = 0; j < YPoints; j++)
             {
-                to_ret.SetPixel(i, j, new Color(intensities[i,j], 0.0f, 0.0f, 1.0f));
+                to_ret.SetPixel(i, j, Color.Lerp(LowTempColor, HighTempColor, intensities[i,j]));
             }
         }
         to_ret.Apply();
