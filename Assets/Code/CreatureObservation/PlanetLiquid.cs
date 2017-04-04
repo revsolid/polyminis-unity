@@ -8,6 +8,7 @@ public class PlanetLiquid : MonoBehaviour
     
     public Camera FloatingCamera;
     public Camera TopDownCamera;
+    public Collider MyCollider;
     
     void Update()
     {
@@ -16,10 +17,10 @@ public class PlanetLiquid : MonoBehaviour
             var xx = Input.mousePosition;
             Camera current = FloatingCamera.enabled ? FloatingCamera : TopDownCamera;
             Ray ray = current.ScreenPointToRay(xx);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            var allHits = Physics.RaycastAll(ray);
+            if (allHits.Length == 1)
             {
-                OnClick(hit.point); 
+                OnClick(allHits[0].point); 
             }
         }
     }

@@ -29,7 +29,7 @@ public class PlayerID : MonoBehaviour
         
     }
     
-    void Destroy()
+    void OnDestroy()
     {
         Session.OnSessionChangedEvent -= OnSessionChanged;
     }
