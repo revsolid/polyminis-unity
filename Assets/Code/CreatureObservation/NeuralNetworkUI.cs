@@ -205,7 +205,9 @@ public class NeuralNetworkUI : MonoBehaviour
 
     void PrintText()
     {
-        DNAText.text = " DNA Sequence: ";
+        DNAText.text = "Species: " + ToDetail.SpeciesName;
+        DNAText.text += "\n Specimen: " + ToDetail.Model.ID;
+        DNAText.text += "\n DNA Sequence: ";
         foreach (var el in ToDetail.Model.Morphology.Body)
         {
             DNAText.text += string.Format("{0}", el.Trait.TID);
@@ -219,12 +221,12 @@ public class NeuralNetworkUI : MonoBehaviour
         DNAText.text += " BestFitness: ";
         DNAText.text += ToDetail.Controller.BestFitness;
         
-        DNAText.text += "\n";
+  /*      DNAText.text += "\n";
         DNAText.text += " DebugInfo: ";
         DNAText.text += ToDetail.DebugText;
         DNAText.text += "\n";
         DNAText.text += " Mover Executed: ";
-        DNAText.text += ToDetail.Mover.ExecutedSteps;
+        DNAText.text += ToDetail.Mover.ExecutedSteps;*/
     }
 
     void LateUpdate ()

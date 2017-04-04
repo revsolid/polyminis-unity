@@ -12,7 +12,7 @@ public class DetailedViewUI : MonoBehaviour
     {
        if (ToDetail != null) 
        {
-           DnaSeq.text = ToDetail.DebugText;
+           //DnaSeq.text = ToDetail.DebugText;
            DnaSeq.text += "\n";
            DnaSeq.text += " DNA Sequence: ";
            foreach (var el in ToDetail.Model.Morphology.Body)

@@ -43,6 +43,7 @@ public class InventoryUI : MonoBehaviour
         OrbitalUI.OnGoBackToSpaceExScreen -= Dismiss;
         OrbitalApproachRenderer.OnToOrbitScreen -= Dismiss;
         SpeciesDesignUI.OnOpenSpeciesDesigner -= Dismiss;
+        Connection.Instance.OnMessageEvent -= OnServerMessage;
     }
 
     void Awake () 
