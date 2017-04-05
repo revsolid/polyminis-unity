@@ -51,7 +51,7 @@ public class SpaceExPlanetRenderer : MonoBehaviour, IPlanetRenderer
         
         if (DistanceToSpaceship < 50)
         {
-            transform.localPosition =  new Vector3(transform.localPosition.x, -12.5f + DistanceToSpaceship / 2.0f , transform.localPosition.z);
+            transform.localPosition =  new Vector3(transform.localPosition.x, -25f + DistanceToSpaceship / 2.0f , transform.localPosition.z);
         }
         else
         {
