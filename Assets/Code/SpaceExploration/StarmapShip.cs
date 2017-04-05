@@ -7,7 +7,7 @@ public class StarmapShip : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        //this.transform.localPosition = UIManager.ToStarmapPos(SpaceMovementTracker.CurrentPosition) - Vector3.forward * (+1.0f);
-        //this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, -1*SpaceMovementTracker.Heading + 90);//Quaternion.LookRotation(new Vector3(-SpaceMovementTracker.Forward.x, SpaceMovementTracker.Forward.y, 0), Vector3.up);
+        this.transform.localPosition = UIManager.ToStarmapPos(SpaceMovementTracker.CurrentPosition) - Vector3.forward * (+1.0f);
+        this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, -1*SpaceMovementTracker.Heading);//Quaternion.LookRotation(new Vector3(-SpaceMovementTracker.Forward.x, SpaceMovementTracker.Forward.y, 0), Vector3.up);
     }
 }

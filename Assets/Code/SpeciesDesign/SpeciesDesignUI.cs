@@ -6,9 +6,9 @@ using System.Linq;
 
 public class SpeciesDesignUI : MonoBehaviour
 {
-    public VerticalLayoutGroup SmallSplices;
-    public VerticalLayoutGroup MedSplices;
-    public VerticalLayoutGroup LargeSplices;
+    public GridLayoutGroup SmallSplices;
+    public GridLayoutGroup MedSplices;
+    public GridLayoutGroup LargeSplices;
     public SpliceButton SpliceButtonRendererPrototype;
     public DnaHelix Helix;
     public DnaSeq DnaSequencer;
