@@ -19,6 +19,7 @@ public class Creature : MonoBehaviour
     public GameObject foodSource;
 	public string DebugText;
 	
+	public string SpeciesName { get; private set; }
 	public SpeciesController Controller;
 	public ControlStep LastControlStep;
 	
@@ -81,8 +82,9 @@ public class Creature : MonoBehaviour
 		DebugText += Mover.DebugText;
 	}
 	
-	public void SetDataFromModel(IndividualModel model)
+	public void SetDataFromModel(IndividualModel model, string speciesName="Species in Planet")
 	{
+		SpeciesName = speciesName;
 		ID = model.ID;		
 
 		foreach(OrganelleModel organelle in model.Morphology.Body)

@@ -41,14 +41,25 @@ public class SpeciesController : MonoBehaviour
     bool Restart = false;
     CreatureObservationEvent PendingSpawn;
     List<CreatureObservationEvent> PendingSteps = new List<CreatureObservationEvent>();
+    PlanetModel Planet;
     
-    void Awake()
-    {
-    }
     void Start()
     {
+    }
+    void Awake()
+    {
 		Connection.Instance.OnMessageEvent += OnServerMessage;
-        CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(31415, 98);
+        Planet = PlanetInfoCacher.planetModel;
+        CreatureObservationCommand loadSimCmd;
+        if (Planet != null)
+        {
+            loadSimCmd = new CreatureObservationCommand(Planet.ID, Planet.Epoch);
+        }
+        else
+        {
+            loadSimCmd = new CreatureObservationCommand(2011, 4);
+        }
+
         loadSimCmd.Command = "GO_TO_EPOCH";
         Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
     }
@@ -199,7 +210,7 @@ public class SpeciesController : MonoBehaviour
                 SpeciesStartup s = PendingSpawn.Species[i];
                 foreach(IndividualModel im in s.Individuals)
                 {
-                    SpawnCreature(im, i);
+                    SpawnCreature(im, i, s.SpeciesName);
                 }
             }
             
@@ -231,11 +242,19 @@ public class SpeciesController : MonoBehaviour
         }
     }
     
-    void SpawnCreature(IndividualModel model, int index = 0)    
+    void SpawnCreature(IndividualModel model, int index = 0, string speciesName="")    
     {
         Creature creature = Instantiate<Creature>(CreaturePrototype);
         creature.SpeciesIndex = index;
-        creature.SetDataFromModel(model);
+        if (!string.IsNullOrEmpty(speciesName))
+        {
+            creature.SetDataFromModel(model, speciesName);
+        }
+        else
+        {
+            creature.SetDataFromModel(model);
+        }
+        
         Individuals[model.ID] = creature;
         IndividualIDs.Add(model.ID);
         creature.SetStartingPosition(model.Physics.StartingPos);
@@ -266,6 +285,7 @@ public class SpeciesController : MonoBehaviour
     
     public void OnServerMessage(string msg)
     {
+        Debug.Log("Msg on Species Controller");
         BaseEvent base_ev = JsonUtility.FromJson<BaseEvent>(msg);
         if (base_ev.Service == "creature_observation")
         {

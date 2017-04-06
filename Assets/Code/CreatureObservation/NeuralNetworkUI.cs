@@ -163,9 +163,9 @@ public class NeuralNetworkUI : MonoBehaviour
     /// </summary>
     Color WeightToColor(float inWeight)
     {
-        float weight = inWeight > 1.0f ? 1.0f : inWeight;
-        weight = weight < -1.0f ? -1.0f : weight;
-        weight = (weight - (-1.0f)) / 2;
+        float weight = Mathf.Clamp(inWeight, -1.0f, 1.0f);
+        weight = (weight + 1.0f) / 2;
+        weight = Mathf.Clamp(weight, 0.0f, 1.0f);
 
         // lerp between red and green
         Vector3 colorSpaceCoord = Vector3.Lerp(new Vector3(1.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), weight);
@@ -205,7 +205,9 @@ public class NeuralNetworkUI : MonoBehaviour
 
     void PrintText()
     {
-        DNAText.text = " DNA Sequence: ";
+        DNAText.text = "Species: " + ToDetail.SpeciesName;
+        DNAText.text += "\n Specimen: " + ToDetail.Model.ID;
+        DNAText.text += "\n DNA Sequence: ";
         foreach (var el in ToDetail.Model.Morphology.Body)
         {
             DNAText.text += string.Format("{0}", el.Trait.TID);
@@ -219,12 +221,12 @@ public class NeuralNetworkUI : MonoBehaviour
         DNAText.text += " BestFitness: ";
         DNAText.text += ToDetail.Controller.BestFitness;
         
-        DNAText.text += "\n";
+  /*      DNAText.text += "\n";
         DNAText.text += " DebugInfo: ";
         DNAText.text += ToDetail.DebugText;
         DNAText.text += "\n";
         DNAText.text += " Mover Executed: ";
-        DNAText.text += ToDetail.Mover.ExecutedSteps;
+        DNAText.text += ToDetail.Mover.ExecutedSteps;*/
     }
 
     void LateUpdate ()

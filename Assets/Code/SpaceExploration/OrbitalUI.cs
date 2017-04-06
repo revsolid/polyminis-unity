@@ -53,6 +53,15 @@ public class OrbitalUI : MonoBehaviour
         PopulationChart.onOverDelegate -= OnPopulationChartHover;
         ResourceChart.onOverDelegate -= OnMaterialChartHover;
     }
+    
+    void OnDestroy()
+    {
+        if (HasHookedCallbacks)
+        {
+            global::Planet.OnPlanetModelChanged -= OnPlanetChanged;
+            HasHookedCallbacks = false;
+        }
+    }
     void Start ()
     {
         PopupString = "";
@@ -89,7 +98,7 @@ public class OrbitalUI : MonoBehaviour
                 editInPlanetCommand.Species = resultingModel;
                 Connection.Instance.Send(JsonUtility.ToJson(editInPlanetCommand));
             };
-            SpeciesEditor.OpenWithSpecies(ShowSpeciesNextUpdate);
+            SpeciesEditor.OpenWithSpecies(ShowSpeciesNextUpdate, true);
             ShowSpeciesNextUpdate = null;
         }
     }
@@ -206,8 +215,11 @@ public class OrbitalUI : MonoBehaviour
         PlanetModel p = planet.Model;
         //PhSlider.value = planet.PH.Average() * 100;
         //TempSlider.value = planet.Temperature.Average() * 100;
-        PlanetName.text = p.PlanetName;
-        PlanetRenderer.RenderUpdate(planet);
+        if (p != Planet)
+        {
+            PlanetName.text = p.PlanetName;
+            PlanetRenderer.RenderUpdate(planet);
+        }
 
 
         PopulationData = new ChartData1D();
@@ -269,11 +281,6 @@ public class OrbitalUI : MonoBehaviour
             Slots[i].Species = null;
         }
         Planet = p;
-        
-        // This is savagery
-        CreatureObservationCommand loadSimCmd = new CreatureObservationCommand(1414, 2);
-        loadSimCmd.Command = "GO_TO_EPOCH";
-        //Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
     }
 
     void OnPopulationChartHover(int column)

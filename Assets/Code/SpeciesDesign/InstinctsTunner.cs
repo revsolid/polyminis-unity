@@ -87,9 +87,9 @@ public class InstinctsTunner : MonoBehaviour
             MaxLevelsBase[i] = MinLevel;
         }
 
-        foreach (SpliceModel sm in model.SelectedSplices)
+        foreach (KeyValuePair<string, SpliceModel> sm in model.SelectedSplices)
         {
-            MaxLevelsBase[sm.EInstinct] += 1;
+            MaxLevelsBase[sm.Value.EInstinct] += 1;
         }
     }
 

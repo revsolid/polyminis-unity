@@ -4,15 +4,16 @@ using System.Collections.Generic;
 
 public class SpeciesDesignerModel
 {
-    public List<SpliceModel> UnselectedSplices { get; private set; }
-    public List<SpliceModel> SelectedSplices { get; private set; }
+    // these take internal names as keys
+    public Dictionary<string, SpliceModel> UnselectedSplices { get; private set; }
+    public Dictionary<string, SpliceModel> SelectedSplices { get; private set; }
 
     public SpeciesModel CurrentSpecies { get; private set; }
     
     public SpeciesDesignerModel()
     {
-        UnselectedSplices = new List<SpliceModel>();
-        SelectedSplices = new List<SpliceModel>();
+        UnselectedSplices = new Dictionary<string, SpliceModel>();
+        SelectedSplices = new Dictionary<string, SpliceModel>();
         CurrentSpecies = new SpeciesModel();
     }
     
@@ -43,12 +44,12 @@ public class SpeciesDesignerModel
         
         foreach(SpliceModel sm in species.Splices)
         {
-            foreach(SpliceModel unselected in UnselectedSplices)
+            foreach(KeyValuePair<string, SpliceModel> unselected in UnselectedSplices)
             {
                 // TODO: replace with ID
-                if(sm.InternalName == unselected.InternalName)
+                if(sm.InternalName == unselected.Value.InternalName)
                 {
-                    toUnselect.Add(unselected);
+                    toUnselect.Add(unselected.Value);
                 }
             }
         }
@@ -62,23 +63,31 @@ public class SpeciesDesignerModel
 
     public void AddNewSplice(SpliceModel model)
     {
-        UnselectedSplices.Add(model);
+        UnselectedSplices.Add(model.InternalName, model);
     }
 
     // from the splice collection (not helix)
     public void SelectSplice(SpliceModel model)
     {
-        SelectedSplices.Add(model);
-        UnselectedSplices.Remove(model);
-        CurrentSpecies.Splices = SelectedSplices;
+        SelectedSplices.Add(model.InternalName, model);
+        UnselectedSplices.Remove(model.InternalName);
+        CurrentSpecies.Splices.Clear();
+        foreach(KeyValuePair<string, SpliceModel> modelPair in SelectedSplices)
+        {
+            CurrentSpecies.Splices.Add(modelPair.Value);
+        }
     }
 
 
     public void DeselectSplice(SpliceModel model)
     {
-        UnselectedSplices.Add(model);
-        SelectedSplices.Remove(model);
-        CurrentSpecies.Splices = SelectedSplices;
+        UnselectedSplices.Add(model.InternalName, model);
+        SelectedSplices.Remove(model.InternalName);
+        CurrentSpecies.Splices.Clear();
+        foreach (KeyValuePair<string, SpliceModel> modelPair in SelectedSplices)
+        {
+            CurrentSpecies.Splices.Add(modelPair.Value);
+        }
     }
 
     // nuke the entire model
