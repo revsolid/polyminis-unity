@@ -46,7 +46,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
                 MainDialog.DialogMessage.text  = "How much Biomass do you want to Extract from this Species?";
                 BiomassSlider.gameObject.SetActive(true);
                 BiomassSlider.minValue = 0.0f;
-                BiomassSlider.maxValue = SpeciesModel.Percentage; 
+                BiomassSlider.maxValue = SpeciesModel.Percentage * 100; 
                 break;
             case SpeciesPlanetAction.Research:
                 MainDialog.DialogMessage.text = "Do you want to research this Species? (Researching takes a slot)";

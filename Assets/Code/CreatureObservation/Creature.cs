@@ -78,6 +78,11 @@ public class Creature : MonoBehaviour
 		DebugText += string.Format("\nPosition: {0}", step.Physics.Position);
 		DebugText += string.Format("\nAlive: {0}", step.Alive);
 		DebugText += string.Format("\nIgnoring: {0}", StepsToIgnore);
+		DebugText += string.Format("\n\nFitness Stats:");
+		DebugText += string.Format("\nNomadic: {0}",  Model.EvaluationStats.Nomadic);
+		DebugText += string.Format("\nPredatory: {0}",  Model.EvaluationStats.Predatory);
+		DebugText += string.Format("\nHerding: {0}",  Model.EvaluationStats.Herding);
+		DebugText += string.Format("\nHoarding: {0}",  Model.EvaluationStats.Hoarding);
 		
 		DebugText += Mover.DebugText;
 	}
