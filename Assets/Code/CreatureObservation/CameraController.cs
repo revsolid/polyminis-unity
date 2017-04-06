@@ -43,8 +43,8 @@ public class CameraController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		HorImpulse = Input.GetAxis ("Horizontal");
-		VerImpulse = Input.GetAxis ("Vertical");
+        HorImpulse = ControlHelper.GetHorizontalAxis();
+        VerImpulse = ControlHelper.GetVerticalAxis();
 	}
 
     void LateUpdate()
