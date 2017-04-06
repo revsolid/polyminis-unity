@@ -78,7 +78,7 @@ public class SpeciesDesignUI : MonoBehaviour
     // read DesignerModel and update all children
     void UpdateAllViews()
     {
-   //     InstinctsTunner.UpdateView(DesignerModel);
+        InstinctsTunner.UpdateView(DesignerModel);
         Helix.UpdateView(DesignerModel);
         this.UpdateView();
         DnaSequencer.ActivateSelection(DesignerModel.CurrentSpecies);

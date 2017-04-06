@@ -69,7 +69,17 @@ public class SpeciesDesignerModel
     public void SelectSplice(SpliceModel model)
     {
         SelectedSplices.Add(model);
-        UnselectedSplices.Remove(model);
+        //TODO: this is temporary hack for the playtest that's coming in two hours
+        for(int i = 0; i < UnselectedSplices.Count; i++)
+        {
+            if(UnselectedSplices[i].InternalName == model.InternalName)
+            {
+                UnselectedSplices.RemoveAt(i);
+                i--;
+            }
+
+        }
+        //UnselectedSplices.Remove(model);
         CurrentSpecies.Splices = SelectedSplices;
     }
 
