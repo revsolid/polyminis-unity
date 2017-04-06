@@ -20,7 +20,7 @@ public class PlanetLiquid : MonoBehaviour
             var allHits = Physics.RaycastAll(ray);
             if (allHits.Length == 1)
             {
-                OnClick(allHits[0].point); 
+     //           OnClick(allHits[0].point); 
             }
         }
     }

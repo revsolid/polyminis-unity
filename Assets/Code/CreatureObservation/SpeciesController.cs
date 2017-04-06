@@ -57,7 +57,7 @@ public class SpeciesController : MonoBehaviour
         }
         else
         {
-            loadSimCmd = new CreatureObservationCommand(9999, 2);
+            loadSimCmd = new CreatureObservationCommand(2011, 4);
         }
 
         loadSimCmd.Command = "GO_TO_EPOCH";

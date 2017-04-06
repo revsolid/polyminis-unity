@@ -163,9 +163,9 @@ public class NeuralNetworkUI : MonoBehaviour
     /// </summary>
     Color WeightToColor(float inWeight)
     {
-        float weight = inWeight > 1.0f ? 1.0f : inWeight;
-        weight = weight < -1.0f ? -1.0f : weight;
-        weight = (weight - (-1.0f)) / 2;
+        float weight = Mathf.Clamp(inWeight, -1.0f, 1.0f);
+        weight = (weight + 1.0f) / 2;
+        weight = Mathf.Clamp(weight, 0.0f, 1.0f);
 
         // lerp between red and green
         Vector3 colorSpaceCoord = Vector3.Lerp(new Vector3(1.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), weight);
