@@ -237,7 +237,7 @@ public class SpeciesDesignUI : MonoBehaviour
         OnExitButtonClicked();
     }
 
-    public void OpenWithSpecies(SpeciesModel m)
+    public void OpenWithSpecies(SpeciesModel m, bool isFromOrbital)
     {
         DesignerModel.LoadSpecies(m);
         UpdateAllViews();
@@ -250,6 +250,7 @@ public class SpeciesDesignUI : MonoBehaviour
         InstinctsTunner.LoadModel(itmodel);
 
         NameInput.text = DesignerModel.CurrentSpecies.SpeciesName;
+        NameInput.interactable = !isFromOrbital;
         gameObject.SetActive(true);
     }
 
