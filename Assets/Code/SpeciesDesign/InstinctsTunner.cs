@@ -98,7 +98,16 @@ public class InstinctsTunner : MonoBehaviour
         foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
         {
             Debug.Log(i);
-            MaxLevels[i] = MaxLevelsBase[i] + MaxLevelsTunned[i];
+            try
+            {
+                // New instincts added to the sim shouldn't crash the game...
+                // this was the case with Basic Instinct
+                MaxLevels[i] = MaxLevelsBase[i] + MaxLevelsTunned[i];
+            }
+            catch(KeyNotFoundException e)
+            {
+               
+            }
         }
     }
 
