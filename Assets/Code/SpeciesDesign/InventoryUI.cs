@@ -122,6 +122,11 @@ public class InventoryUI : MonoBehaviour
                 uiEntry.InvEntry = null;
             }
         }
+
+        for(int i = 0; i < EntriesLayoutGroup.transform.childCount; i++)
+        {
+            EntriesLayoutGroup.transform.GetChild(i).gameObject.SetActive(true);
+        }
         Connection.Instance.OnMessageEvent += OnServerMessage;
 
     }
@@ -154,7 +159,7 @@ public class InventoryUI : MonoBehaviour
             Debug.Log(saveSpeciesCommand);
             Connection.Instance.Send(JsonUtility.ToJson(saveSpeciesCommand));
         };
-        SpeciesDesigner.OpenWithSpecies(sm);
+        SpeciesDesigner.OpenWithSpecies(sm, false);
     }
     
     void HandleSelection(InventoryEntry currentModel)

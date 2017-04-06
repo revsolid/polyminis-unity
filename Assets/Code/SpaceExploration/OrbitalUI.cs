@@ -98,7 +98,7 @@ public class OrbitalUI : MonoBehaviour
                 editInPlanetCommand.Species = resultingModel;
                 Connection.Instance.Send(JsonUtility.ToJson(editInPlanetCommand));
             };
-            SpeciesEditor.OpenWithSpecies(ShowSpeciesNextUpdate);
+            SpeciesEditor.OpenWithSpecies(ShowSpeciesNextUpdate, true);
             ShowSpeciesNextUpdate = null;
         }
     }
