@@ -122,7 +122,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
                 pInteractionCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.EXTRACT);
                 pInteractionCommand.Epoch = PlanetModel.Epoch; 
                 pInteractionCommand.PlanetId = PlanetModel.ID; 
-                pInteractionCommand.ExtractedPercentage = BiomassSlider.value;
+                pInteractionCommand.ExtractedPercentage = BiomassSlider.value / 100.0f;
                 pInteractionCommand.Species = SpeciesModel;
                 Connection.Instance.Send(JsonUtility.ToJson(pInteractionCommand));
                 break;

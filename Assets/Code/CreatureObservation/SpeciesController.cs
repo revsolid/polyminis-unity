@@ -1,12 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+
+
+[Serializable]
+class StatEntry
+{
+    public string SpeciesName;
+    public float Value;
+}
+
+[Serializable]
+class EpochStats
+{
+    public int Epoch;
+    public List<StatEntry> Percentages;
+}
 
 class CreatureObservationEvent : BaseEvent
 {
     public List<SpeciesStartup> Species;
     public SimulationEnvironment Environment;
     public List<SimulationStep> Steps;
+    public EpochStats EpochStats;
 }
 
 class CreatureObservationCommand : BaseCommand
@@ -27,9 +44,8 @@ public class SpeciesController : MonoBehaviour
     public Creature CreaturePrototype;
     public StaticObject ObjectPrototype;
     public GameObject foodModel;
-    public FollowerCamera DetailViewCamera;
-    public DetailedViewUI DetailViewUI;
-    public NeuralNetworkUI NeuralNetworkUI;
+    public CameraController CameraController;
+    
     [HideInInspector]public float BestFitness = 0;
 
     Dictionary<int, Creature> Individuals = new Dictionary<int, Creature>();
@@ -50,26 +66,40 @@ public class SpeciesController : MonoBehaviour
     {
 		Connection.Instance.OnMessageEvent += OnServerMessage;
         Planet = PlanetInfoCacher.planetModel;
-        CreatureObservationCommand loadSimCmd;
-        if (Planet != null)
-        {
-            loadSimCmd = new CreatureObservationCommand(Planet.ID, Planet.Epoch);
-        }
-        else
-        {
-            loadSimCmd = new CreatureObservationCommand(2011, 2);
-        }
 
+        if (Planet == null)
+        {
+            Planet = new PlanetModel();
+            Planet.ID = 2011;
+            Planet.Epoch = 51;
+        }
+        GoToEpoch(Planet.ID, Planet.Epoch);
+    }
+    
+    void GoToEpoch(int ID, int Epoch)
+    {
+        CreatureObservationCommand loadSimCmd;
+        loadSimCmd = new CreatureObservationCommand(ID, Epoch);
         loadSimCmd.Command = "GO_TO_EPOCH";
-        Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
+        //Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
+        
+        GetStatistics(ID, Epoch);
+    }
+    
+    void GetStatistics(int ID, int Epoch)
+    {
+        CreatureObservationCommand getStatsCmd;
+        getStatsCmd = new CreatureObservationCommand(ID, Epoch);
+        getStatsCmd.Command = "GET_STATS";
+        Connection.Instance.Send(JsonUtility.ToJson(getStatsCmd));
     }
 
     void Poll()
     {
-        BaseCommand dummyCmd = new BaseCommand();
-        dummyCmd.Service = "creature_observation";
-        dummyCmd.Command = "POLL";
-        Connection.Instance.Send(JsonUtility.ToJson(dummyCmd));
+        BaseCommand pollCmd = new BaseCommand();
+        pollCmd.Service = "creature_observation";
+        pollCmd.Command = "POLL";
+        Connection.Instance.Send(JsonUtility.ToJson(pollCmd));
     }
     
     void Step()
@@ -79,72 +109,14 @@ public class SpeciesController : MonoBehaviour
            ind.Step();
        }
     }
-
-    public void LoadExperiment(string expname)
-	{
-        string species_file = expname + "_species";
-        string steps_file = expname + "_steps";
-        Individuals = new Dictionary<int, Creature>();
-        Steps = new List<SpeciesStep>();
-        
-        foreach(Creature c in CreaturesSpawned)    
-        {
-            Destroy(c.gameObject);
-        }
-        CreaturesSpawned.Clear();
-
-        TextAsset species_json = Resources.Load<TextAsset>("StaticData/" + species_file );
-        SimulationStartup sim_startup = JsonUtility.FromJson<SimulationStartup>(species_json.text);
-        
-        for(int i = 0; i < sim_startup.Species.Count; i++)
-        {
-            SpeciesStartup s = sim_startup.Species[i];
-            Debug.Log(s.SpeciesName);
-            foreach(IndividualModel im in s.Individuals)
-            {
-                SpawnCreature(im, i);
-            }
-        }
-        
-        TextAsset steps_json = Resources.Load<TextAsset>("StaticData/" + steps_file);
-        Simulation sim = JsonUtility.FromJson<Simulation>(steps_json.text);
-        
-        foreach(SpeciesStep ss in sim.Steps[0].Species)
-        {
-            foreach(IndividualStep i_s in ss.Individuals)
-            {
-                Creature ind = null;
-                Individuals.TryGetValue(i_s.ID, out ind);
-                if (ind != null)
-                {
-                    ind.SetStartingPosition(i_s.Physics.Position);
-                }
-            }
-        }
-        
-        TextAsset env_json = Resources.Load<TextAsset>("StaticData/scenario_master");
-        Scenario env = JsonUtility.FromJson<Scenario>(env_json.text);
-        
-        Debug.Log(env.Environment.PhysicsWorld.StaticObjects);
-        
-        foreach(StaticObjectModel som in env.Environment.PhysicsWorld.StaticObjects)
-        {
-            //TODO: This def. doesn't go here
-            SpawnStatic(som);
-        }
-        
-        
-        foreach(SimulationStep ss in sim.Steps)
-        {
-            foreach(SpeciesStep s in ss.Species)
-            {
-                AddStep(s);
-            }
-        }
-        
-        IdleCoroutine = true;
-    }
     
+    public void OnRestart()
+    {
+        CancelInvoke("Poll");
+        CancelInvoke("Step");
+        GoToEpoch(Planet.ID, Planet.Epoch);
+    }
+
     IEnumerator PassStepToCreatures(SpeciesStep ss, Dictionary<int, Creature> inds)
     {
         yield return null;
@@ -266,7 +238,7 @@ public class SpeciesController : MonoBehaviour
     {
         StaticObject obj = Instantiate<StaticObject>(ObjectPrototype);
         obj.gameObject.transform.position = CreatureMover.SimulationPositionToScenePosition(model.Position);
-        obj.gameObject.transform.position += new Vector3(-1.25f, 0.0f, -1.25f);
+        obj.gameObject.transform.position += new Vector3(0.0f, 0.0f, 0.0f);
         obj.gameObject.transform.localScale = CreatureMover.SimulationScaleToSceneScale(model.Dimensions);
     }
     
@@ -277,10 +249,7 @@ public class SpeciesController : MonoBehaviour
     
     public void OnCreatureClicked(Creature creature)
     {
-        DetailViewCamera.gameObject.SetActive(true);
-        DetailViewCamera.Target = creature.transform;
-        //DetailViewUI.ToDetail = creature;
-        NeuralNetworkUI.SetCreature(creature);
+        CameraController.SetFocusOnCreature(creature);
     }
     
     public void OnServerMessage(string msg)
@@ -297,6 +266,14 @@ public class SpeciesController : MonoBehaviour
             else if (ev.EventString == "STEP_POLL")
             {
                 PendingSteps.Add(ev);
+            }
+            else if (ev.EventString == "SIM_DONE")
+            {
+                CancelInvoke("Poll");
+            }
+            else if (ev.EventString == "EPOCH_STATS")
+            {
+                Debug.Log(msg);
             }
         }
     }

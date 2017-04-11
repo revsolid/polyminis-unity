@@ -43,6 +43,7 @@ public class Creature : MonoBehaviour
 		{
 			Steps = new List<IndividualStep>();
 			SetStartingPosition(step.Physics.Position);
+		//	SetStartingOrientation(step.Physics.EOrientation);
 		}
 		Steps.Add(step);
 	}
@@ -100,6 +101,7 @@ public class Creature : MonoBehaviour
 			{
 				Nucleus n = GameObject.Instantiate(NucleusPrototype);
 				n.transform.SetParent(transform);
+				n.transform.localPosition += new Vector3(1.25f, 0.0f, 1.25f);
 				n.NucleusModel = new NucleusModel(0);
 			}
 			else
@@ -107,7 +109,7 @@ public class Creature : MonoBehaviour
 				Organelle o = 5 <= organelle.Trait.TID  && organelle.Trait.TID <= 8 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
 				o.transform.SetParent(transform);
 				delta *= 2.5f;
-				o.transform.localPosition += new Vector3(delta.x, 0.0f, delta.y);
+				o.transform.localPosition += new Vector3(delta.x + 1.25f, 0.0f, delta.y + 1.25f);
 				o.SpeciesIndex = SpeciesIndex;
 				o.OrganelleModel = organelle;
 			}
@@ -119,6 +121,10 @@ public class Creature : MonoBehaviour
 	public void SetStartingPosition(Vector2 v)
 	{
 		Mover.SetInitialPosition(v);
+	}
+	public void SetStartingOrientation(MovementDirection or)
+	{
+		Mover.SetInitialOrientation(or);
 	}
 	
 	public void OnMouseDown()
