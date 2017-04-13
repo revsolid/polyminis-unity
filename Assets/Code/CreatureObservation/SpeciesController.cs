@@ -71,7 +71,7 @@ public class SpeciesController : MonoBehaviour
         {
             Planet = new PlanetModel();
             Planet.ID = 2011;
-            Planet.Epoch = 51;
+            Planet.Epoch = 40;
         }
         GoToEpoch(Planet.ID, Planet.Epoch);
     }
@@ -81,7 +81,7 @@ public class SpeciesController : MonoBehaviour
         CreatureObservationCommand loadSimCmd;
         loadSimCmd = new CreatureObservationCommand(ID, Epoch);
         loadSimCmd.Command = "GO_TO_EPOCH";
-        //Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
+        Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
         
         GetStatistics(ID, Epoch);
     }

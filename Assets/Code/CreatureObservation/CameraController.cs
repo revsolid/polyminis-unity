@@ -50,9 +50,9 @@ public class CameraController : MonoBehaviour
 	{
         FloatingCamera.transform.position = new Vector3(RotationRadius, 100, 0.0f);
         TopDownCamera.enabled = false;
-        Liquid.TopDownCamera = TopDownCamera;
-        Liquid.FloatingCamera = FloatingCamera;
-        Liquid.OnClick += LookAtPoint;
+//        Liquid.TopDownCamera = TopDownCamera;
+//        Liquid.FloatingCamera = FloatingCamera;
+//        Liquid.OnClick += LookAtPoint;
 	}
 	
 	// Update is called once per frame
@@ -62,7 +62,7 @@ public class CameraController : MonoBehaviour
         VerImpulse = ControlHelper.GetVerticalAxis();
 	}
 
-    void LateUpdate()
+    void FixedUpdate()
     {
        if (FloatingCamera == Camera.current) 
        {

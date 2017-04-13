@@ -3,39 +3,69 @@ using CP.ProChart;
 using System.Collections;
 using System.Collections.Generic;
 
+public class DetailedViewModel
+{
+    public float MinValue = 100000;
+    public float MaxValue = -100000;
+    public float AvgValue { get {
+        return (MinValue + MaxValue) / 2.0f;
+    }}
+    
+    public int CurrentStartingEpoch;
+}
+
 public class SpeciesStatistics : MonoBehaviour
 {
     
-    public LineChart Chart;
+    public LineChart ChartSummary;
+    public DetailedStatsViewUI DetailedView;
+    
     ChartData2D SpeciesPercentageData = new ChartData2D();
+    DetailedViewModel DetailedViewModel = new DetailedViewModel();
     Dictionary<string, int> SpeciesNameToIndex = new Dictionary<string, int>();
+    Dictionary<int, string> IndexToSpeciesName = new Dictionary<int, string>();
     int NextIndex = 0;
     
-    // TODO: HARDCODED
-    int CurrentStartingEpoch = 50;
-    int CurrentEndingEpoch = 1;
+    int CurrentStartingEpoch = -1;
+    int CurrentEndingEpoch = -1;
     
     void Awake()
     {
-        SpeciesPercentageData[0,0] = 5;
-        SpeciesPercentageData[0,1] = 50;
-        SpeciesPercentageData[0,2] = 5;
-        SpeciesPercentageData[0,3] = 50;
-        SpeciesPercentageData[1,0] = 50;
-        SpeciesPercentageData[1,1] = 5;
-        SpeciesPercentageData[1,2] = 50;
-        SpeciesPercentageData[1,3] = 5;
-        SpeciesPercentageData[2,1] = 35;
-        SpeciesPercentageData[2,2] = 10;
-        SpeciesPercentageData[2,24] = 10;
-        Chart.SetValues(ref SpeciesPercentageData);
-        
         Connection.Instance.OnMessageEvent += OnServerMessage;
+    }
+    void Start()
+    {
+        ChartSummary.SetValues(ref SpeciesPercentageData);
+        DetailedView.SetValues(ref SpeciesPercentageData, ref DetailedViewModel);
+    }
+    
+    void OnEnable()
+    {
+        DetailedView.ElementHovered += OnChartElemHover;
+        DetailedView.ElementSelected += OnChartElemSelect;
+    }
+
+    void OnDisable()
+    {
+        DetailedView.ElementHovered -= OnChartElemHover;
+        DetailedView.ElementSelected -= OnChartElemSelect;
     }
     
     void OnDestroy()
     {
-        Connection.Instance.OnMessageEvent -= OnServerMessage;
+        if (Connection.Instance != null)
+        {
+            Connection.Instance.OnMessageEvent -= OnServerMessage;
+        }
+    }
+    
+    void OnChartElemHover(int row, int column)
+    {
+        //
+    }
+    void OnChartElemSelect(int row, int column)
+    {
+        // 
     }
     
     void OnServerMessage(string msg)
@@ -48,7 +78,26 @@ public class SpeciesStatistics : MonoBehaviour
         {
             CreatureObservationEvent ev = JsonUtility.FromJson<CreatureObservationEvent>(msg);
             
-            SpeciesPercentageData.Clear();
+            if (CurrentStartingEpoch == -1)
+            {
+                CurrentStartingEpoch = ev.EpochStats.Epoch;
+                // This is madness
+                for (int i = -4; i < 4; ++i)                 
+                {
+                    CreatureObservationCommand getStatsCmd;
+                    // TODO HARDCODED
+                    getStatsCmd = new CreatureObservationCommand(2011, CurrentStartingEpoch + i);
+                    getStatsCmd.Command = "GET_STATS";
+                    Connection.Instance.Send(JsonUtility.ToJson(getStatsCmd));
+                }
+            }
+            
+            if (CurrentEndingEpoch == -1 && ev.EpochStats.Epoch >= CurrentStartingEpoch) 
+            {
+                CurrentEndingEpoch = ev.EpochStats.Epoch;
+            }
+
+           // SpeciesPercentageData.Clear();
             
             foreach(StatEntry perc in ev.EpochStats.Percentages)
             {
@@ -59,7 +108,21 @@ public class SpeciesStatistics : MonoBehaviour
                     SpeciesNameToIndex[perc.SpeciesName] = NextIndex++;
                     inx = SpeciesNameToIndex[perc.SpeciesName];
                 }
-                SpeciesPercentageData[inx, ev.EpochStats.Epoch - CurrentStartingEpoch] = perc.Value;
+                IndexToSpeciesName[inx] = perc.SpeciesName;
+                if (ev.EpochStats.Epoch - (CurrentStartingEpoch - 4) >= 1)
+                {
+                    SpeciesPercentageData[inx, (int)Mathf.Max(0.0f, ev.EpochStats.Epoch - (CurrentStartingEpoch - 4))] = perc.Value;
+                
+                    if (perc.Value > DetailedViewModel.MaxValue)
+                    {
+                        DetailedViewModel.MaxValue = perc.Value;
+                    }
+                    if (perc.Value < DetailedViewModel.MinValue)
+                    {
+                        DetailedViewModel.MinValue = perc.Value;
+                    }
+                    DetailedViewModel.CurrentStartingEpoch = (int)Mathf.Max(1.0f, CurrentStartingEpoch - 4);
+                }
             }
         }
     }

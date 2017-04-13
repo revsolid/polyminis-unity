@@ -43,7 +43,7 @@ public class Creature : MonoBehaviour
 		{
 			Steps = new List<IndividualStep>();
 			SetStartingPosition(step.Physics.Position);
-		//	SetStartingOrientation(step.Physics.EOrientation);
+			SetStartingOrientation(step.Physics.EOrientation);
 		}
 		Steps.Add(step);
 	}
@@ -103,6 +103,7 @@ public class Creature : MonoBehaviour
 				n.transform.SetParent(transform);
 				n.transform.localPosition += new Vector3(1.25f, 0.0f, 1.25f);
 				n.NucleusModel = new NucleusModel(0);
+				n.SpeciesIndex = SpeciesIndex;
 			}
 			else
 			{
