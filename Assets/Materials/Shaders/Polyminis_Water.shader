@@ -6,7 +6,7 @@ Shader "PolyWater" {
         [NoScaleOffset]_NormalTexture ("Normal Texture", 2D) = "white" {}
         _NormalTiling ("Normal Tiling", Float ) = 1
         _MainColor ("Main Color", Color) = (0,0.4627451,1,1)
-        _DeepWaterColor ("Deep Water Color", Color) = (0,0.3411765,0.6235294,1)
+        [HideInInspector]_DeepWaterColor ("Deep Water Color", Color) = (0,0.3411765,0.6235294,1)
         [NoScaleOffset]_TemperatureTexture("Temperature Texture", 2D) = "white" {}
         _Fade ("Fade", Float ) = 1.45
         _Density ("Density", Range(0, 10)) = 1.74
@@ -168,7 +168,7 @@ Shader "PolyWater" {
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
 /////// Vectors:
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
-                float3 normalLocal = lerp(float3(0,0,1),_subtractor1,_Refraction);
+                float3 normalLocal = lerp(i.normalDir,_subtractor1,_Refraction);
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
                 float3 lightColor = _LightColor0.rgb;

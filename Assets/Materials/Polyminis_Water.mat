@@ -99,19 +99,19 @@ Material:
       second: 1
     - first:
         name: _Cutoff
-      second: 0.5
+      second: 0.032
     - first:
         name: _Density
       second: 2.46
     - first:
         name: _DepthTransparency
-      second: 5
+      second: 2
     - first:
         name: _DetailNormalMapScale
       second: 1
     - first:
         name: _Distortion
-      second: 0.41
+      second: 0.248
     - first:
         name: _DstBlend
       second: 0
@@ -120,10 +120,10 @@ Material:
       second: 0
     - first:
         name: _EnableReflections
-      second: 0.6
+      second: 1
     - first:
         name: _Fade
-      second: 2.2
+      second: 2.15
     - first:
         name: _FoamBlend
       second: 1
@@ -138,7 +138,7 @@ Material:
       second: -100
     - first:
         name: _FoamTiling
-      second: 10000
+      second: 120.93918
     - first:
         name: _FoamVisibility
       second: 0.33
@@ -153,7 +153,7 @@ Material:
       second: 0
     - first:
         name: _Gloss
-      second: 0.9
+      second: 0.67
     - first:
         name: _Glossiness
       second: 0.5
@@ -168,7 +168,7 @@ Material:
       second: 0
     - first:
         name: _NormalTiling
-      second: 10000
+      second: 120.93918
     - first:
         name: _OcclusionStrength
       second: 1
@@ -180,10 +180,10 @@ Material:
       second: 0.397
     - first:
         name: _Refraction
-      second: 0.532
+      second: 0.573
     - first:
         name: _ShoreFade
-      second: 0.56
+      second: 0.58
     - first:
         name: _ShoreTransparency
       second: 0.5
@@ -229,7 +229,7 @@ Material:
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _MainColor
-      second: {r: 0.36764705, g: 0.8691685, b: 1, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _SpecularColor
       second: {r: 0.78676474, g: 0.78676474, b: 0.78676474, a: 1}

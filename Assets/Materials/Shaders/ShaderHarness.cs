@@ -39,8 +39,8 @@ public class ShaderHarness: MonoBehaviour
     void UpdateTiling()
     {
         // these are for if the geometry is created from a standard plane in unity.
-        material.SetFloat("_NormalTiling", this.gameObject.transform.localScale.x * 10000f);
-        material.SetFloat("_FoamTiling", this.gameObject.transform.localScale.x * 10000f);
+        material.SetFloat("_NormalTiling", 3000.0f / this.gameObject.transform.localScale.x );
+        material.SetFloat("_FoamTiling", 3000f / this.gameObject.transform.localScale.x);
     }
 
     float[,] FillIntensities()
