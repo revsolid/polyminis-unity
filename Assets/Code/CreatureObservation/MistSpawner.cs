@@ -13,7 +13,7 @@ public class MistSpawner : MonoBehaviour
     public Color AcidicColor;
     public Color NeutralColor;
     public Color AlkalineColor;
-    public Texture2D mistTexture;
+    public Texture2D intensityMap;
     public List<Vector3> Emmitters;
 
     private float cellSizeX;
@@ -75,6 +75,26 @@ public class MistSpawner : MonoBehaviour
         return to_ret;
     }
 
+    // takes in intensityMap
+    Texture2D PrepareTexture()
+    {
+        Texture2D to_ret = new Texture2D(gridLength, gridHeight);
+        for (int i = 0; i < gridLength; i++)
+        {
+            for (int j = 0; j < gridHeight; j++)
+            {
+                // doesn't read alpha channel of the noise map
+                float readIntensity = (intensityMap.GetPixel(i, j).r + 
+                    intensityMap.GetPixel(i, j).g +
+                    intensityMap.GetPixel(i, j).b) / 3;
+                to_ret.SetPixel(i, j, IntensityToColor(readIntensity));
+            }
+        }
+        to_ret.Apply();
+        return to_ret;
+    }
+
+
     void SpawnGrid()
     {
         for (int x = 0; x < gridLength; x++)
@@ -90,11 +110,25 @@ public class MistSpawner : MonoBehaviour
         }
     }
 
+    Color IntensityToColor(float intensityIn)
+    {
+        intensityIn = Mathf.Clamp(intensityIn, 0.0f, 1.0f);
+
+        if(intensityIn < 0.5f)
+        {
+            return Color.Lerp(AcidicColor, NeutralColor, intensityIn * 2);
+        }
+        else
+        {
+            return Color.Lerp(NeutralColor, AlkalineColor, (intensityIn - 0.5f) * 2);
+        }
+    }
+
     void ConfigureMistColor()
     {
         Texture2D phs;
-        if (mistTexture)
-            phs = mistTexture;
+        if (intensityMap)
+            phs = PrepareTexture();
         else
             phs = PrepareTexture(FillPhValues());
 
