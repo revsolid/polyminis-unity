@@ -9,7 +9,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+							<ObjectRef Name="UI" ID="{3A7C3D67-3196-4443-9F7D-23782F4A7D72}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -732,18 +732,11 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+							<ObjectRef Name="INGAME" ID="{D767E418-174F-4E66-A2C5-B3F2D5929715}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="whoosh01" ID="{91DD619C-6E17-4F25-811D-264829C6D92E}" ShortID="509631740" Type="SoundFX">
-							<PropertyList>
-								<Property Name="Pitch" Type="int32">
-									<ValueList>
-										<Value>-560</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
+						<ActorMixer Name="THRUST" ID="{1BAA0A39-628F-4640-9429-994B864C479C}" ShortID="906139056">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
@@ -753,15 +746,299 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="whoosh01" ID="{9A2058A2-57D1-46F6-8B5D-4D1FBDFF3CDA}" ShortID="269566149">
-									<Language>SFX</Language>
-									<AudioFile>whoosh01.wav</AudioFile>
-								</AudioFileSource>
+								<Sound Name="Spshp_lftThrust" ID="{C386F608-9F0D-4604-B1F5-2E3000E41F8D}" ShortID="215523033" Type="SoundFX">
+									<PropertyList>
+										<Property Name="EnablePanner" Type="bool" Value="True"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>80</Value>
+											</ValueList>
+											<RTPCList>
+												<RTPC Name="" ID="{B947D180-6BEC-4B6C-94D8-2D3D758B09B8}" ShortID="458793427">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Spaceship_Speed" ID="{F91D1A09-2700-40A3-8DFF-76557B304CF0}" WorkUnitID="{74158575-9524-42D6-8BBE-3C5658CFB983}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{789A032C-0999-4785-BEF0-9B79B6D8AA1B}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>4</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-22</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-2400</Value>
+											</ValueList>
+											<RTPCList>
+												<RTPC Name="" ID="{5420F3A6-7ADE-4D82-A6C7-792E532ACD3F}" ShortID="107331552">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Spaceship_Speed" ID="{F91D1A09-2700-40A3-8DFF-76557B304CF0}" WorkUnitID="{74158575-9524-42D6-8BBE-3C5658CFB983}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{D68E71C9-95DE-421B-95A6-9C7135AE76A8}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>-2872</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="INGAME" ID="{D767E418-174F-4E66-A2C5-B3F2D5929715}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Wwise Synth One" ID="{1A94F55B-8398-4726-82C0-5C36E943E9C6}" ShortID="781754126" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
+											<PropertyList>
+												<Property Name="NoiseLevel" Type="Real32" Value="0"/>
+												<Property Name="Osc1Level" Type="Real32" Value="-96"/>
+												<Property Name="Osc2Level" Type="Real32" Value="-96"/>
+											</PropertyList>
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<PositioningInfo>
+										<Panner Name="" ID="{BDB09CD7-7DF4-4781-90CD-4FBBBAD1EA00}">
+											<PropertyList>
+												<Property Name="PanX" Type="Real64" Value="100"/>
+												<Property Name="PanY" Type="Real64" Value="-50"/>
+											</PropertyList>
+										</Panner>
+									</PositioningInfo>
+									<ActiveSourceList>
+										<ActiveSource Name="Wwise Synth One" ID="{1A94F55B-8398-4726-82C0-5C36E943E9C6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Spshp_rigThrust" ID="{67715648-64AE-4BA6-AABE-20F8A016EA49}" ShortID="559425329" Type="SoundFX">
+									<PropertyList>
+										<Property Name="EnablePanner" Type="bool" Value="True"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>80</Value>
+											</ValueList>
+											<RTPCList>
+												<RTPC Name="" ID="{B1B059F2-BE11-4355-8929-B2F3E470104A}" ShortID="332225645">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Spaceship_Speed" ID="{F91D1A09-2700-40A3-8DFF-76557B304CF0}" WorkUnitID="{74158575-9524-42D6-8BBE-3C5658CFB983}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{DF733C85-4BE2-4E79-9D82-39D7A49E8B3B}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>4</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-22</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-2400</Value>
+											</ValueList>
+											<RTPCList>
+												<RTPC Name="" ID="{8F8487BC-74E9-4557-A78B-35FE79CAD152}" ShortID="172178132">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Spaceship_Speed" ID="{F91D1A09-2700-40A3-8DFF-76557B304CF0}" WorkUnitID="{74158575-9524-42D6-8BBE-3C5658CFB983}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{31BD98AA-CF18-40E1-A805-F8141E1DE477}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>-2872</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="INGAME" ID="{D767E418-174F-4E66-A2C5-B3F2D5929715}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Wwise Synth One" ID="{F37AC449-F329-4F2C-9CA1-DFF9D79534C4}" ShortID="307617834" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
+											<PropertyList>
+												<Property Name="NoiseLevel" Type="Real32" Value="0"/>
+												<Property Name="Osc1Level" Type="Real32" Value="-96"/>
+												<Property Name="Osc2Level" Type="Real32" Value="-96"/>
+											</PropertyList>
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<PositioningInfo>
+										<Panner Name="" ID="{CF9D8911-2D1D-4C04-B867-D4623074D7A9}">
+											<PropertyList>
+												<Property Name="PanX" Type="Real64" Value="-100"/>
+												<Property Name="PanY" Type="Real64" Value="-50"/>
+											</PropertyList>
+										</Panner>
+									</PositioningInfo>
+									<ActiveSourceList>
+										<ActiveSource Name="Wwise Synth One" ID="{F37AC449-F329-4F2C-9CA1-DFF9D79534C4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Spshp_thrustMain" ID="{08E3AD33-B856-4A4F-9E5C-51C879A216DB}" ShortID="151773197" Type="SoundFX">
+									<PropertyList>
+										<Property Name="EnablePanner" Type="bool" Value="True"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>60</Value>
+											</ValueList>
+											<RTPCList>
+												<RTPC Name="" ID="{A10C6AB9-AB91-4BE2-9870-880639AA27C7}" ShortID="831710085">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Spaceship_Speed" ID="{F91D1A09-2700-40A3-8DFF-76557B304CF0}" WorkUnitID="{74158575-9524-42D6-8BBE-3C5658CFB983}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{B152CFFE-AF5F-41AB-8290-1A1E8B3A17A5}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>19</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-4</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>2400</Value>
+											</ValueList>
+											<RTPCList>
+												<RTPC Name="" ID="{7E28EE5A-B595-487D-9AA4-52393E206CF7}" ShortID="526413364">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Spaceship_Speed" ID="{F91D1A09-2700-40A3-8DFF-76557B304CF0}" WorkUnitID="{74158575-9524-42D6-8BBE-3C5658CFB983}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{27257E33-301A-41B2-B905-18DFC147EF07}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>-566</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>-37</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{4ACEC644-F496-427B-B753-C8E5C78696D7}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="INGAME" ID="{D767E418-174F-4E66-A2C5-B3F2D5929715}" WorkUnitID="{2EB4B522-7363-484B-A9D7-261CCBE3931C}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SourcePlugin Name="Wwise Synth One" ID="{65596642-D1B1-4C32-AE1E-5D06FC8A3563}" ShortID="7623956" PluginName="Wwise Synth One" CompanyID="0" PluginID="148">
+											<PropertyList>
+												<Property Name="NoiseLevel" Type="Real32" Value="0"/>
+												<Property Name="NoiseShape" Type="int32" Value="2"/>
+												<Property Name="Osc1Level" Type="Real32" Value="-96"/>
+												<Property Name="Osc2Level" Type="Real32" Value="-96"/>
+											</PropertyList>
+											<Language>SFX</Language>
+										</SourcePlugin>
+									</ChildrenList>
+									<PositioningInfo>
+										<Panner Name="" ID="{31B3E9B1-265F-490E-B8EE-FA4421754747}">
+											<PropertyList>
+												<Property Name="PanY" Type="Real64" Value="-70"/>
+											</PropertyList>
+										</Panner>
+									</PositioningInfo>
+									<ActiveSourceList>
+										<ActiveSource Name="Wwise Synth One" ID="{65596642-D1B1-4C32-AE1E-5D06FC8A3563}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="whoosh01" ID="{9A2058A2-57D1-46F6-8B5D-4D1FBDFF3CDA}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
+						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

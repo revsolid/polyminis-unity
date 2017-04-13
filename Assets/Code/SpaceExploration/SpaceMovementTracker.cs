@@ -14,6 +14,7 @@ public class SpaceMovementTracker : MonoBehaviour
     public Camera SpaceFlightCamera;
     
     bool HasMoved = true;
+    float LastImpulse = 0.0f;
 
     
     void Awake()
@@ -37,8 +38,9 @@ public class SpaceMovementTracker : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate ()
     {
-        float horImpulse = Input.GetAxis ("Horizontal");
-        float verImpulse = Input.GetAxis ("Vertical");
+        float horImpulse = ControlHelper.GetHorizontalAxis();
+        float verImpulse = ControlHelper.GetVerticalAxis();
+
         SpaceSphere1.transform.Rotate(new Vector3(-1*verImpulse * 0.01f, horImpulse * 0.1f, 0.0f));
         SpaceFlightCamera.transform.localEulerAngles = new Vector3(0.0f, Heading, 0.0f);
         float tDamp = Mathf.Max(TranslationSpeedMult, 1/15.0f); //TODO: This should be delta time or something derived instead of a static value 
@@ -69,6 +71,13 @@ public class SpaceMovementTracker : MonoBehaviour
 
 
         CurrentPosition += (Forward * verImpulse * tDamp);
+        
+        if (LastImpulse != verImpulse)
+        {
+            Debug.Log(LastImpulse);
+            LastImpulse = Mathf.Min(Mathf.Max(verImpulse, LastImpulse - 0.005f), LastImpulse + 0.005f);
+            AkSoundEngine.SetRTPCValue("Spaceship_Speed", LastImpulse * 85, gameObject);
+        }
     }
 
 
@@ -120,6 +129,7 @@ public class SpaceMovementTracker : MonoBehaviour
     
     void OnDestroy()
     {
+        SaveLocation();        
         Connection.Instance.OnMessageEvent -= OnServerMessage;
     }
 }

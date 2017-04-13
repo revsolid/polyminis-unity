@@ -10,9 +10,14 @@ public class CameraController : MonoBehaviour
     public Camera TopDownCamera;
     public Transform TargetPoint;
     
+    public FollowerCamera DetailViewCamera;
+    public NeuralNetworkUI NeuralNetworkUI;
+    
     public PlanetLiquid Liquid;
     
     public Slider ZoomSlider;
+    
+    public Canvas CameraSwitcher;
 
     float Angle = 0.0f;
     float HorImpulse;
@@ -29,6 +34,16 @@ public class CameraController : MonoBehaviour
         FloatingCamera.enabled = true;
         TopDownCamera.enabled = false;
     }
+    
+    public void SetFocusOnCreature(Creature creature)
+    {
+        DetailViewCamera.gameObject.SetActive(true);
+        //FloatingCamera.enabled = false;
+        //TopDownCamera.enabled = false;
+        DetailViewCamera.Target = creature.transform;
+        NeuralNetworkUI.SetCreature(creature);
+        CameraSwitcher.gameObject.SetActive(false);
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -43,21 +58,25 @@ public class CameraController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		HorImpulse = Input.GetAxis ("Horizontal");
-		VerImpulse = Input.GetAxis ("Vertical");
+        HorImpulse = ControlHelper.GetHorizontalAxis();
+        VerImpulse = ControlHelper.GetVerticalAxis();
 	}
 
     void LateUpdate()
     {
        if (FloatingCamera == Camera.current) 
        {
+           CameraSwitcher.gameObject.SetActive(true);
            LateUpdateFloating(); 
        }
        
        if (TopDownCamera == Camera.current)
        {
+           CameraSwitcher.gameObject.SetActive(true);
            LateUpdateTopDown(); 
        }
+       
+       
     }
     
     void LateUpdateFloating()

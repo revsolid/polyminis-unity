@@ -28,10 +28,13 @@ public class InstinctsTunner : MonoBehaviour
     private Dictionary<Instinct, Slider> ValueSliderMap = new Dictionary<Instinct, Slider>();
     private Dictionary<Instinct, Instinct> Opposites = new Dictionary<Instinct, Instinct>();
 
+
     void ResetValues()
     {
+        Initialize();
         foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
         {
+            Debug.Log(i);
             Levels[i] = 0;
             MaxLevels[i] = MinLevel;
             MaxLevelsBase[i] = MinLevel;
@@ -48,6 +51,21 @@ public class InstinctsTunner : MonoBehaviour
         MaxSliderMap[Instinct.PREDATORY] = MaxPredatory;
         MaxSliderMap[Instinct.NOMADIC] = MaxNomadic;
 
+        Levels[Instinct.HOARDING] = 0;
+        Levels[Instinct.HERDING] = 0;
+        Levels[Instinct.PREDATORY] = 0;
+        Levels[Instinct.NOMADIC] = 0;
+
+        MaxLevels[Instinct.HOARDING] = 0;
+        MaxLevels[Instinct.HERDING] = 0;
+        MaxLevels[Instinct.PREDATORY] = 0;
+        MaxLevels[Instinct.NOMADIC] = 0;
+
+        MaxLevelsBase[Instinct.HOARDING] = 0;
+        MaxLevelsBase[Instinct.HERDING] = 0;
+        MaxLevelsBase[Instinct.PREDATORY] = 0;
+        MaxLevelsBase[Instinct.NOMADIC] = 0;
+
         ValueSliderMap[Instinct.HOARDING] = Hoarding;
         ValueSliderMap[Instinct.HERDING] = Herding;
         ValueSliderMap[Instinct.PREDATORY] = Predatory;
@@ -58,7 +76,7 @@ public class InstinctsTunner : MonoBehaviour
         Opposites[Instinct.NOMADIC] = Instinct.HOARDING;
         Opposites[Instinct.HERDING] = Instinct.PREDATORY;
 
-        ResetValues();
+        //ResetValues();
     }
 
     // make MaxLevelBase reflect selected splices
@@ -69,9 +87,9 @@ public class InstinctsTunner : MonoBehaviour
             MaxLevelsBase[i] = MinLevel;
         }
 
-        foreach (SpliceModel sm in model.SelectedSplices)
+        foreach (KeyValuePair<string, SpliceModel> sm in model.SelectedSplices)
         {
-            MaxLevelsBase[sm.EInstinct] += 1;
+            MaxLevelsBase[sm.Value.EInstinct] += 1;
         }
     }
 
@@ -80,7 +98,16 @@ public class InstinctsTunner : MonoBehaviour
         foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
         {
             Debug.Log(i);
-            MaxLevels[i] = MaxLevelsBase[i] + MaxLevelsTunned[i];
+            try
+            {
+                // New instincts added to the sim shouldn't crash the game...
+                // this was the case with Basic Instinct
+                MaxLevels[i] = MaxLevelsBase[i] + MaxLevelsTunned[i];
+            }
+            catch(KeyNotFoundException e)
+            {
+               
+            }
         }
     }
 

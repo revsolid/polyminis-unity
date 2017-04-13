@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012363513788}
   - component: {fileID: 114000013781860940}
+  - component: {fileID: 114815990629978802}
+  - component: {fileID: 114548578384184242}
   m_Layer: 0
   m_Name: Space
   m_TagString: Untagged
@@ -64,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011629434188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000015836, y: 0.0000061095, z: -36.857}
+  m_LocalPosition: {x: 0, y: 0, z: -36.857}
   m_LocalScale: {x: 1.2925148, y: 1.2925143, z: 1.2925143}
   m_Children:
   - {fileID: 4000010695809608}
@@ -122,6 +124,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpaceSphere1: {fileID: 1000012904895786}
   HUD: {fileID: 0}
-  TranslationSpeedMult: 0.3
+  TranslationSpeedMult: 0.75
   RotationSpeedMult: 0.035
   SpaceFlightCamera: {fileID: 0}
+--- !u!114 &114548578384184242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011629434188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48a8925f02a24d3cb78c26bf9f89d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 958ca0ea
+  useOtherObject: 0
+  valueGuid: bb3521983e0c384087a56961444c5855
+  eventID: 1216185298
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+--- !u!114 &114815990629978802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011629434188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48a8925f02a24d3cb78c26bf9f89d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: b22309dce2762a4cb8cac87ea7dc536f
+  eventID: -793674345
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0

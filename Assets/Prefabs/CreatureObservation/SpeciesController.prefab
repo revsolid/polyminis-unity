@@ -56,6 +56,5 @@ MonoBehaviour:
   ObjectPrototype: {fileID: 114000012992612278, guid: 741b37654a2b04d2595640556d7b99cc,
     type: 2}
   foodModel: {fileID: 1725801424138112, guid: b324defa47b7ddb429445ead4697f8d5, type: 2}
-  DetailViewCamera: {fileID: 0}
-  DetailViewUI: {fileID: 0}
-  NeuralNetworkUI: {fileID: 0}
+  CameraController: {fileID: 0}
+  BestFitness: 0

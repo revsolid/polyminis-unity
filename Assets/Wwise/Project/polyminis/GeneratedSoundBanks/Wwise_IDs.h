@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID P_SPSHP_THRUST = 3501292951U;
         static const AkUniqueID P_UI_ACCEPTED = 2187412920U;
         static const AkUniqueID P_UI_ADD = 4094348196U;
         static const AkUniqueID P_UI_CANCEL = 2258750257U;
@@ -22,12 +23,17 @@ namespace AK
         static const AkUniqueID P_UI_RETURN = 2581921037U;
         static const AkUniqueID P_UI_SUBSTRACT = 2374130668U;
         static const AkUniqueID P_UI_WARNING = 1935057997U;
-        static const AkUniqueID P_WOOSH = 4058515758U;
         static const AkUniqueID PLAY_CREATURE_OBSERVATION = 369775550U;
         static const AkUniqueID PLAY_EXPLORATION = 2287072429U;
         static const AkUniqueID PLAY_INTRO_THEME = 2290104414U;
         static const AkUniqueID PLAY_SPECIES_DESIGN = 585562449U;
+        static const AkUniqueID S_SPSHP_THRUST = 1216185298U;
     } // namespace EVENTS
+
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID SPACESHIP_SPEED = 3042288591U;
+    } // namespace GAME_PARAMETERS
 
     namespace BANKS
     {
@@ -38,8 +44,12 @@ namespace AK
 
     namespace BUSSES
     {
+        static const AkUniqueID INGAME = 984691642U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MASTER_SECONDARY_BUS = 805203703U;
+        static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID SFX = 393239870U;
+        static const AkUniqueID UI = 1551306167U;
     } // namespace BUSSES
 
 }// namespace AK

@@ -62,9 +62,9 @@ public class DnaHelix : MonoBehaviour
             SpliceModel alreadyIn = button.GetComponent<SpliceDnaHelixRenderer>().Model;
             // check against selected list. if it's not in there anymore then kick it.
             bool isStillIn = false;
-            foreach (SpliceModel sm in model.SelectedSplices)
+            foreach (KeyValuePair<string, SpliceModel> sm in model.SelectedSplices)
             {
-                if (sm.InternalName == alreadyIn.InternalName)
+                if (sm.Value.InternalName == alreadyIn.InternalName)
                 {
                     isStillIn = true;
                 }
@@ -76,7 +76,7 @@ public class DnaHelix : MonoBehaviour
         }
 
         // then check the selected list to see if any new ones need to be instantiated
-        foreach (SpliceModel sm in model.SelectedSplices)
+        foreach (KeyValuePair<string, SpliceModel> sm in model.SelectedSplices)
         {
             bool found = false;
             for (int i = 0; i < group.transform.childCount; i++)
@@ -84,15 +84,15 @@ public class DnaHelix : MonoBehaviour
                 GameObject button = group.transform.GetChild(i).gameObject;
                 SpliceModel alreadyIn = button.GetComponent<SpliceDnaHelixRenderer>().Model;
 
-                if (alreadyIn.InternalName == sm.InternalName)
+                if (alreadyIn.InternalName == sm.Value.InternalName)
                 {
                     found = true;
                 }
             }
 
-            if (!found && sm.TraitSize == size)
+            if (!found && sm.Value.TraitSize == size)
             {
-                AddSplice(sm);
+                AddSplice(sm.Value);
             }
         }
     }

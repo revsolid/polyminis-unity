@@ -11,6 +11,8 @@ public class Connection : Singleton<Connection>
     public delegate void MessageReceived(string message);
     public event MessageReceived OnMessageEvent;
     private WebSocket _ws;
+    
+    List<string> MessagesToProcess = new List<string>();
 
     public WebSocket ws {
         get
@@ -48,8 +50,8 @@ public class Connection : Singleton<Connection>
     {
         // the url to sisnett's Amazon EC2 linux box
         //TODO: Make this configurable
-        Address = "ws://ec2-54-70-6-182.us-west-2.compute.amazonaws.com:8080";
-        //Address = "ws://localhost:8080";
+        //Address = "ws://ec2-54-70-6-182.us-west-2.compute.amazonaws.com:8080";
+        Address = "ws://localhost:8080";
         ws = new WebSocket(Address);
         Debug.Log("Initilizing Connection to: " + Address);
         ws.OnMessage += (sender, e) => OnMessage(e.Data);
@@ -61,7 +63,17 @@ public class Connection : Singleton<Connection>
     void OnMessage(string message)
     {
         Debug.Log("MESSAGE! " + message.Length);
-        OnMessageEvent(message);
+        MessagesToProcess.Add(message);
+    }
+    
+    void Update()
+    {
+        if (MessagesToProcess.Count > 0)
+        {
+            string message = MessagesToProcess[0];
+            MessagesToProcess.RemoveAt(0);
+            OnMessageEvent(message);
+        }
     }
 
     public void Send(string content)

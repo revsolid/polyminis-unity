@@ -6,9 +6,9 @@ using System.Linq;
 
 public class SpeciesDesignUI : MonoBehaviour
 {
-    public VerticalLayoutGroup SmallSplices;
-    public VerticalLayoutGroup MedSplices;
-    public VerticalLayoutGroup LargeSplices;
+    public GridLayoutGroup SmallSplices;
+    public GridLayoutGroup MedSplices;
+    public GridLayoutGroup LargeSplices;
     public SpliceButton SpliceButtonRendererPrototype;
     public DnaHelix Helix;
     public DnaSeq DnaSequencer;
@@ -78,7 +78,7 @@ public class SpeciesDesignUI : MonoBehaviour
     // read DesignerModel and update all children
     void UpdateAllViews()
     {
-   //     InstinctsTunner.UpdateView(DesignerModel);
+        InstinctsTunner.UpdateView(DesignerModel);
         Helix.UpdateView(DesignerModel);
         this.UpdateView();
         DnaSequencer.ActivateSelection(DesignerModel.CurrentSpecies);
@@ -93,9 +93,9 @@ public class SpeciesDesignUI : MonoBehaviour
             SpliceModel alreadyIn = button.GetComponent<SpliceButton>().Model;
             // check against unselected list. if it's not in there anymore then kick it.
             bool isStillIn = false;
-            foreach (SpliceModel sm in model.UnselectedSplices)
+            foreach (KeyValuePair<string, SpliceModel> sm in model.UnselectedSplices)
             {
-                if (sm.InternalName == alreadyIn.InternalName)
+                if (sm.Value.InternalName == alreadyIn.InternalName)
                 {
                     isStillIn = true;
                 }
@@ -107,7 +107,7 @@ public class SpeciesDesignUI : MonoBehaviour
         }
 
         // then check the unselected list to see if any new ones need to be instantiated
-        foreach (SpliceModel sm in model.UnselectedSplices)
+        foreach (KeyValuePair<string, SpliceModel> sm in model.UnselectedSplices)
         {
             bool found = false;
             for (int i = 0; i < group.transform.childCount; i++)
@@ -115,15 +115,15 @@ public class SpeciesDesignUI : MonoBehaviour
                 GameObject button = group.transform.GetChild(i).gameObject;
                 SpliceModel alreadyIn = button.GetComponent<SpliceButton>().Model;
 
-                if (alreadyIn.InternalName == sm.InternalName)
+                if (alreadyIn.InternalName == sm.Value.InternalName)
                 {
                     found = true;
                 }
             }
 
-            if (!found && sm.TraitSize == size)
+            if (!found && sm.Value.TraitSize == size)
             {
-                AddSplice(sm);
+                AddSplice(sm.Value);
             }
         }
     }
@@ -237,7 +237,7 @@ public class SpeciesDesignUI : MonoBehaviour
         OnExitButtonClicked();
     }
 
-    public void OpenWithSpecies(SpeciesModel m)
+    public void OpenWithSpecies(SpeciesModel m, bool isFromOrbital)
     {
         DesignerModel.LoadSpecies(m);
         UpdateAllViews();
@@ -250,6 +250,7 @@ public class SpeciesDesignUI : MonoBehaviour
         InstinctsTunner.LoadModel(itmodel);
 
         NameInput.text = DesignerModel.CurrentSpecies.SpeciesName;
+        NameInput.interactable = !isFromOrbital;
         gameObject.SetActive(true);
     }
 
