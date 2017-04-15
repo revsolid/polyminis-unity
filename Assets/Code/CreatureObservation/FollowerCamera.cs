@@ -7,6 +7,9 @@ public class FollowerCamera : MonoBehaviour
     public int DistanceMultiplier = 25;
     public int Offset = 25;
     
+    public delegate void OnClose();
+    public event OnClose Closed;
+    
     void Start()
     {
         gameObject.SetActive(false);
@@ -27,5 +30,9 @@ public class FollowerCamera : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
+        if (Closed != null)
+        {
+            Closed();
+        }
     }
 }

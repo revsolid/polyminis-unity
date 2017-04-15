@@ -129,6 +129,7 @@ public class SpaceMovementTracker : MonoBehaviour
     
     void OnDestroy()
     {
+        SaveLocation();        
         Connection.Instance.OnMessageEvent -= OnServerMessage;
     }
 }

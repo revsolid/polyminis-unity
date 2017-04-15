@@ -454,6 +454,7 @@ public class InstinctTuningModel
     public int HerdingMaxLvl = 0;
     public int NomadicMaxLvl = 0;
 }
+
 //
 [Serializable]
 public class SpeciesModel
@@ -540,6 +541,16 @@ public class IndividualPhysics
 
 //
 [Serializable]
+public class EvaluationStatistics 
+{
+    public float Nomadic; 
+    public float Herding; 
+    public float Hoarding; 
+    public float Predatory; 
+}
+
+//
+[Serializable]
 public class IndividualModel
 {
   // A creature in a simulation
@@ -550,6 +561,7 @@ public class IndividualModel
     public IndividualPhysics Physics;
     public Range Temperature;
     public Range Ph;
+    public EvaluationStatistics EvaluationStats;
     public float Fitness;
     public float Speed; 
 
