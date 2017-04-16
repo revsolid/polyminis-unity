@@ -30,6 +30,6 @@ public class Nucleus : MonoBehaviour
 		c[SpeciesIndex % 3] = 0.8f;
 		c.a = 0.4f;
 		if (rend != null)
-	        rend.material.SetColor("_EmissionColor", c);
+	        rend.material.SetColor("_Color2", c);
 	}
 }
