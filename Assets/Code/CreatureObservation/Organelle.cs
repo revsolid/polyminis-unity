@@ -6,16 +6,16 @@ public class Organelle : MonoBehaviour
 	
 	public GameObject Sphere;
 	public OrganelleModel OrganelleModel;
-	public int SpeciesIndex = 0;
+	protected int _SpeciesIndex;
+	public int SpeciesIndex { get { return _SpeciesIndex; } set { _SpeciesIndex = value; PrepareTexture(); }}
 
 	// Use this for initialization
-	void Start ()
+	protected void Start ()
 	{
-	
+		PrepareTexture();
 	}
 	
-	// Update is called once per frame
-	void Update ()
+	protected void PrepareTexture()
 	{
 	    Renderer rend = Sphere.GetComponent<Renderer>();
 		// TMP

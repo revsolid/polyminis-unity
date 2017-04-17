@@ -89,7 +89,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.5, y: 2.5, z: 2.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 1.25, y: 1.25, z: 1.25}
 --- !u!114 &114000010034767314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,8 +112,41 @@ MonoBehaviour:
   ID: 0
   Alive: 0
   foodSource: {fileID: 0}
-  DebugText: {fileID: 114000010624047416}
+  DebugText: J
   Controller: {fileID: 0}
+  LastControlStep:
+    Inputs: []
+    Outputs: []
+    Hidden: []
+  Model:
+    ID: 0
+    Morphology:
+      Body: []
+    HP: 0
+    Physics:
+      StartingPos: {x: 0, y: 0}
+      Position: {x: 0, y: 0}
+      Dimensions: {x: 0, y: 0}
+    Temperature:
+      Min: 0
+      Max: 0
+    Ph:
+      Min: 0
+      Max: 0
+    EvaluationStats:
+      Nomadic: 0
+      Herding: 0
+      Hoarding: 0
+      Predatory: 0
+    Fitness: 0
+    Speed: 0
+    Control:
+      HiddenToOutput:
+        Coefficients: []
+        Biases: []
+      InToHidden:
+        Coefficients: []
+        Biases: []
 --- !u!114 &114000010427070398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +160,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2.5
   InitialPosition: {x: 0, y: 10}
+  DebugText: '
+
+'
 --- !u!114 &114000010624047416
 MonoBehaviour:
   m_ObjectHideFlags: 1

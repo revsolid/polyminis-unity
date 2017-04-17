@@ -21,7 +21,7 @@ public class SpliceButton : MonoBehaviour
     {
         if (!ready && Model != null)
         {
-            NameField.text = Model.Name;
+//            NameField.text = Model.Name;
             ready = true;
             Background.color = SpeciesDesignUI.SColorConfig.GetColorFor(Model.EInstinct);
             Emblem.sprite = SpeciesDesignUI.SColorConfig.GetSpriteFor(Model.EInstinct);

@@ -221,12 +221,12 @@ public class NeuralNetworkUI : MonoBehaviour
         DNAText.text += " BestFitness: ";
         DNAText.text += ToDetail.Controller.BestFitness;
         
-  /*      DNAText.text += "\n";
+        DNAText.text += "\n";
         DNAText.text += " DebugInfo: ";
         DNAText.text += ToDetail.DebugText;
         DNAText.text += "\n";
         DNAText.text += " Mover Executed: ";
-        DNAText.text += ToDetail.Mover.ExecutedSteps;*/
+        DNAText.text += ToDetail.Mover.ExecutedSteps;
     }
 
     void LateUpdate ()

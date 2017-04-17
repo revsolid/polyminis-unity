@@ -43,6 +43,7 @@ public class Creature : MonoBehaviour
 		{
 			Steps = new List<IndividualStep>();
 			SetStartingPosition(step.Physics.Position);
+			SetStartingOrientation(step.Physics.EOrientation);
 		}
 		Steps.Add(step);
 	}
@@ -78,6 +79,11 @@ public class Creature : MonoBehaviour
 		DebugText += string.Format("\nPosition: {0}", step.Physics.Position);
 		DebugText += string.Format("\nAlive: {0}", step.Alive);
 		DebugText += string.Format("\nIgnoring: {0}", StepsToIgnore);
+		DebugText += string.Format("\n\nFitness Stats:");
+		DebugText += string.Format("\nNomadic: {0}",  Model.EvaluationStats.Nomadic);
+		DebugText += string.Format("\nPredatory: {0}",  Model.EvaluationStats.Predatory);
+		DebugText += string.Format("\nHerding: {0}",  Model.EvaluationStats.Herding);
+		DebugText += string.Format("\nHoarding: {0}",  Model.EvaluationStats.Hoarding);
 		
 		DebugText += Mover.DebugText;
 	}
@@ -95,14 +101,16 @@ public class Creature : MonoBehaviour
 			{
 				Nucleus n = GameObject.Instantiate(NucleusPrototype);
 				n.transform.SetParent(transform);
+				n.transform.localPosition += new Vector3(1.25f, 0.0f, 1.25f);
 				n.NucleusModel = new NucleusModel(0);
+				n.SpeciesIndex = SpeciesIndex;
 			}
 			else
 			{
 				Organelle o = 5 <= organelle.Trait.TID  && organelle.Trait.TID <= 8 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
 				o.transform.SetParent(transform);
 				delta *= 2.5f;
-				o.transform.localPosition += new Vector3(delta.x, 0.0f, delta.y);
+				o.transform.localPosition += new Vector3(delta.x + 1.25f, 0.0f, delta.y + 1.25f);
 				o.SpeciesIndex = SpeciesIndex;
 				o.OrganelleModel = organelle;
 			}
@@ -114,6 +122,10 @@ public class Creature : MonoBehaviour
 	public void SetStartingPosition(Vector2 v)
 	{
 		Mover.SetInitialPosition(v);
+	}
+	public void SetStartingOrientation(MovementDirection or)
+	{
+		Mover.SetInitialOrientation(or);
 	}
 	
 	public void OnMouseDown()

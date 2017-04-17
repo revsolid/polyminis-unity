@@ -7,10 +7,10 @@ using System.Collections.Generic;
 //TMP
 class Heading
 {
-    public static Quaternion UP_HEADING = Quaternion.Euler(0, 0, 0);
-    public static Quaternion DOWN_HEADING = Quaternion.Euler(0, 180, 0);
-    public static Quaternion LEFT_HEADING = Quaternion.Euler(0, 270, 0);
-    public static Quaternion RIGHT_HEADING = Quaternion.Euler(0, 90, 0);
+    public static Quaternion UP_HEADING    = Quaternion.Euler(0,    0, 0);
+    public static Quaternion DOWN_HEADING  = Quaternion.Euler(0,  180, 0);
+    public static Quaternion LEFT_HEADING  = Quaternion.Euler(0,  270, 0);
+    public static Quaternion RIGHT_HEADING = Quaternion.Euler(0,   90, 0);
 }
 
 enum MovementType
@@ -105,7 +105,7 @@ class CreatureMovementAction
                 else
                 {
                     float t = Time.time - TimeStarted;
-                    mover.gameObject.transform.localRotation = Quaternion.Slerp(mover.gameObject.transform.localRotation, TargetRotation, t * Speed / 2);
+                    mover.gameObject.transform.localRotation = Quaternion.Slerp(mover.gameObject.transform.localRotation, TargetRotation, t * 0.5f * Speed / 2);
                 }
                 break;
         }
@@ -187,13 +187,18 @@ public class CreatureMover : MonoBehaviour
     public void SetDataFromModel(IndividualModel model)
     {
         Speed = Mathf.Min(model.Speed, 4);
-        SetInitialPosition(model.Physics.Position);
+        //SetInitialPosition(model.Physics.Position);
     }
     
     public void SetInitialPosition(Vector2 v)
     {
         InitialPosition = v;
         gameObject.transform.localPosition = SimulationPositionToScenePosition(InitialPosition);
+    }
+    
+    public void SetInitialOrientation(MovementDirection or)
+    {
+        gameObject.transform.localRotation = SimulationRotationToSceneRotation(or);
     }
     
     public void AddStep(PhysicsStep step)

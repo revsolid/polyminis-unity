@@ -19,7 +19,7 @@ public class OrbitalUI : MonoBehaviour
     public PieChart PopulationChart;
     public PieChart ResourceChart;
     public GameObject TextPopup;
-
+    public int ChartSize;
     public SpeciesCard[] Slots;
     
     PlanetModel Planet;
@@ -73,14 +73,14 @@ public class OrbitalUI : MonoBehaviour
         //TODO: This is ugly
         TextPopup.GetComponent<Text>().text = PopupString;
 
-        if(PopulationChart.ChartSize < 180)
+        if(PopulationChart.ChartSize < ChartSize)
         {
-            const int speed = 10;
+            const int speed = 5;
             PopulationChart.ChartSize += speed;
             
             ResourceChart.ChartSize += speed;
-            if (PopulationChart.ChartSize > 180) PopulationChart.ChartSize = 180;
-            if (ResourceChart.ChartSize > 180) ResourceChart.ChartSize = 180;
+            if (PopulationChart.ChartSize > ChartSize) PopulationChart.ChartSize = ChartSize;
+            if (ResourceChart.ChartSize > ChartSize) ResourceChart.ChartSize = ChartSize;
         }
         if (!HasHookedCallbacks)
         {

@@ -46,7 +46,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
                 MainDialog.DialogMessage.text  = "How much Biomass do you want to Extract from this Species?";
                 BiomassSlider.gameObject.SetActive(true);
                 BiomassSlider.minValue = 0.0f;
-                BiomassSlider.maxValue = SpeciesModel.Percentage; 
+                BiomassSlider.maxValue = SpeciesModel.Percentage * 100; 
                 break;
             case SpeciesPlanetAction.Research:
                 MainDialog.DialogMessage.text = "Do you want to research this Species? (Researching takes a slot)";
@@ -122,7 +122,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
                 pInteractionCommand = new PlanetInteractionCommand(PlanetInteractionCommandType.EXTRACT);
                 pInteractionCommand.Epoch = PlanetModel.Epoch; 
                 pInteractionCommand.PlanetId = PlanetModel.ID; 
-                pInteractionCommand.ExtractedPercentage = BiomassSlider.value;
+                pInteractionCommand.ExtractedPercentage = BiomassSlider.value / 100.0f;
                 pInteractionCommand.Species = SpeciesModel;
                 Connection.Instance.Send(JsonUtility.ToJson(pInteractionCommand));
                 break;
