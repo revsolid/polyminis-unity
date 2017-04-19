@@ -510,6 +510,7 @@ public class TraitModel
 {
     public int TID;
     public string TraitTier;
+    public string InternalName = "";
     TraitTier Tier;
 }
 
@@ -660,6 +661,15 @@ public class StaticObjectModel
     public Vector2 Dimensions;
 }
 [Serializable]
+public class WorldObjectModel
+{
+    public Vector2 Position;
+    public Vector2 Dimensions;
+    public float Temperature;
+    public float Ph;
+}
+
+[Serializable]
 public class PhysicsWorldModel
 {
     public List<StaticObjectModel> StaticObjects;
@@ -668,6 +678,7 @@ public class PhysicsWorldModel
 public class SimulationEnvironment
 {
     public PhysicsWorldModel PhysicsWorld;
+    public List<WorldObjectModel> WorldObjects;
 }
 [Serializable]
 public class Scenario

@@ -6,9 +6,9 @@ using System.Collections.Generic;
 public class Creature : MonoBehaviour
 {
 	public Organelle OrganellePrototype;
-	
 	// TODO - This should be a proper data-driven table	
 	public Actuator OrganellePrototype2;
+	
 	
 
 	public Nucleus NucleusPrototype;
@@ -88,7 +88,7 @@ public class Creature : MonoBehaviour
 		DebugText += Mover.DebugText;
 	}
 	
-	public void SetDataFromModel(IndividualModel model, string speciesName="Species in Planet")
+	public void SetDataFromModel(IndividualModel model, string speciesName, OrganellesCatalog Catalog)
 	{
 		SpeciesName = speciesName;
 		ID = model.ID;		
@@ -107,7 +107,9 @@ public class Creature : MonoBehaviour
 			}
 			else
 			{
-				Organelle o = 5 <= organelle.Trait.TID  && organelle.Trait.TID <= 8 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
+				//Organelle o = 5 <= organelle.Trait.TID  && organelle.Trait.TID <= 8 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
+				Organelle o = Catalog.GetForTID(organelle.Trait.TID);
+				
 				o.transform.SetParent(transform);
 				delta *= 2.5f;
 				o.transform.localPosition += new Vector3(delta.x + 1.25f, 0.0f, delta.y + 1.25f);

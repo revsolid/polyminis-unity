@@ -129,8 +129,8 @@ MonoBehaviour:
   XPoints: 100
   YPoints: 100
   material: {fileID: 2100000, guid: 656c1a4111e232445bfd4f0bdadcd186, type: 2}
-  HighTempColor: {r: 1, g: 0.31034485, b: 0, a: 0.909}
-  LowTempColor: {r: 0, g: 0.13103437, b: 1, a: 0.872}
+  HighTempColor: {r: 0.9176471, g: 0.2784314, b: 0.34509805, a: 0.909}
+  LowTempColor: {r: 0.627451, g: 0.7843138, b: 0.9215687, a: 0.872}
   Emmitters:
   - {x: 0, y: 0, z: 0.5}
   - {x: 9, y: 9, z: -0.5}

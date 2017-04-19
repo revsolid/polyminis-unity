@@ -11,16 +11,39 @@ public class DetailedStatsViewUI : MonoBehaviour
     public event OnElemHover ElementHovered; 
     public delegate void OnElemSelect(int row, int column);
     public event OnElemSelect ElementSelected; 
+    
+    public SpeciesController SpeciesController;
 
     public LineChart MainChart;
     DetailedViewModel Model;
     ChartData2D Data;
     
+    public Text PlanetName;
+    public Text EpochText;
     public Text MaxText; 
     public Text AvgText; 
     public Text MinText; 
     
+    public Button GoToEpochButton;
+    
+    public EpochDetailDataGrid DataGrid; 
+
     public Text[] Labels;
+    public Button EpochLabelButtonPrototype;
+    public Transform LabelsAnchor;
+    Button[] EpochButtons = new Button[10];
+    int SelectedEpoch;
+    
+    void Start()
+    {
+        for(int i = 0; i < EpochButtons.Length; i++)
+        {
+            EpochButtons[i] = GameObject.Instantiate(EpochLabelButtonPrototype);
+            EpochButtons[i].gameObject.SetActive(false);
+            EpochButtons[i].transform.parent = LabelsAnchor;
+            EpochButtons[i].transform.localPosition = Vector3.zero;
+        }
+    }
     
     public void SetValues(ref ChartData2D data, ref DetailedViewModel model)
     {
@@ -32,7 +55,7 @@ public class DetailedStatsViewUI : MonoBehaviour
         {
             Data.onDataChangeDelegate -= OnDataChanged;
         }
-			 
+
         Data = data;
         Data.onDataChangeDelegate += OnDataChanged; 
     }
@@ -54,13 +77,19 @@ public class DetailedStatsViewUI : MonoBehaviour
             Labels[i].gameObject.SetActive(true);
             Labels[i].transform.localPosition = new Vector2(poss[i].position.x, Labels[i].transform.localPosition.y);
             Labels[i].text = Model.CurrentStartingEpoch + i + "";
+            
+     //       EpochButtons[i].gameObject.SetActive(true);
+            EpochButtons[i].transform.localPosition = new Vector2(poss[i].position.x, EpochButtons[i].transform.localPosition.y);
         }
+        
         for (; i < Labels.Length; ++i)
         {
             Labels[i].gameObject.SetActive(false);
         }
-    }
         
+        PlanetName.text = Model.PlanetModel.PlanetName;
+        EpochText.text = string.Format("Currently Observing: {0}", Model.PlanetModel.Epoch);
+    }
         
     void OnDataChanged()
     {
@@ -93,6 +122,37 @@ public class DetailedStatsViewUI : MonoBehaviour
         {
             ElementSelected(row, column);
         }
+        
+        GoToEpochButton.gameObject.SetActive(true);
+        
+        int epoch = column + Model.CurrentStartingEpoch;
+        int len = Model.EpochsToIndexes[epoch].Count();
+        List<string> names = new List<string>(len);
+        List<float> values = new List<float>(len);
+        List<float> deltas = new List<float>(len);
+        for(int i = 0; i < len; i++) 
+        {
+            int inx = Model.EpochsToIndexes[epoch][i];
+            names.Add(Model.IndexToSpeciesName[inx]);
+            values.Add(Data[inx, column]);
+
+            if (column > 0)
+            {
+                deltas.Add(values[i] - Data[inx, column - 1]);
+            }
+            else
+            {
+                deltas.Add(0.0f);
+            }
+        }
+        DataGrid.UpdateGrid(names, values, deltas);
+        
+        SelectedEpoch = epoch;
+        GoToEpochButton.GetComponentInChildren<Text>().text = string.Format("Go To Eon:{0}", epoch);
+    }
+    
+    public void OnObserveEpoch()
+    {
+        SpeciesController.GoToEpoch(Model.PlanetModel.ID, SelectedEpoch);
     }
 }
-    

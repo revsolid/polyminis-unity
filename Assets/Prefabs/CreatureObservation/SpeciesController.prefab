@@ -57,4 +57,5 @@ MonoBehaviour:
     type: 2}
   foodModel: {fileID: 1725801424138112, guid: b324defa47b7ddb429445ead4697f8d5, type: 2}
   CameraController: {fileID: 0}
+  Catalog: {fileID: 0}
   BestFitness: 0

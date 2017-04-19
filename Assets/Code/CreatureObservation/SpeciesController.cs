@@ -14,7 +14,7 @@ class StatEntry
 [Serializable]
 class EpochStats
 {
-    public int Epoch;
+    public int Epoch = -1;
     public List<StatEntry> Percentages;
 }
 
@@ -45,6 +45,7 @@ public class SpeciesController : MonoBehaviour
     public StaticObject ObjectPrototype;
     public GameObject foodModel;
     public CameraController CameraController;
+	public OrganellesCatalog Catalog;
     
     [HideInInspector]public float BestFitness = 0;
 
@@ -71,12 +72,12 @@ public class SpeciesController : MonoBehaviour
         {
             Planet = new PlanetModel();
             Planet.ID = 2011;
-            Planet.Epoch = 40;
+            Planet.Epoch = 37;
         }
         GoToEpoch(Planet.ID, Planet.Epoch);
     }
     
-    void GoToEpoch(int ID, int Epoch)
+    public void GoToEpoch(int ID, int Epoch)
     {
         CreatureObservationCommand loadSimCmd;
         loadSimCmd = new CreatureObservationCommand(ID, Epoch);
@@ -220,16 +221,14 @@ public class SpeciesController : MonoBehaviour
         creature.SpeciesIndex = index;
         if (!string.IsNullOrEmpty(speciesName))
         {
-            creature.SetDataFromModel(model, speciesName);
+            speciesName = "Species In Planet";
         }
-        else
-        {
-            creature.SetDataFromModel(model);
-        }
+        creature.SetDataFromModel(model, speciesName, Catalog);
         
         Individuals[model.ID] = creature;
         IndividualIDs.Add(model.ID);
-        creature.SetStartingPosition(model.Physics.StartingPos);
+        creature.
+        SetStartingPosition(model.Physics.StartingPos);
         creature.Controller = this; 
         CreaturesSpawned.Add(creature);
     }
@@ -254,7 +253,6 @@ public class SpeciesController : MonoBehaviour
     
     public void OnServerMessage(string msg)
     {
-        Debug.Log("Msg on Species Controller");
         BaseEvent base_ev = JsonUtility.FromJson<BaseEvent>(msg);
         if (base_ev.Service == "creature_observation")
         {
