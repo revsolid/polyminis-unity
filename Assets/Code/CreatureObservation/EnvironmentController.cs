@@ -32,7 +32,7 @@ public class EnvironmentController : MonoBehaviour {
 		{
 			for(int j = 0; j < env.ThermalWorld.Dimensions.y; j++)
 			{
-				intensities[i,j] = env.ThermalWorld.Grid[i * (int)env.ThermalWorld.Dimensions.y + j];
+				intensities[i,j] = env.ThermalWorld.Grid[i * (int)env.ThermalWorld.Dimensions.y + j] - 0.5f;
 			}
 		}
 		
