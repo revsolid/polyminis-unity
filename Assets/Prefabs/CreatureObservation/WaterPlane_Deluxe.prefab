@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23208600215554982}
   - component: {fileID: 114369180586987872}
   - component: {fileID: 114060572039726186}
+  - component: {fileID: 114988280769401384}
   m_Layer: 0
   m_Name: WaterPlane_Deluxe
   m_TagString: Untagged
@@ -131,15 +132,19 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 656c1a4111e232445bfd4f0bdadcd186, type: 2}
   HighTempColor: {r: 0.9176471, g: 0.2784314, b: 0.34509805, a: 0.909}
   LowTempColor: {r: 0.627451, g: 0.7843138, b: 0.9215687, a: 0.872}
-  Emmitters:
-  - {x: 0, y: 0, z: 0.5}
-  - {x: 9, y: 9, z: -0.5}
-  - {x: 0, y: 9, z: -0.5}
-  - {x: 9, y: 0, z: 0.5}
-  - {x: 5, y: 5, z: -0.2}
-  - {x: 5, y: 4, z: -0.2}
-  - {x: 9, y: 5, z: 0.5}
-  - {x: 9, y: 4, z: -0.5}
-  - {x: 4, y: 9, z: 0.5}
-  - {x: 5, y: 9, z: -0.5}
+  Emmitters: []
   TempTexture: {fileID: 0}
+--- !u!114 &114988280769401384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1467711372162574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b43d67a0cb64a3ca9475c7ff926114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectPrototype: {fileID: 114000012992612278, guid: 741b37654a2b04d2595640556d7b99cc,
+    type: 2}
+  WaterShaderHarness: {fileID: 114369180586987872}

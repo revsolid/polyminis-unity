@@ -667,6 +667,7 @@ public class WorldObjectModel
     public Vector2 Dimensions;
     public float Temperature;
     public float Ph;
+    public bool IsBorder;
 }
 
 [Serializable]
@@ -675,9 +676,16 @@ public class PhysicsWorldModel
     public List<StaticObjectModel> StaticObjects;
 }
 [Serializable]
+public class ThermalWorldModel
+{
+    public Vector2 Dimensions;
+    public List<float> Grid;
+}
+[Serializable]
 public class SimulationEnvironment
 {
     public PhysicsWorldModel PhysicsWorld;
+    public ThermalWorldModel ThermalWorld;
     public List<WorldObjectModel> WorldObjects;
 }
 [Serializable]

@@ -2288,6 +2288,11 @@ Prefab:
       propertyPath: Catalog
       value: 
       objectReference: {fileID: 1422537054}
+    - target: {fileID: 114000012281263322, guid: 0b750052f363a432894eb21664ec15b3,
+        type: 2}
+      propertyPath: EnvironmentController
+      value: 
+      objectReference: {fileID: 680589640}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b750052f363a432894eb21664ec15b3, type: 2}
   m_IsPrefabParent: 0
@@ -4824,6 +4829,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114988280769401384, guid: 9db3c4903144d7c458e981f50c547a95,
+        type: 2}
+      propertyPath: WaterShaderHarness
+      value: 
+      objectReference: {fileID: 680589641}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9db3c4903144d7c458e981f50c547a95, type: 2}
   m_IsPrefabParent: 0
@@ -5237,6 +5247,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 679651280}
+--- !u!114 &680589640 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114988280769401384, guid: 9db3c4903144d7c458e981f50c547a95,
+    type: 2}
+  m_PrefabInternal: {fileID: 630269682}
+  m_Script: {fileID: 11500000, guid: 97b43d67a0cb64a3ca9475c7ff926114, type: 3}
+--- !u!114 &680589641 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114369180586987872, guid: 9db3c4903144d7c458e981f50c547a95,
+    type: 2}
+  m_PrefabInternal: {fileID: 630269682}
+  m_Script: {fileID: 11500000, guid: be5cb245f7c5c476d82d9fb994a151ce, type: 3}
 --- !u!1 &690183357 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012833406724, guid: 741b37654a2b04d2595640556d7b99cc,

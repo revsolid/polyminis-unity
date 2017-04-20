@@ -30,9 +30,16 @@ public class ShaderHarness: MonoBehaviour
     void UpdateTexture()
 	{
         float[,] intensities = FillIntensities();
-        //material.SetFloatArray("_Values", intensities);
+        UpdateTexture(intensities);
+    }
+    
+    public void UpdateTexture(float[,] intensities)
+    {
+        XPoints = intensities.GetLength(0);
+        YPoints = intensities.GetLength(1);
+        Debug.Log("X " + XPoints);
+        Debug.Log("Y " + YPoints);
         TempTexture = PrepareTexture(intensities);
-        Debug.Log("Setting");
         material.SetTexture("_TemperatureTexture", TempTexture);
     }
 
