@@ -23,7 +23,7 @@ public class EnvironmentController : MonoBehaviour {
 		
 		foreach(WorldObjectModel wom in env.WorldObjects)
 		{
-			if (!wom.IsBorder)
+		//	if (!wom.IsBorder)
 				SpawnObject(wom);
 		}
 		
@@ -42,8 +42,35 @@ public class EnvironmentController : MonoBehaviour {
 	void SpawnObject(WorldObjectModel model)
 	{
         StaticObject obj = Instantiate<StaticObject>(ObjectPrototype);
-        obj.gameObject.transform.position = CreatureMover.SimulationPositionToScenePosition(model.Position);
-        obj.gameObject.transform.position += new Vector3(0.0f, 0.0f, 0.0f);
-        obj.gameObject.transform.localScale = CreatureMover.SimulationScaleToSceneScale(model.Dimensions);
+		Vector3 pos = CreatureMover.SimulationPositionToScenePosition(model.Position);
+		Vector3 dims = CreatureMover.SimulationScaleToSceneScale(model.Dimensions);
+
+        obj.gameObject.transform.position = pos;
+		
+		int DENSITY = 10;
+		for(int i = 0; i < DENSITY; i++)
+		{
+			Vector3 deltaPos = new Vector3(Random.Range(0.0f, dims.x), 0, Random.Range(0.0f, dims.z));
+            obj = Instantiate<StaticObject>(ObjectPrototype);
+			
+			if (pos.x < 0)
+			{
+				deltaPos.x -= 2.5f;
+			}
+			else
+			{
+				deltaPos.x += 2.5f;
+			}
+			if (pos.y < 0)
+			{
+				deltaPos.y -= 2.5f;
+			}
+			else
+			{
+				deltaPos.y += 2.5f;
+			}
+
+        	obj.gameObject.transform.position = pos + deltaPos;
+		}
 	}
 }

@@ -9,14 +9,14 @@ public class StaticObject : MonoBehaviour
 	{
 		Vector3 newScale = transform.localScale;
 		newScale.y = Height + Random.value * 5;
-		transform.localScale = newScale;
+	//	transform.localScale = newScale;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		Material material = GetComponentInChildren<Renderer>().material;
-		float v = Height * 0.01f; 
-		material.SetColor("_EmissionColor", new Color(v, v, v));
+	//	float v = Height * 0.01f; 
+	//	material.SetColor("_EmissionColor", new Color(v, v, v));
 	}
 }
