@@ -42,9 +42,8 @@ class CreatureObservationCommand : BaseCommand
 public class SpeciesController : MonoBehaviour
 {
     public Creature CreaturePrototype;
-    public StaticObject ObjectPrototype;
-    public GameObject foodModel;
     public CameraController CameraController;
+    public EnvironmentController EnvironmentController;
 	public OrganellesCatalog Catalog;
     
     [HideInInspector]public float BestFitness = 0;
@@ -187,15 +186,8 @@ public class SpeciesController : MonoBehaviour
                 }
             }
             
-            SimulationEnvironment env = PendingSpawn.Environment;  
-            Debug.Log(env.PhysicsWorld.StaticObjects);
-            
-            foreach(StaticObjectModel som in env.PhysicsWorld.StaticObjects)
-            {
-                //TODO: This def. doesn't go here
-                SpawnStatic(som);
-            }
-            
+            EnvironmentController.SetEnvironment(PendingSpawn.Environment);
+                        
             PendingSpawn = null;
 
             foreach(KeyValuePair<int, Creature> entry in Individuals)
@@ -231,15 +223,7 @@ public class SpeciesController : MonoBehaviour
         SetStartingPosition(model.Physics.StartingPos);
         creature.Controller = this; 
         CreaturesSpawned.Add(creature);
-    }
-    
-    void SpawnStatic(StaticObjectModel model)
-    {
-        StaticObject obj = Instantiate<StaticObject>(ObjectPrototype);
-        obj.gameObject.transform.position = CreatureMover.SimulationPositionToScenePosition(model.Position);
-        obj.gameObject.transform.position += new Vector3(0.0f, 0.0f, 0.0f);
-        obj.gameObject.transform.localScale = CreatureMover.SimulationScaleToSceneScale(model.Dimensions);
-    }
+    } 
     
     void AddStep(SpeciesStep ss)
     {

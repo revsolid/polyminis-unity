@@ -21,7 +21,7 @@ public class Organelle : MonoBehaviour
 		// TMP
 		Color c = new Color();
 		c[SpeciesIndex % 3] = OrganelleModel.Trait.TID / 255.0f;
-		c.a = 0.4f;
+		c.a = 0.2f;
 		if (rend != null)
 	        rend.material.SetColor("_Color", c);
 	}
