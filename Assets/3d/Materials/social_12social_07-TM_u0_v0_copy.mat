@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: social_12social_07-TM_u0_v0_copy
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION
+  m_Shader: {fileID: 4800000, guid: 90408bcb116887c42a9d8f210e7a978c, type: 3}
+  m_ShaderKeywords: _EMISSION _ENABLECUSTOMFOG_ON _ENABLEREFLECTIONS_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -42,7 +42,13 @@ Material:
     - first:
         name: _EmissionMap
       second:
-        m_Texture: {fileID: 2800000, guid: f16460c06d9586f4485603e23bbfb100, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _FoamTexture
+      second:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -53,6 +59,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _NormalTexture
       second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -69,6 +81,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ReflectionTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SecTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 03e74e56932794d47993921abd3aaea5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _TemperatureTexture
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: _BumpScale
@@ -77,11 +107,59 @@ Material:
         name: _Cutoff
       second: 0.5
     - first:
+        name: _Cutoff2
+      second: 0.5
+    - first:
+        name: _Density
+      second: 1.74
+    - first:
+        name: _DepthTransparency
+      second: 1.5
+    - first:
         name: _DetailNormalMapScale
       second: 1
     - first:
+        name: _Distortion
+      second: 0.3
+    - first:
         name: _DstBlend
       second: 0
+    - first:
+        name: _EnableCustomFog
+      second: 1.393589
+    - first:
+        name: _EnableReflections
+      second: 0.6
+    - first:
+        name: _Fade
+      second: 1.45
+    - first:
+        name: _FoamBlend
+      second: 0.15
+    - first:
+        name: _FoamContrast
+      second: 0.25
+    - first:
+        name: _FoamIntensity
+      second: 10
+    - first:
+        name: _FoamSpeed
+      second: 120
+    - first:
+        name: _FoamTiling
+      second: 3
+    - first:
+        name: _FoamVisibility
+      second: 0.3
+    - first:
+        name: _FogDistance
+      second: 1000
+    - first:
+        name: _FogFade
+      second: 1
+    - first:
+        name: _Gloss
+      second: 0.7
     - first:
         name: _GlossMapScale
       second: 1
@@ -92,11 +170,17 @@ Material:
         name: _GlossyReflections
       second: 1
     - first:
+        name: _LightWrapping
+      second: 2
+    - first:
         name: _Metallic
       second: 0
     - first:
         name: _Mode
       second: 0
+    - first:
+        name: _NormalTiling
+      second: 1
     - first:
         name: _OcclusionStrength
       second: 1
@@ -104,8 +188,23 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
+        name: _ReflectionIntensity
+      second: 0.6
+    - first:
+        name: _Refraction
+      second: 0.67
+    - first:
+        name: _ShoreFade
+      second: 0.3
+    - first:
+        name: _ShoreTransparency
+      second: 0.04
+    - first:
         name: _SmoothnessTextureChannel
       second: 0
+    - first:
+        name: _Specular
+      second: 1
     - first:
         name: _SpecularHighlights
       second: 1
@@ -116,6 +215,12 @@ Material:
         name: _UVSec
       second: 0
     - first:
+        name: _UnderwaterMode
+      second: 0
+    - first:
+        name: _WaveSpeed
+      second: 40
+    - first:
         name: _ZWrite
       second: 1
     m_Colors:
@@ -123,5 +228,26 @@ Material:
         name: _Color
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
-        name: _EmissionColor
+        name: _Color1
       second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Color2
+      second: {r: 1, g: 0, b: 0, a: 1}
+    - first:
+        name: _DeepWaterColor
+      second: {r: 0, g: 0.3411765, b: 0.6235294, a: 1}
+    - first:
+        name: _EmissionColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _FoamColor
+      second: {r: 0.3602941, g: 0.3655925, b: 0.3655925, a: 1}
+    - first:
+        name: _FogColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _MainColor
+      second: {r: 0, g: 0.4627451, b: 1, a: 1}
+    - first:
+        name: _SpecularColor
+      second: {r: 0.7205882, g: 0.7311851, b: 0.7311851, a: 1}
