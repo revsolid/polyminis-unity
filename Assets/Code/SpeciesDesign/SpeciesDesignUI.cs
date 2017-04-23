@@ -152,7 +152,6 @@ public class SpeciesDesignUI : MonoBehaviour
     void AddSplice(SpliceModel model)
     {
         SpliceButton sbutton = GameObject.Instantiate(SpliceButtonRendererPrototype);
-        sbutton.gameObject.name = SpliceButtonName(model);
         sbutton.Model = model;
         switch (model.TraitSize)
         {
@@ -170,13 +169,6 @@ public class SpeciesDesignUI : MonoBehaviour
         //    sbutton.transform.localScale = .one;
         sbutton.transform.SetAsFirstSibling();
     }
-
-    // so that buttons have different names
-    string SpliceButtonName(SpliceModel model)
-    {
-        return "SpliceButtonRenderer-" + model.InternalName;
-    }
-
 
     bool ValidateSelection(SpliceModel model)
     {

@@ -11,9 +11,11 @@ public class ColorConfig : MonoBehaviour
 	public Color HerdingColor;
 	
 	public List<Sprite> Emblems;
+    public List<Sprite> SpliceBackgrounds;
+    public List<Color> SpliceLabelColor;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 	
 	}
@@ -49,4 +51,14 @@ public class ColorConfig : MonoBehaviour
 	{
 		return Emblems[(int)i];
 	}
+
+    public Sprite GetBackgroundSpriteForSplice(Instinct i)
+    {
+        return SpliceBackgrounds[(int)i];
+    }
+
+    public Color GetLabelColorForSplice(Instinct i)
+    {
+        return SpliceLabelColor[(int)i];
+    }
 }
