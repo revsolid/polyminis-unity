@@ -48,7 +48,7 @@ public class Almanac : Singleton<Almanac>
 	void Awake()
 	{
 		// TODO: Get it from the server instead of STATIC
-	/*	Traits tts = JsonUtility.FromJson<Traits>(STATIC_JSON.TRAITS);
+		Traits tts = JsonUtility.FromJson<Traits>(STATIC_JSON.TRAITS);
 		Debug.Log(tts.version);
 		Debug.Log(tts.available_traits.Length);
 		Splices spcs = JsonUtility.FromJson<Splices>(STATIC_JSON.SPLICES);
@@ -68,7 +68,6 @@ public class Almanac : Singleton<Almanac>
 			SpliceModel sm = spcs.available_splices[i];
 			AvailableSplices[sm.InternalName] = sm;
 		}
-		*/
 	}
 	
 	public void SetFromJson(string msg)
