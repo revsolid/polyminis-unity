@@ -92,6 +92,25 @@ public class Creature : MonoBehaviour
 	{
 		SpeciesName = speciesName;
 		ID = model.ID;		
+		
+		Dictionary<Instinct, float> instinctsToValues = new Dictionary<Instinct, float>()
+		{
+			{ Instinct.NOMADIC, Model.EvaluationStats.Nomadic },
+			{ Instinct.PREDATORY, Model.EvaluationStats.Predatory },
+			{ Instinct.HERDING, Model.EvaluationStats.Herding },
+			{ Instinct.HOARDING, Model.EvaluationStats.Hoarding },
+		};
+		
+		Instinct dominant = Instinct.NOMADIC;
+		float v = 0.0f;
+		foreach(KeyValuePair<Instinct, float> kvp in instinctsToValues)
+		{
+			if (kvp.Value > v)
+			{
+				dominant = kvp.Key;
+				v = kvp.Value;
+			}
+		}
 
 		foreach(OrganelleModel organelle in model.Morphology.Body)
 		{
@@ -104,6 +123,7 @@ public class Creature : MonoBehaviour
 				n.transform.localPosition += new Vector3(1.25f, 0.0f, 1.25f);
 				n.NucleusModel = new NucleusModel(0);
 				n.SpeciesIndex = SpeciesIndex;
+				n.DominantInstinct = dominant;
 			}
 			else
 			{

@@ -56,11 +56,6 @@ public class SpeciesDesignUI : MonoBehaviour
     void Initialize() 
     {
         gameObject.SetActive(false);
-        DesignerModel.Initialize();
-        InstinctsTunner.Initialize();
-        Helix.Initialize();
-        DnaSequencer.ActivateSelection(DesignerModel.CurrentSpecies);
-
         if (SpeciesDesignUI.SColorConfig == null)
         {
             SpeciesDesignUI.SColorConfig = this.ColorConfig;
@@ -71,6 +66,12 @@ public class SpeciesDesignUI : MonoBehaviour
 
         SpliceButton.OnClickEvent += SpliceButtonClickedHandler;
         DnaHelix.OnSpliceRemovedEvent += SpliceRemovedFromHelixHandler;
+        
+        DesignerModel.Initialize();
+        InstinctsTunner.Initialize();
+        Helix.Initialize();
+
+
         UpdateAllViews();
     }
 

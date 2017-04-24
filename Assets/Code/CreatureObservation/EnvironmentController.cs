@@ -6,6 +6,9 @@ public class EnvironmentController : MonoBehaviour {
 
     public StaticObject ObjectPrototype;
 	public ShaderHarness WaterShaderHarness;
+	public MistSpawner MistController;
+	
+	List<StaticObject> SpawnedObjects = new List<StaticObject>();
 	
 	// Use this for initialization
 	void Start () {
@@ -21,9 +24,18 @@ public class EnvironmentController : MonoBehaviour {
 	{
 		Debug.Log(env.WorldObjects);
 		
+		while(SpawnedObjects.Count > 0)
+		{
+			StaticObject toDestroy = SpawnedObjects[0];
+			SpawnedObjects.RemoveAt(0);
+			Destroy(toDestroy.gameObject);
+		}
+		
+		SpawnedObjects = new List<StaticObject>();
+		
 		foreach(WorldObjectModel wom in env.WorldObjects)
 		{
-		//	if (!wom.IsBorder)
+			if (!wom.IsBorder)
 				SpawnObject(wom);
 		}
 		
@@ -32,11 +44,22 @@ public class EnvironmentController : MonoBehaviour {
 		{
 			for(int j = 0; j < env.ThermalWorld.Dimensions.y; j++)
 			{
-				intensities[i,j] = env.ThermalWorld.Grid[i * (int)env.ThermalWorld.Dimensions.y + j] - 0.5f;
+				intensities[i,j] = env.ThermalWorld.Grid[i * (int)env.ThermalWorld.Dimensions.y + j];
 			}
 		}
 		
 		WaterShaderHarness.UpdateTexture(intensities);
+		
+		intensities = new float[(int)env.PhWorld.Dimensions.x, (int)env.PhWorld.Dimensions.y];
+		for(int i = 0; i < env.PhWorld.Dimensions.x; i++)
+		{
+			for(int j = 0; j < env.PhWorld.Dimensions.y; j++)
+			{
+				intensities[i,j] = env.PhWorld.Grid[i * (int)env.PhWorld.Dimensions.y + j];
+			}
+		}
+		
+		MistController.SetPhData(intensities);
 	}
 	
 	void SpawnObject(WorldObjectModel model)
@@ -46,12 +69,14 @@ public class EnvironmentController : MonoBehaviour {
 		Vector3 dims = CreatureMover.SimulationScaleToSceneScale(model.Dimensions);
 
         obj.gameObject.transform.position = pos;
+		SpawnedObjects.Add(obj);
 		
-		int DENSITY = 10;
+		int DENSITY = 3;
 		for(int i = 0; i < DENSITY; i++)
 		{
 			Vector3 deltaPos = new Vector3(Random.Range(0.0f, dims.x), 0, Random.Range(0.0f, dims.z));
             obj = Instantiate<StaticObject>(ObjectPrototype);
+			SpawnedObjects.Add(obj);
 			
 			if (pos.x < 0)
 			{
@@ -63,14 +88,14 @@ public class EnvironmentController : MonoBehaviour {
 			}
 			if (pos.y < 0)
 			{
-				deltaPos.y -= 2.5f;
+				deltaPos.z -= 2.5f;
 			}
 			else
 			{
-				deltaPos.y += 2.5f;
+				deltaPos.z += 2.5f;
 			}
 
-        	obj.gameObject.transform.position = pos + deltaPos;
+        	obj.gameObject.transform.position = pos;// + deltaPos;
 		}
 	}
 }

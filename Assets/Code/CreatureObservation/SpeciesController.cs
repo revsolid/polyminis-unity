@@ -71,7 +71,7 @@ public class SpeciesController : MonoBehaviour
         {
             Planet = new PlanetModel();
             Planet.ID = 2011;
-            Planet.Epoch = 37;
+            Planet.Epoch = 33;
         }
         GoToEpoch(Planet.ID, Planet.Epoch);
     }
@@ -211,7 +211,7 @@ public class SpeciesController : MonoBehaviour
     {
         Creature creature = Instantiate<Creature>(CreaturePrototype);
         creature.SpeciesIndex = index;
-        if (!string.IsNullOrEmpty(speciesName))
+        if (string.IsNullOrEmpty(speciesName))
         {
             speciesName = "Species In Planet";
         }

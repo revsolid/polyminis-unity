@@ -4870,6 +4870,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114988280769401384, guid: 9db3c4903144d7c458e981f50c547a95,
+        type: 2}
+      propertyPath: MistController
+      value: 
+      objectReference: {fileID: 2015241640}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9db3c4903144d7c458e981f50c547a95, type: 2}
   m_IsPrefabParent: 0
@@ -5201,6 +5206,21 @@ Prefab:
     - target: {fileID: 4360946325712578, guid: 030b062412d9fec48bbba24d46e580dd, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956040781914986, guid: 030b062412d9fec48bbba24d46e580dd,
+        type: 2}
+      propertyPath: NeutralColor.a
+      value: 0.391
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956040781914986, guid: 030b062412d9fec48bbba24d46e580dd,
+        type: 2}
+      propertyPath: AcidicColor.a
+      value: 0.472
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956040781914986, guid: 030b062412d9fec48bbba24d46e580dd,
+        type: 2}
+      propertyPath: AlkalineColor.a
+      value: 0.472
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030b062412d9fec48bbba24d46e580dd, type: 2}
@@ -15538,6 +15558,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 741b37654a2b04d2595640556d7b99cc, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2015241640 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114956040781914986, guid: 030b062412d9fec48bbba24d46e580dd,
+    type: 2}
+  m_PrefabInternal: {fileID: 676202789}
+  m_Script: {fileID: 11500000, guid: da8d16457b59f82479c0ec83915ca515, type: 3}
 --- !u!1 &2026420945
 GameObject:
   m_ObjectHideFlags: 0
