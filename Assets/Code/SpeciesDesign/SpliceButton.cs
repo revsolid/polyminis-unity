@@ -10,7 +10,6 @@ public class SpliceButton : MonoBehaviour
 
     public Text NameField;
     public Image Background;
-    public Image Emblem;
 
     public SpliceModel Model;
 
@@ -21,10 +20,13 @@ public class SpliceButton : MonoBehaviour
     {
         if (!ready && Model != null)
         {
-//            NameField.text = Model.Name;
+            NameField.text = Model.Name;
+            NameField.color = SpeciesDesignUI.SColorConfig.GetLabelColorForSplice(Model.EInstinct);
+            Background.sprite = SpeciesDesignUI.SColorConfig.GetBackgroundSpriteForSplice(Model.EInstinct);
+            //Emblem.sprite = SpeciesDesignUI.SColorConfig.GetBackgroundSpriteForSplice(Model.EInstinct);
+            this.gameObject.name = "SpliceButtonRenderer-" + Model.InternalName;
+
             ready = true;
-            Background.color = SpeciesDesignUI.SColorConfig.GetColorFor(Model.EInstinct);
-            Emblem.sprite = SpeciesDesignUI.SColorConfig.GetSpriteFor(Model.EInstinct);
         }
     }
     
