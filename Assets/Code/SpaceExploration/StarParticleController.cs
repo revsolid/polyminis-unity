@@ -26,7 +26,7 @@ public class StarParticleController : MonoBehaviour {
             for( int i = 0; i < Particles.Length; i++)
             {
                 
-                Particles[i].velocity = -MovementSpeed * Multiplier * new Vector3(ControlHelper.GetHorizontalAxis(), 0, ControlHelper.GetVerticalAxis());
+                Particles[i].velocity = -MovementSpeed * Multiplier * new Vector3(0, 0, ControlHelper.GetVerticalAxis());
             }
 
             ParticleSys.SetParticles(Particles, Particles.Length);
