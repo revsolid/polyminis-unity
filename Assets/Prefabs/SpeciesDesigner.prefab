@@ -1919,11 +1919,11 @@ MonoBehaviour:
   SmallSplices: {fileID: 114000012778896476}
   MedSplices: {fileID: 114000014018313428}
   LargeSplices: {fileID: 114000013783727936}
-  SmallSpliceDnaHelixRendererPrototype: {fileID: 114000010062082018, guid: 2a766aa81c64e4d93ba845f1be599d0b,
+  SmallSpliceDnaHelixRendererPrototype: {fileID: 114044415238076836, guid: adba4df6dbbe4284a9e23eb5fe7bd499,
     type: 2}
-  MedSpliceDnaHelixRendererPrototype: {fileID: 114000010062082018, guid: fe6f6ef1387674d71af1bdec0913e1f6,
+  MedSpliceDnaHelixRendererPrototype: {fileID: 114044415238076836, guid: da5bb2d3e5ce40046994e23385184cd1,
     type: 2}
-  LargeSpliceDnaHelixRendererPrototype: {fileID: 114000010062082018, guid: e1be211e391a440b7905dd7e74af0922,
+  LargeSpliceDnaHelixRendererPrototype: {fileID: 114044415238076836, guid: da5bb2d3e5ce40046994e23385184cd1,
     type: 2}
 --- !u!114 &114000012920567868
 MonoBehaviour:
@@ -5449,7 +5449,7 @@ RectTransform:
   m_GameObject: {fileID: 1000012331133526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 224000010374991720}
   - {fileID: 224354588068202918}
