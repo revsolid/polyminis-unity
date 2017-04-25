@@ -242,6 +242,7 @@ public enum InventoryCommandType
     UPDATE_SPECIES,
     SAMPLE_FROM_PLANET,
     GET_INVENTORY,
+    GET_INVENTORY_STATIC,
     DELETE_ENTRY,
     GET_GLOBAL_EPOCH
 }
@@ -267,7 +268,8 @@ public enum InventoryEventType
 {
     InventoryUpdate,
     ResearchDone,
-    ReceiveGlobalEpoch
+    ReceiveGlobalEpoch,
+    StaticDataReady,
 }
 [Serializable]
 public class InventoryServiceEvent : BaseEvent
@@ -510,6 +512,7 @@ public class TraitModel
 {
     public int TID;
     public string TraitTier;
+    public string InternalName = "";
     TraitTier Tier;
 }
 
@@ -660,14 +663,33 @@ public class StaticObjectModel
     public Vector2 Dimensions;
 }
 [Serializable]
+public class WorldObjectModel
+{
+    public Vector2 Position;
+    public Vector2 Dimensions;
+    public float Temperature;
+    public float Ph;
+    public bool IsBorder;
+}
+
+[Serializable]
 public class PhysicsWorldModel
 {
     public List<StaticObjectModel> StaticObjects;
 }
 [Serializable]
+public class ThermalWorldModel
+{
+    public Vector2 Dimensions;
+    public List<float> Grid;
+}
+[Serializable]
 public class SimulationEnvironment
 {
     public PhysicsWorldModel PhysicsWorld;
+    public ThermalWorldModel ThermalWorld;
+    public ThermalWorldModel PhWorld;
+    public List<WorldObjectModel> WorldObjects;
 }
 [Serializable]
 public class Scenario

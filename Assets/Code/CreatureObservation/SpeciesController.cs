@@ -14,7 +14,7 @@ class StatEntry
 [Serializable]
 class EpochStats
 {
-    public int Epoch;
+    public int Epoch = -1;
     public List<StatEntry> Percentages;
 }
 
@@ -42,9 +42,9 @@ class CreatureObservationCommand : BaseCommand
 public class SpeciesController : MonoBehaviour
 {
     public Creature CreaturePrototype;
-    public StaticObject ObjectPrototype;
-    public GameObject foodModel;
     public CameraController CameraController;
+    public EnvironmentController EnvironmentController;
+	public OrganellesCatalog Catalog;
     
     [HideInInspector]public float BestFitness = 0;
 
@@ -71,12 +71,12 @@ public class SpeciesController : MonoBehaviour
         {
             Planet = new PlanetModel();
             Planet.ID = 2011;
-            Planet.Epoch = 40;
+            Planet.Epoch = 33;
         }
         GoToEpoch(Planet.ID, Planet.Epoch);
     }
     
-    void GoToEpoch(int ID, int Epoch)
+    public void GoToEpoch(int ID, int Epoch)
     {
         CreatureObservationCommand loadSimCmd;
         loadSimCmd = new CreatureObservationCommand(ID, Epoch);
@@ -186,15 +186,8 @@ public class SpeciesController : MonoBehaviour
                 }
             }
             
-            SimulationEnvironment env = PendingSpawn.Environment;  
-            Debug.Log(env.PhysicsWorld.StaticObjects);
-            
-            foreach(StaticObjectModel som in env.PhysicsWorld.StaticObjects)
-            {
-                //TODO: This def. doesn't go here
-                SpawnStatic(som);
-            }
-            
+            EnvironmentController.SetEnvironment(PendingSpawn.Environment);
+                        
             PendingSpawn = null;
 
             foreach(KeyValuePair<int, Creature> entry in Individuals)
@@ -218,29 +211,19 @@ public class SpeciesController : MonoBehaviour
     {
         Creature creature = Instantiate<Creature>(CreaturePrototype);
         creature.SpeciesIndex = index;
-        if (!string.IsNullOrEmpty(speciesName))
+        if (string.IsNullOrEmpty(speciesName))
         {
-            creature.SetDataFromModel(model, speciesName);
+            speciesName = "Species In Planet";
         }
-        else
-        {
-            creature.SetDataFromModel(model);
-        }
+        creature.SetDataFromModel(model, speciesName, Catalog);
         
         Individuals[model.ID] = creature;
         IndividualIDs.Add(model.ID);
-        creature.SetStartingPosition(model.Physics.StartingPos);
+        creature.
+        SetStartingPosition(model.Physics.StartingPos);
         creature.Controller = this; 
         CreaturesSpawned.Add(creature);
-    }
-    
-    void SpawnStatic(StaticObjectModel model)
-    {
-        StaticObject obj = Instantiate<StaticObject>(ObjectPrototype);
-        obj.gameObject.transform.position = CreatureMover.SimulationPositionToScenePosition(model.Position);
-        obj.gameObject.transform.position += new Vector3(0.0f, 0.0f, 0.0f);
-        obj.gameObject.transform.localScale = CreatureMover.SimulationScaleToSceneScale(model.Dimensions);
-    }
+    } 
     
     void AddStep(SpeciesStep ss)
     {
@@ -254,7 +237,6 @@ public class SpeciesController : MonoBehaviour
     
     public void OnServerMessage(string msg)
     {
-        Debug.Log("Msg on Species Controller");
         BaseEvent base_ev = JsonUtility.FromJson<BaseEvent>(msg);
         if (base_ev.Service == "creature_observation")
         {

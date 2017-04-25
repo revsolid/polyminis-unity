@@ -6,9 +6,9 @@ using System.Collections.Generic;
 public class Creature : MonoBehaviour
 {
 	public Organelle OrganellePrototype;
-	
 	// TODO - This should be a proper data-driven table	
 	public Actuator OrganellePrototype2;
+	
 	
 
 	public Nucleus NucleusPrototype;
@@ -88,10 +88,29 @@ public class Creature : MonoBehaviour
 		DebugText += Mover.DebugText;
 	}
 	
-	public void SetDataFromModel(IndividualModel model, string speciesName="Species in Planet")
+	public void SetDataFromModel(IndividualModel model, string speciesName, OrganellesCatalog Catalog)
 	{
 		SpeciesName = speciesName;
 		ID = model.ID;		
+		
+		Dictionary<Instinct, float> instinctsToValues = new Dictionary<Instinct, float>()
+		{
+			{ Instinct.NOMADIC, Model.EvaluationStats.Nomadic },
+			{ Instinct.PREDATORY, Model.EvaluationStats.Predatory },
+			{ Instinct.HERDING, Model.EvaluationStats.Herding },
+			{ Instinct.HOARDING, Model.EvaluationStats.Hoarding },
+		};
+		
+		Instinct dominant = Instinct.NOMADIC;
+		float v = 0.0f;
+		foreach(KeyValuePair<Instinct, float> kvp in instinctsToValues)
+		{
+			if (kvp.Value > v)
+			{
+				dominant = kvp.Key;
+				v = kvp.Value;
+			}
+		}
 
 		foreach(OrganelleModel organelle in model.Morphology.Body)
 		{
@@ -104,10 +123,13 @@ public class Creature : MonoBehaviour
 				n.transform.localPosition += new Vector3(1.25f, 0.0f, 1.25f);
 				n.NucleusModel = new NucleusModel(0);
 				n.SpeciesIndex = SpeciesIndex;
+				n.DominantInstinct = dominant;
 			}
 			else
 			{
-				Organelle o = 5 <= organelle.Trait.TID  && organelle.Trait.TID <= 8 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
+				//Organelle o = 5 <= organelle.Trait.TID  && organelle.Trait.TID <= 8 ? GameObject.Instantiate(OrganellePrototype2) : GameObject.Instantiate(OrganellePrototype);
+				Organelle o = Catalog.GetForTID(organelle.Trait.TID);
+				
 				o.transform.SetParent(transform);
 				delta *= 2.5f;
 				o.transform.localPosition += new Vector3(delta.x + 1.25f, 0.0f, delta.y + 1.25f);

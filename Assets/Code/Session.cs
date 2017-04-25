@@ -105,6 +105,11 @@ public class Session : Singleton<Session>
                     }
                     OnSessionChangedEvent();
                 }
+                else if (invEvent.InventoryEventType == InventoryEventType.StaticDataReady) 
+                {
+                    Debug.Log(message);
+                    Almanac.Instance.SetFromJson(message);
+                }
             }
         }
             

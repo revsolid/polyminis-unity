@@ -53,8 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CreaturePrototype: {fileID: 114000010034767314, guid: 59fe424cf706f49a9975a0e71c290c0f,
     type: 2}
-  ObjectPrototype: {fileID: 114000012992612278, guid: 741b37654a2b04d2595640556d7b99cc,
-    type: 2}
-  foodModel: {fileID: 1725801424138112, guid: b324defa47b7ddb429445ead4697f8d5, type: 2}
   CameraController: {fileID: 0}
+  EnvironmentController: {fileID: 0}
+  Catalog: {fileID: 0}
   BestFitness: 0

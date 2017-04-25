@@ -466,6 +466,16 @@ namespace CP.ProChart
 		///</summary>
 		void AddLineSegment(float x1, float y1, float x2, float y2, Color32 color)
 		{
+			//	MACHO MODE: Do not try this at home
+			// This is to remove the points from the graph if the
+			// Row is 0 as it means nothing to us and it can add a lot
+			// of noise to the chart.
+			// Usually I'd do this cleanliear but is 1 weeks from deadline.
+			if (y2 <= 0.0f)
+			{
+				return;
+			}
+			// ~MACHO MODE
 			float px = y2 - y1;
 			float py = -(x2 - x1);
 			float length = Mathf.Sqrt(px * px + py * py);
@@ -744,6 +754,17 @@ namespace CP.ProChart
 
 				case PointType.RECTANGLE:
 					{
+						//	MACHO MODE: Do not try this at home
+						// This is to remove the points from the graph if the
+						// Row is 0 as it means nothing to us and it can add a lot
+						// of noise to the chart.
+						// Usually I'd do this cleanliear but is 1 weeks from deadline.
+					    if (values[row, column] <= 0)	
+						{
+							return;
+						}
+						//	~MACHO MODE: Do not try this at home
+			
 						ActivePoint ap = new ActivePoint();
 						ap.firstVertex = Vertices.Count;
 						ap.quadsCount = 1;
@@ -756,7 +777,7 @@ namespace CP.ProChart
 						Vector3 p1 = center + new Vector3(-r, r, 0);
 						Vector3 p2 = center + new Vector3(r, r, 0);
 						Vector3 p3 = center + new Vector3(r, -r, 0);
-		
+					
 						AddQuad(p0, p1, p2, p3, color);
 					}
 					break;

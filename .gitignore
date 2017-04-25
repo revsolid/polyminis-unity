@@ -4,3 +4,6 @@ Library/
 Assets/Wwise/Project/polyminis/.cache
 ProfilingSession?.prof*
 *.csproj
+Assets/StreamingAssets/Audio/GeneratedSoundBanks/Mac/English(US).meta
+Assets/StreamingAssets/Audio/GeneratedSoundBanks/Windows/English(US).meta
+Assets/StreamingAssets/Audio/GeneratedSoundBanks/Windows/DecodedBanks.meta

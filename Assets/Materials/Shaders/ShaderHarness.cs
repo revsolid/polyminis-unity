@@ -13,8 +13,9 @@ public class ShaderHarness: MonoBehaviour
     public int YPoints = 10;
     public Material material;
 
-    public Color HighTempColor;
-    public Color LowTempColor;
+    public Color HighColor;
+    public Color TempColor;
+    public Color LowColor;
 
     //TODO: Temp Implementation - x,y = pos, z = value
     public List<Vector3> Emmitters;
@@ -30,9 +31,14 @@ public class ShaderHarness: MonoBehaviour
     void UpdateTexture()
 	{
         float[,] intensities = FillIntensities();
-        //material.SetFloatArray("_Values", intensities);
+        UpdateTexture(intensities);
+    }
+    
+    public void UpdateTexture(float[,] intensities)
+    {
+        XPoints = intensities.GetLength(0);
+        YPoints = intensities.GetLength(1);
         TempTexture = PrepareTexture(intensities);
-        Debug.Log("Setting");
         material.SetTexture("_TemperatureTexture", TempTexture);
     }
 
@@ -85,11 +91,23 @@ public class ShaderHarness: MonoBehaviour
     Texture2D PrepareTexture(float[,] intensities)
     {
         Texture2D to_ret = new Texture2D(XPoints, YPoints);
-        for(int i = 0; i < XPoints; i++)
+        float int_value;
+        for (int i = 0; i < XPoints; i++)
         {
             for(int j = 0; j < YPoints; j++)
             {
-                to_ret.SetPixel(i, j, Color.Lerp(LowTempColor, HighTempColor, intensities[i,j]));
+                int_value = intensities[i, j];
+
+                if(int_value < 0.5f)
+                {
+                    int_value *= 2;
+                    to_ret.SetPixel(i, j, Color.Lerp(LowColor, TempColor, int_value));
+                }
+                else if (int_value >= 0.5f)
+                {
+                    int_value = (int_value - 0.5f) * 2;
+                    to_ret.SetPixel(i, j, Color.Lerp(TempColor, HighColor, int_value));
+                }
             }
         }
         to_ret.Apply();

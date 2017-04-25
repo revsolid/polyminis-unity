@@ -145,7 +145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1192347739972080
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1235434471191916
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4000010644455076
 Transform:
   m_ObjectHideFlags: 1
@@ -243,8 +243,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011279774882}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.6, y: 3.1, z: 3.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.25, y: 4, z: 4.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4000014116890426}
   - {fileID: 4000012374750368}
@@ -741,3 +741,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d9e5825a3da46c89f9bb8b54bbab81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Heads:
+  - {fileID: 1192347739972080}
+  - {fileID: 1610239478602600}
+  - {fileID: 1116607240202998}
+  - {fileID: 1235434471191916}
+  InstinctsToHeads: 01000000000000000200000003000000

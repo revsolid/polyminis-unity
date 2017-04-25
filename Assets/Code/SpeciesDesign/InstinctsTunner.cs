@@ -97,16 +97,14 @@ public class InstinctsTunner : MonoBehaviour
     {
         foreach (Instinct i in Enum.GetValues(typeof(Instinct)))
         {
-            Debug.Log(i);
-            try
+            if (MaxLevels.ContainsKey(i) && MaxLevelsBase.ContainsKey(i) &&
+                MaxLevelsTunned.ContainsKey(i))
             {
-                // New instincts added to the sim shouldn't crash the game...
-                // this was the case with Basic Instinct
-                MaxLevels[i] = MaxLevelsBase[i] + MaxLevelsTunned[i];
+                    MaxLevels[i] = MaxLevelsBase[i] + MaxLevelsTunned[i];
             }
-            catch(KeyNotFoundException e)
+            else
             {
-               
+                Debug.LogWarning("Instinct Not Found: " + i);
             }
         }
     }
@@ -140,8 +138,11 @@ public class InstinctsTunner : MonoBehaviour
     // update sliders to reflect lists.
     void UpdateLevel(Instinct i)
     {
-        MaxSliderMap[i].value = MaxLevels[i];
-        ValueSliderMap[i].value = Levels[i];
+        if (MaxSliderMap.ContainsKey(i) && ValueSliderMap.ContainsKey(i))
+        {
+            MaxSliderMap[i].value = MaxLevels[i];
+            ValueSliderMap[i].value = Levels[i];
+        }
     }
 
     private bool CanTune(Instinct i, bool up)

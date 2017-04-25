@@ -18,6 +18,8 @@ class Traits
 	public TraitModel[] available_traits;
 }
 
+[Serializable]
+
 class Splices
 {
 	public string version;
@@ -25,6 +27,12 @@ class Splices
 	public SpliceModel[] available_splices; 
 }
 
+[Serializable]
+class StaticData
+{
+	public SpliceModel[] SpliceData; 
+	public TraitModel[] TraitData;
+}
 
 // The almanac should hold all the static information available to the player
 public class Almanac : Singleton<Almanac>
@@ -60,5 +68,27 @@ public class Almanac : Singleton<Almanac>
 			SpliceModel sm = spcs.available_splices[i];
 			AvailableSplices[sm.InternalName] = sm;
 		}
+	}
+	
+	public void SetFromJson(string msg)
+	{
+		StaticData sd = JsonUtility.FromJson<StaticData>(msg);
+
+		TraitData = new Dictionary<int, TraitModel>();
+		for (var i = 0; i < sd.TraitData.Length; i++)
+		{
+			TraitModel model = sd.TraitData[i];
+			Debug.Log(model.TID);
+			TraitData[model.TID] = model;
+		}
+		
+		AvailableSplices = new Dictionary<string, SpliceModel>();
+		for (var i = 0; i < sd.SpliceData.Length; i++)
+		{
+			SpliceModel sm = sd.SpliceData[i];
+			AvailableSplices[sm.InternalName] = sm;
+		}	
+		
+		Debug.Log("Set from Json!");
 	}
 }
