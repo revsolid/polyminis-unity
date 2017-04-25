@@ -18,6 +18,7 @@ public class OrbitalUI : MonoBehaviour
     public InventoryUI Inventory;
     public PieChart PopulationChart;
     public PieChart ResourceChart;
+    public PieChart PHChart;
     public GameObject TextPopup;
     public int ChartSize;
     public SpeciesCard[] Slots;
@@ -27,7 +28,7 @@ public class OrbitalUI : MonoBehaviour
     bool HasHookedCallbacks = false;
     SpeciesModel ShowSpeciesNextUpdate = null;
 
-    private ChartData1D PopulationData, ResourceData;
+    private ChartData1D PopulationData, ResourceData, PHData;
     private Dictionary<int, SpeciesModel> Species;
     private Dictionary<int,string> ResourceNames;
 
@@ -46,12 +47,14 @@ public class OrbitalUI : MonoBehaviour
     {
         PopulationChart.onOverDelegate += OnPopulationChartHover;
         ResourceChart.onOverDelegate += OnMaterialChartHover;
+        PHChart.onOverDelegate += OnPHChartHover;
     }
 
     void OnDisable()
     {
         PopulationChart.onOverDelegate -= OnPopulationChartHover;
         ResourceChart.onOverDelegate -= OnMaterialChartHover;
+        PHChart.onOverDelegate -= OnPHChartHover;
     }
     
     void OnDestroy()
@@ -76,11 +79,12 @@ public class OrbitalUI : MonoBehaviour
         if(PopulationChart.ChartSize < ChartSize)
         {
             const int speed = 5;
-            PopulationChart.ChartSize += speed;
-            
+            PopulationChart.ChartSize += speed;            
             ResourceChart.ChartSize += speed;
+            PHChart.ChartSize += speed;
             if (PopulationChart.ChartSize > ChartSize) PopulationChart.ChartSize = ChartSize;
             if (ResourceChart.ChartSize > ChartSize) ResourceChart.ChartSize = ChartSize;
+            if (PHChart.ChartSize > ChartSize) PHChart.ChartSize = ChartSize;
         }
         if (!HasHookedCallbacks)
         {
@@ -224,6 +228,7 @@ public class OrbitalUI : MonoBehaviour
 
         PopulationData = new ChartData1D();
         ResourceData = new ChartData1D();
+        PHData = new ChartData1D();
         Species = new Dictionary<int, SpeciesModel>();
         ResourceNames = new Dictionary<int, string>();
 
@@ -254,6 +259,7 @@ public class OrbitalUI : MonoBehaviour
         {
             p.Temperature.Max = 1;
         }
+
         float scMin =  p.Temperature.Min / p.Temperature.Max;
         float scAverage =  p.Temperature.Average() / p.Temperature.Max;
 
@@ -270,6 +276,8 @@ public class OrbitalUI : MonoBehaviour
         ResourceChart.ChartSize = 0;
 
         ResourceChart.SetValues(ref ResourceData);
+
+
 
         for (int i=0; i < p.Species.Count; i++)
         {
@@ -312,5 +320,18 @@ public class OrbitalUI : MonoBehaviour
         
         PopupString = ResourceNames[column];
         t.color = ResourceChart.GetColor(column);
+    }
+
+    void OnPHChartHover(int column)
+    {
+        Text t = TextPopup.GetComponentInChildren<Text>();
+        if (column == -1)
+        {
+
+            //PopupString = "";
+            return;
+
+        }
+        t.color = PHChart.GetColor(column);
     }
 }
