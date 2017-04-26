@@ -12,6 +12,7 @@ public class ColorConfig : MonoBehaviour
 	
 	public List<Sprite> Emblems;
     public List<Sprite> SpliceBackgrounds;
+    public List<Sprite> ChosenSpliceBackgrounds;
     public List<Color> SpliceLabelColor;
 
     // Use this for initialization
@@ -55,6 +56,11 @@ public class ColorConfig : MonoBehaviour
     public Sprite GetBackgroundSpriteForSplice(Instinct i)
     {
         return SpliceBackgrounds[(int)i];
+    }
+
+    public Sprite GetBackgroundSpriteForChosenSplice(Instinct i)
+    {
+        return ChosenSpliceBackgrounds[(int)i];
     }
 
     public Color GetLabelColorForSplice(Instinct i)

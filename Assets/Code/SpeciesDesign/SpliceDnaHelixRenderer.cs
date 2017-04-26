@@ -26,7 +26,7 @@ public class SpliceDnaHelixRenderer : MonoBehaviour
             NameField.text = Model.Name;
             Debug.Log(SpeciesDesignUI.SColorConfig);
             NameField.color = SpeciesDesignUI.SColorConfig.GetLabelColorForSplice(Model.EInstinct);
-            Background.sprite = SpeciesDesignUI.SColorConfig.GetBackgroundSpriteForSplice(Model.EInstinct);
+            Background.sprite = SpeciesDesignUI.SColorConfig.GetBackgroundSpriteForChosenSplice(Model.EInstinct);
             //Emblem.sprite = SpeciesDesignUI.SColorConfig.GetBackgroundSpriteForSplice(Model.EInstinct);
             this.gameObject.name = "SpliceHelixRenderer-" + Model.InternalName;
 
