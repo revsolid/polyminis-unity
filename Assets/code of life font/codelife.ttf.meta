@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: eb6a039f8181649099726c7b22457363
+timeCreated: 1493182863
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Code Of Life (BRK)
+  fontNames:
+  - Code Of Life (BRK)
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

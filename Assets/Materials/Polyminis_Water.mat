@@ -10,7 +10,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 571da6dfda36e6e42b3230bd6480bc89, type: 3}
   m_ShaderKeywords: _ENABLEREFLECTIONS_ON
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2999
+  m_CustomRenderQueue: 2998
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
