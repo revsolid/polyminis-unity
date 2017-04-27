@@ -35,7 +35,8 @@ public class OrbitalUI : MonoBehaviour
 
     private ChartData1D PopulationData, ResourceData, PHData;
     private Dictionary<int, SpeciesModel> Species;
-    private Dictionary<int,string> ResourceNames;
+    private Dictionary<int, string> ResourceNames;
+    private Dictionary<int, string> PhStrings;
 
     public delegate void BackToSpaceAction();
     public static event BackToSpaceAction OnGoBackToSpaceExScreen;
@@ -236,6 +237,7 @@ public class OrbitalUI : MonoBehaviour
         PHData = new ChartData1D();
         Species = new Dictionary<int, SpeciesModel>();
         ResourceNames = new Dictionary<int, string>();
+        PhStrings = new Dictionary<int, string>();
 
         //Populate species chart widget
         PopulationData.Clear();
@@ -282,6 +284,20 @@ public class OrbitalUI : MonoBehaviour
 
         ResourceChart.SetValues(ref ResourceData);
 
+        PHData.Clear();
+        PHData.Resize(1, 3);
+        float phMin = p.Ph.Min / p.Ph.Max;
+        float phAverage = p.Ph.Average() / p.Ph.Max;
+
+        PHData[0] = scMin;
+        PhStrings.Add(0, "Acid: " + (p.Ph.Min * 14).ToString("0.0"));
+        PHData[1] = scAverage - scMin;
+        PhStrings.Add(1, "Neutral: " + ((p.Ph.Min + p.Ph.Max) * 14 / 2).ToString("0.0"));
+        PHData[2] = 1 - scAverage;
+        PhStrings.Add(2, "Alkaline: " + (p.Ph.Max * 14).ToString("0.0"));
+        PHChart.ChartSize = 0;
+        PHChart.SetValues(ref PHData);
+
 
 
         for (int i=0; i < p.Species.Count; i++)
@@ -304,7 +320,7 @@ public class OrbitalUI : MonoBehaviour
             return;
         }
 
-        PsString = Species[column].Percentage.ToString("0.00")+ "% | " + Species[column].SpeciesName +"\n( " + Species[column].CreatorName + " )";
+        PsString = (Species[column].Percentage * 100).ToString("0.00")+ "% | " + Species[column].SpeciesName +"\n( " + Species[column].CreatorName + " )";
         PsText.color = PopulationChart.GetColor(column);
     }
 
@@ -333,6 +349,7 @@ public class OrbitalUI : MonoBehaviour
             return;
 
         }
+        PhString = PhStrings[column];
         PhText.color = PHChart.GetColor(column);
     }
 }

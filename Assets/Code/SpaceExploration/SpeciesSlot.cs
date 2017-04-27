@@ -30,6 +30,6 @@ public class SpeciesSlot : MonoBehaviour {
         SampleButton.gameObject.SetActive(Species.CreatorName == Session.Instance.UserName);
         UserName.text = Species.CreatorName;
         ByUser.SetActive(!(Species.CreatorName == Session.Instance.UserName));
-        SpeciesNameText.text = Species.SpeciesName +"["+Species.Percentage+"]";
+        SpeciesNameText.text = Species.SpeciesName +" ["+(Species.Percentage * 100).ToString("0.00")+"% ] ";
     }
 }
