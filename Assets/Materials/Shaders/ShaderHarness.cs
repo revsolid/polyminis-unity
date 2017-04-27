@@ -38,8 +38,6 @@ public class ShaderHarness: MonoBehaviour
     {
         XPoints = intensities.GetLength(0);
         YPoints = intensities.GetLength(1);
-        Debug.Log("X " + XPoints);
-        Debug.Log("Y " + YPoints);
         TempTexture = PrepareTexture(intensities);
         material.SetTexture("_TemperatureTexture", TempTexture);
     }

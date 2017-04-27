@@ -15,7 +15,7 @@ public class StaticObject : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Material material = GetComponentInChildren<Renderer>().material;
+	//	Material material = GetComponentInChildren<Renderer>().material;
 	//	float v = Height * 0.01f; 
 	//	material.SetColor("_EmissionColor", new Color(v, v, v));
 	}

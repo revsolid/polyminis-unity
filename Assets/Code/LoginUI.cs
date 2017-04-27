@@ -64,6 +64,8 @@ public class LoginUI : MonoBehaviour
         // Request User Data, other systems will listen for it 
         InventoryCommand requestInventoryCommand = new InventoryCommand(InventoryCommandType.GET_INVENTORY);
         Connection.Instance.Send(JsonUtility.ToJson(requestInventoryCommand));
+        InventoryCommand requestStaticInvCommand = new InventoryCommand(InventoryCommandType.GET_INVENTORY_STATIC);
+        Connection.Instance.Send(JsonUtility.ToJson(requestStaticInvCommand));
 		SceneManager.LoadScene("space_exploration");
     }
 	

@@ -7,28 +7,27 @@ public class MistSpawner : MonoBehaviour
 {
     public float fieldLength; // x
     public float fieldHeight; // z
-    public int gridLength; // x
-    public int gridHeight; // z
+    public int GridLength; // x
+    public int GridHeight; // z
 
     public Color AcidicColor;
     public Color NeutralColor;
     public Color AlkalineColor;
-    public Texture2D intensityMap;
     public List<Vector3> Emmitters;
 
     private float cellSizeX;
     private float cellSizeZ;
 
     public GameObject particlePrefab;
-    Dictionary<Vector2, ParticleSystem> particles;
+    Dictionary<Vector2, ParticleSystem> Particles = new Dictionary<Vector2, ParticleSystem>();
 
     float[,] FillPhValues()
     {
-        float[,] phValues = new float[gridLength, gridHeight];
+        float[,] phValues = new float[GridLength, GridHeight];
 
-        for (int i = 0; i < gridLength; i++)
+        for (int i = 0; i < GridLength; i++)
         {
-            for (int j = 0; j < gridHeight; j++)
+            for (int j = 0; j < GridHeight; j++)
             {
                 phValues[i, j] = 0.1f;
             }
@@ -39,9 +38,9 @@ public class MistSpawner : MonoBehaviour
             Vector2 emmitter_pos = new Vector2(TempEmmitter.x, TempEmmitter.y);
             emmitter_pos *= 10;
             float power = TempEmmitter.z;
-            for (int i = 0; i < gridLength; i++)
+            for (int i = 0; i < GridLength; i++)
             {
-                for (int j = 0; j < gridHeight; j++)
+                for (int j = 0; j < GridHeight; j++)
                 {
                     float diff_x = Mathf.Abs((float)i - emmitter_pos.x) / 10.0f;
                     float diff_y = Mathf.Abs((float)j - emmitter_pos.y) / 10.0f;
@@ -50,9 +49,9 @@ public class MistSpawner : MonoBehaviour
                 }
             }
         }
-        for (int i = 0; i < gridLength; i++)
+        for (int i = 0; i < GridLength; i++)
         {
-            for (int j = 0; j < gridHeight; j++)
+            for (int j = 0; j < GridHeight; j++)
             {
                 phValues[i, j] += 0.5f;
                 phValues[i, j] = Mathf.Clamp(phValues[i, j], 0.0f, 1.0f);
@@ -63,12 +62,12 @@ public class MistSpawner : MonoBehaviour
 
     Texture2D PrepareTexture(float[,] intensities)
     {
-        Texture2D to_ret = new Texture2D(gridLength, gridHeight);
-        for (int i = 0; i < gridLength; i++)
+        Texture2D to_ret = new Texture2D(GridLength, GridHeight);
+        for (int i = 0; i < GridLength; i++)
         {
-            for (int j = 0; j < gridHeight; j++)
+            for (int j = 0; j < GridHeight; j++)
             {
-                to_ret.SetPixel(i, j, new Color(intensities[i, j], 0.0f, 0.0f, 1.0f));
+                to_ret.SetPixel(i, j, IntensityToColor(intensities[i, j]));
             }
         }
         to_ret.Apply();
@@ -76,12 +75,13 @@ public class MistSpawner : MonoBehaviour
     }
 
     // takes in intensityMap
+    /*
     Texture2D PrepareTexture()
     {
-        Texture2D to_ret = new Texture2D(gridLength, gridHeight);
-        for (int i = 0; i < gridLength; i++)
+        Texture2D to_ret = new Texture2D(GridLength, GridHeight);
+        for (int i = 0; i < GridLength; i++)
         {
-            for (int j = 0; j < gridHeight; j++)
+            for (int j = 0; j < GridHeight; j++)
             {
                 // doesn't read alpha channel of the noise map
                 float readIntensity = (intensityMap.GetPixel(i, j).r + 
@@ -92,20 +92,25 @@ public class MistSpawner : MonoBehaviour
         }
         to_ret.Apply();
         return to_ret;
-    }
+    }*/
 
 
     void SpawnGrid()
     {
-        for (int x = 0; x < gridLength; x++)
+        foreach(Vector2 k in Particles.Keys)
         {
-            for (int z = 0; z < gridHeight; z++)
+            Destroy(Particles[k].gameObject);
+        }
+        Particles.Clear();
+        for (int x = 0; x < GridLength; x++)
+        {
+            for (int z = 0; z < GridHeight; z++)
             {
                 GameObject particle = Instantiate<GameObject>(particlePrefab, new Vector3(this.transform.position.x + x * cellSizeX,
-                                                                                        this.transform.position.y,
-                                                                                        this.transform.position.z + z * cellSizeZ), Quaternion.identity);
+                                                                                         this.transform.position.y,
+                                                                                         this.transform.position.z + z * cellSizeZ), Quaternion.identity);
                 particle.transform.parent = this.transform;
-                particles.Add(new Vector2(x, z), particle.GetComponent<ParticleSystem>());
+                Particles.Add(new Vector2(x, z), particle.GetComponent<ParticleSystem>());
             }
         }
     }
@@ -124,23 +129,18 @@ public class MistSpawner : MonoBehaviour
         }
     }
 
-    void ConfigureMistColor()
+    void ConfigureMistColor(float[,] intensities)
     {
         Texture2D phs;
-        if (intensityMap)
-            phs = PrepareTexture();
-        else
-            phs = PrepareTexture(FillPhValues());
+        phs = PrepareTexture(intensities);
 
-        for (int x = 0; x < gridLength; x++)
+        for (int x = 0; x < GridLength; x++)
         {
-            for (int z = 0; z < gridHeight; z++)
+            for (int z = 0; z < GridHeight; z++)
             {
-                ParticleSystem.MainModule mainMod = particles[new Vector2(x, z)].main;
-                Color toSet = new Color(phs.GetPixel(x, z).r,
-                    phs.GetPixel(x, z).g,
-                    phs.GetPixel(x, z).b,
-                    phs.GetPixel(x, z).a / 20.0f);
+                ParticleSystem.MainModule mainMod = Particles[new Vector2(x, z)].main;
+                Color pix = phs.GetPixel(x,z);
+                Color toSet = new Color(pix.r, pix.g, pix.b, pix.a / 20.0f);
                 mainMod.startColor = toSet;
 
                 int k = 0;
@@ -149,14 +149,16 @@ public class MistSpawner : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start ()
-    {
-        particles = new Dictionary<Vector2, ParticleSystem>();
-        cellSizeX = fieldLength / gridLength;
-        cellSizeZ = fieldHeight / gridHeight;
+    public void SetPhData(float[,] intensities)
+    {        
+        GridLength = intensities.GetLength(0);
+        GridHeight = intensities.GetLength(1);
+        
+        cellSizeX = fieldLength / GridLength;
+        cellSizeZ = fieldHeight / GridHeight;
+       
         SpawnGrid();
-        ConfigureMistColor();
-
+        ConfigureMistColor(intensities);
     }
 
     // Update is called once per frame

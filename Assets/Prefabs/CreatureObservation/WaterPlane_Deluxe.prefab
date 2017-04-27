@@ -149,3 +149,4 @@ MonoBehaviour:
   ObjectPrototype: {fileID: 114000012992612278, guid: 741b37654a2b04d2595640556d7b99cc,
     type: 2}
   WaterShaderHarness: {fileID: 114369180586987872}
+  MistController: {fileID: 0}

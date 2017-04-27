@@ -242,6 +242,7 @@ public enum InventoryCommandType
     UPDATE_SPECIES,
     SAMPLE_FROM_PLANET,
     GET_INVENTORY,
+    GET_INVENTORY_STATIC,
     DELETE_ENTRY,
     GET_GLOBAL_EPOCH
 }
@@ -267,7 +268,8 @@ public enum InventoryEventType
 {
     InventoryUpdate,
     ResearchDone,
-    ReceiveGlobalEpoch
+    ReceiveGlobalEpoch,
+    StaticDataReady,
 }
 [Serializable]
 public class InventoryServiceEvent : BaseEvent
@@ -686,6 +688,7 @@ public class SimulationEnvironment
 {
     public PhysicsWorldModel PhysicsWorld;
     public ThermalWorldModel ThermalWorld;
+    public ThermalWorldModel PhWorld;
     public List<WorldObjectModel> WorldObjects;
 }
 [Serializable]

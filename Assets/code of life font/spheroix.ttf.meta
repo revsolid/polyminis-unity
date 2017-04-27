@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 9d490f64517a241de943aee85a6ff3ec
+timeCreated: 1493182863
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Spheroids X (BRK)
+  fontNames:
+  - Spheroids X (BRK)
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

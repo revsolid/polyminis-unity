@@ -96,6 +96,7 @@ public class SpeciesPlanetDialog : MonoBehaviour
                 {
                 // This is an issue    
                     Debug.Log("NO MORE SLOTS FOR YOU!!!!!");
+                    InventoryFullDialog ifDialog = Instantiate(InvFullDialog);
                 }
                 else
                 {

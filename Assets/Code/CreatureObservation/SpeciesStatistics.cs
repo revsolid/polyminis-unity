@@ -53,10 +53,10 @@ public class SpeciesStatistics : MonoBehaviour
     
     void Awake()
     {
-        Connection.Instance.OnMessageEvent += OnServerMessage;
     }
     void Start()
     {
+        Connection.Instance.OnMessageEvent += OnServerMessage;
         Planet = PlanetInfoCacher.planetModel;
         if (Planet == null)
         {

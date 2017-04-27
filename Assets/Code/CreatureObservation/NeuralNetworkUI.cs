@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ struct NeuralLink
 public class NeuralNetworkUI : MonoBehaviour
 {
     Creature ToDetail;
-    public HorizontalLayoutGroup InputGroup;
+    public LayoutGroup InputGroup;
     public HorizontalLayoutGroup HiddenGroup;
     public HorizontalLayoutGroup OutputGroup;
 
@@ -23,6 +24,7 @@ public class NeuralNetworkUI : MonoBehaviour
     public GameObject NodeObject;
     public GameObject LineObject;
     public GameObject LinkParentObject;
+    public Text DNARepresentation;
 
 
     Dictionary<int, NeuralNode> nodeMap;
@@ -208,10 +210,29 @@ public class NeuralNetworkUI : MonoBehaviour
         DNAText.text = "Species: " + ToDetail.SpeciesName;
         DNAText.text += "\n Specimen: " + ToDetail.Model.ID;
         DNAText.text += "\n DNA Sequence: ";
+        string dnaRep = "";
         foreach (var el in ToDetail.Model.Morphology.Body)
         {
             DNAText.text += string.Format("{0}", el.Trait.TID);
+            dnaRep += string.Format("{0}", el.Trait.TID);
         }
+        
+        DNARepresentation.text = "{-";
+        char[] uppers = {'!','@', '#', '$', '%', '^', '&', '*', '(', ')'};
+        for(int i = 0; i < dnaRep.Length; ++i)
+        {
+            bool even = (i%2 == 0);
+            if (even)
+            {
+                DNARepresentation.text += uppers[(int)Char.GetNumericValue(dnaRep[i])];
+            }
+            else
+            {
+                DNARepresentation.text += dnaRep[i];
+                DNARepresentation.text += ' ';
+            }
+        }
+        DNARepresentation.text += "-}";
 
         DNAText.text += "\n";
         DNAText.text += " Fitness: ";
