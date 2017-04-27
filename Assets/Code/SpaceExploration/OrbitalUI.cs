@@ -19,7 +19,9 @@ public class OrbitalUI : MonoBehaviour
     public PieChart PopulationChart;
     public PieChart ResourceChart;
     public PieChart PHChart;
-    public GameObject TextPopup;
+    public Text PhText;
+    public Text TpText;
+    public Text PsText;
     public int ChartSize;
     public SpeciesCard[] Slots;
     
@@ -27,12 +29,13 @@ public class OrbitalUI : MonoBehaviour
     string SpeciesToOpen;
     bool HasHookedCallbacks = false;
     SpeciesModel ShowSpeciesNextUpdate = null;
+    string PhString;
+    string TpString;
+    string PsString;
 
     private ChartData1D PopulationData, ResourceData, PHData;
     private Dictionary<int, SpeciesModel> Species;
     private Dictionary<int,string> ResourceNames;
-
-    private string PopupString;
 
     public delegate void BackToSpaceAction();
     public static event BackToSpaceAction OnGoBackToSpaceExScreen;
@@ -40,7 +43,9 @@ public class OrbitalUI : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        
+        PhString = "";
+        TpString = "";
+        PsString = "";
     }
 
     void OnEnable()
@@ -67,16 +72,16 @@ public class OrbitalUI : MonoBehaviour
     }
     void Start ()
     {
-        PopupString = "";
     }
     
     // Update is called once per frame
     void Update ()
     {
-        //TODO: This is ugly
-        TextPopup.GetComponent<Text>().text = PopupString;
+        PhText.text = PhString;
+        TpText.text = TpString;
+        PsText.text = PsString;
 
-        if(PopulationChart.ChartSize < ChartSize)
+        if (PopulationChart.ChartSize < ChartSize)
         {
             const int speed = 5;
             PopulationChart.ChartSize += speed;            
@@ -266,11 +271,11 @@ public class OrbitalUI : MonoBehaviour
 
         Debug.Log(scMin + " XXX " + scAverage + " XXX " + p.Temperature.Max);
         ResourceData[0] = scMin;
-        ResourceNames.Add(0, "Low:\n"+ (p.Temperature.Min * 273).ToString("0.0")+" K");
+        ResourceNames.Add(0, "Low: "+ (p.Temperature.Min * 273).ToString("0.0")+" K");
         ResourceData[1] = scAverage - scMin;
-        ResourceNames.Add(1, "Average:\n" + ((p.Temperature.Min +  p.Temperature.Max) * 273 / 2).ToString("0.0") + " K");
+        ResourceNames.Add(1, "Average: " + ((p.Temperature.Min +  p.Temperature.Max) * 273 / 2).ToString("0.0") + " K");
         ResourceData[2] = 1 - scAverage;
-        ResourceNames.Add(2, "High:\n"+ (p.Temperature.Max * 273).ToString("0.0") +" K");
+        ResourceNames.Add(2, "High: "+ (p.Temperature.Max * 273).ToString("0.0") +" K");
 
         PopulationChart.ChartSize = 0;
         ResourceChart.ChartSize = 0;
@@ -293,45 +298,41 @@ public class OrbitalUI : MonoBehaviour
 
     void OnPopulationChartHover(int column)
     {
-        Text t = TextPopup.GetComponentInChildren<Text>();
-
         if (column == -1)
         {
-            PopupString = "";
+            //PsString = "";
             return;
         }
-        
-        PopupString = Species[column].Percentage.ToString("0.00")+ "% | " + Species[column].SpeciesName +"\n( " + Species[column].CreatorName + " )";
-        t.color = PopulationChart.GetColor(column);
+
+        PsString = Species[column].Percentage.ToString("0.00")+ "% | " + Species[column].SpeciesName +"\n( " + Species[column].CreatorName + " )";
+        PsText.color = PopulationChart.GetColor(column);
     }
 
     void OnMaterialChartHover(int column)
     {
         //TextPopup.SetActive(true);
-        Text t = TextPopup.GetComponentInChildren<Text>();
         if (column == -1)
         {
             
-            //PopupString = "";
+            //TpString = "";
             return;
 
         }
 
-        
-        PopupString = ResourceNames[column];
-        t.color = ResourceChart.GetColor(column);
+
+        TpString = ResourceNames[column];
+        TpText.color = ResourceChart.GetColor(column);
     }
 
     void OnPHChartHover(int column)
     {
-        Text t = TextPopup.GetComponentInChildren<Text>();
         if (column == -1)
         {
 
-            //PopupString = "";
+            //PhString = "";
             return;
 
         }
-        t.color = PHChart.GetColor(column);
+        PhText.color = PHChart.GetColor(column);
     }
 }
