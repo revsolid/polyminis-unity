@@ -59,5 +59,7 @@ MonoBehaviour:
     type: 2}
   SpeedPrototype: {fileID: 114317887757410564, guid: c75b7dac8efae4277a295c6cb9c748fa,
     type: 2}
-  ThermoHotPrototype: {fileID: 0}
-  ThermoColdPrototype: {fileID: 0}
+  ThermoHotPrototype: {fileID: 114837822416447728, guid: 196c63f04e93c8d40a0e9c433393a700,
+    type: 2}
+  ThermoColdPrototype: {fileID: 114169527083099172, guid: 8c243de99b715b24480b3bd258384bf2,
+    type: 2}

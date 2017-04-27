@@ -31,6 +31,7 @@ public class DetailedStatsViewUI : MonoBehaviour
     public Text[] Labels;
     public Button EpochLabelButtonPrototype;
     public Transform LabelsAnchor;
+    public Transform EpochMarker;
     Button[] EpochButtons = new Button[10];
     int SelectedEpoch;
     
@@ -72,6 +73,7 @@ public class DetailedStatsViewUI : MonoBehaviour
             return;
         }
         int i;
+        EpochMarker.gameObject.SetActive(false);
         for(i = 0; i < poss.Length && i < Labels.Length; ++i)
         {
             Labels[i].gameObject.SetActive(true);
@@ -80,6 +82,12 @@ public class DetailedStatsViewUI : MonoBehaviour
             
      //       EpochButtons[i].gameObject.SetActive(true);
             EpochButtons[i].transform.localPosition = new Vector2(poss[i].position.x, EpochButtons[i].transform.localPosition.y);
+            
+            if ((Model.CurrentStartingEpoch + i) == Model.CurrentlyDisplayedEpoch)
+            {
+                EpochMarker.localPosition = new Vector2(poss[i].position.x, EpochMarker.localPosition.y);
+                EpochMarker.gameObject.SetActive(true);
+            }
         }
         
         for (; i < Labels.Length; ++i)
@@ -88,7 +96,31 @@ public class DetailedStatsViewUI : MonoBehaviour
         }
         
         PlanetName.text = Model.PlanetModel.PlanetName;
-        EpochText.text = string.Format("Currently Observing: {0}", Model.PlanetModel.Epoch);
+        EpochText.text = string.Format("Currently Observing: {0}", Model.CurrentlyDisplayedEpoch);
+        
+        var posy = MainChart.GetAxisYPositions(); 
+        if (posy == null)
+        {
+            return;
+        }
+        int len = posy.Length; 
+        Debug.Log("XXXXX");
+        Debug.Log(len);
+        int inx = Model.CurrentlyDisplayedEpoch - Model.MaxValueInx;
+        if (inx > 0 && inx < posy.Length)
+        {
+            MaxText.transform.localPosition = new Vector2(MaxText.transform.localPosition.x, posy[inx].position.y);
+        }
+        inx = Model.CurrentlyDisplayedEpoch - Model.MinValueInx;
+        if (inx > 0 && inx < posy.Length)
+        {
+            MinText.transform.localPosition = new Vector2(MinText.transform.localPosition.x, posy[inx].position.y);
+        }
+        AvgText.transform.localPosition = new Vector2(AvgText.transform.localPosition.x, (MaxText.transform.localPosition.y +  MinText.transform.localPosition.y)/2.0f);
+        for(int k = 0; k < len; k++)
+        {
+            Debug.Log(posy[k].position.y);
+        }
     }
         
     void OnDataChanged()
@@ -148,7 +180,7 @@ public class DetailedStatsViewUI : MonoBehaviour
         DataGrid.UpdateGrid(names, values, deltas);
         
         SelectedEpoch = epoch;
-        GoToEpochButton.GetComponentInChildren<Text>().text = string.Format("Go To Eon:{0}", epoch);
+        GoToEpochButton.GetComponentInChildren<Text>().text = string.Format("{0}", epoch);
     }
     
     public void OnObserveEpoch()

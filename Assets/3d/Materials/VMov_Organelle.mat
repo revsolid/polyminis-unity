@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: VMov_Organelle
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 90408bcb116887c42a9d8f210e7a978c, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: cb3cddc5543a86049802f1309b59f9a0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 46211804f8bf949689520ab98ec482c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -69,12 +69,21 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SecTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 2563b8ce1edc144329126d78cbf26185, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: _BumpScale
       second: 1
     - first:
         name: _Cutoff
+      second: 0.5
+    - first:
+        name: _Cutoff2
       second: 0.5
     - first:
         name: _DetailNormalMapScale
@@ -121,6 +130,9 @@ Material:
     m_Colors:
     - first:
         name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Color2
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor

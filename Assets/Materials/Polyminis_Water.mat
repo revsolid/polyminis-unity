@@ -138,7 +138,7 @@ Material:
       second: -100
     - first:
         name: _FoamTiling
-      second: 120.93918
+      second: 96.800575
     - first:
         name: _FoamVisibility
       second: 0.33
@@ -168,7 +168,7 @@ Material:
       second: 0
     - first:
         name: _NormalTiling
-      second: 120.93918
+      second: 96.800575
     - first:
         name: _OcclusionStrength
       second: 1

@@ -1,7 +1,8 @@
-using UnityEngine;
 using CP.ProChart;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class DetailedViewModel
 {
@@ -10,11 +11,14 @@ public class DetailedViewModel
     public float AvgValue { get {
         return (MinValue + MaxValue) / 2.0f;
     }}
+    public int MinValueInx = -1;
+    public int MaxValueInx = -1;
     
     public int CurrentStartingEpoch;
     public Dictionary<int, List<int>> EpochsToIndexes; 
     public Dictionary<int, string> IndexToSpeciesName;
     public PlanetModel PlanetModel;
+    public int CurrentlyDisplayedEpoch;
 }
 
 public class SpeciesStatistics : MonoBehaviour
@@ -22,6 +26,8 @@ public class SpeciesStatistics : MonoBehaviour
     
     public LineChart ChartSummary;
     public DetailedStatsViewUI DetailedView;
+	public Text PlanetName;
+	public Text PlanetNameShadow;
     
     ChartData2D SpeciesPercentageData = new ChartData2D();
     DetailedViewModel DetailedViewModel = new DetailedViewModel();
@@ -57,6 +63,9 @@ public class SpeciesStatistics : MonoBehaviour
     void Start()
     {
         Connection.Instance.OnMessageEvent += OnServerMessage;
+        SpeciesController.OnEpochLoaded += (int planetId, int epoch) => {
+            DetailedViewModel.CurrentlyDisplayedEpoch = epoch;
+        };
         Planet = PlanetInfoCacher.planetModel;
         if (Planet == null)
         {
@@ -66,6 +75,8 @@ public class SpeciesStatistics : MonoBehaviour
             Planet.PlanetName = "Il Nome";
         }
         DetailedViewModel.PlanetModel = Planet;
+		PlanetName.text = Planet.PlanetName;
+		PlanetNameShadow.text = Planet.PlanetName;
 
         ChartSummary.SetValues(ref SpeciesPercentageData);
         DetailedView.SetValues(ref SpeciesPercentageData, ref DetailedViewModel);
@@ -164,10 +175,12 @@ public class SpeciesStatistics : MonoBehaviour
                     if (perc.Value > DetailedViewModel.MaxValue)
                     {
                         DetailedViewModel.MaxValue = perc.Value;
+                        DetailedViewModel.MaxValueInx = ev.EpochStats.Epoch;
                     }
                     if (perc.Value < DetailedViewModel.MinValue)
                     {
                         DetailedViewModel.MinValue = perc.Value;
+                        DetailedViewModel.MinValueInx = ev.EpochStats.Epoch;
                     }
                 }
             }

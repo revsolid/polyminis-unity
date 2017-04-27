@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace UnityEditor
 {
 internal class TwoAlbedoShaderGUI : ShaderGUI
@@ -451,3 +452,4 @@ internal class TwoAlbedoShaderGUI : ShaderGUI
 }
 
 } // namespace UnityEditor
+#endif
