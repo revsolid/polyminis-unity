@@ -8,6 +8,8 @@ public class SpeciesSlot : MonoBehaviour {
     public SpeciesModel Species;
     public Button ExtractButton;
     public Button SampleButton;
+    public GameObject ByUser;
+    public Text UserName;
     public Text SpeciesNameText;
 
     // Use this for initialization
@@ -26,12 +28,8 @@ public class SpeciesSlot : MonoBehaviour {
     {
         ExtractButton.gameObject.SetActive(Species.CreatorName == Session.Instance.UserName);
         SampleButton.gameObject.SetActive(Species.CreatorName == Session.Instance.UserName);
+        UserName.text = Species.CreatorName;
+        ByUser.SetActive(!(Species.CreatorName == Session.Instance.UserName));
         SpeciesNameText.text = Species.SpeciesName +"["+Species.Percentage+"]";
-        
-        if (Species.CreatorName != Session.Instance.UserName)
-        {
-            SpeciesNameText.text += " by: "+Species.CreatorName;
-			Debug.Log(SpeciesNameText.text);
-        }
     }
 }
