@@ -14,6 +14,7 @@ public class ColorConfig : MonoBehaviour
     public List<Sprite> SpliceBackgrounds;
     public List<Sprite> ChosenSpliceBackgrounds;
     public List<Color> SpliceLabelColor;
+    public List<Color> ChosenSpliceLabelColor;
 
     // Use this for initialization
     void Start ()
@@ -66,5 +67,10 @@ public class ColorConfig : MonoBehaviour
     public Color GetLabelColorForSplice(Instinct i)
     {
         return SpliceLabelColor[(int)i];
+    }
+
+    public Color GetLabelColorForChosenSplice(Instinct i)
+    {
+        return ChosenSpliceLabelColor[(int)i];
     }
 }
