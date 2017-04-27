@@ -10,11 +10,10 @@ public class SpliceDnaHelixRenderer : MonoBehaviour
     
     public Text NameField;
     public Image Background;
-    public Image Emblem;
-    
+        
     public SpliceModel Model;
     
-    bool ready;
+    bool ready = false;
     
     public void Start()
     {
@@ -22,12 +21,16 @@ public class SpliceDnaHelixRenderer : MonoBehaviour
     
     public void Update()
     {
-        if (!ready)
+        if (!ready && Model != null)
         {
             NameField.text = Model.Name;
+            Debug.Log(SpeciesDesignUI.SColorConfig);
+            NameField.color = SpeciesDesignUI.SColorConfig.GetLabelColorForChosenSplice(Model.EInstinct);
+            Background.sprite = SpeciesDesignUI.SColorConfig.GetBackgroundSpriteForChosenSplice(Model.EInstinct);
+            //Emblem.sprite = SpeciesDesignUI.SColorConfig.GetBackgroundSpriteForSplice(Model.EInstinct);
+            this.gameObject.name = "SpliceHelixRenderer-" + Model.InternalName;
+
             ready = true;
-            Background.color = SpeciesDesignUI.SColorConfig.GetColorFor(Model.EInstinct);
-            Emblem.sprite = SpeciesDesignUI.SColorConfig.GetSpriteFor(Model.EInstinct);
         }
     }
 
