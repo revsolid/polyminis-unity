@@ -22,7 +22,7 @@ public class OrganellesCatalog : MonoBehaviour
         if (Almanac.Instance.TraitData.TryGetValue(tid, out trait))
         {
             Organelle[] organelles = { HorMovPrototype, VerMovPrototype, ThermoHotPrototype, ThermoColdPrototype };
-            string[]    internalNames = { "hormov", "vermov", "hotresist", "coldprototype" };
+            string[]    internalNames = { "hormov", "vermov", "hotresist", "coldresist" };
             for (int i = 0; i < organelles.Length; ++i)
             {
                 if (trait.InternalName == internalNames[i])

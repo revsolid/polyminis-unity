@@ -652,6 +652,7 @@ public class IndividualStep
 {
     public int ID;
     public bool Alive;
+    public int HP;
     public PhysicsStep Physics;
     public ControlStep Control;
 }

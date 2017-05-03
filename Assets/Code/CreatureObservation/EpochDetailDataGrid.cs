@@ -31,7 +31,7 @@ public class EpochDetailDataGrid : MonoBehaviour
 		for(int i = 0; i < names.Count; ++i)
 		{
 			texts[i].gameObject.SetActive(true);
-			texts[i].text = string.Format("{0}: {1:###.#%} ({2:#.#%})", names[i], values[i], deltas[i]);
+			texts[i].text = string.Format("{0}: {1:###.#%}", names[i], values[i]);//, deltas[i]);
 		}
 	}
 }

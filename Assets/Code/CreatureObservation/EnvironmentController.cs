@@ -80,22 +80,22 @@ public class EnvironmentController : MonoBehaviour {
 			
 			if (pos.x < 0)
 			{
-				deltaPos.x -= 2.5f;
+		//		deltaPos.x -= 2.5f;
 			}
 			else
 			{
-				deltaPos.x += 2.5f;
+	//			deltaPos.x += 2.5f;
 			}
 			if (pos.y < 0)
 			{
-				deltaPos.z -= 2.5f;
+		//		deltaPos.z -= 2.5f;
 			}
 			else
 			{
-				deltaPos.z += 2.5f;
+			//	deltaPos.z += 2.5f;
 			}
 
-        	obj.gameObject.transform.position = pos;// + deltaPos;
+        	obj.gameObject.transform.position = pos + deltaPos;
 		}
 	}
 }

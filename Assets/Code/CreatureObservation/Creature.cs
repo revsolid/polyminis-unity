@@ -73,6 +73,7 @@ public class Creature : MonoBehaviour
         Alive = step.Alive;
         LastControlStep = step.Control; 
 		ExecutedSteps += 1;
+		Model.HP = step.HP;
 		
 		DebugText = string.Format("Executing Step {0}/{1} ", ExecutedSteps, Steps.Count);
 		
@@ -84,7 +85,6 @@ public class Creature : MonoBehaviour
 		DebugText += string.Format("\nPredatory: {0}",  Model.EvaluationStats.Predatory);
 		DebugText += string.Format("\nHerding: {0}",  Model.EvaluationStats.Herding);
 		DebugText += string.Format("\nHoarding: {0}",  Model.EvaluationStats.Hoarding);
-		
 		DebugText += Mover.DebugText;
 	}
 	

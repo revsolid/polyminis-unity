@@ -100,6 +100,7 @@ public class SpaceMovementTracker : MonoBehaviour
     {    
         var spaceExCommand = new SpaceExplorationCommand(SpaceExplorationCommandType.SAVE_POSITION, CurrentPosition);
         Connection.Instance.Send(JsonUtility.ToJson(spaceExCommand));
+        Session.Instance.LastKnownPosition = CurrentPosition;
     }
 
 

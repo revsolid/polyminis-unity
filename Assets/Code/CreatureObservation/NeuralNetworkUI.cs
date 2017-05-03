@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,22 +16,29 @@ struct NeuralLink
 public class NeuralNetworkUI : MonoBehaviour
 {
     Creature ToDetail;
-    public HorizontalLayoutGroup InputGroup;
+    public LayoutGroup InputGroup;
     public HorizontalLayoutGroup HiddenGroup;
-    public HorizontalLayoutGroup OutputGroup;
+    public LayoutGroup OutputGroup;
 
     // TODO: there should be different node objects for different types
     public GameObject NodeObject;
     public GameObject LineObject;
     public GameObject LinkParentObject;
-
+    public Text DNARepresentation;
+    public Text SpeciesName;
+    public Text Specimen;
+    public Text InstinctScores;
+    public BarFiller SpeedBar;
+    public BarFiller HPBar;
 
     Dictionary<int, NeuralNode> nodeMap;
     List<NeuralLink> linkList;
     int numInputNodes = 0;
     int numHiddenNodes = 0;
     int numOutputNodes = 0;
-    Text DNAText;
+    
+    public Color NNLineColor1;
+    public Color NNLineColor2;
 
     public void SetCreature(Creature inCreature)
     {
@@ -66,7 +74,6 @@ public class NeuralNetworkUI : MonoBehaviour
         numOutputNodes = 0;
         numHiddenNodes = 0;
 
-        DNAText = this.transform.parent.FindChild("DNA").GetComponent<Text>();
         // instantiate nodes
         int i = 0;
         foreach (var i_v in ToDetail.LastControlStep.Inputs)
@@ -99,7 +106,9 @@ public class NeuralNetworkUI : MonoBehaviour
         }
         numOutputNodes = i;
         DrawLinks();
-
+        
+        SpeedBar.Value = (int)ToDetail.Model.Speed;
+        HPBar.Value = ToDetail.Model.HP;
     }
 
     void DrawLinks()
@@ -168,9 +177,9 @@ public class NeuralNetworkUI : MonoBehaviour
         weight = Mathf.Clamp(weight, 0.0f, 1.0f);
 
         // lerp between red and green
-        Vector3 colorSpaceCoord = Vector3.Lerp(new Vector3(1.0f, 0.0f, 0.0f), new Vector3(0.0f, 1.0f, 0.0f), weight);
+        return Color.Lerp(NNLineColor1, NNLineColor2, weight);
 
-        return new Color(colorSpaceCoord.x, colorSpaceCoord.y, colorSpaceCoord.z, 1.0f);
+        //return new Color(colorSpaceCoord.x, colorSpaceCoord.y, colorSpaceCoord.z, 1.0f);
     }
 
     void DrawLink(NeuralNode fromNode, NeuralNode toNode, int fromId, int toId, float weight)
@@ -205,14 +214,45 @@ public class NeuralNetworkUI : MonoBehaviour
 
     void PrintText()
     {
-        DNAText.text = "Species: " + ToDetail.SpeciesName;
-        DNAText.text += "\n Specimen: " + ToDetail.Model.ID;
-        DNAText.text += "\n DNA Sequence: ";
+        SpeciesName.text = ToDetail.SpeciesName;
+        Specimen.text = string.Format("Specimen: {0}", ToDetail.Model.ID);
+        
+        string template = "<color=#71B0FBFF>Explorer: {0:0.00}</color>\n"+
+                          "<color=#FC60A9FF>Killer:   {1:0.00}</color>\n"+
+                          "<color=#FEE481FF>Eater:    {2:0.00}</color>\n"+
+                          "<color=#6EE8AAFF>Social:   {3:0.00}</color>";
+
+        
+        InstinctScores.text = string.Format(template,
+            ToDetail.Model.EvaluationStats.Nomadic,
+            ToDetail.Model.EvaluationStats.Predatory,
+            ToDetail.Model.EvaluationStats.Herding,
+            ToDetail.Model.EvaluationStats.Hoarding
+        );
+        
+        string dnaRep = "";
         foreach (var el in ToDetail.Model.Morphology.Body)
         {
-            DNAText.text += string.Format("{0}", el.Trait.TID);
+            dnaRep += string.Format("{0}", el.Trait.TID);
         }
-
+        
+        DNARepresentation.text = "{-";
+        char[] uppers = {'!','@', '#', '$', '%', '^', '&', '*', '(', ')'};
+        for(int i = 0; i < dnaRep.Length; ++i)
+        {
+            bool even = (i%2 == 0);
+            if (even)
+            {
+                DNARepresentation.text += uppers[(int)Char.GetNumericValue(dnaRep[i])];
+            }
+            else
+            {
+                DNARepresentation.text += dnaRep[i];
+                DNARepresentation.text += ' ';
+            }
+        }
+        DNARepresentation.text += "-}";
+/*
         DNAText.text += "\n";
         DNAText.text += " Fitness: ";
         DNAText.text += ToDetail.Model.Fitness;
@@ -226,7 +266,7 @@ public class NeuralNetworkUI : MonoBehaviour
         DNAText.text += ToDetail.DebugText;
         DNAText.text += "\n";
         DNAText.text += " Mover Executed: ";
-        DNAText.text += ToDetail.Mover.ExecutedSteps;
+        DNAText.text += ToDetail.Mover.ExecutedSteps; */
     }
 
     void LateUpdate ()

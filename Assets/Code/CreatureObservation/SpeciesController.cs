@@ -46,6 +46,9 @@ public class SpeciesController : MonoBehaviour
     public EnvironmentController EnvironmentController;
 	public OrganellesCatalog Catalog;
     
+    public delegate void EpochLoadedAction(int planetId, int planetEpoch);
+    public static event EpochLoadedAction OnEpochLoaded;
+    
     [HideInInspector]public float BestFitness = 0;
 
     Dictionary<int, Creature> Individuals = new Dictionary<int, Creature>();
@@ -58,6 +61,8 @@ public class SpeciesController : MonoBehaviour
     CreatureObservationEvent PendingSpawn;
     List<CreatureObservationEvent> PendingSteps = new List<CreatureObservationEvent>();
     PlanetModel Planet;
+    int LastLoadedPlanetID;
+    int LastLoadedEpoch;
     
     void Start()
     {
@@ -71,7 +76,7 @@ public class SpeciesController : MonoBehaviour
         {
             Planet = new PlanetModel();
             Planet.ID = 2011;
-            Planet.Epoch = 33;
+            Planet.Epoch = 37;
         }
         GoToEpoch(Planet.ID, Planet.Epoch);
     }
@@ -82,7 +87,8 @@ public class SpeciesController : MonoBehaviour
         loadSimCmd = new CreatureObservationCommand(ID, Epoch);
         loadSimCmd.Command = "GO_TO_EPOCH";
         Connection.Instance.Send(JsonUtility.ToJson(loadSimCmd));
-        
+        LastLoadedPlanetID = ID;
+        LastLoadedEpoch = Epoch;
         GetStatistics(ID, Epoch);
     }
     
@@ -114,7 +120,7 @@ public class SpeciesController : MonoBehaviour
     {
         CancelInvoke("Poll");
         CancelInvoke("Step");
-        GoToEpoch(Planet.ID, Planet.Epoch);
+        GoToEpoch(LastLoadedPlanetID, LastLoadedEpoch);
     }
 
     IEnumerator PassStepToCreatures(SpeciesStep ss, Dictionary<int, Creature> inds)
@@ -198,6 +204,8 @@ public class SpeciesController : MonoBehaviour
                     BestFitness = ind.Model.Fitness;
                 }
             }
+            if (OnEpochLoaded != null)
+                OnEpochLoaded(LastLoadedPlanetID, LastLoadedEpoch);
             // Always cleanup before adding the repeating call 
             // it is ok to do this since CancelInvoke just NOOPs the first time
             CancelInvoke("Poll");
