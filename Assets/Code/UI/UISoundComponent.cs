@@ -11,6 +11,10 @@ public class UISoundComponent : AkEvent
     public int UIEventID; // = 0; 
     public string UIEventName; //  = ""; 
     bool CallbacksWired = false;
+    string LastInputFieldValue = "NEVER_EVER_NEVER_EVER";
+    
+
+
     void Awake()
     {
     }
@@ -31,7 +35,6 @@ public class UISoundComponent : AkEvent
             {
                 b.onClick.AddListener( () =>
                 {
-                    Debug.Log("Clicked-ze-zound-button");
                     Debug.Log(UIEventID);
                     Debug.Log(eventID);
                     OnClick();
@@ -44,12 +47,30 @@ public class UISoundComponent : AkEvent
             {
                 CallbacksWired = true;
             }
+            
+            InputField ifield = sel as InputField;
+            if (ifield != null)
+            {
+                ifield.onValueChanged.AddListener( (string value) =>
+                {
+                    OnInputFieldChanged(value);
+                });
+            }
         }
     }
     
     void OnClick()
     {
         AkSoundEngine.PostEvent((uint)eventID, gameObject);
+    }
+    
+    void OnInputFieldChanged(string v)
+    {
+        if (v != LastInputFieldValue)
+        {
+            AkSoundEngine.PostEvent((uint)eventID, gameObject);
+            LastInputFieldValue = v;
+        }
     }
     
     void OnDown()

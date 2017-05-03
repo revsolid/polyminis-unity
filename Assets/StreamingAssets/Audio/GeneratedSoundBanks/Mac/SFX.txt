@@ -1,14 +1,26 @@
 Event	ID	Name			Wwise Object Path	Notes
+	693274607	P_UI_NameBoxClick			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_NameBoxClick	
+	759703697	P_UI_AddItem			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_AddItem	
+	830217078	P_UI_ConsoleCloseWindow			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_ConsoleCloseWindow	
+	1176235340	P_UI_SaveButton			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_SaveButton	
 	1216185298	S_Spshp_Thrust			\Default Work Unit\SFX_Wu\Spaceship_Wu\S_Spshp_Thrust	
+	1310748098	P_UI_RemoveItem			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_RemoveItem	
+	1420377170	P_UI_ArrowDown			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_ArrowDown	
+	1647421410	P_UI_ConsoleOpenWindow			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_ConsoleOpenWindow	
+	1853453393	P_UI_ArrowUp			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_ArrowUp	
 	1935057997	P_UI_Warning			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Warning	
 	2141736205	P_UI_Ok			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Ok	
 	2187412920	P_UI_Accepted			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Accepted	
+	2221883625	P_UI_CancelButton			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_CancelButton	
 	2258750257	P_UI_Cancel			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Cancel	
 	2374130668	P_UI_Substract			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Substract	
 	2581921037	P_UI_Return			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Return	
+	2887301519	P_UI_StartGame			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_StartGame	
 	2903831199	P_UI_Data			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Data	
+	2985531802	P_UI_TypingClick			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_TypingClick	
 	3501292951	P_Spshp_Thrust			\Default Work Unit\SFX_Wu\Spaceship_Wu\P_Spshp_Thrust	
 	3781701507	P_UI_Error			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Error	
+	3987253389	P_UI_Warp			\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_Warp	
 	4094348196	P_UI_Add			\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Add	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
@@ -30,14 +42,26 @@ Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 	781754126	Wwise Synth One	Wwise Synth One		\Actor-Mixer Hierarchy\Default Work Unit\SPACESHIP\THRUST\Spshp_lftThrust\Wwise Synth One	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	22748774	UI_OK	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_OK_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_OK		76640
-	32637561	UI_DATA_03	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_D1C915FE.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_03		83380
-	105738243	UI_WARNING	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_WARNING_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_WARNING		79260
-	299834042	UI_CANCEL	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_CANCEL_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_CANCEL		83004
-	309805726	UI_DATA_02	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_B91C577D.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_02		71476
-	566911207	UI_DATA_05	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_24CD281B.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_05		81892
-	662412231	UI_DATA_04	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_1F3B888F.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_04		89332
-	792914303	UI_ACCEPTED	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_ACCEPTED_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_ACCEPTED		84672
-	812774060	UI_DATA_01	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_C1B0D729.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_01		64040
-	973505296	UI_Error	Y:\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_AWESOME_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_Error		203664
+	22748774	UI_OK	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_OK_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_OK		76640
+	32637561	UI_DATA_03	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_D1C915FE.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_03		83380
+	105738243	UI_WARNING	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_WARNING_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_WARNING		79260
+	163225355	PM_UI_NameBoxClick	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_NameBoxClick_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_NameBoxClick		12012
+	180399087	PM_UI_ConsoleOpenWindow	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_ConsoleOpenWindow_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_ConsoleOpenWindow		33498
+	299834042	UI_CANCEL	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_CANCEL_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_CANCEL		83004
+	309805726	UI_DATA_02	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_B91C577D.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_02		71476
+	336545008	PM_UI_SaveButton	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_SaveButton_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_SaveButton		48162
+	475114320	PM_UI_AddItem	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_AddItem_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_AddItem		18754
+	566911207	UI_DATA_05	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_24CD281B.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_05		81892
+	583223215	PM_UI_Warp	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_Warp_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_Warp		82496
+	641609431	PM_UI_CancelButton	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_CancelButton_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_CancelButton		14912
+	662412231	UI_DATA_04	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_1F3B888F.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_04		89332
+	664612807	PM_UI_ConsoleCloseWindow	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_ConsoleCloseWindow_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_ConsoleCloseWindow		34506
+	733276547	PM_UI_StartGame	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_StartGame_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_StartGame		53410
+	792914303	UI_ACCEPTED	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_ACCEPTED_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_ACCEPTED		84672
+	801590766	PM_UI_ArrowUp	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_ArrowUp_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_ArrowUp		2048
+	812774060	UI_DATA_01	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\SF-CK Data GUI Single 01_C1B0D729.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_DATA\UI_DATA_01		64040
+	897408065	PM_UI_RemoveItem	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_RemoveItem_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_RemoveItem		27050
+	963090730	PM_UI_TypingClick	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_TypingClick_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_TypingClick		10866
+	964226478	PM_UI_ArrowDown	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\PM_UI_ArrowDown_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS_NEW\PM_UI_ArrowDown		2226
+	973505296	UI_Error	Y:\Code\polyminis-unity\Assets\Wwise\Project\polyminis\.cache\Mac\SFX\UI_PACK_01\UI_AWESOME_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_SOUNDS\UI_Error		203664
 

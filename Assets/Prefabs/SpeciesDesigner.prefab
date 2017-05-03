@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 222000012085813700}
   - component: {fileID: 114000012725131380}
   - component: {fileID: 114000011487503444}
+  - component: {fileID: 114839767492224910}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -138,6 +139,7 @@ GameObject:
   - component: {fileID: 222000013772216520}
   - component: {fileID: 114000013037227344}
   - component: {fileID: 114000013236016598}
+  - component: {fileID: 114223695360939438}
   m_Layer: 5
   m_Name: SaveButton
   m_TagString: Untagged
@@ -223,8 +225,6 @@ GameObject:
   - component: {fileID: 222000013072621700}
   - component: {fileID: 114000010254470148}
   - component: {fileID: 114000012920567868}
-  - component: {fileID: 114882673355849830}
-  - component: {fileID: 114327901618689278}
   - component: {fileID: 114337363301264764}
   m_Layer: 5
   m_Name: ExitButton
@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 222301082349115238}
   - component: {fileID: 114020393430375968}
   - component: {fileID: 114979196676734210}
+  - component: {fileID: 114538937879248236}
   m_Layer: 5
   m_Name: DownButton
   m_TagString: Untagged
@@ -603,6 +604,7 @@ GameObject:
   - component: {fileID: 222713356694112122}
   - component: {fileID: 114609435959696318}
   - component: {fileID: 114582170733253370}
+  - component: {fileID: 114018084379654624}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -776,6 +778,7 @@ GameObject:
   - component: {fileID: 222793915019103378}
   - component: {fileID: 114178574771606244}
   - component: {fileID: 114450880959803272}
+  - component: {fileID: 114085202338433386}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -1163,6 +1166,7 @@ GameObject:
   - component: {fileID: 222936692505942160}
   - component: {fileID: 114173427853897378}
   - component: {fileID: 114115596240716032}
+  - component: {fileID: 114968090076730444}
   m_Layer: 5
   m_Name: DownButton
   m_TagString: Untagged
@@ -1232,6 +1236,7 @@ GameObject:
   - component: {fileID: 222782548282594124}
   - component: {fileID: 114516122735673956}
   - component: {fileID: 114554549418085180}
+  - component: {fileID: 114332791453221352}
   m_Layer: 5
   m_Name: DownButton
   m_TagString: Untagged
@@ -1335,6 +1340,7 @@ GameObject:
   - component: {fileID: 222042957716277976}
   - component: {fileID: 114471157259756412}
   - component: {fileID: 114076886434928250}
+  - component: {fileID: 114958913518696168}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -1353,6 +1359,7 @@ GameObject:
   - component: {fileID: 222818355419805352}
   - component: {fileID: 114108936268871620}
   - component: {fileID: 114993077298301328}
+  - component: {fileID: 114589666846104268}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -1531,6 +1538,7 @@ GameObject:
   - component: {fileID: 222455175023807820}
   - component: {fileID: 114095920642818424}
   - component: {fileID: 114963962209782158}
+  - component: {fileID: 114592930654721396}
   m_Layer: 5
   m_Name: DownButton
   m_TagString: Untagged
@@ -2291,6 +2299,30 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114018084379654624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1196558352115106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 51748f7a913c6e4a86b4f32fe3228db5
+  eventID: 1853453393
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114020393430375968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2490,6 +2522,30 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114085202338433386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1289401018407686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 51748f7a913c6e4a86b4f32fe3228db5
+  eventID: 1853453393
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114095920642818424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2804,6 +2860,30 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &114223695360939438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012017393988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 3f566cd2d5dfed4b8cad55f50ef2641a
+  eventID: -1407665777
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114233395183516228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3064,30 +3144,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114327901618689278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013284679576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  valueGuid: da8a7bfa9c113a4ba167b205fbf739ea
-  eventID: -2036217039
-  soundEmitterObject: {fileID: 0}
-  enableActionOnEvent: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  transitionDuration: 0
-  m_callbackData: {fileID: 0}
-  playingId: 0
-  UIEventID: 0
-  UIEventName: Click
 --- !u!114 &114330850692600192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3115,6 +3171,30 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114332791453221352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721386113412672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 1c0516197cd0e749baa26801882720d4
+  eventID: 1420377170
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114335782554882808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3161,8 +3241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerList: f7e1664c
   useOtherObject: 0
-  valueGuid: da8a7bfa9c113a4ba167b205fbf739ea
-  eventID: -2036217039
+  valueGuid: bd64e555a6025445b634b7e2253896a9
+  eventID: 830217078
   soundEmitterObject: {fileID: 0}
   enableActionOnEvent: 0
   actionOnEventType: 0
@@ -3635,7 +3715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3790,6 +3870,30 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+--- !u!114 &114538937879248236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130319388052064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 1c0516197cd0e749baa26801882720d4
+  eventID: 1420377170
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114545038687404544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3987,6 +4091,54 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114589666846104268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1782017477872526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 51748f7a913c6e4a86b4f32fe3228db5
+  eventID: 1853453393
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
+--- !u!114 &114592930654721396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953920980635288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 1c0516197cd0e749baa26801882720d4
+  eventID: 1420377170
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114609435959696318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4596,6 +4748,30 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114839767492224910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011674108214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 2b7a6487a62406438b97b2ea005a5891
+  eventID: -1309435494
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: OnChanged
 --- !u!114 &114843224373721158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4650,30 +4826,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114882673355849830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013284679576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  valueGuid: da8a7bfa9c113a4ba167b205fbf739ea
-  eventID: -2036217039
-  soundEmitterObject: {fileID: 0}
-  enableActionOnEvent: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  transitionDuration: 0
-  m_callbackData: {fileID: 0}
-  playingId: 0
-  UIEventID: 0
-  UIEventName: Click
 --- !u!114 &114907540637653264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4757,6 +4909,30 @@ MonoBehaviour:
   MaxNomadic: {fileID: 114371573091562872}
   MinLevel: 2
   MaxLevel: 8
+--- !u!114 &114958913518696168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780106609084006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 51748f7a913c6e4a86b4f32fe3228db5
+  eventID: 1853453393
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114961489765759836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4902,6 +5078,30 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114968090076730444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668735121380864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 1c0516197cd0e749baa26801882720d4
+  eventID: 1420377170
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114973902443436726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5650,23 +5850,23 @@ RectTransform:
   m_GameObject: {fileID: 1000012331133526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224000010374991720}
   - {fileID: 224354588068202918}
   - {fileID: 224000013716599312}
   - {fileID: 224000011550085462}
   - {fileID: 224000010317548230}
+  - {fileID: 224474208387205774}
   - {fileID: 224000014020290874}
   - {fileID: 224000012146264448}
-  - {fileID: 224474208387205774}
   - {fileID: 224404318928388354}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 885, y: 659}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224000011550085462
@@ -5758,7 +5958,7 @@ RectTransform:
   - {fileID: 224000013538301948}
   - {fileID: 224000010884135290}
   m_Father: {fileID: 224000010907941856}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.973}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5917,7 +6117,7 @@ RectTransform:
   - {fileID: 224163111740200474}
   - {fileID: 224768894376650292}
   m_Father: {fileID: 224000010907941856}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6567,7 +6767,7 @@ RectTransform:
   - {fileID: 224044811126122200}
   - {fileID: 224534433792191012}
   m_Father: {fileID: 224000010907941856}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

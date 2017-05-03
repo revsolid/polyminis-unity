@@ -49,7 +49,8 @@ public class SpeciesDesignUI : MonoBehaviour
 
     void OnEnable()
     {
-        OnOpenSpeciesDesigner();
+        if (OnOpenSpeciesDesigner != null)
+            OnOpenSpeciesDesigner();
     }
 
     // Previously named Reset but I think Initialize fits the purpose better

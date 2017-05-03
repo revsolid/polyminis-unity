@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 222783514896284130}
   - component: {fileID: 114228658030179326}
   - component: {fileID: 114314992007776006}
+  - component: {fileID: 114033300765867956}
   m_Layer: 5
   m_Name: PolyminisButton_Special
   m_TagString: Untagged
@@ -502,6 +503,7 @@ GameObject:
   - component: {fileID: 222186953412656402}
   - component: {fileID: 114550747713816026}
   - component: {fileID: 114944585191771850}
+  - component: {fileID: 114110367885330918}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -542,6 +544,30 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Button
+--- !u!114 &114033300765867956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1710772461836288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 3f566cd2d5dfed4b8cad55f50ef2641a
+  eventID: -1407665777
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114045371202438032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -575,6 +601,30 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &114110367885330918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993095483272988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 2b7a6487a62406438b97b2ea005a5891
+  eventID: -1309435494
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: OnChanged
 --- !u!114 &114175029554633614
 MonoBehaviour:
   m_ObjectHideFlags: 1

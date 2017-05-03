@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222834263104423110}
   - component: {fileID: 114501604983016276}
   - component: {fileID: 114083146339190928}
+  - component: {fileID: 114524644666600512}
   m_Layer: 5
   m_Name: CloseStarmapButton
   m_TagString: Untagged
@@ -498,7 +499,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.49264705, g: 1, b: 0.979006, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -695,8 +696,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerList: f7e1664c
   useOtherObject: 0
-  valueGuid: 8fcda60cc720f640944fca927c287c4d
-  eventID: -1391136097
+  valueGuid: 0ec8fe711c46c84fb6d7ba29b4ea9f4f
+  eventID: 1647421410
   soundEmitterObject: {fileID: 0}
   enableActionOnEvent: 0
   actionOnEventType: 0
@@ -874,6 +875,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listenerId: 0
+--- !u!114 &114524644666600512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061114647944604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: bd64e555a6025445b634b7e2253896a9
+  eventID: 830217078
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114642765064362100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -903,8 +928,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerList: f7e1664c
   useOtherObject: 0
-  valueGuid: 429b7500afe3374fbde220e5b19ea0ee
-  eventID: -2107554376
+  valueGuid: 0ec8fe711c46c84fb6d7ba29b4ea9f4f
+  eventID: 1647421410
   soundEmitterObject: {fileID: 0}
   enableActionOnEvent: 0
   actionOnEventType: 0

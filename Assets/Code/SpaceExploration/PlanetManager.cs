@@ -141,7 +141,7 @@ public class PlanetManager : MonoBehaviour
                     break;
                 case SpaceExplorationEventType.WARP:
                     WarpDest = spaceExEvent.Position;
-                    DoWarp = true;
+                    DoWarp = false;
                     Debug.Log(message);
                     NewBiomassAvailable = spaceExEvent.NewBiomassAvailable;
                     break;

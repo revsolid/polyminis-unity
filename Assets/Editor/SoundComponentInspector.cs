@@ -72,6 +72,14 @@ public class UISoundComponentInspector : AkBaseInspector
             string[] opts = { "Check", "Uncheck" };
             options = opts;
         }
+        
+        InputField ifield = (s as InputField);
+        if (ifield != null)
+        {
+            string[] opts = { "OnChanged" };
+            options = opts;
+        }
+        
 	    serializedObject.Update();
         UIEventID.intValue = m_selected;
         serializedObject.ApplyModifiedProperties();

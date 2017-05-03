@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222221334836126918}
   - component: {fileID: 114049847329355604}
   - component: {fileID: 114706614387505900}
+  - component: {fileID: 114821064513701068}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -42,6 +43,7 @@ GameObject:
   - component: {fileID: 114775903668181692}
   - component: {fileID: 114167288316341278}
   - component: {fileID: 114084485311220242}
+  - component: {fileID: 114577594471317570}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -141,7 +143,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -191,6 +193,30 @@ MonoBehaviour:
     type: 2}
   EntriesLayoutGroup: {fileID: 114974502201857750}
   SpeciesDesigner: {fileID: 0}
+--- !u!114 &114577594471317570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723603171645200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: bd64e555a6025445b634b7e2253896a9
+  eventID: 830217078
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114706614387505900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,7 +237,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.30147058, g: 1, b: 0.816, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -287,6 +313,30 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114821064513701068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494794040099096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: bd64e555a6025445b634b7e2253896a9
+  eventID: 830217078
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114930400759533676
 MonoBehaviour:
   m_ObjectHideFlags: 1

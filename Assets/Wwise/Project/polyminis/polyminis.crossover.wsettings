@@ -51,7 +51,7 @@
 				<Property Name="Music Transition List\{FEFE5592-D7BB-4A97-AEB0-BF4DD73574F4}\Expand States" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_10_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_11_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\Expanded_12_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\Expanded_12_1" Type="string" Value="VPum6yBhHUS9q46D8mBnUQ=="/>
 				<Property Name="ProjectExplorer\Expanded_13_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_14_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_15_1" Type="string" Value=""/>
@@ -62,7 +62,7 @@
 				<Property Name="ProjectExplorer\Expanded_1_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_20_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_2_1" Type="string" Value="fXVB9fOnWkGWKwTJGVODGQ=="/>
-				<Property Name="ProjectExplorer\Expanded_3_1" Type="string" Value="ANAu92lYqEKFBgqKvpcb9GURnZfG8F9EvDxBwjVZfkjJAeEtmqRjRL082wOVp/EXn/tpuRgHdEmBnz/sxhejWA=="/>
+				<Property Name="ProjectExplorer\Expanded_3_1" Type="string" Value="MMTze5dD3kCXf2Pw7VXT7QDQLvdpWKhChQYKir6XG/RlEZ2XxvBfRLw8QcI1WX5IyQHhLZqkY0S9PNsDlafxFw=="/>
 				<Property Name="ProjectExplorer\Expanded_4_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_5_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\Expanded_6_1" Type="string" Value="s4AnydxqAEiKDZjm/b+EuA=="/>
@@ -75,6 +75,7 @@
 				<Property Name="ProjectExplorer\FirstVisible_4_1" Type="string" Value="{CB6175F1-6080-4A23-92EF-0807E304D0C1}"/>
 				<Property Name="ProjectExplorer\FirstVisible_6_1" Type="string" Value="{C98E673F-A24C-48A8-960F-10565FFE70A0}"/>
 				<Property Name="ProjectExplorer\FirstVisible_8_1" Type="string" Value="{41093F77-829F-4D88-8601-E8B25F3D4781}"/>
+				<Property Name="RTPC\GameParameterSimValue\{F91D1A09-2700-40A3-8DFF-76557B304CF0}" Type="Real64" Value="1"/>
 				<Property Name="SettingsUserOverride" Type="bool" Value="True"/>
 				<Property Name="SoundBank Manager\Expand States" Type="string" Value="s4AnydxqAEiKDZjm/b+EuA=="/>
 				<Property Name="SoundBankGenerateHeaderFile" Type="bool" Value="True"/>

@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 222260711254020822}
   - component: {fileID: 114760494632213588}
   - component: {fileID: 114632667095037078}
+  - component: {fileID: 114800163446356684}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -193,6 +194,30 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114800163446356684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653979603600184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4f26e9ead524418b9c95bdad204b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: e66f18c21accfe499b8c44e8e5345554
+  eventID: 759703697
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  playingId: 0
+  UIEventID: 0
+  UIEventName: Click
 --- !u!114 &114843279088438516
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="11" SoundbankVersion="118">
 	<RootPaths>
-		<ProjectRoot>/Users/elopez/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/polyminis-unity/Assets/Wwise/Project/polyminis/</ProjectRoot>
-		<SourceFilesRoot>/Users/elopez/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/polyminis-unity/Assets/Wwise/Project/polyminis/.cache/Mac/</SourceFilesRoot>
-		<SoundBanksRoot>/Users/elopez/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/polyminis-unity/Assets/StreamingAssets/Audio/GeneratedSoundBanks/Mac/</SoundBanksRoot>
+		<ProjectRoot>/Users/Sisnett/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Code/polyminis-unity/Assets/Wwise/Project/polyminis/</ProjectRoot>
+		<SourceFilesRoot>/Users/Sisnett/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Code/polyminis-unity/Assets/Wwise/Project/polyminis/.cache/Mac/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/Sisnett/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Code/polyminis-unity/Assets/StreamingAssets/Audio/GeneratedSoundBanks/Mac/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>/Users/elopez/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/polyminis-unity/Assets/Wwise/Project/polyminis/GeneratedSoundBanks/Mac/</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/Sisnett/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/Code/polyminis-unity/Assets/Wwise/Project/polyminis/GeneratedSoundBanks/Mac/</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles>
@@ -48,13 +48,25 @@
 				<Event Id="3501292951" Name="P_Spshp_Thrust" ObjectPath="\Events\Default Work Unit\SFX_Wu\Spaceship_Wu\P_Spshp_Thrust"/>
 				<Event Id="2187412920" Name="P_UI_Accepted" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Accepted"/>
 				<Event Id="4094348196" Name="P_UI_Add" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Add"/>
+				<Event Id="759703697" Name="P_UI_AddItem" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_AddItem"/>
+				<Event Id="1420377170" Name="P_UI_ArrowDown" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_ArrowDown"/>
+				<Event Id="1853453393" Name="P_UI_ArrowUp" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_ArrowUp"/>
 				<Event Id="2258750257" Name="P_UI_Cancel" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Cancel"/>
+				<Event Id="2221883625" Name="P_UI_CancelButton" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_CancelButton"/>
+				<Event Id="830217078" Name="P_UI_ConsoleCloseWindow" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_ConsoleCloseWindow"/>
+				<Event Id="1647421410" Name="P_UI_ConsoleOpenWindow" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_ConsoleOpenWindow"/>
 				<Event Id="2903831199" Name="P_UI_Data" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Data"/>
 				<Event Id="3781701507" Name="P_UI_Error" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Error"/>
+				<Event Id="693274607" Name="P_UI_NameBoxClick" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_NameBoxClick"/>
 				<Event Id="2141736205" Name="P_UI_Ok" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Ok"/>
+				<Event Id="1310748098" Name="P_UI_RemoveItem" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_RemoveItem"/>
 				<Event Id="2581921037" Name="P_UI_Return" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Return"/>
+				<Event Id="1176235340" Name="P_UI_SaveButton" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_SaveButton"/>
+				<Event Id="2887301519" Name="P_UI_StartGame" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_StartGame"/>
 				<Event Id="2374130668" Name="P_UI_Substract" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Substract"/>
+				<Event Id="2985531802" Name="P_UI_TypingClick" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_TypingClick"/>
 				<Event Id="1935057997" Name="P_UI_Warning" ObjectPath="\Events\Default Work Unit\SFX_Wu\UI_Wu\P_UI_Warning"/>
+				<Event Id="3987253389" Name="P_UI_Warp" ObjectPath="\Events\Default Work Unit\SFX_Wu\New_UI_Wu\P_UI_Warp"/>
 				<Event Id="1216185298" Name="S_Spshp_Thrust" ObjectPath="\Events\Default Work Unit\SFX_Wu\Spaceship_Wu\S_Spshp_Thrust"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
@@ -70,6 +82,14 @@
 					<ShortName>UI_PACK_01\UI_WARNING.wav</ShortName>
 					<Path>SFX/UI_PACK_01/UI_WARNING_9E69E797.wem</Path>
 				</File>
+				<File Id="163225355" Language="SFX">
+					<ShortName>PM_UI_NameBoxClick.wav</ShortName>
+					<Path>SFX/PM_UI_NameBoxClick_9E69E797.wem</Path>
+				</File>
+				<File Id="180399087" Language="SFX">
+					<ShortName>PM_UI_ConsoleOpenWindow.wav</ShortName>
+					<Path>SFX/PM_UI_ConsoleOpenWindow_9E69E797.wem</Path>
+				</File>
 				<File Id="299834042" Language="SFX">
 					<ShortName>UI_PACK_01\UI_CANCEL.wav</ShortName>
 					<Path>SFX/UI_PACK_01/UI_CANCEL_9E69E797.wem</Path>
@@ -78,21 +98,61 @@
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
 					<Path>SFX/SF-CK Data GUI Single 01_B91C577D.wem</Path>
 				</File>
+				<File Id="336545008" Language="SFX">
+					<ShortName>PM_UI_SaveButton.wav</ShortName>
+					<Path>SFX/PM_UI_SaveButton_9E69E797.wem</Path>
+				</File>
+				<File Id="475114320" Language="SFX">
+					<ShortName>PM_UI_AddItem.wav</ShortName>
+					<Path>SFX/PM_UI_AddItem_9E69E797.wem</Path>
+				</File>
 				<File Id="566911207" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
 					<Path>SFX/SF-CK Data GUI Single 01_24CD281B.wem</Path>
+				</File>
+				<File Id="583223215" Language="SFX">
+					<ShortName>PM_UI_Warp.wav</ShortName>
+					<Path>SFX/PM_UI_Warp_9E69E797.wem</Path>
+				</File>
+				<File Id="641609431" Language="SFX">
+					<ShortName>PM_UI_CancelButton.wav</ShortName>
+					<Path>SFX/PM_UI_CancelButton_9E69E797.wem</Path>
 				</File>
 				<File Id="662412231" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
 					<Path>SFX/SF-CK Data GUI Single 01_1F3B888F.wem</Path>
 				</File>
+				<File Id="664612807" Language="SFX">
+					<ShortName>PM_UI_ConsoleCloseWindow.wav</ShortName>
+					<Path>SFX/PM_UI_ConsoleCloseWindow_9E69E797.wem</Path>
+				</File>
+				<File Id="733276547" Language="SFX">
+					<ShortName>PM_UI_StartGame.wav</ShortName>
+					<Path>SFX/PM_UI_StartGame_9E69E797.wem</Path>
+				</File>
 				<File Id="792914303" Language="SFX">
 					<ShortName>UI_PACK_01\UI_ACCEPTED.wav</ShortName>
 					<Path>SFX/UI_PACK_01/UI_ACCEPTED_9E69E797.wem</Path>
 				</File>
+				<File Id="801590766" Language="SFX">
+					<ShortName>PM_UI_ArrowUp.wav</ShortName>
+					<Path>SFX/PM_UI_ArrowUp_9E69E797.wem</Path>
+				</File>
 				<File Id="812774060" Language="SFX">
 					<ShortName>SF-CK Data GUI Single 01.wav</ShortName>
 					<Path>SFX/SF-CK Data GUI Single 01_C1B0D729.wem</Path>
+				</File>
+				<File Id="897408065" Language="SFX">
+					<ShortName>PM_UI_RemoveItem.wav</ShortName>
+					<Path>SFX/PM_UI_RemoveItem_9E69E797.wem</Path>
+				</File>
+				<File Id="963090730" Language="SFX">
+					<ShortName>PM_UI_TypingClick.wav</ShortName>
+					<Path>SFX/PM_UI_TypingClick_9E69E797.wem</Path>
+				</File>
+				<File Id="964226478" Language="SFX">
+					<ShortName>PM_UI_ArrowDown.wav</ShortName>
+					<Path>SFX/PM_UI_ArrowDown_9E69E797.wem</Path>
 				</File>
 				<File Id="973505296" Language="SFX">
 					<ShortName>UI_PACK_01\UI_AWESOME.wav</ShortName>
