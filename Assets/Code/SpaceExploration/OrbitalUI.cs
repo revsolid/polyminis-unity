@@ -22,7 +22,9 @@ public class OrbitalUI : MonoBehaviour
     public Text PhText;
     public Text TpText;
     public Text PsText;
-    public int ChartSize;
+    public float PhChartSize = 61;
+    public float TempChartSize = 90;
+    public float PopulationChartSize = 90;
     public SpeciesCard[] Slots;
     
     PlanetModel Planet;
@@ -82,16 +84,25 @@ public class OrbitalUI : MonoBehaviour
         TpText.text = TpString;
         PsText.text = PsString;
 
-        if (PopulationChart.ChartSize < ChartSize)
+        if (PopulationChart.ChartSize < PopulationChartSize)
         {
             const int speed = 5;
-            PopulationChart.ChartSize += speed;            
-            ResourceChart.ChartSize += speed;
-            PHChart.ChartSize += speed;
-            if (PopulationChart.ChartSize > ChartSize) PopulationChart.ChartSize = ChartSize;
-            if (ResourceChart.ChartSize > ChartSize) ResourceChart.ChartSize = ChartSize;
-            if (PHChart.ChartSize > ChartSize) PHChart.ChartSize = ChartSize;
+            PopulationChart.ChartSize += speed;
+            if (PopulationChart.ChartSize > PopulationChartSize) PopulationChart.ChartSize = PopulationChartSize;
         }
+        if (ResourceChart.ChartSize < TempChartSize)
+        {
+            const int speed = 5;
+            ResourceChart.ChartSize += speed;
+            if (ResourceChart.ChartSize > TempChartSize) ResourceChart.ChartSize = TempChartSize;
+        }
+        if (PHChart.ChartSize < PhChartSize)
+        {
+            const int speed = 5;
+            PHChart.ChartSize += speed;
+            if (PHChart.ChartSize > PhChartSize) PHChart.ChartSize = PhChartSize;
+        }
+
         if (!HasHookedCallbacks)
         {
             global::Planet.OnPlanetModelChanged += OnPlanetChanged;
