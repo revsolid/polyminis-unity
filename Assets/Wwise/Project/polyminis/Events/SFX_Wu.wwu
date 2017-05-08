@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<WorkUnit Name="Spaceship_Wu" ID="{F72ED000-5869-42A8-8506-0A8ABE971BF4}" PersistMode="Reference"/>
 				<WorkUnit Name="UI_Wu" ID="{CA04F0DA-FC02-4982-9DA2-89812F25C019}" PersistMode="Reference"/>
+				<WorkUnit Name="New_UI_Wu" ID="{7BF3C430-4397-40DE-977F-63F0ED55D3ED}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

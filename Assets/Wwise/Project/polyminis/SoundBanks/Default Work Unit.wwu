@@ -13,7 +13,6 @@
 				<SoundBank Name="SFX" ID="{9C3924CB-DBC7-419C-BD03-E350FA4370AA}">
 					<ObjectInclusionList>
 						<ObjectRef Name="SFX_Wu" ID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" WorkUnitID="{2DE101C9-A49A-4463-BD3C-DB0395A7F117}" Filter="7" Origin="Manual"/>
-						<ObjectRef Name="UI_Wu" ID="{CA04F0DA-FC02-4982-9DA2-89812F25C019}" WorkUnitID="{CA04F0DA-FC02-4982-9DA2-89812F25C019}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

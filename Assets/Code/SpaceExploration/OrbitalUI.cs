@@ -273,11 +273,11 @@ public class OrbitalUI : MonoBehaviour
 
         Debug.Log(scMin + " XXX " + scAverage + " XXX " + p.Temperature.Max);
         ResourceData[0] = scMin;
-        ResourceNames.Add(0, "Low: "+ (p.Temperature.Min * 273).ToString("0.0")+" K");
+        ResourceNames.Add(0, "Min Temperature: "+ (p.Temperature.Min * 273).ToString("0.0")+" K");
         ResourceData[1] = scAverage - scMin;
-        ResourceNames.Add(1, "Average: " + ((p.Temperature.Min +  p.Temperature.Max) * 273 / 2).ToString("0.0") + " K");
+        ResourceNames.Add(1, "Average Temperature: " + ((p.Temperature.Min +  p.Temperature.Max) * 273 / 2).ToString("0.0") + " K");
         ResourceData[2] = 1 - scAverage;
-        ResourceNames.Add(2, "High: "+ (p.Temperature.Max * 273).ToString("0.0") +" K");
+        ResourceNames.Add(2, "High Temperature: "+ (p.Temperature.Max * 273).ToString("0.0") +" K");
 
         PopulationChart.ChartSize = 0;
         ResourceChart.ChartSize = 0;
@@ -289,12 +289,12 @@ public class OrbitalUI : MonoBehaviour
         float phMin = p.Ph.Min / p.Ph.Max;
         float phAverage = p.Ph.Average() / p.Ph.Max;
 
-        PHData[0] = scMin;
-        PhStrings.Add(0, "Acid: " + (p.Ph.Min * 14).ToString("0.0"));
-        PHData[1] = scAverage - scMin;
-        PhStrings.Add(1, "Neutral: " + ((p.Ph.Min + p.Ph.Max) * 14 / 2).ToString("0.0"));
-        PHData[2] = 1 - scAverage;
-        PhStrings.Add(2, "Alkaline: " + (p.Ph.Max * 14).ToString("0.0"));
+        PHData[0] = phMin;
+        PhStrings.Add(0, "Min Ph: " + (p.Ph.Min * 14).ToString("0.0"));
+        PHData[1] = phAverage - phMin;
+        PhStrings.Add(1, "Average Ph: " + ((p.Ph.Min + p.Ph.Max) * 14 / 2).ToString("0.0"));
+        PHData[2] = 1 - phAverage;
+        PhStrings.Add(2, "Max Ph: " + (p.Ph.Max * 14).ToString("0.0"));
         PHChart.ChartSize = 0;
         PHChart.SetValues(ref PHData);
 
