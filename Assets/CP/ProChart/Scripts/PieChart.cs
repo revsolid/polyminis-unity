@@ -84,14 +84,14 @@ namespace CP.ProChart
 		}
 
 		[SerializeField]
-		[Range(-360, 360)]
+		[Range(0, 360)]
 		private float chartSize = 360;
 		///<summary>
-		/// degree of size, float in range of -360f to +360f
+		/// degree of size, float in range of 0 to +360f
 		///</summary>
 		public float ChartSize {
 			get { return chartSize; }
-			set { if (chartSize != value && value >= -360.0f && value <= 360.0f) { chartSize = value; Dirty = true; } }
+			set { if (chartSize != value && value >= 0 && value <= 360.0f) { chartSize = value; Dirty = true; } }
 		}
 
 		///<summary>
@@ -116,24 +116,67 @@ namespace CP.ProChart
 		/// List of sectors, which can be activated
 		///</summary>
 		private List<Sector> sectors = new List<Sector>();
-		
-		///<summary>
-		/// Update the colors when mouse over or user select data
-		///</summary>
-		override protected void Update()
+
+        float GetAngle(Vector2 inVector)
+        {
+            float toRet = Vector2.Angle(Vector2.up, inVector);
+
+            if(inVector.x < 0)
+            {
+                toRet = 360.0f - toRet;
+            }
+
+            return toRet;
+        }
+
+        ///<summary>
+        /// Update the colors when mouse over or user select data
+        ///</summary>
+        override protected void Update()
 		{
 			base.Update();
-			if (isPointerInside && Interactable)
+			if (Interactable)
 			{
 				Vector2 local;
 				Camera cam = (canvas.renderMode == RenderMode.ScreenSpaceOverlay) ? null : canvas.worldCamera;
 				RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, cam, out local);
 
+                // DO NOT FUKING SCALE X and Y DIFFERENTLY!!!
+                float angle = GetAngle(local);
+                float distance = Vector2.Distance(Vector2.zero, local);
+
+                // is the mouse point within angle range?
+                if (angle < startAngle || angle > startAngle + chartSize)
+                {
+                    ChangeCursor(-1);
+                }
+                // is the mouse point within radius range?
+                else if(distance > 500.0f || distance < 500.0f * innerRadius )
+                {
+                    ChangeCursor(-1);
+                }
+                // ok...it's in there.
+                else
+                {
+                    for (int i = 0; i < sectors.Count; i++)
+                    {
+                        float start = sectors[i].start;
+                        float end = sectors[i].end;
+                        if(angle > start && angle < end)
+                        {
+                            ChangeCursor(i);
+                            return;
+                        }
+                    }
+
+                }
+
+                /*
 				float s = Mathf.Pow(local.y, 2) / Mathf.Pow(rectTransform.rect.height / 2, 2) + Mathf.Pow(local.x, 2) / Mathf.Pow(rectTransform.rect.width / 2, 2);
 				float si = Mathf.Pow(local.y, 2) / Mathf.Pow(rectTransform.rect.height / 2 * innerRadius, 2) + Mathf.Pow(local.x, 2) / Mathf.Pow(rectTransform.rect.width * innerRadius / 2, 2);
 				if (s < 1 && si > 1)
 				{
-					float a = Angle(Vector3.up, local);
+					float a = GetAngle(Vector3.up);
 
 					for (int i = 0; i < sectors.Count; i++)
 					{
@@ -148,8 +191,9 @@ namespace CP.ProChart
 					}
 				}			
 				ChangeCursor(-1);
-			}
-		}
+                */
+            }
+        }
 
 	#if UNITY_EDITOR
 		///<summary>
@@ -168,6 +212,7 @@ namespace CP.ProChart
 		protected override void OnEnable()
 		{
 			base.OnEnable();
+
 
 			//only in editor
 			if (!Application.isPlaying)
@@ -189,7 +234,8 @@ namespace CP.ProChart
 		///</summary>
 		void OnEnabled(bool enabled)
 		{
-			if (onEnabledDelegate != null)
+            
+            if (onEnabledDelegate != null)
 			{
 				onEnabledDelegate(enabled);
 			}
@@ -265,7 +311,7 @@ namespace CP.ProChart
 			Triangles.Add(Vertices.Count - 3);
 			Triangles.Add(Vertices.Count - 2);
 		}
-		
+
 #else
 
 		///<summary>
@@ -293,16 +339,19 @@ namespace CP.ProChart
 		}
 #endif
 
-		///<summary>
-		/// Get angle from two vector
-		///</summary>
-		private float Angle(Vector3 a, Vector3 b)
+#if false
+        ///<summary>
+        /// Get angle from two vector
+        ///</summary>
+        private float Angle(Vector3 a, Vector3 b)
 		{
-			float angle = (Mathf.Atan2(a.y, a.x) - Mathf.Atan2(b.y, b.x)) * Mathf.Rad2Deg;
-			if (angle < 0.0f)
-				angle += 360.0f;
-			return angle;
-		}
+
+            float angle = (Mathf.Atan2(a.y, a.x) - Mathf.Atan2(b.y, b.x)) * Mathf.Rad2Deg;
+            if (angle < 0.0f)
+                angle += 360.0f;
+            return angle;
+        }
+#endif
 
 		///<summary>
 		/// Generate the chart
@@ -361,12 +410,12 @@ namespace CP.ProChart
 				Vector3 p = new Vector3(pp0.x * rectTransform.rect.width, pp0.y * rectTransform.rect.height);
 				if (chartSize < 0)
 				{
-					sector.end = Angle(Vector3.up, p);
+					sector.end = GetAngle(p);
 					sector.center = sector.end - angle / 2;
 				}
 				else
 				{
-					sector.start = Angle(Vector3.up, p);
+					sector.start = GetAngle(p);
 					sector.center = sector.start + angle / 2;
 				}
 
@@ -384,11 +433,11 @@ namespace CP.ProChart
 				p = new Vector3(pp0.x * rectTransform.rect.width, pp0.y * rectTransform.rect.height);
 				if (chartSize < 0)
 				{
-					sector.start = Angle(Vector3.up, p);
+					sector.start = GetAngle(p);
 				}
 				else
 				{
-					sector.end = Angle(Vector3.up, p);
+					sector.end = GetAngle(p);
 				}
 #if !PRE_UNITY_5_2
 				sector.quadsCount = (Vertices.Count - sector.firstVertex) / 4;

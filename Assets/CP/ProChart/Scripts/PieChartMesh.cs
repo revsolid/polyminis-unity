@@ -60,14 +60,14 @@ namespace CP.ProChart
 		}
 
 		[SerializeField]
-		[Range(-360, 360)]
+		[Range(0, 360)]
 		private float chartSize = 360;
 		///<summary>
 		/// degree of size, float in range of -360f to +360f
 		///</summary>
 		public float ChartSize {
 			get { return chartSize; }
-			set { if (chartSize != value && value >= -360.0f && value <= 360.0f) { chartSize = value; Dirty = true; } }
+			set { if (chartSize != value && value >= 0.0f && value <= 360.0f) { chartSize = value; Dirty = true; } }
 		}
 
 		///<summary>
