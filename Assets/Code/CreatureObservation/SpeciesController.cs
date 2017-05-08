@@ -75,8 +75,8 @@ public class SpeciesController : MonoBehaviour
         if (Planet == null)
         {
             Planet = new PlanetModel();
-            Planet.ID = 2011;
-            Planet.Epoch = 37;
+            Planet.ID = 314159;
+            Planet.Epoch = 1030;
         }
         GoToEpoch(Planet.ID, Planet.Epoch);
     }

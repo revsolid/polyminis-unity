@@ -76,8 +76,8 @@ MonoBehaviour:
   - PhysicalPath: Events/New_UI_Wu.wwu
     ParentPhysicalPath: Events/SFX_Wu.wwu
     Guid: '{7BF3C430-4397-40DE-977F-63F0ED55D3ED}'
-    m_lastTimePsrt1: 1355215616
-    m_lastTimePart2: -1999334944
+    m_lastTimePsrt1: -1801244928
+    m_lastTimePart2: -1999334531
     List:
     - Name: P_UI_AddItem
       Path: Default Work Unit/SFX_Wu/New_UI_Wu/P_UI_AddItem
@@ -250,8 +250,8 @@ MonoBehaviour:
   - PhysicalPath: Events/SFX_Wu.wwu
     ParentPhysicalPath: Events/Default Work Unit.wwu
     Guid: '{2DE101C9-A49A-4463-BD3C-DB0395A7F117}'
-    m_lastTimePsrt1: 1160902400
-    m_lastTimePart2: -1999334923
+    m_lastTimePsrt1: -1801244928
+    m_lastTimePart2: -1999334531
     List: []
   - PhysicalPath: Events/Spaceship_Wu.wwu
     ParentPhysicalPath: Events/SFX_Wu.wwu
@@ -444,8 +444,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks/Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{C92780B3-6ADC-4800-8A0D-98E6FDBF84B8}'
-    m_lastTimePsrt1: 1160902400
-    m_lastTimePart2: -1999334923
+    m_lastTimePsrt1: -1801244928
+    m_lastTimePart2: -1999334531
     List:
     - Name: Music
       Path: Default Work Unit/Music

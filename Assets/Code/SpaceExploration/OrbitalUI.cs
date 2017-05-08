@@ -288,7 +288,7 @@ public class OrbitalUI : MonoBehaviour
         ResourceData[1] = scAverage - scMin;
         ResourceNames.Add(1, "Average Temperature: " + ((p.Temperature.Min +  p.Temperature.Max) * 273 / 2).ToString("0.0") + " K");
         ResourceData[2] = 1 - scAverage;
-        ResourceNames.Add(2, "High Temperature: "+ (p.Temperature.Max * 273).ToString("0.0") +" K");
+        ResourceNames.Add(2, "Max Temperature: "+ (p.Temperature.Max * 273).ToString("0.0") +" K");
 
         PopulationChart.ChartSize = 0;
         ResourceChart.ChartSize = 0;
