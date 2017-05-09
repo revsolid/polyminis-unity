@@ -51,6 +51,12 @@ public class SpeciesDesignUI : MonoBehaviour
     {
         if (OnOpenSpeciesDesigner != null)
             OnOpenSpeciesDesigner();
+        ControlHelper.isDisabled = true;
+    }
+
+    void OnDisable()
+    {
+        ControlHelper.isDisabled = false;
     }
 
     // Previously named Reset but I think Initialize fits the purpose better
@@ -213,6 +219,7 @@ public class SpeciesDesignUI : MonoBehaviour
     {
         gameObject.SetActive(false);
         OnSaveEvent = null;
+        ControlHelper.isDisabled = false;
     }
     
     public void OnSaveButtonClicked()
