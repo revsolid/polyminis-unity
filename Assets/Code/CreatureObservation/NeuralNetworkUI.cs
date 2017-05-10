@@ -226,8 +226,8 @@ public class NeuralNetworkUI : MonoBehaviour
         InstinctScores.text = string.Format(template,
             ToDetail.Model.EvaluationStats.Nomadic,
             ToDetail.Model.EvaluationStats.Predatory,
-            ToDetail.Model.EvaluationStats.Herding,
-            ToDetail.Model.EvaluationStats.Hoarding
+            ToDetail.Model.EvaluationStats.Hoarding,
+            ToDetail.Model.EvaluationStats.Herding
         );
         
         string dnaRep = "";

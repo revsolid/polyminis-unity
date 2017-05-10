@@ -74,7 +74,6 @@ public class SpaceMovementTracker : MonoBehaviour
         
         if (LastImpulse != verImpulse)
         {
-            Debug.Log(LastImpulse);
             LastImpulse = Mathf.Min(Mathf.Max(verImpulse, LastImpulse - 0.005f), LastImpulse + 0.005f);
             AkSoundEngine.SetRTPCValue("Spaceship_Speed", LastImpulse * 85, gameObject);
         }
@@ -121,7 +120,6 @@ public class SpaceMovementTracker : MonoBehaviour
                 Debug.Log("KICK_BACK");
                 break;
             case SpaceExplorationEventType.WARP:
-                Debug.Log("Warp to <" + spaceExEvent.Position.x.ToString() + ", " + spaceExEvent.Position.y.ToString() + ">");
                 Warp(spaceExEvent.Position);
                 break;
             }

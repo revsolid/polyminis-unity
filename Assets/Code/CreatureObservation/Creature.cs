@@ -95,22 +95,27 @@ public class Creature : MonoBehaviour
 		
 		Dictionary<Instinct, float> instinctsToValues = new Dictionary<Instinct, float>()
 		{
-			{ Instinct.NOMADIC, Model.EvaluationStats.Nomadic },
-			{ Instinct.PREDATORY, Model.EvaluationStats.Predatory },
-			{ Instinct.HERDING, Model.EvaluationStats.Herding },
-			{ Instinct.HOARDING, Model.EvaluationStats.Hoarding },
+			{ Instinct.NOMADIC, model.EvaluationStats.Nomadic },
+			{ Instinct.PREDATORY, model.EvaluationStats.Predatory },
+			{ Instinct.HERDING, model.EvaluationStats.Herding },
+			{ Instinct.HOARDING, model.EvaluationStats.Hoarding },
 		};
 		
 		Instinct dominant = Instinct.NOMADIC;
 		float v = 0.0f;
+		Debug.Log("XXXXXXX");
 		foreach(KeyValuePair<Instinct, float> kvp in instinctsToValues)
 		{
+			Debug.Log("Instinct: " + kvp.Key);
+			Debug.Log("Instinct: " + kvp.Value);
 			if (kvp.Value > v)
 			{
 				dominant = kvp.Key;
 				v = kvp.Value;
+				Debug.Log("Setting dominant: " + dominant);
 			}
 		}
+		Debug.Log("YYYYYYY");
 
 		foreach(OrganelleModel organelle in model.Morphology.Body)
 		{

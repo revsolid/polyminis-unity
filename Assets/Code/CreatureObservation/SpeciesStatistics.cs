@@ -70,8 +70,8 @@ public class SpeciesStatistics : MonoBehaviour
         if (Planet == null)
         {
             Planet = new PlanetModel();
-            Planet.ID = 31415;
-            Planet.Epoch = 1030;
+            Planet.ID = 9090;
+            Planet.Epoch = 4001;
             Planet.PlanetName = "Il Nome";
         }
         DetailedViewModel.PlanetModel = Planet;
